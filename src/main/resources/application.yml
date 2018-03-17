@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    #url: jdbc:sqlserver://localhost:1433;databaseName=Horadada
+    url: jdbc:oracle:thin:@localhost:1521:Horadada
+    username: Horadada
+    password: aponte17
+
+  jpa:
+    properties:
+      hibernate:
+        dialect : org.hibernate.dialect.Oracle10gDialect
+    show-sql: true 
+    hibernate:
+      ddl-auto: update
+      naming:
+        #strategy: org.hibernate.cfg.ImprovedNamingStrategy
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        
+        #mvn install:install-file -Dfile=C:\\app\\alexander\\product\\11.2.0\\dbhome_1\\jdbc\\lib\\ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
