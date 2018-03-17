@@ -2,6 +2,8 @@ package com.projecto.Horadada.Entity;
 // Generated 02-mar-2018 16:56:03 by Hibernate Tools 4.3.1
 
 
+import java.util.Date;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -26,7 +28,7 @@ public class Usuario  implements java.io.Serializable {
      private Persona persona;
      private String usuario;
      private String contrasena;
-     private String fechaupdate;
+     private Date fechaupdate;
      private Integer estado;
 
     public Usuario() {
@@ -37,7 +39,7 @@ public class Usuario  implements java.io.Serializable {
         this.id = id;
         this.persona = persona;
     }
-    public Usuario(UsuarioId id, Persona persona, String usuario, String contrasena, String fechaupdate, Integer estado) {
+    public Usuario(UsuarioId id, Persona persona, String usuario, String contrasena, Date fechaupdate, Integer estado) {
        this.id = id;
        this.persona = persona;
        this.usuario = usuario;
@@ -91,12 +93,12 @@ public class Usuario  implements java.io.Serializable {
     }
 
     
-    @Column(name="FECHAUPDATE", length=20)
-    public String getFechaupdate() {
+    @Column(name="FECHAUPDATE")
+    public Date getFechaupdate() {
         return this.fechaupdate;
     }
     
-    public void setFechaupdate(String fechaupdate) {
+    public void setFechaupdate(Date fechaupdate) {
         this.fechaupdate = fechaupdate;
     }
 
