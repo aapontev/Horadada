@@ -37,38 +37,43 @@
 
 	<header th:fragment="header">
 		<!-- Fixed navbar -->
-		<!-- <nav class="navbar navbar-default navbar-fixed-top">
-			 <div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span> 
-						<!--  <span class="icon-bar"></span> 
-						<span class="icon-bar"></span> 
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">Horadada</a>
-				</div>
-				<div id="navbar" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li><a href="#">Servicio</a></li>
-						<li><a href="#contact">Estandares de Gestión</a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Empresa <span class="caret"></span>
-						</a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li role="separator" class="dropdown-divider"></li>
-								<li class="dropdown-header">Nav header</li>
-								<li><a href="#">Separated link</a></li>
-								<li><a href="#">One more separated link</a></li>
-							</ul></li>
-						<li><a href="#contact">Certificaciones</a></li>
-						<li><a href="#contact">Proyectos</a></li>
-						<li><a href="#contact">Noticias</a></li>
-						<li><a href="#contact">Contactenos</a></li>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container">
+				<a class="navbar-brand" href="#">Horadada</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div id="navbarSupportedContent" class="collapse navbar-collapse">
+					<ul class="mr-auto navbar-nav">
+						<li class="nav-item active"><a class="nav-link" href="#">Servicio<span
+								class="sr-only">(current)</span></a></li>
+						<li class="nav-item active"><a class="nav-link" href="#">Estandares
+								de Gestión<span class="sr-only">(current)</span>
+						</a></li>
+						<li class="nav-item active"><a class="nav-link" href="#">Certificaciones<span
+								class="sr-only">(current)</span></a></li>
+						<li class="nav-item active"><a class="nav-link" href="#">Proyectos<span
+								class="sr-only">(current)</span></a></li>
+						<li class="nav-item active"><a class="nav-link" href="#">Noticias<span
+								class="sr-only">(current)</span></a></li>
+						<li class="nav-item dropdown"><a href="#"
+							class="nav-link dropdown-toggle" data-toggle="dropdown"
+							id="navbarDropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Empresa </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="#">Action</a> <a
+									class="dropdown-item" href="#">Another action</a> <a
+									class="dropdown-item" href="#">Something else here</a>
+								<div class="dropdown-divider"></div>
+								<div class="dropdown-header">Nav header</div>
+								<a class="dropdown-item" href="#">Separated link</a> <a
+									class="dropdown-item" href="#">One more separated link</a>
+							</div></li>
+						<li class="nav-item active"><a class="nav-link" href="#">Contactenos<span
+								class="sr-only">(current)</span></a></li>
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right ">
@@ -78,10 +83,10 @@
 								class="glyphicon glyphicon-chevron-down"></span>
 						</a>
 							<ul class="dropdown-menu">
-								<li class="text-xs-center">
+								<li class="text-center">
 									<div class="lead"></div>
 								</li>
-								<li class="dropdown-divider"></li>
+								<li class="divider"></li>
 								<li>
 									<div class="navbar-login">
 
@@ -110,10 +115,10 @@
 								</li>
 							</ul></li>
 					</ul>
-				</div> 
-				</div> 
-		</nav> -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				</div>
+			</div>
+		</nav>
+		<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -139,7 +144,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="#">Disabled</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -147,7 +152,7 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
-</nav>
+</nav>-->
 	</header>
 
 	<footer th:fragment="footer">
