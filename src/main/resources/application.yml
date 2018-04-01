@@ -2,7 +2,7 @@ spring:
   datasource:
     #url: jdbc:sqlserver://localhost:1433;databaseName=Horadada
     url: jdbc:oracle:thin:@localhost:1521:Horadada
-    username: Horadada
+    username: horadada
     password: aponte17
 
   jpa:
