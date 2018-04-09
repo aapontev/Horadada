@@ -26,8 +26,8 @@ public class Usuario {
 	@JoinColumn(name = "IDPERSONA", nullable = false)
 	private Persona persona;
 
-	@Column(name = "USUARIO", length = 45)
-	private String usuario;
+	@Column(name = "USERNAME", length = 45)
+	private String username;
 
 	@Column(name = "CONTRASENA", length = 60)
 	private String contrasena;
@@ -36,21 +36,25 @@ public class Usuario {
 	private Date fechaupdate;
 
 	@Column(name = "ESTADO", precision = 5, scale = 0)
-	private Integer estado;
+	private boolean estado;
+	
+	@Column(name = "TIPOPERSONA")
+	private String tipopersona;
 	
 	
 
 	public Usuario() {
 	}
 
-	public Usuario(int idUsuario, Persona persona, String usuario, String contrasena, Date fechaupdate, Integer estado) {
+	public Usuario(int idUsuario, Persona persona, String username, String contrasena, Date fechaupdate, boolean estado, String tipopersona) {
 		super();
 		this.idUsuario = idUsuario;
 		this.persona = persona;
-		this.usuario = usuario;
+		this.username = username;
 		this.contrasena = contrasena;
 		this.fechaupdate = fechaupdate;
 		this.estado = estado;
+		this.tipopersona = tipopersona;
 	}
 
 	public int getIdUsuario() {
@@ -61,12 +65,12 @@ public class Usuario {
 		this.idUsuario = idUsuario;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getUsuarioname() {
+		return username;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUsuarioname(String username) {
+		this.username = username;
 	}
 
 	public String getContrasena() {
@@ -85,11 +89,11 @@ public class Usuario {
 		this.fechaupdate = fechaupdate;
 	}
 
-	public Integer getEstado() {
+	public boolean isEstado() {
 		return estado;
 	}
 
-	public void setEstado(Integer estado) {
+	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
 
@@ -100,4 +104,22 @@ public class Usuario {
 	public void setPersona(Persona persona) {
         this.persona = persona;
     }
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getTipopersona() {
+		return tipopersona;
+	}
+
+	public void setTipopersona(String tipopersona) {
+		this.tipopersona = tipopersona;
+	}
+	
+	
 }

@@ -3,38 +3,37 @@ package com.projecto.Horadada.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.projecto.Horadada.constantes.ConstantView;
+import com.projecto.Horadada.model.UsuarioPrueba;
 
 @Controller
 public class LoginController {
-
-	/*@GetMapping("/")
-	public String redirecionaLogin() {
-		return "redirect:/login";
-	}*/
 	
+	@GetMapping("/")
+	public String Redireccionamiento() {
+		return "redirect:/login";
+	}
+
 	@GetMapping("/login")
 	public String vistaLogin(Model model,
 			@RequestParam(name="error",required=false)String error,
-			@RequestParam(name="logout",required=false)String logout) {
+			@RequestParam(name="error",required=false)String logout	) {
 		model.addAttribute("logout", logout);
 		model.addAttribute("error", error);
-		//model.addAttribute("credencialUsuario", new CredencialUsuario());
+		model.addAttribute("usuarioPrueba", new UsuarioPrueba());
 		return ConstantView.LOGIN;
 	}
-	@GetMapping({"/loginsuccess","/"})
-	public String loginCheck() {
-		return "redirect:/contacto/showcontactos";
+
+	@PostMapping("/logincheck")
+	public String loginCheck(@ModelAttribute(name="usuarioPrueba")UsuarioPrueba usu ) {
 		
-	}
-	
-	/*@PostMapping("/loginCheck")
-	public String loginCheck(@ModelAttribute("credencialUsuario")CredencialUsuario usuario) {
-		if(usuario.getUsuario().equals("usu") && usuario.getContrasena().equals("con")) {
-			return "redirect:/contacto/showcontactos";
+		if(usu.getUsername().equals("user") && usu.getContrase().equals("user")) {
+			return ConstantView.INDEX;
 		}
 		return "redirect:/login?error";
-	}*/
-	
+		
+	}	
 }

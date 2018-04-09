@@ -6,29 +6,23 @@
 
 <header th:replace="view/layout :: header"></header>
 
-	<div class="container">
+		<!--  <div class="container">
 
-		<form class="form-signin" th:action="@{/loginCheck}" method="POST">
-			<input type="hidden" name="${__csrf.parameterName}"
-				value="${_csrf.token}" />
+		<form class="form-signin" action="#" th:action="@{/logincheck}" th:object="${usuarioPrueba}" method="POST">
 			<h2 class="form-signin-heading">Sign in</h2>
-			<label for="inputEmail" class="sr-only">Username</label> <input
-				type="text" class="form-control" placeholder="Username"
-				name="USUARIO" id="USUARIO" /> <label for="inputPassword"
-				class="sr-only">Password</label> <input type="password"
-				class="form-control" placeholder="Password" name="CONTRASENA"
-				id="CONTRASENA" />
-			<div th:if="${error != null}" class="alert alert-danger" role="alert">ingreso
-				mal los datos</div>
-			<div th:if="${logout != null}" class="alert alert-info" role="alert">Salio
-				Correctamente</div>
+			<label for="inputEmail" class="sr-only">Username</label> 
+			<input type="text" class="form-control" placeholder="Username" th:field="*{username}" /> 
+			<label for="inputPassword" class="sr-only">Password</label> 
+			<input type="password" class="form-control" placeholder="Password" th:field="*{contrase}" />
+			<div th:if="${error != null}" class="alert alert-danger" role="alert">ingreso mal los datos</div>
+			<div th:if="${logout != null}" class="alert alert-info" role="alert">Salio Correctamente</div>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">
 				<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
 				Sign in
 			</button>
 		</form>
 
-	</div>
+	</div>-->
 <footer th:replace="view/layout :: footer"></footer>
 
 </body>

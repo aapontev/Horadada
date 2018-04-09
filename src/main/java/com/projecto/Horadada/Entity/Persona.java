@@ -8,18 +8,30 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "PERSONA")
+@NamedStoredProcedureQueries({
+	@NamedStoredProcedureQuery(name = "mant_usuario",
+								procedureName = "mant_persona.mant_usuario",
+								parameters = {
+										@StoredProcedureParameter(mode = ParameterMode.IN, name = "tip_per",type = String.class)
+								})
+})
 public class Persona {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "IDPERSONA", unique = true, nullable = false, precision = 10, scale = 0)
 	private long idpersona;
 
@@ -36,7 +48,7 @@ public class Persona {
 	private String segundoapellido;
 
 	@Column(name = "TIPOPERSONA", nullable = false, precision = 5, scale = 0)
-	private int tipopersona;
+	private String tipopersona;
 
 	@Column(name = "CODTIPODOCUMENTO", precision = 10, scale = 0)
 	private Long codtipodocumento;
@@ -83,7 +95,7 @@ public class Persona {
 	
 
 	public Persona(long idpersona, String primernombre, String segundonombre, String primerapellido,
-			String segundoapellido, int tipopersona, Long codtipodocumento, Long numerodocumento, Date fechanacimiento,
+			String segundoapellido, String tipopersona, Long codtipodocumento, Long numerodocumento, Date fechanacimiento,
 			String edad, String direccion, Date fechacreacion, Date fechaupdate, String correoelectronico,
 			Set<Telefono> telefono, Set<Usuario> usuario, Set<Transportista> transportista, Set<Cliente> cliente) {
 		super();
@@ -109,7 +121,7 @@ public class Persona {
 
 
 	public Persona(long idpersona, String primernombre, String segundonombre, String primerapellido,
-			String segundoapellido, int tipopersona, Long codtipodocumento, Long numerodocumento, Date fechanacimiento,
+			String segundoapellido, String tipopersona, Long codtipodocumento, Long numerodocumento, Date fechanacimiento,
 			String edad, String direccion, Date fechacreacion, Date fechaupdate, String correoelectronico) {
 		super();
 		this.idpersona = idpersona;
@@ -168,11 +180,11 @@ public class Persona {
 		this.segundoapellido = segundoapellido;
 	}
 
-	public int getTipopersona() {
+	public String getTipopersona() {
 		return this.tipopersona;
 	}
 
-	public void setTipopersona(int tipopersona) {
+	public void setTipopersona(String tipopersona) {
 		this.tipopersona = tipopersona;
 	}
 
