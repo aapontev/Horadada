@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -76,7 +77,10 @@ public class Valorizaciondetalle  implements Serializable {
    
      @EmbeddedId
 
-     @GeneratedValue(strategy=GenerationType.SEQUENCE)
+     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "valorizacion_detalle_seq") @SequenceGenerator ( 
+ 		    name = "valorizacion_detalle_seq" , 
+ 		    sequenceName = "valorizacion_detalle_sequence" , 
+ 		    allocationSize = 1 )
     @AttributeOverrides( {
         @AttributeOverride(name="idvalorizaciondetalle", column=@Column(name="IDVALORIZACIONDETALLE", nullable=false, precision=5, scale=0) ), 
         @AttributeOverride(name="idvalorizacion", column=@Column(name="IDVALORIZACION", nullable=false, precision=5, scale=0) ) } )

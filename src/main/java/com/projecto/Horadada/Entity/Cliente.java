@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -60,7 +61,10 @@ public class Cliente  implements Serializable {
    
      @Id     
     @Column(name="IDCLIENTE", unique=true, nullable=false, precision=10, scale=0)
-     @GeneratedValue(strategy=GenerationType.SEQUENCE)
+     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "cliente_seq") @SequenceGenerator ( 
+ 		    name = "cliente_seq" , 
+ 		    sequenceName = "cliente_sequence" , 
+ 		    allocationSize = 1 )
     public long getIdcliente() {
         return this.idcliente;
     }

@@ -11,6 +11,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -54,7 +55,10 @@ public class Despachoxvehiculo  implements Serializable {
    
      @EmbeddedId
 
-     @GeneratedValue(strategy=GenerationType.SEQUENCE)
+     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "despacho_vehiculo_seq") @SequenceGenerator ( 
+ 		    name = "despacho_vehiculo_seq" , 
+ 		    sequenceName = "despacho_vehiculo_sequence" , 
+ 		    allocationSize = 1 )
     @AttributeOverrides( {
         @AttributeOverride(name="iddespachoxvehiculo", column=@Column(name="IDDESPACHOXVEHICULO", nullable=false, precision=10, scale=0) ), 
         @AttributeOverride(name="iddespacho", column=@Column(name="IDDESPACHO", nullable=false, precision=10, scale=0) ) } )

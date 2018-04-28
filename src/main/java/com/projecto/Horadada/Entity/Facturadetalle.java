@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -55,7 +56,10 @@ public class Facturadetalle  implements Serializable {
    
      @EmbeddedId
 
-     @GeneratedValue(strategy=GenerationType.SEQUENCE)
+     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "factura_detalle_seq") @SequenceGenerator ( 
+ 		    name = "factura_detalle_seq" , 
+ 		    sequenceName = "factura_detalle_sequence" , 
+ 		    allocationSize = 1 )
     @AttributeOverrides( {
         @AttributeOverride(name="iddetallefactura", column=@Column(name="IDDETALLEFACTURA", nullable=false, precision=10, scale=0) ), 
         @AttributeOverride(name="idfactura", column=@Column(name="IDFACTURA", nullable=false, precision=10, scale=0) ) } )

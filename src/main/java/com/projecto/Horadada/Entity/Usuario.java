@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -55,7 +56,10 @@ public class Usuario  implements Serializable {
    
      @EmbeddedId
 
-     @GeneratedValue(strategy=GenerationType.SEQUENCE)
+     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "usuario_seq") @SequenceGenerator ( 
+ 		    name = "usuario_seq" , 
+ 		    sequenceName = "usuario_sequence" , 
+ 		    allocationSize = 1 )
     @AttributeOverrides( {
         @AttributeOverride(name="idusuario", column=@Column(name="IDUSUARIO", nullable=false, precision=10, scale=0) ), 
         @AttributeOverride(name="idpersona", column=@Column(name="IDPERSONA", nullable=false, precision=10, scale=0) ) } )

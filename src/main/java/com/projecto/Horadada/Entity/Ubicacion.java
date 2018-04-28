@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -65,7 +66,10 @@ public class Ubicacion  implements Serializable {
    
      @Id 
 
-     @GeneratedValue(strategy=GenerationType.SEQUENCE)
+     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "ubicacion_seq") @SequenceGenerator ( 
+ 		    name = "ubicacion_seq" , 
+ 		    sequenceName = "ubicacion_sequence" , 
+ 		    allocationSize = 1 )
     @Column(name="IDUBICACION", unique=true, nullable=false, precision=10, scale=0)
     public long getIdubicacion() {
         return this.idubicacion;

@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -70,7 +71,10 @@ public class Cotizaciondetalle  implements Serializable {
     @AttributeOverrides( {
         @AttributeOverride(name="idcotizaciondetalle", column=@Column(name="IDCOTIZACIONDETALLE", nullable=false, precision=10, scale=0) ), 
         @AttributeOverride(name="idcotizacion", column=@Column(name="IDCOTIZACION", nullable=false, precision=10, scale=0) ) } )
-     @GeneratedValue(strategy=GenerationType.SEQUENCE)
+     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "cotizacion_detalle_seq") @SequenceGenerator ( 
+ 		    name = "cotizacion_detalle_seq" , 
+ 		    sequenceName = "cotizacion_detalle_sequence" , 
+ 		    allocationSize = 1 )
     public CotizaciondetalleId getId() {
         return this.id;
     }

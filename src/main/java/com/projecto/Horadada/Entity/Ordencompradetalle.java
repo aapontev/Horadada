@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -65,7 +66,10 @@ public class Ordencompradetalle  implements Serializable {
    
      @EmbeddedId
 
-     @GeneratedValue(strategy=GenerationType.SEQUENCE)
+     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "orden_compra_detalle_seq") @SequenceGenerator ( 
+ 		    name = "orden_compra_detalle_seq" , 
+ 		    sequenceName = "orden_compra_detalle_sequence" , 
+ 		    allocationSize = 1 )
     @AttributeOverrides( {
         @AttributeOverride(name="idordencompradetalle", column=@Column(name="IDORDENCOMPRADETALLE", nullable=false, precision=10, scale=0) ), 
         @AttributeOverride(name="idordencompra", column=@Column(name="IDORDENCOMPRA", nullable=false, precision=10, scale=0) ) } )

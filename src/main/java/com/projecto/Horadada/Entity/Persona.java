@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -82,7 +83,10 @@ public class Persona  implements Serializable {
    
      @Id 
 
-     @GeneratedValue(strategy=GenerationType.SEQUENCE)
+     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "persona_seq") @SequenceGenerator ( 
+ 		    name = "persona_seq" , 
+ 		    sequenceName = "persona_sequence" , 
+ 		    allocationSize = 1 )
     @Column(name="IDPERSONA", unique=true, nullable=false, precision=10, scale=0)
     public long getIdpersona() {
         return this.idpersona;

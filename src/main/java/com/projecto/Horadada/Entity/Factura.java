@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -73,7 +74,10 @@ public class Factura  implements Serializable {
    
      @Id 
 
-     @GeneratedValue(strategy=GenerationType.SEQUENCE)
+     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "factura_seq") @SequenceGenerator ( 
+ 		    name = "factura_seq" , 
+ 		    sequenceName = "factura_sequence" , 
+ 		    allocationSize = 1 )
     @Column(name="IDFACTURA", unique=true, nullable=false, precision=10, scale=0)
     public long getIdfactura() {
         return this.idfactura;

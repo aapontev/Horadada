@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -53,7 +54,10 @@ public class Historicoprecios  implements Serializable {
    
      @Id 
 
-     @GeneratedValue(strategy=GenerationType.SEQUENCE)
+     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "historico_precios_seq") @SequenceGenerator ( 
+ 		    name = "historico_precios_seq" , 
+ 		    sequenceName = "historico_precios_sequence" , 
+ 		    allocationSize = 1 )
     @Column(name="IDHISTORICOPRECIOS", unique=true, nullable=false, precision=10, scale=0)
     public long getIdhistoricoprecios() {
         return this.idhistoricoprecios;

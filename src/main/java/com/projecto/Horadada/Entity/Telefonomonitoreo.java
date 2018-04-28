@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -55,7 +56,10 @@ public class Telefonomonitoreo  implements Serializable {
    
      @EmbeddedId
 
-     @GeneratedValue(strategy=GenerationType.SEQUENCE)
+     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "telefono_monitoreo_seq") @SequenceGenerator ( 
+ 		    name = "telefono_monitoreo_seq" , 
+ 		    sequenceName = "telefono_monitoreo_sequence" , 
+ 		    allocationSize = 1 )
     @AttributeOverrides( {
         @AttributeOverride(name="idtelefono", column=@Column(name="IDTELEFONO", nullable=false, precision=10, scale=0) ), 
         @AttributeOverride(name="idpersona", column=@Column(name="IDPERSONA", nullable=false, precision=10, scale=0) ) } )
