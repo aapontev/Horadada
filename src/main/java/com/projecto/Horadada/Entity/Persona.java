@@ -12,8 +12,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.ParameterMode;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,6 +29,13 @@ import javax.persistence.TemporalType;
 @Table(name="PERSONA"
     ,schema="HORADADA"
 )
+@NamedStoredProcedureQueries({
+   @NamedStoredProcedureQuery(name = "mant_usuario", 
+                              procedureName = "mant_persona.mant_usuario",
+                              parameters = {
+                                 @StoredProcedureParameter(name = "tipopersona",  type = String.class, mode = ParameterMode.IN)
+                              })
+})
 public class Persona  implements Serializable {
 
     /**
