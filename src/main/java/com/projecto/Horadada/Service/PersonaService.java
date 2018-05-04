@@ -10,5 +10,5 @@ public interface PersonaService {
 	public List<Persona> findAll();
 	
 	@Procedure(name = "mant_usuario")
-    public void inOnlyTest(@Param("tipopersona")String tipopersona);
+    public void inOnlyTest(@Param("tipopersona")int tipopersona);
 }

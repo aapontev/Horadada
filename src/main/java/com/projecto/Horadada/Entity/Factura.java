@@ -34,17 +34,17 @@ public class Factura  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idfactura;
+     private int idfactura;
      private Cliente cliente;
-     private Long iddespacho;
-     private Long correlativo;
+     private int iddespacho;
+     private int correlativo;
      private Date fechaemision;
      private String guiaremision;
      private BigDecimal costostandby;
      private BigDecimal subtotal;
-     private Long igv;
-     private Long total;
-     private Long idmoneda;
+     private int igv;
+     private int total;
+     private int idmoneda;
      private Set<Facturadetalle> facturadetalles = new HashSet<Facturadetalle>(0);
      private Set<Valorizaciondetalle> valorizaciondetalles = new HashSet<Valorizaciondetalle>(0);
 
@@ -52,11 +52,11 @@ public class Factura  implements Serializable {
     }
 
 	
-    public Factura(long idfactura, Cliente cliente) {
+    public Factura(int idfactura, Cliente cliente) {
         this.idfactura = idfactura;
         this.cliente = cliente;
     }
-    public Factura(long idfactura, Cliente cliente, Long iddespacho, Long correlativo, Date fechaemision, String guiaremision, BigDecimal costostandby, BigDecimal subtotal, Long igv, Long total, Long idmoneda, Set<Facturadetalle> facturadetalles, Set<Valorizaciondetalle> valorizaciondetalles) {
+    public Factura(int idfactura, Cliente cliente, int iddespacho, int correlativo, Date fechaemision, String guiaremision, BigDecimal costostandby, BigDecimal subtotal, int igv, int total, int idmoneda, Set<Facturadetalle> facturadetalles, Set<Valorizaciondetalle> valorizaciondetalles) {
        this.idfactura = idfactura;
        this.cliente = cliente;
        this.iddespacho = iddespacho;
@@ -79,11 +79,11 @@ public class Factura  implements Serializable {
  		    sequenceName = "factura_sequence" , 
  		    allocationSize = 1 )
     @Column(name="IDFACTURA", unique=true, nullable=false, precision=10, scale=0)
-    public long getIdfactura() {
+    public int getIdfactura() {
         return this.idfactura;
     }
     
-    public void setIdfactura(long idfactura) {
+    public void setIdfactura(int idfactura) {
         this.idfactura = idfactura;
     }
 
@@ -99,21 +99,21 @@ public class Factura  implements Serializable {
 
     
     @Column(name="IDDESPACHO", precision=10, scale=0)
-    public Long getIddespacho() {
+    public int getIddespacho() {
         return this.iddespacho;
     }
     
-    public void setIddespacho(Long iddespacho) {
+    public void setIddespacho(int iddespacho) {
         this.iddespacho = iddespacho;
     }
 
     
     @Column(name="CORRELATIVO", precision=10, scale=0)
-    public Long getCorrelativo() {
+    public int getCorrelativo() {
         return this.correlativo;
     }
     
-    public void setCorrelativo(Long correlativo) {
+    public void setCorrelativo(int correlativo) {
         this.correlativo = correlativo;
     }
 
@@ -159,31 +159,31 @@ public class Factura  implements Serializable {
 
     
     @Column(name="IGV", precision=12, scale=0)
-    public Long getIgv() {
+    public int getIgv() {
         return this.igv;
     }
     
-    public void setIgv(Long igv) {
+    public void setIgv(int igv) {
         this.igv = igv;
     }
 
     
     @Column(name="TOTAL", precision=12, scale=0)
-    public Long getTotal() {
+    public int getTotal() {
         return this.total;
     }
     
-    public void setTotal(Long total) {
+    public void setTotal(int total) {
         this.total = total;
     }
 
     
     @Column(name="IDMONEDA", precision=10, scale=0)
-    public Long getIdmoneda() {
+    public int getIdmoneda() {
         return this.idmoneda;
     }
     
-    public void setIdmoneda(Long idmoneda) {
+    public void setIdmoneda(int idmoneda) {
         this.idmoneda = idmoneda;
     }
 

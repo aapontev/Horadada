@@ -30,10 +30,10 @@ public class Ubicacionhist  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idubicacionhist;
+     private int idubicacionhist;
      private Ubicacion ubicacion;
-     private Long idubicacion;
-     private Long idvehiculo;
+     private int idubicacion;
+     private int idvehiculo;
      private String longitud;
      private String latitud;
      private Date fecha;
@@ -49,7 +49,7 @@ public class Ubicacionhist  implements Serializable {
     public Ubicacionhist(Ubicacion ubicacion) {
         this.ubicacion = ubicacion;
     }
-    public Ubicacionhist(Ubicacion ubicacion, Long idubicacion, Long idvehiculo, String longitud, String latitud, Date fecha, Serializable hora, String direccion, String departamento, String provincia) {
+    public Ubicacionhist(Ubicacion ubicacion, int idubicacion, int idvehiculo, String longitud, String latitud, Date fecha, Serializable hora, String direccion, String departamento, String provincia) {
        this.ubicacion = ubicacion;
        this.idubicacion = idubicacion;
        this.idvehiculo = idvehiculo;
@@ -66,11 +66,11 @@ public class Ubicacionhist  implements Serializable {
 
     
     @Column(name="IDUBICACIONHIST", unique=true, nullable=false, precision=10, scale=0)
-    public long getIdubicacionhist() {
+    public int getIdubicacionhist() {
         return this.idubicacionhist;
     }
     
-    public void setIdubicacionhist(long idubicacionhist) {
+    public void setIdubicacionhist(int idubicacionhist) {
         this.idubicacionhist = idubicacionhist;
     }
 
@@ -85,21 +85,21 @@ public class Ubicacionhist  implements Serializable {
 
     
     @Column(name="IDUBICACION", precision=10, scale=0)
-    public Long getIdubicacion() {
+    public int getIdubicacion() {
         return this.idubicacion;
     }
     
-    public void setIdubicacion(Long idubicacion) {
+    public void setIdubicacion(int idubicacion) {
         this.idubicacion = idubicacion;
     }
 
     
     @Column(name="IDVEHICULO", precision=10, scale=0)
-    public Long getIdvehiculo() {
+    public int getIdvehiculo() {
         return this.idvehiculo;
     }
     
-    public void setIdvehiculo(Long idvehiculo) {
+    public void setIdvehiculo(int idvehiculo) {
         this.idvehiculo = idvehiculo;
     }
 

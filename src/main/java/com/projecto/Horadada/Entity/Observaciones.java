@@ -24,8 +24,8 @@ public class Observaciones  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idobservaciones;
-     private long iddespacho;
+     private int idobservaciones;
+     private int iddespacho;
      private String observaciondetalle;
      private Date fechaingreso;
 
@@ -33,11 +33,11 @@ public class Observaciones  implements Serializable {
     }
 
 	
-    public Observaciones(long idobservaciones, long iddespacho) {
+    public Observaciones(int idobservaciones, int iddespacho) {
         this.idobservaciones = idobservaciones;
         this.iddespacho = iddespacho;
     }
-    public Observaciones(long idobservaciones, long iddespacho, String observaciondetalle, Date fechaingreso) {
+    public Observaciones(int idobservaciones, int iddespacho, String observaciondetalle, Date fechaingreso) {
        this.idobservaciones = idobservaciones;
        this.iddespacho = iddespacho;
        this.observaciondetalle = observaciondetalle;
@@ -46,21 +46,21 @@ public class Observaciones  implements Serializable {
    
      @Id    
     @Column(name="IDOBSERVACIONES", unique=true, nullable=false, precision=10, scale=0)
-    public long getIdobservaciones() {
+    public int getIdobservaciones() {
         return this.idobservaciones;
     }
     
-    public void setIdobservaciones(long idobservaciones) {
+    public void setIdobservaciones(int idobservaciones) {
         this.idobservaciones = idobservaciones;
     }
 
     
     @Column(name="IDDESPACHO", nullable=false, precision=10, scale=0)
-    public long getIddespacho() {
+    public int getIddespacho() {
         return this.iddespacho;
     }
     
-    public void setIddespacho(long iddespacho) {
+    public void setIddespacho(int iddespacho) {
         this.iddespacho = iddespacho;
     }
 

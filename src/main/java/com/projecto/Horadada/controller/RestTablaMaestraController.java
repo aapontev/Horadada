@@ -29,9 +29,15 @@ public class RestTablaMaestraController {
 		return tmService.findAll();
 	}
 	
+	@GetMapping("/tablaMaestraId")
+	public Tablamaestra porId() {
+		
+		return tmService.findByTablamaestraId(101);
+	}
+	
 	@PostMapping("/perso")
 	public void addPerson() {
-		perServ.inOnlyTest("'1'");
+		perServ.inOnlyTest(1);
 	}
 
 

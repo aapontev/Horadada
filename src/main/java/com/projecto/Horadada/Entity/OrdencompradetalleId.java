@@ -17,13 +17,13 @@ public class OrdencompradetalleId  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idordencompradetalle;
-     private long idordencompra;
+     private int idordencompradetalle;
+     private int idordencompra;
 
     public OrdencompradetalleId() {
     }
 
-    public OrdencompradetalleId(long idordencompradetalle, long idordencompra) {
+    public OrdencompradetalleId(int idordencompradetalle, int idordencompra) {
        this.idordencompradetalle = idordencompradetalle;
        this.idordencompra = idordencompra;
     }
@@ -31,21 +31,21 @@ public class OrdencompradetalleId  implements Serializable {
 
 
     @Column(name="IDORDENCOMPRADETALLE", nullable=false, precision=10, scale=0)
-    public long getIdordencompradetalle() {
+    public int getIdordencompradetalle() {
         return this.idordencompradetalle;
     }
     
-    public void setIdordencompradetalle(long idordencompradetalle) {
+    public void setIdordencompradetalle(int idordencompradetalle) {
         this.idordencompradetalle = idordencompradetalle;
     }
 
 
     @Column(name="IDORDENCOMPRA", nullable=false, precision=10, scale=0)
-    public long getIdordencompra() {
+    public int getIdordencompra() {
         return this.idordencompra;
     }
     
-    public void setIdordencompra(long idordencompra) {
+    public void setIdordencompra(int idordencompra) {
         this.idordencompra = idordencompra;
     }
 

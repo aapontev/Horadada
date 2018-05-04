@@ -32,7 +32,7 @@ public class Facturadetalle  implements Serializable {
 	private static final long serialVersionUID = 1L;
      private FacturadetalleId id;
      private Factura factura;
-     private Long cantidad;
+     private int cantidad;
      private String descripcion;
      private BigDecimal preciounitario;
      private BigDecimal valorventa;
@@ -45,7 +45,7 @@ public class Facturadetalle  implements Serializable {
         this.id = id;
         this.factura = factura;
     }
-    public Facturadetalle(FacturadetalleId id, Factura factura, Long cantidad, String descripcion, BigDecimal preciounitario, BigDecimal valorventa) {
+    public Facturadetalle(FacturadetalleId id, Factura factura, int cantidad, String descripcion, BigDecimal preciounitario, BigDecimal valorventa) {
        this.id = id;
        this.factura = factura;
        this.cantidad = cantidad;
@@ -83,11 +83,11 @@ public class Facturadetalle  implements Serializable {
 
     
     @Column(name="CANTIDAD", precision=10, scale=0)
-    public Long getCantidad() {
+    public int getCantidad() {
         return this.cantidad;
     }
     
-    public void setCantidad(Long cantidad) {
+    public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
 

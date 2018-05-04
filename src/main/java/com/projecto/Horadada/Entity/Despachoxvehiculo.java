@@ -30,7 +30,7 @@ public class Despachoxvehiculo  implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
      private DespachoxvehiculoId id;
-     private long idtransportista;
+     private int idtransportista;
      private Date fechacarga;
      private Date fechadescarga;
      private Serializable horacarga;
@@ -40,11 +40,11 @@ public class Despachoxvehiculo  implements Serializable {
     }
 
 	
-    public Despachoxvehiculo(DespachoxvehiculoId id, long idtransportista) {
+    public Despachoxvehiculo(DespachoxvehiculoId id, int idtransportista) {
         this.id = id;
         this.idtransportista = idtransportista;
     }
-    public Despachoxvehiculo(DespachoxvehiculoId id, long idtransportista, Date fechacarga, Date fechadescarga, Serializable horacarga, Serializable horadescarga) {
+    public Despachoxvehiculo(DespachoxvehiculoId id, int idtransportista, Date fechacarga, Date fechadescarga, Serializable horacarga, Serializable horadescarga) {
        this.id = id;
        this.idtransportista = idtransportista;
        this.fechacarga = fechacarga;
@@ -72,11 +72,11 @@ public class Despachoxvehiculo  implements Serializable {
 
     
     @Column(name="IDTRANSPORTISTA", nullable=false, precision=10, scale=0)
-    public long getIdtransportista() {
+    public int getIdtransportista() {
         return this.idtransportista;
     }
     
-    public void setIdtransportista(long idtransportista) {
+    public void setIdtransportista(int idtransportista) {
         this.idtransportista = idtransportista;
     }
 

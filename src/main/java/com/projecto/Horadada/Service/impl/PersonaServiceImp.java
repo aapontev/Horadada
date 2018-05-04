@@ -19,7 +19,7 @@ private PersonaDao personaDao;
 	}
 
 	@Override
-	public void inOnlyTest(String tipopersona) {
+	public void inOnlyTest(int tipopersona) {
 		personaDao.inOnlyTest(tipopersona);		
 		
 	}

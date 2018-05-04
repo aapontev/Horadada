@@ -24,7 +24,7 @@ public class Tiposervicio  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idservicio;
+     private int idservicio;
      private String nombreservicio;
      private Date fechaingreso;
 
@@ -32,10 +32,10 @@ public class Tiposervicio  implements Serializable {
     }
 
 	
-    public Tiposervicio(long idservicio) {
+    public Tiposervicio(int idservicio) {
         this.idservicio = idservicio;
     }
-    public Tiposervicio(long idservicio, String nombreservicio, Date fechaingreso) {
+    public Tiposervicio(int idservicio, String nombreservicio, Date fechaingreso) {
        this.idservicio = idservicio;
        this.nombreservicio = nombreservicio;
        this.fechaingreso = fechaingreso;
@@ -45,11 +45,11 @@ public class Tiposervicio  implements Serializable {
 
     
     @Column(name="IDSERVICIO", unique=true, nullable=false, precision=10, scale=0)
-    public long getIdservicio() {
+    public int getIdservicio() {
         return this.idservicio;
     }
     
-    public void setIdservicio(long idservicio) {
+    public void setIdservicio(int idservicio) {
         this.idservicio = idservicio;
     }
 

@@ -28,7 +28,7 @@ import javax.persistence.TemporalType;
 public class Cotizacion  implements Serializable {
 
 
-     private long idcotizacion;
+     private int idcotizacion;
      private Solicitud solicitud;
      private Date fechaenvio;
      private BigDecimal subtotal;
@@ -37,7 +37,7 @@ public class Cotizacion  implements Serializable {
      private BigDecimal igv;
      private BigDecimal percepcion;
      private BigDecimal total;
-     private Long idmoneda;
+     private int idmoneda;
      private String observaciones;
      private BigDecimal cargos;
      private Set<Cotizaciondetalle> cotizaciondetalles = new HashSet<Cotizaciondetalle>(0);
@@ -47,10 +47,10 @@ public class Cotizacion  implements Serializable {
     }
 
 	
-    public Cotizacion(long idcotizacion) {
+    public Cotizacion(int idcotizacion) {
         this.idcotizacion = idcotizacion;
     }
-    public Cotizacion(long idcotizacion, Solicitud solicitud, Date fechaenvio, BigDecimal subtotal, BigDecimal descuentos, BigDecimal neto, BigDecimal igv, BigDecimal percepcion, BigDecimal total, Long idmoneda, String observaciones, BigDecimal cargos, Set<Cotizaciondetalle> cotizaciondetalles, Set<Ordencompra> ordencompras) {
+    public Cotizacion(int idcotizacion, Solicitud solicitud, Date fechaenvio, BigDecimal subtotal, BigDecimal descuentos, BigDecimal neto, BigDecimal igv, BigDecimal percepcion, BigDecimal total, int idmoneda, String observaciones, BigDecimal cargos, Set<Cotizaciondetalle> cotizaciondetalles, Set<Ordencompra> ordencompras) {
        this.idcotizacion = idcotizacion;
        this.solicitud = solicitud;
        this.fechaenvio = fechaenvio;
@@ -71,11 +71,11 @@ public class Cotizacion  implements Serializable {
 
     
     @Column(name="IDCOTIZACION", unique=true, nullable=false, precision=10, scale=0)
-    public long getIdcotizacion() {
+    public int getIdcotizacion() {
         return this.idcotizacion;
     }
     
-    public void setIdcotizacion(long idcotizacion) {
+    public void setIdcotizacion(int idcotizacion) {
         this.idcotizacion = idcotizacion;
     }
 
@@ -161,11 +161,11 @@ public class Cotizacion  implements Serializable {
 
     
     @Column(name="IDMONEDA", precision=10, scale=0)
-    public Long getIdmoneda() {
+    public int getIdmoneda() {
         return this.idmoneda;
     }
     
-    public void setIdmoneda(Long idmoneda) {
+    public void setIdmoneda(int idmoneda) {
         this.idmoneda = idmoneda;
     }
 

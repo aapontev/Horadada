@@ -1,8 +1,12 @@
 package com.projecto.Horadada.Repository;
 
+import java.io.Serializable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import com.projecto.Horadada.Entity.Tablamaestra;
 
-public interface TablaMaestraDao extends JpaRepository<Tablamaestra, Long>{
-	//public abstract List<Tablamaestra> findbyid(String idTabla);
+@Repository("tablaMaestraDao")
+public interface TablaMaestraDao extends JpaRepository<Tablamaestra, Serializable>{
+	
+	public abstract Tablamaestra findByIdregistro(int idregistro);
 }

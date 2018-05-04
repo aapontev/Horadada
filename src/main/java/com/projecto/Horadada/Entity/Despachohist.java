@@ -27,28 +27,28 @@ public class Despachohist  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long iddespachohist;
-     private long iddespacho;
-     private long idordencompra;
-     private long idtransportista;
+     private int iddespachohist;
+     private int iddespacho;
+     private int idordencompra;
+     private int idtransportista;
      private String descripcionmateria;
      private String direccionpartida;
      private String direccionllegada;
      private Date fechacarga;
      private Date fechadescarga;
-     private Long diasstandby;
+     private int diasstandby;
 
     public Despachohist() {
     }
 
 	
-    public Despachohist(long iddespachohist, long iddespacho, long idordencompra, long idtransportista) {
+    public Despachohist(int iddespachohist, int iddespacho, int idordencompra, int idtransportista) {
         this.iddespachohist = iddespachohist;
         this.iddespacho = iddespacho;
         this.idordencompra = idordencompra;
         this.idtransportista = idtransportista;
     }
-    public Despachohist(long iddespachohist, long iddespacho, long idordencompra, long idtransportista, String descripcionmateria, String direccionpartida, String direccionllegada, Date fechacarga, Date fechadescarga, Long diasstandby) {
+    public Despachohist(int iddespachohist, int iddespacho, int idordencompra, int idtransportista, String descripcionmateria, String direccionpartida, String direccionllegada, Date fechacarga, Date fechadescarga, int diasstandby) {
        this.iddespachohist = iddespachohist;
        this.iddespacho = iddespacho;
        this.idordencompra = idordencompra;
@@ -68,41 +68,41 @@ public class Despachohist  implements Serializable {
  		    sequenceName = "despacho_hist_sequence" , 
  		    allocationSize = 1 )
     @Column(name="IDDESPACHOHIST", unique=true, nullable=false, precision=10, scale=0)
-    public long getIddespachohist() {
+    public int getIddespachohist() {
         return this.iddespachohist;
     }
     
-    public void setIddespachohist(long iddespachohist) {
+    public void setIddespachohist(int iddespachohist) {
         this.iddespachohist = iddespachohist;
     }
 
     
     @Column(name="IDDESPACHO", nullable=false, precision=10, scale=0)
-    public long getIddespacho() {
+    public int getIddespacho() {
         return this.iddespacho;
     }
     
-    public void setIddespacho(long iddespacho) {
+    public void setIddespacho(int iddespacho) {
         this.iddespacho = iddespacho;
     }
 
     
     @Column(name="IDORDENCOMPRA", nullable=false, precision=10, scale=0)
-    public long getIdordencompra() {
+    public int getIdordencompra() {
         return this.idordencompra;
     }
     
-    public void setIdordencompra(long idordencompra) {
+    public void setIdordencompra(int idordencompra) {
         this.idordencompra = idordencompra;
     }
 
     
     @Column(name="IDTRANSPORTISTA", nullable=false, precision=10, scale=0)
-    public long getIdtransportista() {
+    public int getIdtransportista() {
         return this.idtransportista;
     }
     
-    public void setIdtransportista(long idtransportista) {
+    public void setIdtransportista(int idtransportista) {
         this.idtransportista = idtransportista;
     }
 
@@ -158,11 +158,11 @@ public class Despachohist  implements Serializable {
 
     
     @Column(name="DIASSTANDBY", precision=10, scale=0)
-    public Long getDiasstandby() {
+    public int getDiasstandby() {
         return this.diasstandby;
     }
     
-    public void setDiasstandby(Long diasstandby) {
+    public void setDiasstandby(int diasstandby) {
         this.diasstandby = diasstandby;
     }
 

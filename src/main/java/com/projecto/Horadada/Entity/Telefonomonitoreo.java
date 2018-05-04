@@ -32,7 +32,7 @@ public class Telefonomonitoreo  implements Serializable {
 	private static final long serialVersionUID = 1L;
      private TelefonomonitoreoId id;
      private Persona persona;
-     private Long idtipotelefono;
+     private int idtipotelefono;
      private Integer idoperador;
      private String numerotelefono;
      private String imei;
@@ -45,7 +45,7 @@ public class Telefonomonitoreo  implements Serializable {
         this.id = id;
         this.persona = persona;
     }
-    public Telefonomonitoreo(TelefonomonitoreoId id, Persona persona, Long idtipotelefono, Integer idoperador, String numerotelefono, String imei) {
+    public Telefonomonitoreo(TelefonomonitoreoId id, Persona persona, int idtipotelefono, Integer idoperador, String numerotelefono, String imei) {
        this.id = id;
        this.persona = persona;
        this.idtipotelefono = idtipotelefono;
@@ -83,11 +83,11 @@ public class Telefonomonitoreo  implements Serializable {
 
     
     @Column(name="IDTIPOTELEFONO", precision=10, scale=0)
-    public Long getIdtipotelefono() {
+    public int getIdtipotelefono() {
         return this.idtipotelefono;
     }
     
-    public void setIdtipotelefono(Long idtipotelefono) {
+    public void setIdtipotelefono(int idtipotelefono) {
         this.idtipotelefono = idtipotelefono;
     }
 

@@ -17,13 +17,13 @@ public class TelefonomonitoreoId  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idtelefono;
-     private long idpersona;
+     private int idtelefono;
+     private int idpersona;
 
     public TelefonomonitoreoId() {
     }
 
-    public TelefonomonitoreoId(long idtelefono, long idpersona) {
+    public TelefonomonitoreoId(int idtelefono, int idpersona) {
        this.idtelefono = idtelefono;
        this.idpersona = idpersona;
     }
@@ -31,21 +31,21 @@ public class TelefonomonitoreoId  implements Serializable {
 
 
     @Column(name="IDTELEFONO", nullable=false, precision=10, scale=0)
-    public long getIdtelefono() {
+    public int getIdtelefono() {
         return this.idtelefono;
     }
     
-    public void setIdtelefono(long idtelefono) {
+    public void setIdtelefono(int idtelefono) {
         this.idtelefono = idtelefono;
     }
 
 
     @Column(name="IDPERSONA", nullable=false, precision=10, scale=0)
-    public long getIdpersona() {
+    public int getIdpersona() {
         return this.idpersona;
     }
     
-    public void setIdpersona(long idpersona) {
+    public void setIdpersona(int idpersona) {
         this.idpersona = idpersona;
     }
 

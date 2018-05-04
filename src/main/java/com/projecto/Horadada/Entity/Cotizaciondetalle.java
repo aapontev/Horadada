@@ -33,11 +33,11 @@ public class Cotizaciondetalle  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private CotizaciondetalleId id;
      private Cotizacion cotizacion;
-     private Long item;
+     private int item;
      private String codrecurso;
      private String descripcion;
      private String ccostos;
-     private Long idunidadmedida;
+     private int idunidadmedida;
      private BigDecimal cantidad;
      private BigDecimal preciounitario;
      private BigDecimal descuento;
@@ -51,7 +51,7 @@ public class Cotizaciondetalle  implements Serializable {
         this.id = id;
         this.cotizacion = cotizacion;
     }
-    public Cotizaciondetalle(CotizaciondetalleId id, Cotizacion cotizacion, Long item, String codrecurso, String descripcion, String ccostos, Long idunidadmedida, BigDecimal cantidad, BigDecimal preciounitario, BigDecimal descuento, BigDecimal totaldetalle) {
+    public Cotizaciondetalle(CotizaciondetalleId id, Cotizacion cotizacion, int item, String codrecurso, String descripcion, String ccostos, int idunidadmedida, BigDecimal cantidad, BigDecimal preciounitario, BigDecimal descuento, BigDecimal totaldetalle) {
        this.id = id;
        this.cotizacion = cotizacion;
        this.item = item;
@@ -95,11 +95,11 @@ public class Cotizaciondetalle  implements Serializable {
 
     
     @Column(name="ITEM", precision=10, scale=0)
-    public Long getItem() {
+    public int getItem() {
         return this.item;
     }
     
-    public void setItem(Long item) {
+    public void setItem(int item) {
         this.item = item;
     }
 
@@ -135,11 +135,11 @@ public class Cotizaciondetalle  implements Serializable {
 
     
     @Column(name="IDUNIDADMEDIDA", precision=10, scale=0)
-    public Long getIdunidadmedida() {
+    public int getIdunidadmedida() {
         return this.idunidadmedida;
     }
     
-    public void setIdunidadmedida(Long idunidadmedida) {
+    public void setIdunidadmedida(int idunidadmedida) {
         this.idunidadmedida = idunidadmedida;
     }
 

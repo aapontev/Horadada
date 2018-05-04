@@ -37,7 +37,7 @@ public class Valorizaciondetalle  implements Serializable {
      private Valorizacion valorizacion;
      private Factura factura;
      private Integer iddespacho;
-     private Short item;
+     private int item;
      private Date fechacarga;
      private Date fechadescarga;
      private String nroguiatransporte;
@@ -57,7 +57,7 @@ public class Valorizaciondetalle  implements Serializable {
         this.id = id;
         this.valorizacion = valorizacion;
     }
-    public Valorizaciondetalle(ValorizaciondetalleId id, Valorizacion valorizacion, Factura factura, Integer iddespacho, Short item, Date fechacarga, Date fechadescarga, String nroguiatransporte, String guiaanexada, Byte diasstamby, BigDecimal costostamby, BigDecimal neto, BigDecimal subtotal, BigDecimal igv, BigDecimal total) {
+    public Valorizaciondetalle(ValorizaciondetalleId id, Valorizacion valorizacion, Factura factura, Integer iddespacho, int item, Date fechacarga, Date fechadescarga, String nroguiatransporte, String guiaanexada, Byte diasstamby, BigDecimal costostamby, BigDecimal neto, BigDecimal subtotal, BigDecimal igv, BigDecimal total) {
        this.id = id;
        this.valorizacion = valorizacion;
        this.factura = factura;
@@ -124,11 +124,11 @@ public class Valorizaciondetalle  implements Serializable {
 
     
     @Column(name="ITEM", precision=4, scale=0)
-    public Short getItem() {
+    public int getItem() {
         return this.item;
     }
     
-    public void setItem(Short item) {
+    public void setItem(int item) {
         this.item = item;
     }
 

@@ -31,9 +31,9 @@ public class Ubicacion  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idubicacion;
+     private int idubicacion;
      private Vehiculo vehiculo;
-     private long iddespacho;
+     private int iddespacho;
      private String longitud;
      private String latitud;
      private Date fecha;
@@ -45,14 +45,14 @@ public class Ubicacion  implements Serializable {
     }
 
 	
-    public Ubicacion(long idubicacion, Vehiculo vehiculo, long iddespacho, String longitud, String latitud) {
+    public Ubicacion(int idubicacion, Vehiculo vehiculo, int iddespacho, String longitud, String latitud) {
         this.idubicacion = idubicacion;
         this.vehiculo = vehiculo;
         this.iddespacho = iddespacho;
         this.longitud = longitud;
         this.latitud = latitud;
     }
-    public Ubicacion(long idubicacion, Vehiculo vehiculo, long iddespacho, String longitud, String latitud, Date fecha, Serializable hora, String direccion, Ubicacionhist ubicacionhist) {
+    public Ubicacion(int idubicacion, Vehiculo vehiculo, int iddespacho, String longitud, String latitud, Date fecha, Serializable hora, String direccion, Ubicacionhist ubicacionhist) {
        this.idubicacion = idubicacion;
        this.vehiculo = vehiculo;
        this.iddespacho = iddespacho;
@@ -71,11 +71,11 @@ public class Ubicacion  implements Serializable {
  		    sequenceName = "ubicacion_sequence" , 
  		    allocationSize = 1 )
     @Column(name="IDUBICACION", unique=true, nullable=false, precision=10, scale=0)
-    public long getIdubicacion() {
+    public int getIdubicacion() {
         return this.idubicacion;
     }
     
-    public void setIdubicacion(long idubicacion) {
+    public void setIdubicacion(int idubicacion) {
         this.idubicacion = idubicacion;
     }
 
@@ -91,11 +91,11 @@ public class Ubicacion  implements Serializable {
 
     
     @Column(name="IDDESPACHO", nullable=false, precision=10, scale=0)
-    public long getIddespacho() {
+    public int getIddespacho() {
         return this.iddespacho;
     }
     
-    public void setIddespacho(long iddespacho) {
+    public void setIddespacho(int iddespacho) {
         this.iddespacho = iddespacho;
     }
 

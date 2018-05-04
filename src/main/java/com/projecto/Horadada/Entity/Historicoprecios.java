@@ -25,11 +25,11 @@ public class Historicoprecios  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idhistoricoprecios;
+     private int idhistoricoprecios;
      private String origen;
      private String destino;
-     private Long pesotoneladas;
-     private Long longitudmetros;
+     private int pesotoneladas;
+     private int longitudmetros;
      private BigDecimal preciosubtotal;
      private BigDecimal precioigv;
      private BigDecimal preciototal;
@@ -38,10 +38,10 @@ public class Historicoprecios  implements Serializable {
     }
 
 	
-    public Historicoprecios(long idhistoricoprecios) {
+    public Historicoprecios(int idhistoricoprecios) {
         this.idhistoricoprecios = idhistoricoprecios;
     }
-    public Historicoprecios(long idhistoricoprecios, String origen, String destino, Long pesotoneladas, Long longitudmetros, BigDecimal preciosubtotal, BigDecimal precioigv, BigDecimal preciototal) {
+    public Historicoprecios(int idhistoricoprecios, String origen, String destino, int pesotoneladas, int longitudmetros, BigDecimal preciosubtotal, BigDecimal precioigv, BigDecimal preciototal) {
        this.idhistoricoprecios = idhistoricoprecios;
        this.origen = origen;
        this.destino = destino;
@@ -59,11 +59,11 @@ public class Historicoprecios  implements Serializable {
  		    sequenceName = "historico_precios_sequence" , 
  		    allocationSize = 1 )
     @Column(name="IDHISTORICOPRECIOS", unique=true, nullable=false, precision=10, scale=0)
-    public long getIdhistoricoprecios() {
+    public int getIdhistoricoprecios() {
         return this.idhistoricoprecios;
     }
     
-    public void setIdhistoricoprecios(long idhistoricoprecios) {
+    public void setIdhistoricoprecios(int idhistoricoprecios) {
         this.idhistoricoprecios = idhistoricoprecios;
     }
 
@@ -89,21 +89,21 @@ public class Historicoprecios  implements Serializable {
 
     
     @Column(name="PESOTONELADAS", precision=10, scale=0)
-    public Long getPesotoneladas() {
+    public int getPesotoneladas() {
         return this.pesotoneladas;
     }
     
-    public void setPesotoneladas(Long pesotoneladas) {
+    public void setPesotoneladas(int pesotoneladas) {
         this.pesotoneladas = pesotoneladas;
     }
 
     
     @Column(name="LONGITUDMETROS", precision=10, scale=0)
-    public Long getLongitudmetros() {
+    public int getLongitudmetros() {
         return this.longitudmetros;
     }
     
-    public void setLongitudmetros(Long longitudmetros) {
+    public void setLongitudmetros(int longitudmetros) {
         this.longitudmetros = longitudmetros;
     }
 

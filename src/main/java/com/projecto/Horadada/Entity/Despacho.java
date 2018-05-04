@@ -27,14 +27,14 @@ public class Despacho  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long iddespacho;
+     private int iddespacho;
      private Cliente cliente;
      private Ordencompra ordencompra;
-     private Long idestadodespacho;
+     private int idestadodespacho;
      private String descripcionmateria;
      private String direccionpartida;
      private String direccionllegada;
-     private Long diasestimados;
+     private int diasestimados;
      private Date fechainicio;
      private Date fechafin;
 
@@ -42,11 +42,11 @@ public class Despacho  implements Serializable {
     }
 
 	
-    public Despacho(long iddespacho, Ordencompra ordencompra) {
+    public Despacho(int iddespacho, Ordencompra ordencompra) {
         this.iddespacho = iddespacho;
         this.ordencompra = ordencompra;
     }
-    public Despacho(long iddespacho, Cliente cliente, Ordencompra ordencompra, Long idestadodespacho, String descripcionmateria, String direccionpartida, String direccionllegada, Long diasestimados, Date fechainicio, Date fechafin) {
+    public Despacho(int iddespacho, Cliente cliente, Ordencompra ordencompra, int idestadodespacho, String descripcionmateria, String direccionpartida, String direccionllegada, int diasestimados, Date fechainicio, Date fechafin) {
        this.iddespacho = iddespacho;
        this.cliente = cliente;
        this.ordencompra = ordencompra;
@@ -61,11 +61,11 @@ public class Despacho  implements Serializable {
    
      @Id     
     @Column(name="IDDESPACHO", unique=true, nullable=false, precision=10, scale=0)
-    public long getIddespacho() {
+    public int getIddespacho() {
         return this.iddespacho;
     }
     
-    public void setIddespacho(long iddespacho) {
+    public void setIddespacho(int iddespacho) {
         this.iddespacho = iddespacho;
     }
 
@@ -91,11 +91,11 @@ public class Despacho  implements Serializable {
 
     
     @Column(name="IDESTADODESPACHO", precision=10, scale=0)
-    public Long getIdestadodespacho() {
+    public int getIdestadodespacho() {
         return this.idestadodespacho;
     }
     
-    public void setIdestadodespacho(Long idestadodespacho) {
+    public void setIdestadodespacho(int idestadodespacho) {
         this.idestadodespacho = idestadodespacho;
     }
 
@@ -131,11 +131,11 @@ public class Despacho  implements Serializable {
 
     
     @Column(name="DIASESTIMADOS", precision=10, scale=0)
-    public Long getDiasestimados() {
+    public int getDiasestimados() {
         return this.diasestimados;
     }
     
-    public void setDiasestimados(Long diasestimados) {
+    public void setDiasestimados(int diasestimados) {
         this.diasestimados = diasestimados;
     }
 

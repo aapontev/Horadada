@@ -30,7 +30,7 @@ public class Solicitud  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idsolicitud;
+     private int idsolicitud;
      private Cliente cliente;
      private Date fecharecepcion;
      private String requerimiento;
@@ -40,11 +40,11 @@ public class Solicitud  implements Serializable {
     }
 
 	
-    public Solicitud(long idsolicitud, Cliente cliente) {
+    public Solicitud(int idsolicitud, Cliente cliente) {
         this.idsolicitud = idsolicitud;
         this.cliente = cliente;
     }
-    public Solicitud(long idsolicitud, Cliente cliente, Date fecharecepcion, String requerimiento, Set<Cotizacion> cotizacions) {
+    public Solicitud(int idsolicitud, Cliente cliente, Date fecharecepcion, String requerimiento, Set<Cotizacion> cotizacions) {
        this.idsolicitud = idsolicitud;
        this.cliente = cliente;
        this.fecharecepcion = fecharecepcion;
@@ -56,11 +56,11 @@ public class Solicitud  implements Serializable {
 
     
     @Column(name="IDSOLICITUD", unique=true, nullable=false, precision=10, scale=0)
-    public long getIdsolicitud() {
+    public int getIdsolicitud() {
         return this.idsolicitud;
     }
     
-    public void setIdsolicitud(long idsolicitud) {
+    public void setIdsolicitud(int idsolicitud) {
         this.idsolicitud = idsolicitud;
     }
 

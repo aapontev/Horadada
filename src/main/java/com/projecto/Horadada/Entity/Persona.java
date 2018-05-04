@@ -33,7 +33,7 @@ import javax.persistence.TemporalType;
    @NamedStoredProcedureQuery(name = "mant_usuario", 
                               procedureName = "mant_persona.mant_usuario",
                               parameters = {
-                                 @StoredProcedureParameter(name = "tipopersona",  type = String.class, mode = ParameterMode.IN)
+                                 @StoredProcedureParameter(name = "tipopersona",  type = int.class, mode = ParameterMode.IN)
                               })
 })
 public class Persona  implements Serializable {
@@ -42,14 +42,14 @@ public class Persona  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idpersona;
+     private int idpersona;
      private String primernombre;
      private String segundonombre;
      private String primerapellido;
      private String segundoapellido;
      private int tipopersona;
-     private Long codtipodocumento;
-     private Long numerodocumento;
+     private int codtipodocumento;
+     private int numerodocumento;
      private Date fechanacimiento;
      private String edad;
      private String direccion;
@@ -66,11 +66,11 @@ public class Persona  implements Serializable {
     }
 
 	
-    public Persona(long idpersona, int tipopersona) {
+    public Persona(int idpersona, int tipopersona) {
         this.idpersona = idpersona;
         this.tipopersona = tipopersona;
     }
-    public Persona(long idpersona, String primernombre, String segundonombre, String primerapellido, String segundoapellido, int tipopersona, Long codtipodocumento, Long numerodocumento, Date fechanacimiento, String edad, String direccion, Date fechacreacion, Date fechaupdate, String telefono, String correoelectronico, Set<Transportista> transportistas, Set<Usuario> usuarios, Set<Cliente> clientes, Set<Telefonomonitoreo> telefonomonitoreos) {
+    public Persona(int idpersona, String primernombre, String segundonombre, String primerapellido, String segundoapellido, int tipopersona, int codtipodocumento, int numerodocumento, Date fechanacimiento, String edad, String direccion, Date fechacreacion, Date fechaupdate, String telefono, String correoelectronico, Set<Transportista> transportistas, Set<Usuario> usuarios, Set<Cliente> clientes, Set<Telefonomonitoreo> telefonomonitoreos) {
        this.idpersona = idpersona;
        this.primernombre = primernombre;
        this.segundonombre = segundonombre;
@@ -99,11 +99,11 @@ public class Persona  implements Serializable {
  		    sequenceName = "persona_sequence" , 
  		    allocationSize = 1 )
     @Column(name="IDPERSONA", unique=true, nullable=false, precision=10, scale=0)
-    public long getIdpersona() {
+    public int getIdpersona() {
         return this.idpersona;
     }
     
-    public void setIdpersona(long idpersona) {
+    public void setIdpersona(int idpersona) {
         this.idpersona = idpersona;
     }
 
@@ -159,21 +159,21 @@ public class Persona  implements Serializable {
 
     
     @Column(name="CODTIPODOCUMENTO", precision=10, scale=0)
-    public Long getCodtipodocumento() {
+    public int getCodtipodocumento() {
         return this.codtipodocumento;
     }
     
-    public void setCodtipodocumento(Long codtipodocumento) {
+    public void setCodtipodocumento(int codtipodocumento) {
         this.codtipodocumento = codtipodocumento;
     }
 
     
     @Column(name="NUMERODOCUMENTO", precision=10, scale=0)
-    public Long getNumerodocumento() {
+    public int getNumerodocumento() {
         return this.numerodocumento;
     }
     
-    public void setNumerodocumento(Long numerodocumento) {
+    public void setNumerodocumento(int numerodocumento) {
         this.numerodocumento = numerodocumento;
     }
 

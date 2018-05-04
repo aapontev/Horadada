@@ -17,13 +17,13 @@ public class UsuarioId  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idusuario;
-     private long idpersona;
+     private int idusuario;
+     private int idpersona;
 
     public UsuarioId() {
     }
 
-    public UsuarioId(long idusuario, long idpersona) {
+    public UsuarioId(int idusuario, int idpersona) {
        this.idusuario = idusuario;
        this.idpersona = idpersona;
     }
@@ -31,21 +31,21 @@ public class UsuarioId  implements Serializable {
 
 
     @Column(name="IDUSUARIO", nullable=false, precision=10, scale=0)
-    public long getIdusuario() {
+    public int getIdusuario() {
         return this.idusuario;
     }
     
-    public void setIdusuario(long idusuario) {
+    public void setIdusuario(int idusuario) {
         this.idusuario = idusuario;
     }
 
 
     @Column(name="IDPERSONA", nullable=false, precision=10, scale=0)
-    public long getIdpersona() {
+    public int getIdpersona() {
         return this.idpersona;
     }
     
-    public void setIdpersona(long idpersona) {
+    public void setIdpersona(int idpersona) {
         this.idpersona = idpersona;
     }
 

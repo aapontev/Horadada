@@ -25,7 +25,7 @@ public class Tablamaestra  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idregistro;
+     private int idregistro;
      private String idtablamaestra;
      private String descripcion;
      private String clave1;
@@ -39,11 +39,11 @@ public class Tablamaestra  implements Serializable {
     }
 
 	
-    public Tablamaestra(long idregistro, String idtablamaestra) {
+    public Tablamaestra(int idregistro, String idtablamaestra) {
         this.idregistro = idregistro;
         this.idtablamaestra = idtablamaestra;
     }
-    public Tablamaestra(long idregistro, String idtablamaestra, String descripcion, String clave1, String clave2, String clave3, String valor1, String valor2, String valor3) {
+    public Tablamaestra(int idregistro, String idtablamaestra, String descripcion, String clave1, String clave2, String clave3, String valor1, String valor2, String valor3) {
        this.idregistro = idregistro;
        this.idtablamaestra = idtablamaestra;
        this.descripcion = descripcion;
@@ -62,11 +62,11 @@ public class Tablamaestra  implements Serializable {
     		    sequenceName = "maestra_sequence" , 
     		    allocationSize = 1 )
     @Column(name="IDREGISTRO", unique=true, nullable=false, precision=10, scale=0)
-    public long getIdregistro() {
+    public int getIdregistro() {
         return this.idregistro;
     }
     
-    public void setIdregistro(long idregistro) {
+    public void setIdregistro(int idregistro) {
         this.idregistro = idregistro;
     }
 

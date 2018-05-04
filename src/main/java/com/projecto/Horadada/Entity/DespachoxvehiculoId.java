@@ -17,13 +17,13 @@ public class DespachoxvehiculoId  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long iddespachoxvehiculo;
-     private long iddespacho;
+     private int iddespachoxvehiculo;
+     private int iddespacho;
 
     public DespachoxvehiculoId() {
     }
 
-    public DespachoxvehiculoId(long iddespachoxvehiculo, long iddespacho) {
+    public DespachoxvehiculoId(int iddespachoxvehiculo, int iddespacho) {
        this.iddespachoxvehiculo = iddespachoxvehiculo;
        this.iddespacho = iddespacho;
     }
@@ -31,21 +31,21 @@ public class DespachoxvehiculoId  implements Serializable {
 
 
     @Column(name="IDDESPACHOXVEHICULO", nullable=false, precision=10, scale=0)
-    public long getIddespachoxvehiculo() {
+    public int getIddespachoxvehiculo() {
         return this.iddespachoxvehiculo;
     }
     
-    public void setIddespachoxvehiculo(long iddespachoxvehiculo) {
+    public void setIddespachoxvehiculo(int iddespachoxvehiculo) {
         this.iddespachoxvehiculo = iddespachoxvehiculo;
     }
 
 
     @Column(name="IDDESPACHO", nullable=false, precision=10, scale=0)
-    public long getIddespacho() {
+    public int getIddespacho() {
         return this.iddespacho;
     }
     
-    public void setIddespacho(long iddespacho) {
+    public void setIddespacho(int iddespacho) {
         this.iddespacho = iddespacho;
     }
 

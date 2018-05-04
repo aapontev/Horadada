@@ -31,7 +31,7 @@ public class Ordencompra  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idordencompra;
+     private int idordencompra;
      private Cotizacion cotizacion;
      private Date fechaenvio;
      private BigDecimal subtotal;
@@ -42,7 +42,7 @@ public class Ordencompra  implements Serializable {
      private BigDecimal percepcion;
      private BigDecimal total;
      private String observaciones;
-     private Long idmoneda;
+     private int idmoneda;
      private Integer estadoordencompra;
      private Set<Ordencompradetalle> ordencompradetalles = new HashSet<Ordencompradetalle>(0);
      private Set<Despacho> despachos = new HashSet<Despacho>(0);
@@ -51,10 +51,10 @@ public class Ordencompra  implements Serializable {
     }
 
 	
-    public Ordencompra(long idordencompra) {
+    public Ordencompra(int idordencompra) {
         this.idordencompra = idordencompra;
     }
-    public Ordencompra(long idordencompra, Cotizacion cotizacion, Date fechaenvio, BigDecimal subtotal, BigDecimal descuentos, BigDecimal cargos, BigDecimal neto, BigDecimal igv, BigDecimal percepcion, BigDecimal total, String observaciones, Long idmoneda, Integer estadoordencompra, Set<Ordencompradetalle> ordencompradetalles, Set<Despacho> despachos) {
+    public Ordencompra(int idordencompra, Cotizacion cotizacion, Date fechaenvio, BigDecimal subtotal, BigDecimal descuentos, BigDecimal cargos, BigDecimal neto, BigDecimal igv, BigDecimal percepcion, BigDecimal total, String observaciones, int idmoneda, Integer estadoordencompra, Set<Ordencompradetalle> ordencompradetalles, Set<Despacho> despachos) {
        this.idordencompra = idordencompra;
        this.cotizacion = cotizacion;
        this.fechaenvio = fechaenvio;
@@ -76,11 +76,11 @@ public class Ordencompra  implements Serializable {
 
     
     @Column(name="IDORDENCOMPRA", unique=true, nullable=false, precision=10, scale=0)
-    public long getIdordencompra() {
+    public int getIdordencompra() {
         return this.idordencompra;
     }
     
-    public void setIdordencompra(long idordencompra) {
+    public void setIdordencompra(int idordencompra) {
         this.idordencompra = idordencompra;
     }
 
@@ -186,11 +186,11 @@ public class Ordencompra  implements Serializable {
 
     
     @Column(name="IDMONEDA", precision=10, scale=0)
-    public Long getIdmoneda() {
+    public int getIdmoneda() {
         return this.idmoneda;
     }
     
-    public void setIdmoneda(Long idmoneda) {
+    public void setIdmoneda(int idmoneda) {
         this.idmoneda = idmoneda;
     }
 

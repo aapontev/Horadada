@@ -32,11 +32,11 @@ public class Ordencompradetalle  implements Serializable {
 	private static final long serialVersionUID = 1L;
      private OrdencompradetalleId id;
      private Ordencompra ordencompra;
-     private Long item;
+     private int item;
      private String codrecurso;
      private String descripcion;
      private String ccostos;
-     private Long idunidadmedida;
+     private int idunidadmedida;
      private BigDecimal cantidad;
      private BigDecimal preciounitario;
      private BigDecimal descuento;
@@ -50,7 +50,7 @@ public class Ordencompradetalle  implements Serializable {
         this.id = id;
         this.ordencompra = ordencompra;
     }
-    public Ordencompradetalle(OrdencompradetalleId id, Ordencompra ordencompra, Long item, String codrecurso, String descripcion, String ccostos, Long idunidadmedida, BigDecimal cantidad, BigDecimal preciounitario, BigDecimal descuento, BigDecimal totaldetalle) {
+    public Ordencompradetalle(OrdencompradetalleId id, Ordencompra ordencompra, int item, String codrecurso, String descripcion, String ccostos, int idunidadmedida, BigDecimal cantidad, BigDecimal preciounitario, BigDecimal descuento, BigDecimal totaldetalle) {
        this.id = id;
        this.ordencompra = ordencompra;
        this.item = item;
@@ -93,11 +93,11 @@ public class Ordencompradetalle  implements Serializable {
 
     
     @Column(name="ITEM", precision=10, scale=0)
-    public Long getItem() {
+    public int getItem() {
         return this.item;
     }
     
-    public void setItem(Long item) {
+    public void setItem(int item) {
         this.item = item;
     }
 
@@ -133,11 +133,11 @@ public class Ordencompradetalle  implements Serializable {
 
     
     @Column(name="IDUNIDADMEDIDA", precision=10, scale=0)
-    public Long getIdunidadmedida() {
+    public int getIdunidadmedida() {
         return this.idunidadmedida;
     }
     
-    public void setIdunidadmedida(Long idunidadmedida) {
+    public void setIdunidadmedida(int idunidadmedida) {
         this.idunidadmedida = idunidadmedida;
     }
 

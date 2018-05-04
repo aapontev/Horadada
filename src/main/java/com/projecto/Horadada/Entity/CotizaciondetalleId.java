@@ -17,13 +17,13 @@ public class CotizaciondetalleId  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idcotizaciondetalle;
-     private long idcotizacion;
+     private int idcotizaciondetalle;
+     private int idcotizacion;
 
     public CotizaciondetalleId() {
     }
 
-    public CotizaciondetalleId(long idcotizaciondetalle, long idcotizacion) {
+    public CotizaciondetalleId(int idcotizaciondetalle, int idcotizacion) {
        this.idcotizaciondetalle = idcotizaciondetalle;
        this.idcotizacion = idcotizacion;
     }
@@ -31,21 +31,21 @@ public class CotizaciondetalleId  implements Serializable {
 
 
     @Column(name="IDCOTIZACIONDETALLE", nullable=false, precision=10, scale=0)
-    public long getIdcotizaciondetalle() {
+    public int getIdcotizaciondetalle() {
         return this.idcotizaciondetalle;
     }
     
-    public void setIdcotizaciondetalle(long idcotizaciondetalle) {
+    public void setIdcotizaciondetalle(int idcotizaciondetalle) {
         this.idcotizaciondetalle = idcotizaciondetalle;
     }
 
 
     @Column(name="IDCOTIZACION", nullable=false, precision=10, scale=0)
-    public long getIdcotizacion() {
+    public int getIdcotizacion() {
         return this.idcotizacion;
     }
     
-    public void setIdcotizacion(long idcotizacion) {
+    public void setIdcotizacion(int idcotizacion) {
         this.idcotizacion = idcotizacion;
     }
 

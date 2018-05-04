@@ -5,6 +5,8 @@ import java.util.List;
 import com.projecto.Horadada.Entity.Tablamaestra;
 
 public interface TablaMaestraService {
-	public List<Tablamaestra> findAll();
+	
+	public abstract List<Tablamaestra> findAll();
+	public abstract Tablamaestra findByTablamaestraId(int id);
 	
 }

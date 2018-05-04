@@ -31,17 +31,17 @@ public class Vehiculo  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idvehiculo;
+     private int idvehiculo;
      private Transportista transportista;
      private String placa;
      private String color;
-     private Long idmarca;
-     private Long idmodelo;
-     private Long idaseguradora;
+     private int idmarca;
+     private int idmodelo;
+     private int idaseguradora;
      private String detalles;
      private String tarjetacirculacion;
      private Date fechaultimarevision;
-     private Long nroejes;
+     private int nroejes;
      private BigDecimal pesomaximo;
      private BigDecimal pesovehiculo;
      private Set<Ubicacion> ubicacions = new HashSet<Ubicacion>(0);
@@ -50,11 +50,11 @@ public class Vehiculo  implements Serializable {
     }
 
 	
-    public Vehiculo(long idvehiculo, Transportista transportista) {
+    public Vehiculo(int idvehiculo, Transportista transportista) {
         this.idvehiculo = idvehiculo;
         this.transportista = transportista;
     }
-    public Vehiculo(long idvehiculo, Transportista transportista, String placa, String color, Long idmarca, Long idmodelo, Long idaseguradora, String detalles, String tarjetacirculacion, Date fechaultimarevision, Long nroejes, BigDecimal pesomaximo, BigDecimal pesovehiculo, Set<Ubicacion> ubicacions) {
+    public Vehiculo(int idvehiculo, Transportista transportista, String placa, String color, int idmarca, int idmodelo, int idaseguradora, String detalles, String tarjetacirculacion, Date fechaultimarevision, int nroejes, BigDecimal pesomaximo, BigDecimal pesovehiculo, Set<Ubicacion> ubicacions) {
        this.idvehiculo = idvehiculo;
        this.transportista = transportista;
        this.placa = placa;
@@ -75,11 +75,11 @@ public class Vehiculo  implements Serializable {
 
     
     @Column(name="IDVEHICULO", unique=true, nullable=false, precision=10, scale=0)
-    public long getIdvehiculo() {
+    public int getIdvehiculo() {
         return this.idvehiculo;
     }
     
-    public void setIdvehiculo(long idvehiculo) {
+    public void setIdvehiculo(int idvehiculo) {
         this.idvehiculo = idvehiculo;
     }
 
@@ -115,31 +115,31 @@ public class Vehiculo  implements Serializable {
 
     
     @Column(name="IDMARCA", precision=10, scale=0)
-    public Long getIdmarca() {
+    public int getIdmarca() {
         return this.idmarca;
     }
     
-    public void setIdmarca(Long idmarca) {
+    public void setIdmarca(int idmarca) {
         this.idmarca = idmarca;
     }
 
     
     @Column(name="IDMODELO", precision=10, scale=0)
-    public Long getIdmodelo() {
+    public int getIdmodelo() {
         return this.idmodelo;
     }
     
-    public void setIdmodelo(Long idmodelo) {
+    public void setIdmodelo(int idmodelo) {
         this.idmodelo = idmodelo;
     }
 
     
     @Column(name="IDASEGURADORA", precision=10, scale=0)
-    public Long getIdaseguradora() {
+    public int getIdaseguradora() {
         return this.idaseguradora;
     }
     
-    public void setIdaseguradora(Long idaseguradora) {
+    public void setIdaseguradora(int idaseguradora) {
         this.idaseguradora = idaseguradora;
     }
 
@@ -175,11 +175,11 @@ public class Vehiculo  implements Serializable {
 
     
     @Column(name="NROEJES", precision=10, scale=0)
-    public Long getNroejes() {
+    public int getNroejes() {
         return this.nroejes;
     }
     
-    public void setNroejes(Long nroejes) {
+    public void setNroejes(int nroejes) {
         this.nroejes = nroejes;
     }
 

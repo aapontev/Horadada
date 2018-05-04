@@ -32,7 +32,7 @@ public class Transportista  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long idtransportista;
+     private int idtransportista;
      private Persona persona;
      private String nrolicencia;
      private String catlicencia;
@@ -43,12 +43,12 @@ public class Transportista  implements Serializable {
     }
 
 	
-    public Transportista(long idtransportista, Persona persona, String nrolicencia) {
+    public Transportista(int idtransportista, Persona persona, String nrolicencia) {
         this.idtransportista = idtransportista;
         this.persona = persona;
         this.nrolicencia = nrolicencia;
     }
-    public Transportista(long idtransportista, Persona persona, String nrolicencia, String catlicencia, Integer idsituaciontransportista, Set<Vehiculo> vehiculos) {
+    public Transportista(int idtransportista, Persona persona, String nrolicencia, String catlicencia, Integer idsituaciontransportista, Set<Vehiculo> vehiculos) {
        this.idtransportista = idtransportista;
        this.persona = persona;
        this.nrolicencia = nrolicencia;
@@ -64,11 +64,11 @@ public class Transportista  implements Serializable {
  		    sequenceName = "transportista_sequence" , 
  		    allocationSize = 1 )
     @Column(name="IDTRANSPORTISTA", unique=true, nullable=false, precision=10, scale=0)
-    public long getIdtransportista() {
+    public int getIdtransportista() {
         return this.idtransportista;
     }
     
-    public void setIdtransportista(long idtransportista) {
+    public void setIdtransportista(int idtransportista) {
         this.idtransportista = idtransportista;
     }
 

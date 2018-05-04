@@ -17,13 +17,13 @@ public class FacturadetalleId  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private long iddetallefactura;
-     private long idfactura;
+     private int iddetallefactura;
+     private int idfactura;
 
     public FacturadetalleId() {
     }
 
-    public FacturadetalleId(long iddetallefactura, long idfactura) {
+    public FacturadetalleId(int iddetallefactura, int idfactura) {
        this.iddetallefactura = iddetallefactura;
        this.idfactura = idfactura;
     }
@@ -31,21 +31,21 @@ public class FacturadetalleId  implements Serializable {
 
 
     @Column(name="IDDETALLEFACTURA", nullable=false, precision=10, scale=0)
-    public long getIddetallefactura() {
+    public int getIddetallefactura() {
         return this.iddetallefactura;
     }
     
-    public void setIddetallefactura(long iddetallefactura) {
+    public void setIddetallefactura(int iddetallefactura) {
         this.iddetallefactura = iddetallefactura;
     }
 
 
     @Column(name="IDFACTURA", nullable=false, precision=10, scale=0)
-    public long getIdfactura() {
+    public int getIdfactura() {
         return this.idfactura;
     }
     
-    public void setIdfactura(long idfactura) {
+    public void setIdfactura(int idfactura) {
         this.idfactura = idfactura;
     }
 

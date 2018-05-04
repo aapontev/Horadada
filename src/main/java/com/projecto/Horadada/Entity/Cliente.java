@@ -25,10 +25,12 @@ import javax.persistence.Table;
     ,schema="HORADADA"
 )
 public class Cliente  implements Serializable {
-
-
    
-	private long idcliente;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int idcliente;
      private Persona persona;
      private String ruc;
      private String razonsocial;
@@ -43,11 +45,11 @@ public class Cliente  implements Serializable {
     }
 
 	
-    public Cliente(long idcliente, Persona persona) {
+    public Cliente(int idcliente, Persona persona) {
         this.idcliente = idcliente;
         this.persona = persona;
     }
-    public Cliente(long idcliente, Persona persona, String ruc, String razonsocial, String direccion, Set<Despacho> despachos, Set<Factura> facturas, Set<Valorizacion> valorizacions, Set<Solicitud> solicituds) {
+    public Cliente(int idcliente, Persona persona, String ruc, String razonsocial, String direccion, Set<Despacho> despachos, Set<Factura> facturas, Set<Valorizacion> valorizacions, Set<Solicitud> solicituds) {
        this.idcliente = idcliente;
        this.persona = persona;
        this.ruc = ruc;
@@ -65,11 +67,11 @@ public class Cliente  implements Serializable {
  		    name = "cliente_seq" , 
  		    sequenceName = "cliente_sequence" , 
  		    allocationSize = 1 )
-    public long getIdcliente() {
+    public int getIdcliente() {
         return this.idcliente;
     }
     
-    public void setIdcliente(long idcliente) {
+    public void setIdcliente(int idcliente) {
         this.idcliente = idcliente;
     }
 
@@ -147,9 +149,7 @@ public class Cliente  implements Serializable {
     public void setSolicituds(Set<Solicitud> solicituds) {
         this.solicituds = solicituds;
     }
-
-
-  	private static final long serialVersionUID = 1L;
+ 	
 
 }
 
