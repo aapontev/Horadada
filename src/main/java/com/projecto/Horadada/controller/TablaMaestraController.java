@@ -12,10 +12,10 @@ import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.Service.PersonaService;
 import com.projecto.Horadada.Service.TablaMaestraService;
 
-@CrossOrigin(origins= {"http://localhost:4200"})
-@RestController
+//@CrossOrigin(origins= {"http://localhost:4200"})
+//@RestController
 @RequestMapping("/api")
-public class RestTablaMaestraController {
+public class TablaMaestraController {
 	
 	@Autowired
 	private TablaMaestraService tmService;
