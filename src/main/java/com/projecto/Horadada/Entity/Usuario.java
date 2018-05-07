@@ -3,6 +3,8 @@ package com.projecto.Horadada.Entity;
 
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -10,11 +12,9 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -26,104 +26,130 @@ import javax.persistence.Table;
 )
 public class Usuario  implements Serializable {
 
+
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private UsuarioId id;
-     private Persona persona;
-     private String usuario;
-     private String contrasena;
-     private String fechaupdate;
-     private Integer estado;
+	private UsuarioId id;
+    private Persona persona;
+    private String contrasena;
+    private boolean estado;
+    private String fechaupdate;
+    private String usuario;
+    private String username;
+    private Set<RoleUsuario> roleusuarios = new HashSet<RoleUsuario>(0);
 
-    public Usuario() {
-    }
+   public Usuario() {
+   }
 
 	
-    public Usuario(UsuarioId id, Persona persona) {
-        this.id = id;
-        this.persona = persona;
-    }
-    public Usuario(UsuarioId id, Persona persona, String usuario, String contrasena, String fechaupdate, Integer estado) {
+   public Usuario(UsuarioId id, Persona persona) {
        this.id = id;
        this.persona = persona;
-       this.usuario = usuario;
-       this.contrasena = contrasena;
-       this.fechaupdate = fechaupdate;
-       this.estado = estado;
-    }
-   
-     @EmbeddedId
+   }
+   public Usuario(UsuarioId id, Persona persona, String contrasena, boolean estado, String fechaupdate, String usuario, String username, Set<RoleUsuario> roleusuarios) {
+      this.id = id;
+      this.persona = persona;
+      this.contrasena = contrasena;
+      this.estado = estado;
+      this.fechaupdate = fechaupdate;
+      this.usuario = usuario;
+      this.username = username;
+      this.roleusuarios = roleusuarios;
+   }
+  
+    @EmbeddedId
 
-     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "usuario_seq") @SequenceGenerator ( 
- 		    name = "usuario_seq" , 
- 		    sequenceName = "usuario_sequence" , 
- 		    allocationSize = 1 )
-    @AttributeOverrides( {
-        @AttributeOverride(name="idusuario", column=@Column(name="IDUSUARIO", nullable=false, precision=10, scale=0) ), 
-        @AttributeOverride(name="idpersona", column=@Column(name="IDPERSONA", nullable=false, precision=10, scale=0) ) } )
-    public UsuarioId getId() {
-        return this.id;
-    }
-    
-    public void setId(UsuarioId id) {
-        this.id = id;
-    }
+   
+   @AttributeOverrides( {
+       @AttributeOverride(name="idpersona", column=@Column(name="IDPERSONA", nullable=false, scale=0) ), 
+       @AttributeOverride(name="idusuario", column=@Column(name="IDUSUARIO", nullable=false, scale=0) ) } )
+   public UsuarioId getId() {
+       return this.id;
+   }
+   
+   public void setId(UsuarioId id) {
+       this.id = id;
+   }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="IDPERSONA", nullable=false, insertable=false, updatable=false)
-    public Persona getPersona() {
-        return this.persona;
-    }
-    
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
+   @JoinColumn(name="IDPERSONA", nullable=false, insertable=false, updatable=false)
+   public Persona getPersona() {
+       return this.persona;
+   }
+   
+   public void setPersona(Persona persona) {
+       this.persona = persona;
+   }
 
-    
-    @Column(name="USUARIO", length=45)
-    public String getUsuario() {
-        return this.usuario;
-    }
-    
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
+   
+   @Column(name="CONTRASENA", length=60)
+   public String getContrasena() {
+       return this.contrasena;
+   }
+   
+   public void setContrasena(String contrasena) {
+       this.contrasena = contrasena;
+   }
 
-    
-    @Column(name="CONTRASENA", length=60)
-    public String getContrasena() {
-        return this.contrasena;
-    }
-    
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
+   
+   @Column(name="ESTADO", precision=10, scale=0)
+   public boolean isEstado() {
+	return estado;
+}
 
-    
-    @Column(name="FECHAUPDATE", length=20)
-    public String getFechaupdate() {
-        return this.fechaupdate;
-    }
-    
-    public void setFechaupdate(String fechaupdate) {
-        this.fechaupdate = fechaupdate;
-    }
 
-    
-    @Column(name="ESTADO", precision=5, scale=0)
-    public Integer getEstado() {
-        return this.estado;
-    }
-    
-    public void setEstado(Integer estado) {
-        this.estado = estado;
-    }
+public void setEstado(boolean estado) {
+	this.estado = estado;
+}
+
+   
+   @Column(name="FECHAUPDATE", length=20)
+   public String getFechaupdate() {
+       return this.fechaupdate;
+   }
+   
+public static long getSerialversionuid() {
+	return serialVersionUID;
+}
+
+
+public void setFechaupdate(String fechaupdate) {
+       this.fechaupdate = fechaupdate;
+   }
+
+   
+   @Column(name="USUARIO", length=45)
+   public String getUsuario() {
+       return this.usuario;
+   }
+   
+   public void setUsuario(String usuario) {
+       this.usuario = usuario;
+   }
+
+   
+   @Column(name="USERNAME", length=45)
+   public String getUsername() {
+       return this.username;
+   }
+   
+   public void setUsername(String username) {
+       this.username = username;
+   }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="usuario")
+   public Set<RoleUsuario> getRoleusuarios() {
+       return this.roleusuarios;
+   }
+   
+   public void setRoleusuarios(Set<RoleUsuario> roleusuarios) {
+       this.roleusuarios = roleusuarios;
+   }
 
 
 
 
 }
-
 

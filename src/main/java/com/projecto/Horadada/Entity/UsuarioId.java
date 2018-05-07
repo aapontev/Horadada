@@ -3,6 +3,7 @@ package com.projecto.Horadada.Entity;
 
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -17,56 +18,56 @@ public class UsuarioId  implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private int idusuario;
-     private int idpersona;
+    private BigDecimal idpersona;
+    private BigDecimal idusuario;
 
-    public UsuarioId() {
-    }
+   public UsuarioId() {
+   }
 
-    public UsuarioId(int idusuario, int idpersona) {
-       this.idusuario = idusuario;
-       this.idpersona = idpersona;
-    }
+   public UsuarioId(BigDecimal idpersona, BigDecimal idusuario) {
+      this.idpersona = idpersona;
+      this.idusuario = idusuario;
+   }
+  
+
+
+   @Column(name="IDPERSONA", nullable=false, scale=0)
+   public BigDecimal getIdpersona() {
+       return this.idpersona;
+   }
    
+   public void setIdpersona(BigDecimal idpersona) {
+       this.idpersona = idpersona;
+   }
 
 
-    @Column(name="IDUSUARIO", nullable=false, precision=10, scale=0)
-    public int getIdusuario() {
-        return this.idusuario;
-    }
-    
-    public void setIdusuario(int idusuario) {
-        this.idusuario = idusuario;
-    }
+   @Column(name="IDUSUARIO", nullable=false, scale=0)
+   public BigDecimal getIdusuario() {
+       return this.idusuario;
+   }
+   
+   public void setIdusuario(BigDecimal idusuario) {
+       this.idusuario = idusuario;
+   }
 
 
-    @Column(name="IDPERSONA", nullable=false, precision=10, scale=0)
-    public int getIdpersona() {
-        return this.idpersona;
-    }
-    
-    public void setIdpersona(int idpersona) {
-        this.idpersona = idpersona;
-    }
-
-
-   public boolean equals(Object other) {
-         if ( (this == other ) ) return true;
+  public boolean equals(Object other) {
+        if ( (this == other ) ) return true;
 		 if ( (other == null ) ) return false;
 		 if ( !(other instanceof UsuarioId) ) return false;
 		 UsuarioId castOther = ( UsuarioId ) other; 
-         
-		 return (this.getIdusuario()==castOther.getIdusuario())
- && (this.getIdpersona()==castOther.getIdpersona());
-   }
-   
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + (int) this.getIdusuario();
-         result = 37 * result + (int) this.getIdpersona();
-         return result;
-   }   
+        
+		 return ( (this.getIdpersona()==castOther.getIdpersona()) || ( this.getIdpersona()!=null && castOther.getIdpersona()!=null && this.getIdpersona().equals(castOther.getIdpersona()) ) )
+&& ( (this.getIdusuario()==castOther.getIdusuario()) || ( this.getIdusuario()!=null && castOther.getIdusuario()!=null && this.getIdusuario().equals(castOther.getIdusuario()) ) );
+  }
+  
+  public int hashCode() {
+        int result = 17;
+        
+        result = 37 * result + ( getIdpersona() == null ? 0 : this.getIdpersona().hashCode() );
+        result = 37 * result + ( getIdusuario() == null ? 0 : this.getIdusuario().hashCode() );
+        return result;
+  }   
 
 
 }

@@ -66,16 +66,16 @@
 							</button>
 							<ul class="dropdown-menu dropdown-menu-right mt-1">
 								<li class="p-3">
-									<form class="form" role="form" action="#" th:action="@{/logincheck}" th:object="${usuarioPrueba}" method="POST">
+									<form class="form" role="form" action="#"  method="POST">
 										<div class="form-group">
 											<input id="emailInput" placeholder="USUARIO"
 												class="form-control form-control-sm" type="text"
-												required="required" th:field="*{username}" >
+												required="required">
 										</div>
 										<div class="form-group">
 											<input id="passwordInput" placeholder="CONTRASEÑA"
-												class="form-control form-control-sm" type="text"
-												required="required" th:field="*{contrase}">
+												class="form-control form-control-sm" type="password"
+												required="required">
 										</div>
 										<div class="form-group">
 											<button type="submit" class="btn btn-primary btn-block">INGRESAR</button>

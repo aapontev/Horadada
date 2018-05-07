@@ -20,10 +20,8 @@ public class TablaMaestraServiceImp implements TablaMaestraService{
 	}
 
 	@Override
-	public Tablamaestra findByTablamaestraId(int id) {
-		return maestraDao.findByIdregistro(id);
+	public Tablamaestra findByIdtablamaestra(String idtablamaestra) {
+		return maestraDao.findByIdtablamaestra(idtablamaestra);
 	}
-
-	
 
 }

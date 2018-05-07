@@ -3,11 +3,9 @@ package com.projecto.Horadada.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.Service.PersonaService;
 import com.projecto.Horadada.Service.TablaMaestraService;
@@ -27,12 +25,6 @@ public class TablaMaestraController {
 	@GetMapping("/tablaMaestra")
 	public List<Tablamaestra> Index() {
 		return tmService.findAll();
-	}
-	
-	@GetMapping("/tablaMaestraId")
-	public Tablamaestra porId() {
-		
-		return tmService.findByTablamaestraId(101);
 	}
 	
 	@PostMapping("/perso")

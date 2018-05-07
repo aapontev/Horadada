@@ -8,5 +8,5 @@ import com.projecto.Horadada.Entity.Tablamaestra;
 @Repository("tablaMaestraDao")
 public interface TablaMaestraDao extends JpaRepository<Tablamaestra, Serializable>{
 	
-	public abstract Tablamaestra findByIdregistro(int idregistro);
+	public abstract Tablamaestra findByIdtablamaestra(String idtablamaestra);
 }
