@@ -57,6 +57,7 @@
 						<li class="nav-item"><a class="nav-link" href="#">Contactenos<span
 								class="sr-only">(current)</span></a></li>
 					</ul>
+					
 					<ul class="nav navbar-nav flex-row justify-content-between ml-auto">
 
 						<li class="dropdown order-1">
@@ -66,17 +67,22 @@
 							</button>
 							<ul class="dropdown-menu dropdown-menu-right mt-1">
 								<li class="p-3">
-									<form class="form" role="form" action="#"  method="POST">
+								
+									<form class="form-signin" action="#" th:action="@{/loginCheck}" method="POST">
+										<input type="hidden" name="${__csrf.parameterName}"
+											value="${_csrf.token}" />
 										<div class="form-group">
-											<input id="emailInput" placeholder="USUARIO"
-												class="form-control form-control-sm" type="text"
-												required="required">
+											<input id="username" placeholder="USUARIO"
+												class="form-control" type="text" name="username" />
 										</div>
 										<div class="form-group">
-											<input id="passwordInput" placeholder="CONTRASEÑA"
-												class="form-control form-control-sm" type="password"
-												required="required">
+											<input id="password" placeholder="CONTRASEÑA"
+												class="form-control" type="password" name="password"/>
 										</div>
+										<div th:if="${error != null}" class="alert alert-danger" role="alert">ingreso
+											mal los datos</div>
+										<div th:if="${logout != null}" class="alert alert-info" role="alert">Salio
+											Correctamente</div>
 										<div class="form-group">
 											<button type="submit" class="btn btn-primary btn-block">INGRESAR</button>
 										</div>
@@ -84,6 +90,7 @@
 											<small><a href="#">¿OLVIDO CONTRASEÑA?</a></small>
 										</div>
 									</form>
+									
 								</li>
 							</ul>
 						</li>
