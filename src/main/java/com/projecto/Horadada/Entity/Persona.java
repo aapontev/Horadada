@@ -60,7 +60,7 @@ public class Persona  implements Serializable {
      private Set<Transportista> transportistas = new HashSet<Transportista>(0);
      private Set<Usuario> usuarios = new HashSet<Usuario>(0);
      private Set<Cliente> clientes = new HashSet<Cliente>(0);
-     private Set<Telefonomonitoreo> telefonomonitoreos = new HashSet<Telefonomonitoreo>(0);
+     private Set<Telefono> telefonomonitoreos = new HashSet<Telefono>(0);
 
     public Persona() {
     }
@@ -70,7 +70,7 @@ public class Persona  implements Serializable {
         this.idpersona = idpersona;
         this.tipopersona = tipopersona;
     }
-    public Persona(int idpersona, String primernombre, String segundonombre, String primerapellido, String segundoapellido, int tipopersona, int codtipodocumento, int numerodocumento, Date fechanacimiento, String edad, String direccion, Date fechacreacion, Date fechaupdate, String telefono, String correoelectronico, Set<Transportista> transportistas, Set<Usuario> usuarios, Set<Cliente> clientes, Set<Telefonomonitoreo> telefonomonitoreos) {
+    public Persona(int idpersona, String primernombre, String segundonombre, String primerapellido, String segundoapellido, int tipopersona, int codtipodocumento, int numerodocumento, Date fechanacimiento, String edad, String direccion, Date fechacreacion, Date fechaupdate, String telefono, String correoelectronico, Set<Transportista> transportistas, Set<Usuario> usuarios, Set<Cliente> clientes, Set<Telefono> telefonomonitoreos) {
        this.idpersona = idpersona;
        this.primernombre = primernombre;
        this.segundonombre = segundonombre;
@@ -275,11 +275,11 @@ public class Persona  implements Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="persona")
-    public Set<Telefonomonitoreo> getTelefonomonitoreos() {
+    public Set<Telefono> getTelefonomonitoreos() {
         return this.telefonomonitoreos;
     }
     
-    public void setTelefonomonitoreos(Set<Telefonomonitoreo> telefonomonitoreos) {
+    public void setTelefonomonitoreos(Set<Telefono> telefonomonitoreos) {
         this.telefonomonitoreos = telefonomonitoreos;
     }
 

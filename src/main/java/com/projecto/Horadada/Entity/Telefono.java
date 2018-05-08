@@ -24,28 +24,28 @@ import javax.persistence.Table;
 @Table(name="TELEFONOMONITOREO"
     ,schema="HORADADA"
 )
-public class Telefonomonitoreo  implements Serializable {
+public class Telefono  implements Serializable {
 
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-     private TelefonomonitoreoId id;
+     private TelefonoId id;
      private Persona persona;
      private int idtipotelefono;
      private Integer idoperador;
      private String numerotelefono;
      private String imei;
 
-    public Telefonomonitoreo() {
+    public Telefono() {
     }
 
 	
-    public Telefonomonitoreo(TelefonomonitoreoId id, Persona persona) {
+    public Telefono(TelefonoId id, Persona persona) {
         this.id = id;
         this.persona = persona;
     }
-    public Telefonomonitoreo(TelefonomonitoreoId id, Persona persona, int idtipotelefono, Integer idoperador, String numerotelefono, String imei) {
+    public Telefono(TelefonoId id, Persona persona, int idtipotelefono, Integer idoperador, String numerotelefono, String imei) {
        this.id = id;
        this.persona = persona;
        this.idtipotelefono = idtipotelefono;
@@ -63,11 +63,11 @@ public class Telefonomonitoreo  implements Serializable {
     @AttributeOverrides( {
         @AttributeOverride(name="idtelefono", column=@Column(name="IDTELEFONO", nullable=false, precision=10, scale=0) ), 
         @AttributeOverride(name="idpersona", column=@Column(name="IDPERSONA", nullable=false, precision=10, scale=0) ) } )
-    public TelefonomonitoreoId getId() {
+    public TelefonoId getId() {
         return this.id;
     }
     
-    public void setId(TelefonomonitoreoId id) {
+    public void setId(TelefonoId id) {
         this.id = id;
     }
 

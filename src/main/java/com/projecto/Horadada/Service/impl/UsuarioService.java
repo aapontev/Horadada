@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import com.projecto.Horadada.Entity.RoleUsuario;
 import com.projecto.Horadada.Entity.Usuario;
-import com.projecto.Horadada.Repository.TablaMaestraDao;
 import com.projecto.Horadada.Repository.UsuarioDao;
 
 @Service("usuarioService")
@@ -27,22 +26,22 @@ public class UsuarioService implements UserDetailsService {
 	@Qualifier("usuarioDao")
 	private UsuarioDao usuarioDao;
 	
-	@Autowired
-	@Qualifier("tablamaestraDao")
-	private TablaMaestraDao tablamaestraDao;
+	//@Autowired
+	//@Qualifier("tablamaestraDao")
+	//private TablaMaestraDao tablamaestraDao;
 	
 	//private Tablamaestra rolUsu = tablamaestraDao.findByIdtablamaestra("Hora005");
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usuario user = usuarioDao.findByUsername(username);
-		List<GrantedAuthority> authorities = buildAutorities(user.getRoleusuarios());
+		List<GrantedAuthority> authorities = buildAutorities(user.getRoleUsuario());
 		return buildUser(user, authorities);
 	}
 	
 	private User buildUser(Usuario user,List<GrantedAuthority>authorities) {
 		
-		return new User(user.getUsername(), user.getContrasena(), user.isEstado(),
+		return new User(user.getUsuario(), user.getContrasena(), user.isEstado(),
 				true, true, true, authorities);		
 	}
 	
