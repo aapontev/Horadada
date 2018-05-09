@@ -20,7 +20,8 @@
 		<!-- Fixed navbar -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
-				<img th:src="@{/imgs/Hora.png}" class="img-thumbnail" src="" alt="" />
+				<form action="" th:action="@{/login}">
+				<input type="image" th:src="@{/imgs/Hora.png}" class="img-thumbnail"></form>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -68,23 +69,21 @@
 							<ul class="dropdown-menu dropdown-menu-right mt-1">
 								<li class="p-3">
 								
-									<form class="form-signin" action="#" th:action="@{/loginCheck}" method="POST">
-										<input type="hidden" name="${__csrf.parameterName}"
-											value="${_csrf.token}" />
+									<form class="form-signin" action="#" th:action="@{/loginCheck}" th:object="${credencialUsuario}" method="POST">
+									
 										<div class="form-group">
 											<input id="username" placeholder="USUARIO"
-												class="form-control" type="text" name="username" />
+												class="form-control" type="text" name="username" th:field="*{usuario}"/>
 										</div>
 										<div class="form-group">
 											<input id="password" placeholder="CONTRASEÑA"
-												class="form-control" type="password" name="password"/>
+												class="form-control" type="password" name="password" th:field="*{password}"/>
 										</div>
 										<div th:if="${error != null}" class="alert alert-danger" role="alert">ingreso
 											mal los datos</div>
-										<div th:if="${logout != null}" class="alert alert-info" role="alert">Salio
-											Correctamente</div>
+										<div th:if="${logout != null}" class="alert alert-info" role="alert">Cerro Sesion Exitosamente</div>	
 										<div class="form-group">
-											<button type="submit" class="btn btn-primary btn-block">INGRESAR</button>
+											<button type="submit" class="btn btn-primary btn-block">INGRESAR</button>											
 										</div>
 										<div class="form-group text-xs-center">
 											<small><a href="#">¿OLVIDO CONTRASEÑA?</a></small>

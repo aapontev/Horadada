@@ -21,7 +21,8 @@
 		<!-- Fixed navbar -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
-				<img th:src="@{/imgs/Hora.png}" class="img-thumbnail" src="" alt="" />
+			<form action="" th:action="@{/principal}">
+				<input type="image" th:src="@{/imgs/Hora.png}" class="img-thumbnail"></form>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -64,15 +65,15 @@
 							aria-expanded="false">Mantenimiento </a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="#">Cliente</a> <a
-									class="dropdown-item" href="#">Contactos</a> <a
+									class="dropdown-item" href="#" >Contactos</a> <a
 									class="dropdown-item" href="#">Trabajador</a> <a
-									class="dropdown-item" href="#">Transportista</a>
+									class="dropdown-item" href="#" th:href="@{/mantenimiento/transportista}">Transportista</a>
 							</div></li>
 						<li class="nav-item"><a class="nav-link" href="#">Reporte<span
 								class="sr-only">(current)</span></a></li>
 					</ul>
 					<ul class="nav navbar-nav flex-row justify-content-between ml-auto">
-						<li class="nav-item"><a class="nav-link">Bienvenido : <span th:text="${username}"></span></a></li>
+						<li class="nav-item"><a class="nav-link">Bienvenido : </a></li>
 						<li class="nav-item">
 						<a class="nav-link" href="#" th:href="@{/login?logout}">Cerrar
 								Sesion
