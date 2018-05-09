@@ -21,7 +21,9 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<form action="" th:action="@{/login}">
-				<input type="image" th:src="@{/imgs/Hora.png}" class="img-thumbnail"></form>
+					<input type="image" th:src="@{/imgs/Hora.png}"
+						class="img-thumbnail">
+				</form>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -58,7 +60,7 @@
 						<li class="nav-item"><a class="nav-link" href="#">Contactenos<span
 								class="sr-only">(current)</span></a></li>
 					</ul>
-					
+
 					<ul class="nav navbar-nav flex-row justify-content-between ml-auto">
 
 						<li class="dropdown order-1">
@@ -66,32 +68,28 @@
 								class="btn btn-outline-secondary dropdown-toggle">
 								INICIAR SESION <span class="caret"></span>
 							</button>
-							<ul class="dropdown-menu dropdown-menu-right mt-1">
-								<li class="p-3">
-								
-									<form class="form-signin" action="#" th:action="@{/loginCheck}" th:object="${credencialUsuario}" method="POST">
-									
-										<div class="form-group">
-											<input id="username" placeholder="USUARIO"
-												class="form-control" type="text" name="username" th:field="*{usuario}"/>
-										</div>
-										<div class="form-group">
-											<input id="password" placeholder="CONTRASEÑA"
-												class="form-control" type="password" name="password" th:field="*{password}"/>
-										</div>
-										<div th:if="${error != null}" class="alert alert-danger" role="alert">ingreso
-											mal los datos</div>
-										<div th:if="${logout != null}" class="alert alert-info" role="alert">Cerro Sesion Exitosamente</div>	
-										<div class="form-group">
-											<button type="submit" class="btn btn-primary btn-block">INGRESAR</button>											
-										</div>
-										<div class="form-group text-xs-center">
-											<small><a href="#">¿OLVIDO CONTRASEÑA?</a></small>
-										</div>
-									</form>
-									
-								</li>
-							</ul>
+							<div class="dropdown-menu">
+								<form class="px-4 py-3" action="#" th:action="@{/loginCheck}"
+									th:object="${credencialUsuario}" method="POST">
+									<div class="form-group">
+										<input type="text" class="form-control"
+											id="exampleDropdownFormEmail1" placeholder="USUARIO"
+											th:field="*{usuario}">
+									</div>
+									<div class="form-group">
+										<input type="password" class="form-control" id="password"
+											placeholder="CONTRASEÑA" th:field="*{password}">
+									</div>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input"
+											id="dropdownCheck"> <label class="form-check-label"
+											for="dropdownCheck"> Recuérdame </label>
+									</div>
+									<button type="submit" class="btn btn-primary">INGRESAR</button>
+								</form>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#">¿OLVIDO CONTRASEÑA?</a>
+							</div>
 						</li>
 					</ul>
 
