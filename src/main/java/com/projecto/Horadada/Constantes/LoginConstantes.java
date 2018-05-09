@@ -2,5 +2,5 @@ package com.projecto.Horadada.Constantes;
 
 public class LoginConstantes {
 
-	public String LOGIN = "login";
+	public static final String LOGIN = "login";
 }

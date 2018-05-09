@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.projecto.Horadada.Entity.Usuarios;
 
 @Controller
-public class LoginController {
-	
-	//private LoginConstantes cons;
+public class LoginController {	
 
 	@GetMapping("/")
 	public String redirctLogin() {
@@ -24,8 +22,8 @@ public class LoginController {
 		model.addAttribute("error", error);
 		model.addAttribute("logout", logout);
 		model.addAttribute("credencialUsuario", new Usuarios());
-		return "login";
-	}
+		return "index";
+	}	
 	@PostMapping("/loginCheck")
 	public String loginCheck(@ModelAttribute(name="credencialUsuario")Usuarios usuario) {
 		if(usuario.getUsuario().equals("usu") && usuario.getPassword().equals("con")) {
