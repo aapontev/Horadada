@@ -36,7 +36,7 @@ public class Usuario  implements java.io.Serializable {
     @JoinColumn(name="IDPERSONA", nullable=false)
      private Persona persona;	 
     @Id
-    @Column(name="NOMBREUSUARIO", unique=true,, nullable=false, precision=10, scale=0, length=45)
+    @Column(name="NOMBREUSUARIO", unique=true, nullable=false, precision=10, scale=0, length=45)
      private String nombreUsuario;	 
     
     @Column(name="CONTRASENA")
@@ -55,28 +55,27 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(long idusuario, Persona persona) {
-        this.idusuario = idusuario;
+    public Usuario(Persona persona) {
         this.persona = persona;
     }
-    public Usuario(long idusuario,Set<RoleUsuario> roleUsuario, Persona persona, String usuario, String contrasena, String fechaupdate, Boolean estado) {
-       this.idusuario = idusuario;
+    public Usuario(Set<RoleUsuario> roleUsuario, Persona persona, String nombreUsuario, String contrasena, String fechaupdate, Boolean estado) {
+     
        this.persona = persona;
-       this.usuario = usuario;
+       this.nombreUsuario = nombreUsuario;
        this.contrasena = contrasena;
        this.fechaupdate = fechaupdate;
        this.estado = estado;
        this.roleUsuario = roleUsuario;
     }
    
-    public long getIdusuario() {
+    /*public long getIdusuario() {
         return this.idusuario;
     }
     
     public void setIdusuario(long idusuario) {
         this.idusuario = idusuario;
     }
-
+*/
 
     public Persona getPersona() {
         return this.persona;
@@ -86,12 +85,12 @@ public class Usuario  implements java.io.Serializable {
         this.persona = persona;
     }
 
-    public String getUsuario() {
-        return this.usuario;
+    public String getNombreUsuario() {
+        return this.nombreUsuario;
     }
     
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getContrasena() {
