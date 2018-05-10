@@ -5,6 +5,192 @@
 <body>
 
 <header th:replace="view/Cabecera :: cabecera"></header>
+<legend class="text-center header">DATOS DE LOS TRABAJADORES</legend>
+<table  class="table table-striped">
+    <tr >
+        <!-- <td title="'ID PERSONA'" filter="{ idPersona : 'number' }" sortable="'idPersona'">
+            <a ng-href="#/mantenimientoCliente">
+                {{user.idPersona}}
+            </a>
+        </td>
+        <td title="'NOMBRES'" filter="{ PrimerNombre : 'text' }" sortable="'PrimerNombre'">
+            {{user.PrimerNombre}} {{user.SegundoNombre}}
+        </td>
+        <td title="'APELLIDOS'" filter="{ PrimerApellido : 'text'}" sortable="'PrimerApellido'">
+            {{user.PrimerApellido}}  {{user.SegundoApellido}}
+        </td>
+        <td title="'DIRECCION'" filter="{ Direccion : 'text'}">
+            {{user.Direccion}}
+        </td>
+        <td title="'TELEFONO'" filter="">
+            {{user.telefono}}
+        </td>-->
+        <td>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+        </td>
+        <td>
+            
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
+    </tr>
+</table>
+
+<!--<div class="modal fade " id="mantenimientoTransportista" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">DATOS DEL TRANSPORTISTA</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="container">
+                        <div class="well well-sm">
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <legend class="text-center header">Datos Personales</legend>
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">PRIMER NOMBRE</label>
+                                            <input type="text" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">SEGUNDO NOMBRE</label>
+                                            <input type="text" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">PRIMER APELLIDO</label>
+                                            <input type="text" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">SEGUNDO APELLIDO</label>
+                                            <input type="text" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">ID PERSONA</label>
+                                            <input type="text" class="form-control" aria-label="Text input with checkbox">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">DOC</label>
+                                            <input type="text" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">NUMERO DOCUMENTO</label>
+                                            <input type="number" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">EDAD</label>
+                                            <input type="number" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">FECHA NACIMIENTO</label>
+                                            <input type="date" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">TELEFONO</label>
+                                            <input type="text" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">CORREO ELECTRONICO</label>
+                                            <input type="email" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">DIRECCION</label>
+                                            <input type="text" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="well well-sm">
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <legend class="text-center header">Datos LABORALES</legend>
+
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">CLIENTE</label>
+                                            <input type="text" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">NUMERO DE LICENCIA</label>
+                                            <input type="text" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">CATEGORIA LICENCIA</label>
+                                            <input type="text" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">SITUACION</label>
+                                            <input type="text" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">FECHA INGRESO</label>
+                                            <input type="date" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <label for="recipient-name" class="control-label">FECHA MODIFICAION</label>
+                                            <input type="date" class="form-control" aria-label="Text input with radio button">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="text-center">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">mostrar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">modificar</button>
+                            <button type="button" class="btn btn-primary">eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
 <footer th:replace="view/Cabecera :: footer"></footer>
 
 </body>

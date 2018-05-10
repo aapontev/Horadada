@@ -8,6 +8,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/mantenimiento")
 public class MantenimientoController {
 
+	@GetMapping("/cliente")
+	public String Cliente() {
+		return "mantenimiento/cliente";
+	}
+	
+	@GetMapping("/contacto")
+	public String Contacto() {
+		return "mantenimiento/contacto";
+	}
+	
+	@GetMapping("/trabajador")
+	public String Trabajador() {
+		return "mantenimiento/trabajador";
+	}
+	
 	@GetMapping("/transportista")
 	public String Transportista() {
 		return "mantenimiento/transportista";

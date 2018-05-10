@@ -5,6 +5,99 @@
 <body>
 
 <header th:replace="view/Cabecera :: cabecera"></header>
+<div >
+    <div class="text-center">
+        <h2>DESPACHO</h2>
+    </div>
+</div>
+
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="well well-sm">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legend class="text-center header">DATOS DE DESPACHO</legend>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-export"></i></span>
+                            <input id="fname" name="name" type="number" placeholder="ID DESPACHO" ng-model="obtieneParametros.idDesp" class="nav-tabs form-control">                          
+                        </div>
+                        <br />
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                            <input id="lname" name="name" type="number" ng-model="obtieneParametros.idCompra" placeholder="ORDEN DE COMPRA" class="nav-tabs form-control">
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg" ng-click="ConsultaDespacho()" ng-hide="formVisibility">Validar</button>
+                            </div>
+                        </div>
+                        <br />
+                        <div ng-show="formVisibility">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input id="fname" name="name" type="text" ng-model="rasoc" placeholder="Cliente" class="nav-tabs form-control">
+                            </div>
+                            <br />
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input id="origin-input" name="name" type="text" placeholder="ORIGEN" ng-model="obtieneParametros.orig" class="nav-tabs form-control">
+                            </div>
+                            <br />
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                <input id="destination-input" name="name" type="text" placeholder="DESTINO" ng-model="obtieneParametros.dest" class="nav-tabs form-control">
+                            </div>
+                            <br />
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                                <input id="fname" name="name" type="number" placeholder="DIAS ESTIMADOS" ng-model="obtieneParametros.diaEst" class="nav-tabs form-control">
+                            </div>
+                            <br />
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input id="fname" name="name" type="date" placeholder="FECHA INICIO" ng-model="obtieneParametros.fechaIni" class="nav-tabs form-control">
+                            </div>
+                            <br />
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input id="fname" name="name" type="date" placeholder="FECHA FIN"  class="nav-tabs form-control">
+                            </div>
+                            <br />
+                            <div class="input-group">
+                                <textarea rows="4" cols="50" placeholder="Descripcion" ng-model="obtieneParametros.desc" />
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg" ng-click="generaDespacho()">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+</fieldset>
+                        </form>
+                    </div>
+                </div>            
+        <div class="lienzoMapa">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="well well-sm">
+                            <form class="form-horizontal ">
+                                <div id="lienzoMapa">
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <footer th:replace="view/Cabecera :: footer"></footer>
 
 </body>

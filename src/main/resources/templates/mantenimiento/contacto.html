@@ -5,6 +5,48 @@
 <body>
 
 <header th:replace="view/Cabecera :: cabecera"></header>
+<legend class="text-center header">DATOS DE LOS CONTACTOS</legend>
+<table ng-table="tableConParams" class="table table-striped">
+    <tr ng-repeat="user in $data">
+        <td title="'ID PERSONA'" filter="{ idPersona : 'number' }" sortable="'idPersona'">
+            <a ng-href="#/mantenimientoCliente">
+                {{user.idPersona}}
+            </a>
+        </td>
+        <td title="'NOMBRES'" filter="{ PrimerNombre : 'text' }" sortable="'PrimerNombre'">
+            {{user.PrimerNombre}} {{user.SegundoNombre}}
+        </td>
+        <td title="'APELLIDOS'" filter="{ PrimerApellido : 'text'}" sortable="'PrimerApellido'">
+            {{user.PrimerApellido}}  {{user.SegundoApellido}}
+        </td>
+        <td title="'TIPO DOCUMENTO'" filter="{ CodTipoDocumento : 'number'}" sortable="'CodTipoDocumento'">
+            {{user.CodTipoDocumento}}
+        </td>
+        <td title="'NUMERO DOCUMENTO'" filter="{ NumeroDocumento : 'number'}" sortable="'NumeroDocumento'">
+            {{user.NumeroDocumento}}
+        </td>
+        <td title="'CLIENTE'" filter="{ idCliente : 'number'}" sortable="'idCliente'">
+            {{user.idCliente}}
+        </td>
+        <td title="'DIRECCION'" filter="{ Direccion : 'text'}" sortable="'Direccion'">
+            {{user.Direccion}}
+        </td>
+        <td title="'TELEFONO'" filter="{ telefono : 'number'}" sortable="'telefono'">
+            {{user.telefono}}
+        </td>
+        <td>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+        </td>
+        <td>
+
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
+    </tr>
+</table>
 <footer th:replace="view/Cabecera :: footer"></footer>
 
 </body>

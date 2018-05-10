@@ -22,7 +22,7 @@ public class LoginController {
 		model.addAttribute("error", error);
 		model.addAttribute("logout", logout);
 		model.addAttribute("credencialUsuario", new Usuarios());
-		return "index";
+		return "login";
 	}	
 	@PostMapping("/loginCheck")
 	public String loginCheck(@ModelAttribute(name="credencialUsuario")Usuarios usuario) {
