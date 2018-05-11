@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="view/Cabecera :: head"></head>
+
+<body>
+
+	<header th:replace="view/Cabecera :: cabecera"></header>
+	<div class="border border-primary">
+		<br>
+		<div class="input-group mb-3 center-block">
+			<div class="input-group-prepend">
+				<button class="btn btn-outline-secondary" type="button">Button</button>
+			</div>
+			<select class="custom-select col-sm-6 " id="inputGroupSelect03">
+				<option selected>Seleccione el tipo de tabla a modificar</option>
+				       <option th:each="tm : ${valMa}"
+				               th:value="${tm}"
+				               th:text="${tm}">
+				       </option>
+			</select>
+		</div>
+	</div>
+		<div class="container">
+
+		<br />
+		<div class="panel panel-default">
+			<div class="panel-heading"></div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>NOMBRE</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="tm : ${valMa}">
+						<td th:text="${tm}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+		<footer th:replace="view/Cabecera :: footer"></footer>
+</body>
+</html>
+
+                 <!--         <select ng-model="data.model" class="selectpicker" >
+                            <option ng-repeat="option in listaDocumento" value="{{option.clve1}}">{{option.valor1}}</option>
+                        </select>-->

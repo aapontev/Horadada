@@ -5,35 +5,33 @@
 <body>
 
 <header th:replace="view/Cabecera :: cabecera"></header>
-<legend class="text-center header">DATOS DE LOS CLIENTES</legend>
-<table ng-table="tableclipParams" class="table table-striped">
-    <tr ng-repeat="user in $data">
-        <td title="'ID CLIENTE'" filter="{ idPersona : 'number' }" sortable="'idCliente'">
-            <a ng-href="#/mantenimientoCliente">
-                {{user.idCliente}}
-            </a>
-        </td>       
-        <td title="'RUC'" filter="{ ruc : 'number' }" sortable="'ruc'">
-            {{user.ruc}}
-        </td>
-        <td title="'RAZON SOCIAL'" filter="{ razonSocial : 'text'}">
-            {{user.razonSocial}}
-        </td>
-        <td title="'DIRECCION'" filter="{ direccion : 'text'}">
-            {{user.direccion}}
-        </td>
-        <td>
-            <button type="button" class="btn btn-default">
-                <span class="glyphicon glyphicon-pencil"></span>
-            </button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-default">
-                <span class="glyphicon glyphicon-trash"></span>
-            </button>
-        </td>
-      </tr>
-</table>
+
+	<div class="container">
+
+		<br />
+		<div class="panel panel-default">
+			<div class="panel-heading"></div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>NOMBRE</th>
+						<th>APELLIDO</th>
+						<th>TELEFONO</th>
+						<th>CIUDAD</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cl : ${cli}">
+						<td th:text="${cl.primernombre}"></td>
+						<td th:text="${cl.primerapellido}"></td>
+						<td th:text="${cl.telefono}"></td>
+						<td th:text="${cl.direccion}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 
 <footer th:replace="view/Cabecera :: footer"></footer>
 

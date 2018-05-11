@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.projecto.Horadada.Entity.Usuarios;
+
+import com.projecto.Horadada.Model.Usuarios;
 
 @Controller
 public class LoginController {	

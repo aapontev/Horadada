@@ -1,4 +1,4 @@
-package com.projecto.Horadada.Entity;
+package com.projecto.Horadada.Model;
 
 public class Usuarios {
 

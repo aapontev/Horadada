@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 
 /**
@@ -22,7 +21,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="USUARIO"
     ,schema="HORADADA"
-    , uniqueConstraints = @UniqueConstraint(columnNames="USUARIO") 
+   // , uniqueConstraints = @UniqueConstraint(columnNames="USUARIO") 
 )
 public class Usuario  implements java.io.Serializable {
 
