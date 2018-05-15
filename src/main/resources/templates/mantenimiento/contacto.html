@@ -10,9 +10,10 @@
 		<br />
 		<div class="panel panel-default">
 			<div class="panel-heading"></div>
-			<table class="table">
+			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
+						<th>CODIGO PERSONA</th>
 						<th>NOMBRE</th>
 						<th>APELLIDO</th>
 						<th>TELEFONO</th>
@@ -22,6 +23,8 @@
 				</thead>
 				<tbody>
 					<tr th:each="con : ${cont}">
+						<td><a href="#" th:href="@{/reporte/}"
+							th:text="${con.idpersona}"> </a></td>
 						<td th:text="${con.primernombre}"></td>
 						<td th:text="${con.primerapellido}"></td>
 						<td th:text="${con.telefono}"></td>

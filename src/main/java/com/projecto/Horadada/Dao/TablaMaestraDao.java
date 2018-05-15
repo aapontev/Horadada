@@ -14,6 +14,6 @@ public interface TablaMaestraDao extends CrudRepository<Tablamaestra, Serializab
 
 	public abstract List<Tablamaestra> findByIdtablamaestra(String idTabla);
 	
-	@Query(value="select  distinct descripcion from tablamaestra",nativeQuery=true)
-	public abstract List<String> getdescripcion();
+	@Query(value="select  distinct t.idtablamaestra from tablamaestra t order by t.idtablamaestra asc" ,nativeQuery=true)
+	public abstract List<String> gettablamaestra();
 }

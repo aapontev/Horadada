@@ -1,12 +1,12 @@
-function initMap() {
-    
-    var uluru = { lat: parseFloat(-11.978158), lng: parseFloat(-77.016725) };
-        var map = new google.maps.Map(document.getElementById('lienzoMapa'), {
-            zoom: 18,
-            center: uluru
+
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
         });
         var marker = new google.maps.Marker({
-            position: uluru,
-            map: map
+          position: uluru,
+          map: map
         });
-    }
+      }

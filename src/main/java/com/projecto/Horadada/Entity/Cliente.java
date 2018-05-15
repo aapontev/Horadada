@@ -1,8 +1,7 @@
 package com.projecto.Horadada.Entity;
-// Generated 02-mar-2018 16:56:03 by Hibernate Tools 4.3.1
+// Generated 12-may-2018 11:30:17 by Hibernate Tools 4.3.1
 
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -11,8 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -24,20 +21,19 @@ import javax.persistence.Table;
 @Table(name="CLIENTE"
     ,schema="HORADADA"
 )
-public class Cliente  implements Serializable {
-   
-	/**
+public class Cliente  implements java.io.Serializable {
+
+
+     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private int idcliente;
-     private Persona persona;
      private String ruc;
      private String razonsocial;
-     private String direccion;
-     @OneToMany(fetch=FetchType.EAGER, mappedBy="cliente")
      private Set<Despacho> despachos = new HashSet<Despacho>(0);
      private Set<Factura> facturas = new HashSet<Factura>(0);
+     private Set<Contacto> contactos = new HashSet<Contacto>(0);
      private Set<Valorizacion> valorizacions = new HashSet<Valorizacion>(0);
      private Set<Solicitud> solicituds = new HashSet<Solicitud>(0);
 
@@ -45,28 +41,31 @@ public class Cliente  implements Serializable {
     }
 
 	
-    public Cliente(int idcliente, Persona persona) {
+    public Cliente(int idcliente) {
         this.idcliente = idcliente;
-        this.persona = persona;
     }
-    public Cliente(int idcliente, Persona persona, String ruc, String razonsocial, String direccion, Set<Despacho> despachos, Set<Factura> facturas, Set<Valorizacion> valorizacions, Set<Solicitud> solicituds) {
+    public Cliente(int idcliente, String ruc, String razonsocial, Set<Despacho> despachos, Set<Factura> facturas, Set<Contacto> contactos, Set<Valorizacion> valorizacions, Set<Solicitud> solicituds) {
        this.idcliente = idcliente;
-       this.persona = persona;
        this.ruc = ruc;
        this.razonsocial = razonsocial;
-       this.direccion = direccion;
        this.despachos = despachos;
        this.facturas = facturas;
+       this.contactos = contactos;
        this.valorizacions = valorizacions;
        this.solicituds = solicituds;
     }
    
-     @Id     
+     @Id 
+	
+    @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "cliente_seq") @SequenceGenerator (
+	
+                    name = "cliente_seq" ,
+	
+                    sequenceName = "cliente_sequence" ,
+	
+                    allocationSize = 1 )
+    
     @Column(name="IDCLIENTE", unique=true, nullable=false, precision=10, scale=0)
-     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "cliente_seq") @SequenceGenerator ( 
- 		    name = "cliente_seq" , 
- 		    sequenceName = "cliente_sequence" , 
- 		    allocationSize = 1 )
     public int getIdcliente() {
         return this.idcliente;
     }
@@ -75,15 +74,6 @@ public class Cliente  implements Serializable {
         this.idcliente = idcliente;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="IDPERSONA", nullable=false)
-    public Persona getPersona() {
-        return this.persona;
-    }
-    
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
     
     @Column(name="RUC", length=11)
     public String getRuc() {
@@ -104,17 +94,8 @@ public class Cliente  implements Serializable {
         this.razonsocial = razonsocial;
     }
 
-    
-    @Column(name="DIRECCION", length=50)
-    public String getDireccion() {
-        return this.direccion;
-    }
-    
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 
-@OneToMany(fetch=FetchType.EAGER, mappedBy="cliente")   
+@OneToMany(fetch=FetchType.EAGER, mappedBy="cliente")
     public Set<Despacho> getDespachos() {
         return this.despachos;
     }
@@ -122,7 +103,7 @@ public class Cliente  implements Serializable {
     public void setDespachos(Set<Despacho> despachos) {
         this.despachos = despachos;
     }
-   
+
 @OneToMany(fetch=FetchType.EAGER, mappedBy="cliente")
     public Set<Factura> getFacturas() {
         return this.facturas;
@@ -130,6 +111,15 @@ public class Cliente  implements Serializable {
     
     public void setFacturas(Set<Factura> facturas) {
         this.facturas = facturas;
+    }
+
+@OneToMany(fetch=FetchType.EAGER, mappedBy="cliente")
+    public Set<Contacto> getContactos() {
+        return this.contactos;
+    }
+    
+    public void setContactos(Set<Contacto> contactos) {
+        this.contactos = contactos;
     }
 
 @OneToMany(fetch=FetchType.EAGER, mappedBy="cliente")
@@ -149,7 +139,9 @@ public class Cliente  implements Serializable {
     public void setSolicituds(Set<Solicitud> solicituds) {
         this.solicituds = solicituds;
     }
- 	
+
+
+
 
 }
 

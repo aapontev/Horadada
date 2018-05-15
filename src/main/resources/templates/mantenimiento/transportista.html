@@ -13,19 +13,20 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>NOMBRE</th>
-						<th>APELLIDO</th>
-						<th>TELEFONO</th>
-						<th>CIUDAD</th>
+						<th>CODIGO PERSONA</th>
+						<th>Licencia</th>
+						<th>categoria</th>
+						<th>situacion</th>
 
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="tra : ${transport}">
-						<td th:text="${tra.primernombre}"></td>
-						<td th:text="${tra.primerapellido}"></td>
-						<td th:text="${tra.telefono}"></td>
-						<td th:text="${tra.direccion}"></td>
+						<td><a href="#" th:href="@{/reporte/}"
+							th:text="${tra.persona.idpersona}"> </a></td>
+						<td th:text="${tra.nrolicencia}"></td>
+						<td th:text="${tra.catlicencia}"></td>
+						<td th:text="${tra.idsituaciontransportista}"></td>
 					</tr>
 				</tbody>
 			</table>

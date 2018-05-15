@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="view/Cabecera :: head"></head>
+
+<body>
+
+<header th:replace="view/Cabecera :: cabecera"></header>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Contact Form</h1>
+			<br />
+			 <form action="#" th:action="@{/contacto/addcontacto}" th:object="${contactoModel}" method="post">  
+			    <input type="hidden" th:field="*{id}"/>
+			    Nombre :	
+				<input type="text" class="form-control" th:field="*{nombre}"/>
+				 <br/>
+				 Apellido :
+				<input type="text" class="form-control" th:field="*{apellido}"/> 
+				<br/> 
+				Telefono :
+				<input type="text" class="form-control" th:field="*{telefono}"/> 
+				<br/>
+				Ciudad :
+		    	<input type="text" class="form-control" th:field="*{ciudad}"/>   
+		    	<br/>
+		    	<br/>   		    	
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					Accept
+				</button>
+				<br/> 
+			</form>
+
+			<a href="#" th:href="@{/contacto/cancel}">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					salir
+				</button>
+			</a>
+		</div>
+	</div>
+
+<footer th:replace="view/Cabecera :: footer"></footer>
+
+</body>
+</html>

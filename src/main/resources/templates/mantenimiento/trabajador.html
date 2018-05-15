@@ -4,15 +4,16 @@
 
 <body>
 
-<header th:replace="view/Cabecera :: cabecera"></header>
+	<header th:replace="view/Cabecera :: cabecera"></header>
 	<div class="container">
 
 		<br />
 		<div class="panel panel-default">
 			<div class="panel-heading"></div>
-			<table class="table">
+			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
+						<th>CODIGO PERSONA</th>
 						<th>NOMBRE</th>
 						<th>APELLIDO</th>
 						<th>TELEFONO</th>
@@ -22,6 +23,8 @@
 				</thead>
 				<tbody>
 					<tr th:each="tra : ${traba}">
+						<td><a href="#" th:href="@{/reporte/}"
+							th:text="${tra.idpersona}"> </a></td>
 						<td th:text="${tra.primernombre}"></td>
 						<td th:text="${tra.primerapellido}"></td>
 						<td th:text="${tra.telefono}"></td>
@@ -32,7 +35,7 @@
 		</div>
 	</div>
 
-<footer th:replace="view/Cabecera :: footer"></footer>
+	<footer th:replace="view/Cabecera :: footer"></footer>
 
 </body>
 </html>

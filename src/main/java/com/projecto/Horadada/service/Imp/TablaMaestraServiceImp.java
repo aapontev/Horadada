@@ -24,12 +24,9 @@ public class TablaMaestraServiceImp implements TablaMaestraService{
 	}
 
 	@Override
-	public List<String> getdescripcion() {
-		List<String> des= tablaMaestraDao.getdescripcion();
+	public List<String> gettablamaestra() {
+		List<String> des= tablaMaestraDao.gettablamaestra();
 		return des;
 	}
-	
-
-
 	
 }

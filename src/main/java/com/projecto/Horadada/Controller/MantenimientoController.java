@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.projecto.Horadada.Constantes.ConstantesMaestra;
+import com.projecto.Horadada.Entity.Tablamaestra;
+import com.projecto.Horadada.service.ClienteService;
+import com.projecto.Horadada.service.ContactoService;
 import com.projecto.Horadada.service.PersonaService;
 import com.projecto.Horadada.service.TablaMaestraService;
+import com.projecto.Horadada.service.TransportistaService;
 
 @Controller
 @RequestMapping("/mantenimiento")
@@ -23,12 +27,24 @@ public class MantenimientoController {
 	private ConstantesMaestra cm;
 	
 	@Autowired
+	@Qualifier("transportistaServicImp")
+	private TransportistaService transportService;
+	
+	@Autowired
+	@Qualifier("clienteServiceImp")
+	private ClienteService clienteService;
+	
+	@Autowired
+	@Qualifier("contactoServiceImp")
+	private ContactoService contactoService;
+	
+	@Autowired
 	@Qualifier("tablaMaestraServiceImp")
 	private TablaMaestraService tablaService;
 	@GetMapping("/cliente")
 	public ModelAndView Cliente() {
 		ModelAndView mav =new ModelAndView("mantenimiento/cliente");
-		mav.addObject("cli",personaService.findByTipopersona(cm.TIPOPERCLIEN));
+		mav.addObject("cli",clienteService.findByAll());
 		return mav;
 	}
 	
@@ -49,7 +65,7 @@ public class MantenimientoController {
 	@GetMapping("/transportista")
 	public ModelAndView Transportista() {
 		ModelAndView mav = new ModelAndView("mantenimiento/transportista");
-		mav.addObject("transport", personaService.findByTipopersona(cm.TIPOPERtRANSPORT));
+		mav.addObject("transport", transportService.findByAll());
 		return mav;
 	}
 	@GetMapping("/persona")
@@ -58,9 +74,10 @@ public class MantenimientoController {
 		mav.addObject("transport", personaService.findByTipopersona(cm.TIPOPERtRANSPORT));
 		return mav;
 	}
+	
 	@GetMapping("/tablaMaestra")
 	public ModelAndView TablaMaestra() {
-		List<String> valMa = tablaService.getdescripcion();
+		List<String> valMa = tablaService.gettablamaestra();
 		ModelAndView mav = new ModelAndView("mantenimiento/tablaMaestra");
 		mav.addObject("valMa", valMa);
 		return mav;
