@@ -24,4 +24,10 @@ public class PersonaServiceImp implements PersonaService{
 		return tipPer;
 	}
 
+	@Override
+	public Persona findByidPersona(int id) {
+		Persona per = personaDao.findByidPersona(id);
+		return per;
+	}
+
 }

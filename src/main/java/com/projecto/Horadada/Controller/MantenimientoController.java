@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.projecto.Horadada.Constantes.ConstantesMaestra;
-import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.service.ClienteService;
 import com.projecto.Horadada.service.ContactoService;
 import com.projecto.Horadada.service.PersonaService;

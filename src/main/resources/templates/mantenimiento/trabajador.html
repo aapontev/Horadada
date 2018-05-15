@@ -17,18 +17,18 @@
 						<th>NOMBRE</th>
 						<th>APELLIDO</th>
 						<th>TELEFONO</th>
-						<th>CIUDAD</th>
+						<th></th>
 
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="tra : ${traba}">
-						<td><a href="#" th:href="@{/reporte/}"
+						<td><a href="#" th:href="@{/control/personaform?id=__${tra.idpersona}__}"
 							th:text="${tra.idpersona}"> </a></td>
 						<td th:text="${tra.primernombre}"></td>
 						<td th:text="${tra.primerapellido}"></td>
 						<td th:text="${tra.telefono}"></td>
-						<td th:text="${tra.direccion}"></td>
+												
 					</tr>
 				</tbody>
 			</table>
