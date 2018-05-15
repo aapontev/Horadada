@@ -10,7 +10,8 @@
 		<div class="container">
 			<h1>FORMULARIO CLIENTE</h1>
 			<br />
-			<form action="#"  th:object="${cliente}" >  
+			<form action="#" th:action="@{/cliente/addcliente}"  th:object="${cliente}" method="post" >
+			<input type="hidden" th:field="*{idcliente}"/>  
 			    RAZON SOCIAL :	
 				<input type="text" class="form-control" th:field="*{razonsocial}"/>
 				 <br/>
@@ -32,8 +33,6 @@
 					Accept
 				</button>	
 			
-				<br>			
-				<br/> 
 		</form>
 		</div>
 	</div>

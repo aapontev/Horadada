@@ -24,15 +24,21 @@ public class ClienteServiceImp implements ClienteService{
 	}
 
 	@Override
-	public void save(Cliente cliente) {
-		clienteDao.save(cliente);
-		
+	public Cliente save(Cliente cliente) {
+		Cliente clie = clienteDao.save(cliente);
+		return clie;
 	}
 
 	@Override
 	public Cliente findByidcliente(int idcliente) {
 		Cliente cliente = clienteDao.findByidcliente(idcliente);
 		return cliente;
+	}
+
+	@Override
+	public void delete(int idcliente) {
+		clienteDao.deleteById(idcliente);
+		
 	}
 
 }
