@@ -8,10 +8,9 @@
 
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Contact Form</h1>
+			<h1>FORMULARIO PERSONA</h1>
 			<br />
-			
-			    <input type="hidden" th:field="*{id}"/>
+			<form action="#"  th:object="${persona}" >  
 			    Nombre :	
 				<input type="text" class="form-control" th:field="*{primernombre}"/>
 				 <br/>
@@ -24,13 +23,24 @@
 				Ciudad :
 		    	<input type="text" class="form-control" th:field="*{direccion}"/>   
 		    	<br/>
+				TIPO PERSONA :
+		    	<input type="text" class="form-control" th:field="*{tipopersona}" id="tipoPersona"/>   
+		    	<br/>
 		    	<br/>   		    	
 				<button class="btn btn-lg btn-primary btn-block" type="submit">
 					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 					Accept
+				</button>	
+			
+				<br>					
+				<!--  <a href="#" th:action="@{/control/atras}">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					salir
 				</button>
+			</a>	-->
 				<br/> 
-
+		</form>
 		</div>
 	</div>
 

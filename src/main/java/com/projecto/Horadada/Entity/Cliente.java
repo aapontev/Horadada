@@ -31,6 +31,9 @@ public class Cliente  implements java.io.Serializable {
 	private int idcliente;
      private String ruc;
      private String razonsocial;
+     private String direccionfiscal;
+     private String telefono;
+     private String correo;
      private Set<Despacho> despachos = new HashSet<Despacho>(0);
      private Set<Factura> facturas = new HashSet<Factura>(0);
      private Set<Contacto> contactos = new HashSet<Contacto>(0);
@@ -44,7 +47,7 @@ public class Cliente  implements java.io.Serializable {
     public Cliente(int idcliente) {
         this.idcliente = idcliente;
     }
-    public Cliente(int idcliente, String ruc, String razonsocial, Set<Despacho> despachos, Set<Factura> facturas, Set<Contacto> contactos, Set<Valorizacion> valorizacions, Set<Solicitud> solicituds) {
+    public Cliente(int idcliente, String ruc, String razonsocial, Set<Despacho> despachos, Set<Factura> facturas, Set<Contacto> contactos, Set<Valorizacion> valorizacions, Set<Solicitud> solicituds,String direccionfiscal,String telefono,String correo) {
        this.idcliente = idcliente;
        this.ruc = ruc;
        this.razonsocial = razonsocial;
@@ -53,6 +56,9 @@ public class Cliente  implements java.io.Serializable {
        this.contactos = contactos;
        this.valorizacions = valorizacions;
        this.solicituds = solicituds;
+       this.direccionfiscal = direccionfiscal;
+       this.telefono = telefono;
+       this.correo = correo;
     }
    
      @Id 
@@ -139,6 +145,36 @@ public class Cliente  implements java.io.Serializable {
     public void setSolicituds(Set<Solicitud> solicituds) {
         this.solicituds = solicituds;
     }
+
+    @Column(name="DIRECCIONFISCAL", length=40)
+	public String getDireccionfiscal() {
+		return direccionfiscal;
+	}
+
+
+	public void setDireccionfiscal(String direccionfiscal) {
+		this.direccionfiscal = direccionfiscal;
+	}
+
+	@Column(name="TELEFONO", length=40)
+	public String getTelefono() {
+		return telefono;
+	}
+
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	@Column(name="CORREO", length=605)
+	public String getCorreo() {
+		return correo;
+	}
+
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
 
 
 

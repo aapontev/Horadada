@@ -19,13 +19,26 @@ public class CrearController {
 	private PersonaService personaService;
 
 	@GetMapping("/personaform")
-	public String redirectContactForm(@RequestParam(name="id",required=false)int id,
+	public String redirectPersonaForm(@RequestParam(name="idpersona",required=false)int id,
 			Model model) {
 		Persona per = new Persona();
 		if(id != 0) {
 			 per = personaService.findByidPersona(id);		
 		}
-		model.addAttribute("contactoModel",per);
+		model.addAttribute("persona",per);
 		return "crearEditar/persona";
+	}
+	
+	@GetMapping("/atras")
+	public String redirectPersonaAtras(@RequestParam(name="tipopersona")int id) {
+		String tipPer = null ;
+		if(id == 1) {  ///transportista
+			tipPer= "redirect:/mantenimiento/transportista";
+		}else if (id == 2) {
+			tipPer= "redirect:/mantenimiento/trabajador";
+		}else if (id == 3) {
+			tipPer= "redirect:/mantenimiento/trabajador";
+		}
+		return tipPer;
 	}
 }

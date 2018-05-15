@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="view/Cabecera :: head"></head>
+
+<body>
+
+<header th:replace="view/Cabecera :: cabecera"></header>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>FORMULARIO CLIENTE</h1>
+			<br />
+			<form action="#"  th:object="${cliente}" >  
+			    RAZON SOCIAL :	
+				<input type="text" class="form-control" th:field="*{razonsocial}"/>
+				 <br/>
+				 RUC :
+				<input type="text" class="form-control" th:field="*{ruc}"/> 
+				<br/> 
+				TELEFONO :
+				<input type="text" class="form-control" th:field="*{telefono}"/> 
+				<br/>
+				DIRECCION FISCAL :
+		    	<input type="text" class="form-control" th:field="*{direccionfiscal}"/>   
+		    	<br/>
+				CORREO :
+		    	<input type="text" class="form-control" th:field="*{correo}"/>   
+		    	<br/>
+		    	<br/>   		    	
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					Accept
+				</button>	
+			
+				<br>			
+				<br/> 
+		</form>
+		</div>
+	</div>
+
+<footer th:replace="view/Cabecera :: footer"></footer>
+
+</body>
+</html>

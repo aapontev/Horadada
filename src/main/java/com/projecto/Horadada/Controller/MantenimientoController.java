@@ -40,6 +40,7 @@ public class MantenimientoController {
 	@Autowired
 	@Qualifier("tablaMaestraServiceImp")
 	private TablaMaestraService tablaService;
+	
 	@GetMapping("/cliente")
 	public ModelAndView Cliente() {
 		ModelAndView mav =new ModelAndView("mantenimiento/cliente");
@@ -82,12 +83,3 @@ public class MantenimientoController {
 		return mav;
 	}
 }
-
-/*@GetMapping("/showcontactos")
-public ModelAndView showContactos() {
-	ModelAndView mav = new ModelAndView(ConstantView.CONTACTS);
-	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
-	mav.addObject("username",user.getUsername());
-	mav.addObject("contactos",contactoService.listAllContactos());
-	return mav;
-}*/

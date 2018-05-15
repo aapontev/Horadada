@@ -12,5 +12,5 @@ import com.projecto.Horadada.Entity.Persona;
 public interface PersonaDao extends JpaRepository<Persona, Serializable>{
 	
 	public abstract List<Persona> findByTipopersona(int id);
-	public abstract Persona findByidPersona(int id);
+	public abstract Persona findPersonaByidpersona(int id);
 }

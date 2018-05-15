@@ -22,7 +22,7 @@
 				</thead>
 				<tbody>
 					<tr th:each="tra : ${transport}">
-						<td><a href="#" th:href="@{/reporte/}"
+						<td><a href="#" th:href="@{/control/personaform?idpersona=__${tra.persona.idpersona}__}"
 							th:text="${tra.persona.idpersona}"> </a></td>
 						<td th:text="${tra.nrolicencia}"></td>
 						<td th:text="${tra.catlicencia}"></td>

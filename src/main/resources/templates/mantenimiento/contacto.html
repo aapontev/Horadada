@@ -23,7 +23,7 @@
 				</thead>
 				<tbody>
 					<tr th:each="con : ${cont}">
-						<td><a href="#" th:href="@{/reporte/}"
+						<td><a href="#" th:href="@{/control/personaform?idpersona=__${con.idpersona}__}"
 							th:text="${con.idpersona}"> </a></td>
 						<td th:text="${con.primernombre}"></td>
 						<td th:text="${con.primerapellido}"></td>

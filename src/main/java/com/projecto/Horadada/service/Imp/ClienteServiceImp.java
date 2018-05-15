@@ -23,4 +23,16 @@ public class ClienteServiceImp implements ClienteService{
 		return cli;
 	}
 
+	@Override
+	public void save(Cliente cliente) {
+		clienteDao.save(cliente);
+		
+	}
+
+	@Override
+	public Cliente findByidcliente(int idcliente) {
+		Cliente cliente = clienteDao.findByidcliente(idcliente);
+		return cliente;
+	}
+
 }

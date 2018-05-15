@@ -26,7 +26,7 @@ public class PersonaServiceImp implements PersonaService{
 
 	@Override
 	public Persona findByidPersona(int id) {
-		Persona per = personaDao.findByidPersona(id);
+		Persona per = personaDao.findPersonaByidpersona(id);
 		return per;
 	}
 
