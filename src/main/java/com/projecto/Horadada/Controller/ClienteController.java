@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.projecto.Horadada.Entity.Cliente;
 import com.projecto.Horadada.service.ClienteService;
+import com.projecto.Horadada.service.ContactoService;
 
 @Controller
 @RequestMapping("/cliente")
@@ -19,6 +20,10 @@ public class ClienteController {
 	@Autowired
 	@Qualifier("clienteServiceImp")
 	private ClienteService clienteService;
+	
+	@Autowired
+	@Qualifier("contactoServiceImp")
+	private ContactoService contactoService;
 
 	@GetMapping("/clienteform")
 	public String redirectClienteForm(@RequestParam(name="id",required=false )int id,
@@ -32,7 +37,7 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/addcliente")
-	public String addCliente (@ModelAttribute(name="cliente") Cliente cliente,Model model) {
+	public String addCliente (@ModelAttribute(name="cliente")Cliente cliente,Model model) {
 		if(null != clienteService.save(cliente)) {
 			model.addAttribute("result", 1);
 		}else {			
@@ -43,8 +48,11 @@ public class ClienteController {
 	}
 	
 	@GetMapping("/borrarcliente")
-	public String borrarCliente(@RequestParam(name="id",required=true)int id) {
-		clienteService.delete(id);
+	public String borrarCliente(@RequestParam(name="id",required=true)int id,Model model) {
+		int cont = contactoService.findbyidcliente(id);
+		if (cont == 0) {		
+			clienteService.delete(id);
+		}
 		return "redirect:/mantenimiento/cliente";
 	}
 }

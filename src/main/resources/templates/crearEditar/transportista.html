@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="view/Cabecera :: head"></head>
+
+<body>
+
+<header th:replace="view/Cabecera :: cabecera"></header>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>FORMULARIO TRANSPORTISTA</h1>
+			<br />
+			<form action="#" th:action="@{/transportista/addtransportista}"  th:object="${transportista}" method="post" >
+			<input type="hidden" th:field="*{idtransportista}"/>  
+				 NOMBRE CLIENTE :	
+				<input type="text" class="form-control" th:field="*{persona.primernombre}"/>
+				 <br/> 
+				 CODIGO PERSONA :	
+				<input type="text" class="form-control" th:field="*{persona.idpersona}"/>
+				 <br/>   
+				 CATEGORIA LICENCIA:	
+				<input type="text" class="form-control" th:field="*{catlicencia}"/>
+				 <br/>   
+				 SITUACION :	
+				<input type="text" class="form-control" th:field="*{idsituaciontransportista}"/>
+				 <br/>   
+				 NRO LICENCIA :	
+				<input type="text" class="form-control" th:field="*{nrolicencia}"/>
+				 <br/> 
+		    	<br/>   		    	
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					Accept
+				</button>	
+			
+		</form>
+		</div>
+	</div>
+
+<footer th:replace="view/Cabecera :: footer"></footer>
+
+</body>
+</html>

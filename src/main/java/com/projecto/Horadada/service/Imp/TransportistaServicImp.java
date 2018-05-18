@@ -10,7 +10,7 @@ import com.projecto.Horadada.Dao.TransportistaDao;
 import com.projecto.Horadada.Entity.Transportista;
 import com.projecto.Horadada.service.TransportistaService;
 
-@Service("transportistaServicImp")
+@Service("transportistaServiceImp")
 public class TransportistaServicImp implements TransportistaService {
 
 	@Autowired
@@ -20,9 +20,28 @@ public class TransportistaServicImp implements TransportistaService {
 	
 	@Override
 	public List<Transportista> findByAll() {
-		// TODO Auto-generated method stub
 		List<Transportista> tra = (List<Transportista>) transportistaDao.findAll();
 		return tra;
+	}
+
+
+	@Override
+	public Transportista findByidtransportista(int id) {
+		Transportista transportista = transportistaDao.findByidtransportista(id);
+		return transportista;
+	}
+
+
+	@Override
+	public Transportista save(Transportista transportista) {
+		Transportista transpor= transportistaDao.save(transportista);
+		return transpor;
+	}
+
+
+	@Override
+	public void delete(int id) {
+		transportistaDao.deleteById(id);		
 	}
 
 }

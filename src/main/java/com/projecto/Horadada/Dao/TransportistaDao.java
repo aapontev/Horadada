@@ -10,4 +10,5 @@ import com.projecto.Horadada.Entity.Transportista;
 @Repository("transportistaDao")
 public interface TransportistaDao extends CrudRepository<Transportista, Serializable> {
 
+	public abstract Transportista findByidtransportista(int id);
 }

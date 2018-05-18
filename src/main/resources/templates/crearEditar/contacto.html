@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="view/Cabecera :: head"></head>
+
+<body>
+
+<header th:replace="view/Cabecera :: cabecera"></header>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>FORMULARIO CONTACTO</h1>
+			<br />
+			<form action="#" th:action="@{/contacto/addcontacto}"  th:object="${contacto}" method="post" >
+			<input type="hidden" th:field="*{idcontacto}"/>  
+			    CODIGO CLIENTE :	
+				<input type="text" class="form-control" th:field="*{cliente.idcliente}"/>
+				 <br/>
+				 NOMBRE CLIENTE :	
+				<input type="text" class="form-control" th:field="*{persona.primernombre}"/>
+				 <br/>
+				 CODIGO PERSONA :
+				<input type="text" class="form-control" th:field="*{persona.idpersona}"/> 
+				<br/> 
+		    	<br/>   		    	
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					Accept
+				</button>	
+			
+		</form>
+		</div>
+	</div>
+
+<footer th:replace="view/Cabecera :: footer"></footer>
+
+</body>
+</html>

@@ -1,7 +1,4 @@
-#lienzoMapa 
-{
-    width:700px;
-    height:600px; 
-    margin: 0 auto; 
-    border: 5px solid; 
+#map {
+	width: 700px;
+	height: 400px;
 }

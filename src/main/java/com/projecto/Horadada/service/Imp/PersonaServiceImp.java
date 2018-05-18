@@ -30,4 +30,10 @@ public class PersonaServiceImp implements PersonaService{
 		return per;
 	}
 
+	@Override
+	public Persona save(Persona persona) {
+		Persona per = personaDao.save(persona);
+		return per;
+	}
+
 }

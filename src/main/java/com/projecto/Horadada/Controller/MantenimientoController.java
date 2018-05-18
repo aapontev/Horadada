@@ -26,7 +26,7 @@ public class MantenimientoController {
 	private ConstantesMaestra cm;
 	
 	@Autowired
-	@Qualifier("transportistaServicImp")
+	@Qualifier("transportistaServiceImp")
 	private TransportistaService transportService;
 	
 	@Autowired
@@ -51,7 +51,8 @@ public class MantenimientoController {
 	@GetMapping("/contacto")
 	public ModelAndView Contacto() {
 		ModelAndView mav =new ModelAndView("mantenimiento/contacto");
-		mav.addObject("cont",personaService.findByTipopersona(cm.TIPOPERCLIEN));
+		//mav.addObject("cont",personaService.findByTipopersona(cm.TIPOPERCLIEN));
+		mav.addObject("cont",contactoService.findByAll());
 		return mav;
 	}
 	

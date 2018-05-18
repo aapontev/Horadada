@@ -21,6 +21,29 @@ public class ContactoServiceImp implements ContactoService{
 		return con;
 	}
 
-	
+	@Override
+	public int findbyidcliente(int id) {
+		int con = contactoDao.getclienteIdcliente(id);
+		return con;
+	}
+
+	@Override
+	public Contacto save(Contacto contacto) {
+		Contacto cont = contactoDao.save(contacto);
+		return cont;
+	}
+
+	@Override
+	public void delete(int id) {
+		contactoDao.deleteById(id);
+	}
+
+	@Override
+	public Contacto findByidcontacto(int id) {
+		Contacto contacto = contactoDao.findByidcontacto(id);
+		return contacto;
+	}
+
+
 
 }

@@ -8,4 +8,5 @@ public interface PersonaService {
 
 	public abstract List<Persona> findByTipopersona(int id);
 	public abstract Persona findByidPersona(int id);
+	public abstract Persona save(Persona persona);
 }

@@ -10,13 +10,20 @@
 		<div class="container">
 			<h1>FORMULARIO PERSONA</h1>
 			<br />
-			<form action="#"  th:object="${persona}" >  
+			<form action="#" th:action="@{/persona/addpersona}"  th:object="${persona}" method="post">  
+			<input type="hidden" th:field="*{idpersona}"/> 
 			    Nombre :	
 				<input type="text" class="form-control" th:field="*{primernombre}"/>
 				 <br/>
 				 Apellido :
 				<input type="text" class="form-control" th:field="*{primerapellido}"/> 
 				<br/> 
+				Tipo documento :	
+				<input type="text" class="form-control" th:field="*{codtipodocumento}"/>
+				 <br/>
+				 Numero documento :	
+				<input type="text" class="form-control" th:field="*{numerodocumento}"/>
+				 <br/>
 				Telefono :
 				<input type="text" class="form-control" th:field="*{telefono}"/> 
 				<br/>
@@ -24,7 +31,13 @@
 		    	<input type="text" class="form-control" th:field="*{direccion}"/>   
 		    	<br/>
 				TIPO PERSONA :
-		    	<input type="text" class="form-control" th:field="*{tipopersona}" id="tipoPersona"/>   
+		    	<input type="text" class="form-control" th:field="*{tipopersona}"/>   
+		    	<br/>
+		    	Correo electronico :
+		    	<input type="email" class="form-control" th:field="*{correoelectronico}"/>   
+		    	<br/>
+		    	fecha nacimiento :
+		    	<input type="text" class="form-control" th:field="*{fechanacimiento}" value="15/05/2018"/>   
 		    	<br/>
 		    	<br/>   		    	
 				<button class="btn btn-lg btn-primary btn-block" type="submit">
