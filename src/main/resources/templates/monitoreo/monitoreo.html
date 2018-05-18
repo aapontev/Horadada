@@ -41,18 +41,20 @@
 								<form class="form-horizontal">
 									<fieldset>
 										<legend class="text-center header">DETALLES</legend>
+										<input type="hidden" th:id="latitud" id="latitud" th:field="${ubi.latitud}"/>
+										<input type="hidden" th:id="longitud" id="longitud" th:field="${ubi.longitud}"/>
 										<div class="input-group">
 											<span class="input-group-addon"><i
 												class="glyphicon glyphicon-home"></i></span> <input disabled
 												id="fname" name="name" type="text" placeholder="DIRECCION"
-												class="nav-tabs form-control" th:text="${ubi.direccion}">
+												class="nav-tabs form-control" th:field="${ubi.direccion}">
 										</div>
 										<br />
 										<div class="input-group">
 											<span class="input-group-addon"><i
 												class="glyphicon glyphicon-time"></i></span> <input disabled
 												id="fname" name="name" type="text" placeholder="HORA"
-												class="nav-tabs form-control" th:text="${ubi.hora}">
+												class="nav-tabs form-control" th:field="${ubi.hora}">
 										</div>
 									</fieldset>
 								</form>

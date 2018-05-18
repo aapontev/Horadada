@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="view/Cabecera :: head"></head>
+
+<body>
+
+<header th:replace="view/Cabecera :: cabecera"></header>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>FORMULARIO CLIENTE</h1>
+			<br />
+			<form action="#" th:action="@{/documentacion/addsolicitud}"  th:object="${solicitud}" method="post" >
+			<input type="hidden" th:field="*{idsolicitud}"/>  
+			    FECHA RECEPCION :	
+				<input placeholder="dd/mm/aaaa" type="text" class="form-control" th:field="*{fecharecepcion}"/>
+				 <br/>
+				 REQUERIMIENTO :
+				<input type="text" class="form-control" th:field="*{requerimiento}"/> 
+				<br/> 
+				CLIENTE :
+				<input type="text" class="form-control" th:field="*{cliente.idcliente}"/> 
+		    	<br/>   		    	
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					Accept
+				</button>	
+			
+		</form>
+		</div>
+	</div>
+
+<footer th:replace="view/Cabecera :: footer"></footer>
+
+</body>
+</html>
