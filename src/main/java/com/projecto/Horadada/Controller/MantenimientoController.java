@@ -38,7 +38,7 @@ public class MantenimientoController {
 	private ContactoService contactoService;
 	
 	@Autowired
-	@Qualifier("tablaMaestraServiceImp")
+	@Qualifier("tablamaestraserviceimp")
 	private TablaMaestraService tablaService;
 	
 	@GetMapping("/cliente")

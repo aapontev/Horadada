@@ -10,7 +10,7 @@ import com.projecto.Horadada.Dao.TablaMaestraDao;
 import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.service.TablaMaestraService;
 
-@Service("tablaMaestraServiceImp")
+@Service("tablamaestraserviceimp")
 public class TablaMaestraServiceImp implements TablaMaestraService{
 
 	@Autowired
@@ -19,7 +19,7 @@ public class TablaMaestraServiceImp implements TablaMaestraService{
 
 	@Override
 	public List<Tablamaestra> findByIdtablamaestra(String idTabla) {
-		List<Tablamaestra> tabId = tablaMaestraDao.findByIdtablamaestra(idTabla);
+		List<Tablamaestra> tabId = tablaMaestraDao.findByidtablamaestra(idTabla);
 		return tabId;
 	}
 

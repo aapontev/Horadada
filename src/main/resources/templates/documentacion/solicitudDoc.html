@@ -17,6 +17,7 @@
 						<th>CLIENTE</th>
 						<th>REQUERIMIENTO</th>
 						<th>FECHA RECEPCION</th>
+						<th>ESTADO</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -26,6 +27,7 @@
 						<td th:text="${soli.cliente.razonsocial}"></td>
 						<td th:text="${soli.requerimiento}"></td>
 						<td th:text="${soli.fecharecepcion}"></td>
+						<td th:text="${soli.estado}"></td>
 						 <td><a href="#"
 							th:href="@{/documentacion/solicitudform?id=__${soli.idsolicitud}__}">
 								<button type="button" class="btn btn-default">

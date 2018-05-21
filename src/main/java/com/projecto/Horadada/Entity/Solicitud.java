@@ -39,6 +39,7 @@ public class Solicitud  implements Serializable {
      private Cliente cliente;
      private Date fecharecepcion;
      private String requerimiento;
+     private int estado;
      private Set<Cotizacion> cotizacions = new HashSet<Cotizacion>(0);
 
     public Solicitud() {
@@ -49,12 +50,13 @@ public class Solicitud  implements Serializable {
         this.idsolicitud = idsolicitud;
         this.cliente = cliente;
     }
-    public Solicitud(int idsolicitud, Cliente cliente, Date fecharecepcion, String requerimiento, Set<Cotizacion> cotizacions) {
+    public Solicitud(int idsolicitud, Cliente cliente, Date fecharecepcion, String requerimiento, int estado,Set<Cotizacion> cotizacions) {
        this.idsolicitud = idsolicitud;
        this.cliente = cliente;
        this.fecharecepcion = fecharecepcion;
        this.requerimiento = requerimiento;
        this.cotizacions = cotizacions;
+       this.estado = estado;
     }
    
      @Id 
@@ -110,6 +112,16 @@ public class Solicitud  implements Serializable {
     public void setCotizacions(Set<Cotizacion> cotizacions) {
         this.cotizacions = cotizacions;
     }
+
+    @Column(name="ESTADO", length=200)
+	public int getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(int estado) {
+		this.estado = estado;
+	}
 
 
 

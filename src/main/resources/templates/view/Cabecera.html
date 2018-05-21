@@ -39,11 +39,8 @@
 							id="navbarDropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Documentacion </a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#"
-									th:href="@{/documentacion/solicitud}">Solicitud</a> <a
-									class="dropdown-item" href="#"
-									th:href="@{/documentacion/ordenCompra}">Orden de Compra</a>
-								<div class="dropdown-divider"></div>
+
+
 								<a class="dropdown-item" href="#"
 									th:href="@{/documentacion/despacho}">Despacho</a> <a
 									class="dropdown-item" href="#"
@@ -52,6 +49,11 @@
 									th:href="@{/documentacion/factura}">Factura</a> <a
 									class="dropdown-item" href="#"
 									th:href="@{/documentacion/valorizacion}">Valorizacion</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#"
+									th:href="@{/documentacion/solicitud}">Solicitud</a> <a
+									class="dropdown-item" href="#"
+									th:href="@{/documentacion/ordenCompra}">Orden de Compra</a>
 							</div></li>
 						<li class="nav-item"><a class="nav-link" href="#"
 							th:href="@{/monitoreo/}">Monitoreo<span class="sr-only">(current)</span></a></li>
@@ -89,16 +91,17 @@
 
 	<footer th:fragment="footer">
 		<div class="card-footer text-muted">
-		<p>&copy; 2018 Horadada S.A.C.</p>
-	</div>
-		
+			<p>&copy; 2018 Horadada S.A.C.</p>
+		</div>
+
 
 		<script th:src="@{/js/jquery-3.3.1.min.js}" type="text/javascript"></script>
 		<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+		<script th:src="@{/js/popper.min.js}" type="text/javascript"></script>
 		<script th:src="@{/js/componentes.js}" type="text/javascript"></script>
-		<script th:src="@{/js/popper.min.js}" type="text/javascript"></script>    <script async defer
-    th:src="@{https://maps.googleapis.com/maps/api/js?key=AIzaSyA_kHJujF0ush4SjIUYJooHtj9FrFCiSmc&callback=initMap}">
-    </script>
+		<script async defer
+			th:src="@{https://maps.googleapis.com/maps/api/js?key=AIzaSyA_kHJujF0ush4SjIUYJooHtj9FrFCiSmc&callback=initMap}">			
+		</script>
 	</footer>
 </body>
 </html>

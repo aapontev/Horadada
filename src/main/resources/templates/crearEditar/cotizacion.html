@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="view/Cabecera :: head"></head>
+
+<body>
+
+<header th:replace="view/Cabecera :: cabecera"></header>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>FORMULARIO COTIZACION</h1>
+			<br />
+			<form action="#" th:action="@{/documentacion/addcotizacion}"  th:object="${cotizacion}" method="post" >
+			<input type="hidden" th:field="*{idcotizacion}"/>
+				SOLICITUD :	
+				<input  type="text" class="form-control" th:field="*{solicitud.idsolicitud}"/>
+				 <br/>
+				CARGOS :	
+				<input  type="text" class="form-control" th:field="*{cargos}"/>
+				 <br/> 
+				 
+				 DESCUENTOS :	
+				<input  type="text" class="form-control" th:field="*{descuentos}"/>
+				 <br/> 
+			    FECHA ENVIO :	
+				<input placeholder="dd/mm/aaaa" type="text" class="form-control" th:field="*{fechaenvio}"/>
+				 <br/>
+				 MONEDA :
+				 <br/>
+				<!--  <input type="text" class="form-control" th:field="*{idmoneda}"/> -->
+				<select th:field="*{idmoneda}" class="custom-select col-sm-6 " id="inputGroupSelect03">									
+				       <option th:each="mon : ${moneda}"
+				               th:value="${mon.clave1}"
+				               th:text="${mon.valor1}">
+				       </option>
+			</select>
+				<br/> 
+				IGV :
+				 <input type="text" class="form-control" th:field="*{igv}"/> 
+				<br/>
+				NETO :	
+				<input  type="text" class="form-control" th:field="*{neto}"/>
+				 <br/>
+				 OBSERVACIONES :	
+				<input  type="text" class="form-control" th:field="*{observaciones}"/>
+				 <br/>
+				 PERSEPCION :	
+				<input  type="text" class="form-control" th:field="*{percepcion}"/>
+				 <br/>
+				 SUB-TOTAL :	
+				<input  type="text" class="form-control" th:field="*{subtotal}"/>
+				 <br/>
+				 TOTAL :	
+				<input  type="text" class="form-control" th:field="*{total}"/>
+				 <br/>
+			<br/>
+		    	<br/>   		    	
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					Aceptar
+				</button>	
+			
+		</form>
+		</div>
+	</div>
+
+<footer th:replace="view/Cabecera :: footer"></footer>
+
+</body>
+</html>
