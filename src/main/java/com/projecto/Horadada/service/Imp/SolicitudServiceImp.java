@@ -36,5 +36,10 @@ public class SolicitudServiceImp implements SolicitudService{
 		Solicitud solic = solicitudDao.findByidsolicitud(idsolicitud);
 		return solic;
 	}
+	@Override
+	public List<Solicitud> getidsolicitud() {
+		List<Solicitud> iddes = solicitudDao.getidsolicitud();
+		return iddes;
+	}
 
 }

@@ -2,7 +2,7 @@ package com.projecto.Horadada.Entity;
 // Generated 02-mar-2018 16:56:03 by Hibernate Tools 4.3.1
 
 
-import java.io.Serializable;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
@@ -27,25 +27,56 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="VEHICULO"
     ,schema="HORADADA"
 )
-public class Vehiculo  implements Serializable {
+public class Vehiculo   {
 
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	
+	
+    @Id 
+   @Column(name="IDVEHICULO", unique=true, nullable=false, precision=3)
      private int idvehiculo;
+    
+@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="IDTRANSPORTISTA", nullable=false)
      private Transportista transportista;
+
+@Column(name="PLACA", length=7)
      private String placa;
+
+@Column(name="COLOR", length=15)
      private String color;
+
+@Column(name="IDMARCA", precision=3)
      private int idmarca;
+
+@Column(name="IDMODELO", precision=10, scale=0)
      private int idmodelo;
+
+@Column(name="IDASEGURADORA", precision=10, scale=0)
      private int idaseguradora;
+
+@Column(name="DETALLES", length=45)
      private String detalles;
+
+@Column(name="TARJETACIRCULACION", length=15)
      private String tarjetacirculacion;
+
+@DateTimeFormat(pattern = "dd/MM/yyyy")
+@Temporal(TemporalType.DATE)
+@Column(name="FECHAULTIMAREVISION")
      private Date fechaultimarevision;
+
+@Column(name="NROEJES", precision=3)
      private int nroejes;
+
+@Column(name="PESOMAXIMO", precision=6,scale=2)
      private BigDecimal pesomaximo;
+
+@Column(name="PESOVEHICULO", precision=6,scale=2)
      private BigDecimal pesovehiculo;
+@OneToMany(fetch=FetchType.EAGER, mappedBy="vehiculo")
      private Set<Ubicacion> ubicacions = new HashSet<Ubicacion>(0);
 
     public Vehiculo() {
@@ -73,10 +104,6 @@ public class Vehiculo  implements Serializable {
        this.ubicacions = ubicacions;
     }
    
-     @Id 
-
-    
-    @Column(name="IDVEHICULO", unique=true, nullable=false, precision=10, scale=0)
     public int getIdvehiculo() {
         return this.idvehiculo;
     }
@@ -85,8 +112,6 @@ public class Vehiculo  implements Serializable {
         this.idvehiculo = idvehiculo;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="IDTRANSPORTISTA", nullable=false)
     public Transportista getTransportista() {
         return this.transportista;
     }
@@ -95,8 +120,6 @@ public class Vehiculo  implements Serializable {
         this.transportista = transportista;
     }
 
-    
-    @Column(name="PLACA", length=7)
     public String getPlaca() {
         return this.placa;
     }
@@ -105,8 +128,6 @@ public class Vehiculo  implements Serializable {
         this.placa = placa;
     }
 
-    
-    @Column(name="COLOR", length=15)
     public String getColor() {
         return this.color;
     }
@@ -115,8 +136,6 @@ public class Vehiculo  implements Serializable {
         this.color = color;
     }
 
-    
-    @Column(name="IDMARCA", precision=10, scale=0)
     public int getIdmarca() {
         return this.idmarca;
     }
@@ -125,8 +144,6 @@ public class Vehiculo  implements Serializable {
         this.idmarca = idmarca;
     }
 
-    
-    @Column(name="IDMODELO", precision=10, scale=0)
     public int getIdmodelo() {
         return this.idmodelo;
     }
@@ -135,8 +152,6 @@ public class Vehiculo  implements Serializable {
         this.idmodelo = idmodelo;
     }
 
-    
-    @Column(name="IDASEGURADORA", precision=10, scale=0)
     public int getIdaseguradora() {
         return this.idaseguradora;
     }
@@ -145,8 +160,6 @@ public class Vehiculo  implements Serializable {
         this.idaseguradora = idaseguradora;
     }
 
-    
-    @Column(name="DETALLES", length=45)
     public String getDetalles() {
         return this.detalles;
     }
@@ -155,8 +168,6 @@ public class Vehiculo  implements Serializable {
         this.detalles = detalles;
     }
 
-    
-    @Column(name="TARJETACIRCULACION", length=15)
     public String getTarjetacirculacion() {
         return this.tarjetacirculacion;
     }
@@ -165,9 +176,6 @@ public class Vehiculo  implements Serializable {
         this.tarjetacirculacion = tarjetacirculacion;
     }
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @Temporal(TemporalType.DATE)
-    @Column(name="FECHAULTIMAREVISION", length=7)
     public Date getFechaultimarevision() {
         return this.fechaultimarevision;
     }
@@ -176,8 +184,6 @@ public class Vehiculo  implements Serializable {
         this.fechaultimarevision = fechaultimarevision;
     }
 
-    
-    @Column(name="NROEJES", precision=10, scale=0)
     public int getNroejes() {
         return this.nroejes;
     }
@@ -186,8 +192,6 @@ public class Vehiculo  implements Serializable {
         this.nroejes = nroejes;
     }
 
-    
-    @Column(name="PESOMAXIMO", precision=6)
     public BigDecimal getPesomaximo() {
         return this.pesomaximo;
     }
@@ -196,8 +200,6 @@ public class Vehiculo  implements Serializable {
         this.pesomaximo = pesomaximo;
     }
 
-    
-    @Column(name="PESOVEHICULO", precision=6)
     public BigDecimal getPesovehiculo() {
         return this.pesovehiculo;
     }
@@ -206,7 +208,6 @@ public class Vehiculo  implements Serializable {
         this.pesovehiculo = pesovehiculo;
     }
 
-    @OneToMany(fetch=FetchType.EAGER, mappedBy="vehiculo")
     public Set<Ubicacion> getUbicacions() {
         return this.ubicacions;
     }

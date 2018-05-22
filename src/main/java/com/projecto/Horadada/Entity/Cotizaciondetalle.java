@@ -2,8 +2,8 @@ package com.projecto.Horadada.Entity;
 // Generated 02-mar-2018 16:56:03 by Hibernate Tools 4.3.1
 
 
-import java.io.Serializable;
 import java.math.BigDecimal;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -24,23 +24,47 @@ import javax.persistence.Table;
 @Table(name="COTIZACIONDETALLE"
     ,schema="HORADADA"
 )
-public class Cotizaciondetalle  implements Serializable {
+public class Cotizaciondetalle {
 
-
-     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	@EmbeddedId    
+    @AttributeOverrides( {
+        @AttributeOverride(name="idcotizaciondetalle", column=@Column(name="IDCOTIZACIONDETALLE", nullable=false, precision=3) ), 
+        @AttributeOverride(name="idcotizacion", column=@Column(name="IDCOTIZACION", nullable=false, precision=3) ) } )
+     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "cotizacion_detalle_seq") @SequenceGenerator ( 
+ 		    name = "cotizacion_detalle_seq" , 
+ 		    sequenceName = "cotizacion_detalle_sequence" , 
+ 		    allocationSize = 1 )
 	private CotizaciondetalleId id;
+	
+@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="IDCOTIZACION", nullable=false, insertable=false, updatable=false)
      private Cotizacion cotizacion;
+
+@Column(name="ITEM", precision=2)
      private int item;
+
+@Column(name="CODRECURSO", length=3)
      private String codrecurso;
+
+@Column(name="DESCRIPCION", length=100)
      private String descripcion;
+
+@Column(name="CCOSTOS", length=30)
      private String ccostos;
+
+@Column(name="IDUNIDADMEDIDA", precision=2)
      private int idunidadmedida;
+
+@Column(name="CANTIDAD", precision=6, scale=4)
      private BigDecimal cantidad;
+
+@Column(name="PRECIOUNITARIO", precision=12, scale=2)
      private BigDecimal preciounitario;
+
+@Column(name="DESCUENTO", precision=12,scale=2)
      private BigDecimal descuento;
+
+@Column(name="TOTALDETALLE", precision=12,scale=2)
      private BigDecimal totaldetalle;
 
     public Cotizaciondetalle() {
@@ -65,16 +89,7 @@ public class Cotizaciondetalle  implements Serializable {
        this.totaldetalle = totaldetalle;
     }
    
-     @EmbeddedId
 
-    
-    @AttributeOverrides( {
-        @AttributeOverride(name="idcotizaciondetalle", column=@Column(name="IDCOTIZACIONDETALLE", nullable=false, precision=10, scale=0) ), 
-        @AttributeOverride(name="idcotizacion", column=@Column(name="IDCOTIZACION", nullable=false, precision=10, scale=0) ) } )
-     @GeneratedValue(strategy=GenerationType.SEQUENCE , generator = "cotizacion_detalle_seq") @SequenceGenerator ( 
- 		    name = "cotizacion_detalle_seq" , 
- 		    sequenceName = "cotizacion_detalle_sequence" , 
- 		    allocationSize = 1 )
     public CotizaciondetalleId getId() {
         return this.id;
     }
@@ -83,8 +98,6 @@ public class Cotizaciondetalle  implements Serializable {
         this.id = id;
     }
 
-@ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="IDCOTIZACION", nullable=false, insertable=false, updatable=false)
     public Cotizacion getCotizacion() {
         return this.cotizacion;
     }
@@ -93,8 +106,6 @@ public class Cotizaciondetalle  implements Serializable {
         this.cotizacion = cotizacion;
     }
 
-    
-    @Column(name="ITEM", precision=10, scale=0)
     public int getItem() {
         return this.item;
     }
@@ -103,8 +114,6 @@ public class Cotizaciondetalle  implements Serializable {
         this.item = item;
     }
 
-    
-    @Column(name="CODRECURSO", length=10)
     public String getCodrecurso() {
         return this.codrecurso;
     }
@@ -113,8 +122,6 @@ public class Cotizaciondetalle  implements Serializable {
         this.codrecurso = codrecurso;
     }
 
-    
-    @Column(name="DESCRIPCION", length=150)
     public String getDescripcion() {
         return this.descripcion;
     }
@@ -123,8 +130,6 @@ public class Cotizaciondetalle  implements Serializable {
         this.descripcion = descripcion;
     }
 
-    
-    @Column(name="CCOSTOS", length=30)
     public String getCcostos() {
         return this.ccostos;
     }
@@ -133,8 +138,6 @@ public class Cotizaciondetalle  implements Serializable {
         this.ccostos = ccostos;
     }
 
-    
-    @Column(name="IDUNIDADMEDIDA", precision=10, scale=0)
     public int getIdunidadmedida() {
         return this.idunidadmedida;
     }
@@ -143,8 +146,6 @@ public class Cotizaciondetalle  implements Serializable {
         this.idunidadmedida = idunidadmedida;
     }
 
-    
-    @Column(name="CANTIDAD", precision=6, scale=4)
     public BigDecimal getCantidad() {
         return this.cantidad;
     }
@@ -153,8 +154,6 @@ public class Cotizaciondetalle  implements Serializable {
         this.cantidad = cantidad;
     }
 
-    
-    @Column(name="PRECIOUNITARIO", precision=9)
     public BigDecimal getPreciounitario() {
         return this.preciounitario;
     }
@@ -163,8 +162,6 @@ public class Cotizaciondetalle  implements Serializable {
         this.preciounitario = preciounitario;
     }
 
-    
-    @Column(name="DESCUENTO", precision=9)
     public BigDecimal getDescuento() {
         return this.descuento;
     }
@@ -173,8 +170,6 @@ public class Cotizaciondetalle  implements Serializable {
         this.descuento = descuento;
     }
 
-    
-    @Column(name="TOTALDETALLE", precision=9)
     public BigDecimal getTotaldetalle() {
         return this.totaldetalle;
     }
@@ -182,10 +177,6 @@ public class Cotizaciondetalle  implements Serializable {
     public void setTotaldetalle(BigDecimal totaldetalle) {
         this.totaldetalle = totaldetalle;
     }
-
-
-
-
 }
 
 

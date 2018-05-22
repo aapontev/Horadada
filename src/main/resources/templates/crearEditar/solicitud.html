@@ -9,12 +9,8 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h1>FORMULARIO SOLICITUD</h1>
-			<br />
 			<form action="#" th:action="@{/documentacion/addsolicitud}"  th:object="${solicitud}" method="post" >
 			<input type="hidden" th:field="*{idsolicitud}"/>  
-			    FECHA RECEPCION :	
-				<input placeholder="dd/mm/aaaa" type="text" class="form-control" th:field="*{fecharecepcion}"/>
-				 <br/>
 				 REQUERIMIENTO :
 				<input type="text" class="form-control" th:field="*{requerimiento}"/> 
 				<br/> 
@@ -29,9 +25,11 @@
 				               th:value="${cli.idcliente}"
 				               th:text="${cli.razonsocial}">
 				       </option>
-			</select>
-			<br/>
-		    	<br/>   		    	
+				</select>				
+		    	<br/>   <br/>
+				    FECHA RECEPCION :	
+					<input placeholder="dd/mm/aaaa" type="text" class="form-control" th:field="*{fecharecepcion}"/>
+				<br/>		    	
 				<button class="btn btn-lg btn-primary btn-block" type="submit">
 					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 					Accept

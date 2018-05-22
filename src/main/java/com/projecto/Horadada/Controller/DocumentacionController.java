@@ -1,7 +1,6 @@
 package com.projecto.Horadada.Controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -12,12 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.projecto.Horadada.Entity.Cliente;
 import com.projecto.Horadada.Entity.Cotizacion;
+import com.projecto.Horadada.Entity.Cotizaciondetalle;
 import com.projecto.Horadada.Entity.Solicitud;
 import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.service.ClienteService;
+import com.projecto.Horadada.service.CotizacionDetalleService;
 import com.projecto.Horadada.service.CotizacionService;
 import com.projecto.Horadada.service.SolicitudService;
 import com.projecto.Horadada.service.TablaMaestraService;
@@ -39,6 +39,10 @@ public class DocumentacionController {
 	private CotizacionService cotizacionservice;
 	
 	@Autowired
+	@Qualifier("cotizaciondetalleservice")
+	private CotizacionDetalleService cotizaciondetalleservice;
+	
+	@Autowired
 	@Qualifier("tablamaestraserviceimp")
 	private TablaMaestraService tablamaestraservice;
 	
@@ -55,13 +59,17 @@ public class DocumentacionController {
 	public String redirectCotizacionForm(@RequestParam(name="id",required=false )int id,
 			Model model) {
 		List<Tablamaestra> moneda = tablamaestraservice.findByIdtablamaestra("Hora002");
+		List<Tablamaestra> estado = tablamaestraservice.findByIdtablamaestra("Hora011");
+		List<Solicitud> idsoli = solicitudService.getidsolicitud();
 		Cotizacion cotizacion = new Cotizacion();	
 		
 		if(id != 0) {
 			cotizacion = cotizacionservice.findbyid(id);		
 		}
+		model.addAttribute("solici", idsoli);
 		model.addAttribute("cotizacion",cotizacion);
 		model.addAttribute("moneda", moneda);
+		model.addAttribute("estado", estado);
 		return "crearEditar/cotizacion";
 	}
 	
@@ -83,6 +91,16 @@ public class DocumentacionController {
 			cotizacionservice.delete(id);
 		//}
 		return "redirect:/documentacion/cotizacion";
+	}
+	@GetMapping("/cotizaciondetalle")
+	public String redirectCotizacionDetalle(@RequestParam(name="id",required=false)int id,
+			Model model) {
+		Cotizacion cotizacion = cotizacionservice.findbyid(id);
+		List<Cotizaciondetalle> cotizaDeta = cotizaciondetalleservice.findBycotizacion(cotizacion);	
+		
+		model.addAttribute("cotizadeta",cotizaDeta);
+		model.addAttribute("cotizaid",id);
+		return "crearEditar/cotizacionDetalle";
 	}
 	
 	//*************************DESPACHO*********************************
@@ -119,6 +137,7 @@ public class DocumentacionController {
 		if(id != 0) {
 			solicitud = solicitudService.findByidsolicitud(id);		
 		}
+		
 		model.addAttribute("solicitud",solicitud);
 		model.addAttribute("cliente", cliente);
 		return "crearEditar/solicitud";

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.projecto.Horadada.Entity.Cliente;
 import com.projecto.Horadada.service.ClienteService;
 import com.projecto.Horadada.service.ContactoService;
@@ -24,6 +26,13 @@ public class ClienteController {
 	@Autowired
 	@Qualifier("contactoServiceImp")
 	private ContactoService contactoService;
+	
+	@GetMapping("/")
+	public ModelAndView Cliente() {
+		ModelAndView mav =new ModelAndView("mantenimiento/cliente");
+		mav.addObject("cli",clienteService.findByAll());
+		return mav;
+	}
 
 	@GetMapping("/clienteform")
 	public String redirectClienteForm(@RequestParam(name="id",required=false )int id,
@@ -40,19 +49,24 @@ public class ClienteController {
 	public String addCliente (@ModelAttribute(name="cliente")Cliente cliente,Model model) {
 		if(null != clienteService.save(cliente)) {
 			model.addAttribute("result", 1);
-		}else {			
+		}else {	
 		
 		model.addAttribute("result", 0);
 		}
-		return "redirect:/mantenimiento/cliente";
+		return "redirect:/cliente/";
 	}
 	
 	@GetMapping("/borrarcliente")
-	public String borrarCliente(@RequestParam(name="id",required=true)int id,Model model) {
-		int cont = contactoService.findbyidcliente(id);
-		if (cont == 0) {		
-			clienteService.delete(id);
+	public ModelAndView borrarCliente(@RequestParam(name="id",required=true)int id,Model model) {
+		ModelAndView mav = new ModelAndView("mantenimiento/cliente");
+		int cont = clienteService.delete(id);
+		if (cont == 1) {			
+			mav.addObject("result", 1);
+		}else {
+			mav.addObject("result", 0);
 		}
-		return "redirect:/mantenimiento/cliente";
+		mav.addObject("cliid", clienteService.findByidcliente(id));
+		mav.addObject("cli",clienteService.findByAll());
+		return mav;
 	}
 }

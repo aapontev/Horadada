@@ -12,8 +12,25 @@
 			<br />
 			<form action="#" th:action="@{/documentacion/addcotizacion}"  th:object="${cotizacion}" method="post" >
 			<input type="hidden" th:field="*{idcotizacion}"/>
-				SOLICITUD :	
-				<input  type="text" class="form-control" th:field="*{solicitud.idsolicitud}"/>
+				ESTADO :
+				 <br>			
+				<select th:field="*{aprobado}" class="custom-select col-sm-6 " id="inputGroupSelect03">									
+				       <option th:each="est : ${estado}"
+				               th:value="${est.clave1}"
+				               th:text="${est.clave1}+'. '+${est.valor1}">
+				       </option>
+				</select>
+				 <br/>
+				 <br/>
+				SOLICITUD :		
+				<br>			
+				<select th:field="*{solicitud.idsolicitud}" class="custom-select col-sm-6 " id="inputGroupSelect03">									
+				       <option th:each="sol : ${solici}"
+				               th:value="${sol.idsolicitud}"
+				               th:text="${sol.idsolicitud}+'. '+${sol.requerimiento}">
+				       </option>
+				</select>
+				 <br/>
 				 <br/>
 				CARGOS :	
 				<input  type="text" class="form-control" th:field="*{cargos}"/>

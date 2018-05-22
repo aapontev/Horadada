@@ -13,18 +13,29 @@
 			<form action="#" th:action="@{/contacto/addcontacto}"  th:object="${contacto}" method="post" >
 			<input type="hidden" th:field="*{idcontacto}"/>  
 			    CODIGO CLIENTE :	
-				<input type="text" class="form-control" th:field="*{cliente.idcliente}"/>
+				 <br/>						
+				<select th:field="*{cliente.idcliente}" class="custom-select col-sm-6 " id="inputGroupSelect03">									
+				       <option th:each="cli : ${cliente}"
+				               th:value="${cli.idcliente}"
+				               th:text="${cli.idcliente}+'. '+${cli.razonsocial}">
+				       </option>
+				</select>
+				
 				 <br/>
-				 NOMBRE CLIENTE :	
-				<input type="text" class="form-control" th:field="*{persona.primernombre}"/>
 				 <br/>
 				 CODIGO PERSONA :
-				<input type="text" class="form-control" th:field="*{persona.idpersona}"/> 
+				 <br/>
+				<select th:field="*{persona.idpersona}" class="custom-select col-sm-6 " id="inputGroupSelect03">									
+				       <option th:each="per : ${persona}"
+				               th:value="${per.idpersona}"
+				               th:text="${per.idpersona}+'. '+${per.primernombre}+' '+${per.primerapellido}">
+				       </option>
+				</select>
 				<br/> 
 		    	<br/>   		    	
 				<button class="btn btn-lg btn-primary btn-block" type="submit">
 					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					Accept
+					ACEPTAR
 				</button>	
 			
 		</form>

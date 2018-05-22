@@ -36,9 +36,16 @@ public class ClienteServiceImp implements ClienteService{
 	}
 
 	@Override
-	public void delete(int idcliente) {
-		clienteDao.deleteById(idcliente);
+	public int delete(int idcliente) {
+		int res ;
+		try {
+			clienteDao.deleteById(idcliente);
+			res = 1 ;
+		} catch (Exception e) {
+			res=0;
+		}
 		
+		return res;
 	}
 
 }

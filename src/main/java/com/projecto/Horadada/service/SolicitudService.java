@@ -10,4 +10,5 @@ public interface SolicitudService {
 	public abstract Solicitud save(Solicitud solicitud);
 	public abstract void delete(int idsolitud);
 	public abstract Solicitud findByidsolicitud(int idsolicitud);
+	public abstract List<Solicitud> getidsolicitud();
 }
