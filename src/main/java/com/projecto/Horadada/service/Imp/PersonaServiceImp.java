@@ -36,5 +36,11 @@ public class PersonaServiceImp implements PersonaService{
 		return per;
 	}
 
+	@Override
+	public List<Persona> findByall() {
+		List<Persona> tipPer = personaDao.findAll();
+		return tipPer;
+	}
+
 
 }

@@ -57,11 +57,11 @@ public class MantenimientoController {
 		mav.addObject("transport", transportService.findByAll());
 		return mav;
 	}
-
+	
 	@GetMapping("/persona")
 	public ModelAndView Persona() {
 		ModelAndView mav = new ModelAndView("mantenimiento/persona");
-		mav.addObject("transport", personaService.findByTipopersona(cm.TIPOPERtRANSPORT));
+		mav.addObject("persona", personaService.findByall());
 		return mav;
 	}
 
