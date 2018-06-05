@@ -8,6 +8,7 @@
 	<div class="container">
 
 		<br />
+		<h1>LISTA TRABAJADORES</h1>
 		<div class="panel panel-default">
 			<div class="panel-heading"></div>
 			<table class="table table-hover table-striped">
@@ -23,16 +24,17 @@
 				</thead>
 				<tbody>
 					<tr th:each="tra : ${traba}">
-						<td><a href="#" th:href="@{/control/personaform?idpersona=__${tra.idpersona}__}"
+						<td><a href="#"
+							th:href="@{/control/personaform?idpersona=__${tra.idpersona}__}"
 							th:text="${tra.idpersona}"> </a></td>
 						<td th:text="${tra.primernombre}"></td>
 						<td th:text="${tra.primerapellido}"></td>
 						<td th:text="${tra.telefono}"></td>
-												
+						
 					</tr>
 				</tbody>
 			</table>
-						<a href="#" th:href="@{/control/personaform?idpersona=0}">
+			<a href="#" th:href="@{/trabajador/trabajadorform?id=0}">
 				<button class="btn btn-lg btn-primary btn-block" type="submit">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 					NUEVO TRABAJADOR

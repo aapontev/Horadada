@@ -27,4 +27,11 @@ public class UbicacionServiceImp implements UbicacionService{
 		Ubicacion ubicacion= ubicaciondao.getUbicacionOne();
 		return ubicacion;
 	}
+
+
+	@Override
+	public void save(Ubicacion ubi) {
+		ubicaciondao.save(ubi);
+		
+	}
 }

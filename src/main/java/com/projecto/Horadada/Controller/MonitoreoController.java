@@ -3,6 +3,8 @@ package com.projecto.Horadada.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.projecto.Horadada.Entity.Ubicacion;
+import com.projecto.Horadada.Entity.Vehiculo;
 import com.projecto.Horadada.service.UbicacionService;
 
 @Controller
+@RestController
 @RequestMapping("/monitoreo")
 public class MonitoreoController {
 	
@@ -37,6 +40,21 @@ public class MonitoreoController {
 		ModelAndView mav = new ModelAndView("monitoreo/monitoreo");
 		mav.addObject("ubi", ubi);
 		return mav;
+	}
+	
+	@GetMapping("/web")
+	public ResponseEntity<Ubicacion> monitoreoWeb(){
+		Ubicacion ubi = ubicacionservice.getUbicacionOne();
+		return new ResponseEntity<Ubicacion>(ubi,HttpStatus.OK);
+	}
+	@PostMapping("/obtieneubicacionmobil")
+	public ResponseEntity<Ubicacion> obtieneMobil(@RequestParam(name="longitud")String longitud,
+			@RequestParam(name="latitud") String latitud,@RequestParam(name="direccion")String direccion) {
+		Vehiculo veh = new Vehiculo();
+		veh = null;
+		Ubicacion ubi = new Ubicacion(23,veh,1,longitud,latitud);
+				ubicacionservice.save(ubi);
+				return new ResponseEntity<Ubicacion>(ubi,HttpStatus.OK);
 	}
 
 }

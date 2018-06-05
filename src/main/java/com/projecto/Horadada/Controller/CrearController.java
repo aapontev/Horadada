@@ -30,11 +30,14 @@ public class CrearController {
 	public String redirectPersonaForm(@RequestParam(name="idpersona",required=false)int id,
 			Model model) {
 		Persona per = new Persona();
+		int resu = 0;
 		List<Tablamaestra> persotip = tablaService.findByIdtablamaestra("Hora006");   
 		List<Tablamaestra> tipodoc = tablaService.findByIdtablamaestra("Hora013");
 		if(id != 0) {
-			 per = personaService.findByidPersona(id);		
+			 per = personaService.findByidPersona(id);	
+			 resu =1;
 		}
+		model.addAttribute("resu", resu);
 		model.addAttribute("tipopersona",persotip);
 		model.addAttribute("tipodoc",tipodoc);
 		model.addAttribute("persona",per);

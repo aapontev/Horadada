@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.projecto.Horadada.Entity.Cliente;
 import com.projecto.Horadada.Entity.Contacto;
@@ -35,6 +36,14 @@ public class ContactoController {
 	@Autowired
 	@Qualifier("personaServiceImp")
 	private PersonaService personaService;
+	
+	@GetMapping("/")
+	public ModelAndView Contacto() {
+		ModelAndView mav = new ModelAndView("mantenimiento/contacto");
+		// mav.addObject("cont",personaService.findByTipopersona(cm.TIPOPERCLIEN));
+		mav.addObject("cont", contactoService.findByAll());
+		return mav;
+	}
 
 	@GetMapping("/contactoform")
 	public String redirectContactoForm(@RequestParam(name="id",required=false )int id,
@@ -59,7 +68,7 @@ public class ContactoController {
 		
 		model.addAttribute("result", 0);
 		}
-		return "redirect:/mantenimiento/contacto";
+		return "redirect:/contacto/";
 	}
 	
 	@GetMapping("/borrarcontacto")
@@ -67,6 +76,6 @@ public class ContactoController {
 		
 			contactoService.delete(id);
 		
-		return "redirect:/mantenimiento/contacto";
+		return "redirect:/contacto/";
 	}
 }

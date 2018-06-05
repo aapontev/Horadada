@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.projecto.Horadada.Entity.Persona;
 import com.projecto.Horadada.Entity.Tablamaestra;
@@ -34,6 +35,13 @@ public class TranportistaController {
 	@Autowired
 	@Qualifier("tablamaestraserviceimp")
 	private TablaMaestraService tablaService;
+	
+	@GetMapping("/")
+	public ModelAndView Transportista() {
+		ModelAndView mav = new ModelAndView("mantenimiento/transportista");
+		mav.addObject("transport", transportistaservice.findByAll());
+		return mav;
+	}
 
 	@GetMapping("/transportistaform")
 	public String redirectTransportistaForm(@RequestParam(name="id",required=false )int id,
@@ -60,14 +68,14 @@ public class TranportistaController {
 		
 		model.addAttribute("result", 0);
 		}
-		return "redirect:/mantenimiento/transportista";
+		return "redirect:/transportista/";
 	}
 	
-	@GetMapping("/borrartrasnportista")
+	@GetMapping("/borrartransportista")
 	public String borrarTransportista(@RequestParam(name="id",required=true)int id,Model model) {
 		
 			transportistaservice.delete(id);
 		
-		return "redirect:/mantenimiento/transportista";
+		return "redirect:/transportista/";
 	}
 }

@@ -6,4 +6,5 @@ public interface UbicacionService {
 
 	public abstract Ubicacion getUbicacion(int iddespacho,int idtransportista);
 	public abstract Ubicacion getUbicacionOne();
+	public abstract void save(Ubicacion ubi);
 }

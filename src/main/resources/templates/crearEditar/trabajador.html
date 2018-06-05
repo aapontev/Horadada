@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="view/Cabecera :: head"></head>
+
+<body>
+
+<header th:replace="view/Cabecera :: cabecera"></header>
+<form action="#" th:action="@{/persona/addpersona2}"  th:object="${persona}" method="post" >
+
+<br>
+Seleccione Persona :
+<br>
+				<select th:field="*{idpersona}" class="custom-select col-sm-6 " id="inputGroupSelect03">									
+				       <option th:each="per : ${person}"
+				               th:value="${per.idpersona}"
+				               th:text="${per.idpersona}+'. '+${per.primernombre}+' '+${per.primerapellido}">
+				       </option>
+				</select>			
+					<br/> 
+		    	<br/>   
+		    	   	
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					ACEPTAR
+				</button>	
+				</form>
+<footer th:replace="view/Cabecera :: footer"></footer>
+
+</body>
+</html>

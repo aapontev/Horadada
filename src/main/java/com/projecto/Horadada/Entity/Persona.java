@@ -29,14 +29,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "PERSONA", schema = "HORADADA")
 @NamedStoredProcedureQueries({
-		@NamedStoredProcedureQuery(name = "mant_usuario", procedureName = "mant_persona.mant_usuario", parameters = {
-				@StoredProcedureParameter(name = "tipopersona", type = int.class, mode = ParameterMode.IN) }) })
+   @NamedStoredProcedureQuery(name = "cambiaPersona", 
+                              procedureName = "mant_persona.mant_usuario",
+                              parameters = {
+                                 @StoredProcedureParameter(mode = ParameterMode.IN, name = "v_tipopersona", type = Integer.class),
+                                 @StoredProcedureParameter(mode = ParameterMode.IN, name = "v_idpersona", type = Integer.class)
+                              })
+})
 public class Persona  {
-
-	/**
-	 * 
-	 */
-	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "persona_seq")

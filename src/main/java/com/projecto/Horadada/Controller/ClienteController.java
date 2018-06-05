@@ -59,13 +59,10 @@ public class ClienteController {
 	@GetMapping("/borrarcliente")
 	public ModelAndView borrarCliente(@RequestParam(name="id",required=true)int id,Model model) {
 		ModelAndView mav = new ModelAndView("mantenimiento/cliente");
-		int cont = clienteService.delete(id);
-		if (cont == 1) {			
-			mav.addObject("result", 1);
-		}else {
-			mav.addObject("result", 0);
-		}
 		mav.addObject("cliid", clienteService.findByidcliente(id));
+		int cont = clienteService.delete(id);
+
+		mav.addObject("result", cont);
 		mav.addObject("cli",clienteService.findByAll());
 		return mav;
 	}

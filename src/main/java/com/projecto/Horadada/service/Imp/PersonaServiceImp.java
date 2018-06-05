@@ -42,5 +42,23 @@ public class PersonaServiceImp implements PersonaService{
 		return tipPer;
 	}
 
+	@Override
+	public void delete(int id) {
+		personaDao.deleteById(id);
+		
+	}
+
+	@Override
+	public void Update(int tipo,int id) {
+		personaDao.updatetipopersona(tipo, id);
+				
+	}
+
+	@Override
+	public void CambioPersona(int tipo, int id) {
+		personaDao.cambioPersona(tipo, id);
+		
+	}
+
 
 }
