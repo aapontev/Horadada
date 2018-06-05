@@ -1,6 +1,8 @@
 
 package com.projecto.Horadada.Controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import com.projecto.Horadada.Entity.Ubicacion;
+import com.projecto.Horadada.Entity.Ubicacionhist;
 import com.projecto.Horadada.Entity.Vehiculo;
 import com.projecto.Horadada.service.UbicacionService;
 
@@ -48,11 +51,14 @@ public class MonitoreoController {
 		return new ResponseEntity<Ubicacion>(ubi,HttpStatus.OK);
 	}
 	@PostMapping("/obtieneubicacionmobil")
-	public ResponseEntity<Ubicacion> obtieneMobil(@RequestParam(name="longitud")String longitud,
+	public ResponseEntity<Ubicacion> obtieneMobil(@RequestParam(name="longitud")String longitud,@RequestParam(name="hora")String hora,
 			@RequestParam(name="latitud") String latitud,@RequestParam(name="direccion")String direccion) {
 		Vehiculo veh = new Vehiculo();
+		Ubicacionhist uhist= new Ubicacionhist();
+		uhist = null;
 		veh = null;
-		Ubicacion ubi = new Ubicacion(23,veh,1,longitud,latitud);
+		Date date = new Date();
+		Ubicacion ubi = new Ubicacion(105,veh,1,longitud,latitud,date,hora,direccion,uhist);
 				ubicacionservice.save(ubi);
 				return new ResponseEntity<Ubicacion>(ubi,HttpStatus.OK);
 	}
