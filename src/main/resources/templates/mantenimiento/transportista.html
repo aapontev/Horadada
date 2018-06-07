@@ -3,9 +3,9 @@
 <head th:replace="view/Cabecera :: head"></head>
 
 <body>
+	<div class="container">
 
 	<header th:replace="view/Cabecera :: cabecera"></header>
-	<div class="container">
 <h1>LISTA DE TRANSPORISTAS</h1>
 		<br />
 		<div class="panel panel-default">
@@ -14,9 +14,10 @@
 				<thead>
 					<tr>
 						<th>CODIGO PERSONA</th>
-						<th>Licencia</th>
-						<th>categoria</th>
-						<th>situacion</th>
+						<th>NOMBRE</th>
+						<th>APELLIDO</th>
+						<th>TELEFONO</th>
+						<th>DIRECCION</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -25,9 +26,10 @@
 						<td><a href="#"
 							th:href="@{/control/personaform?idpersona=__${tra.persona.idpersona}__}"
 							th:text="${tra.persona.idpersona}"> </a></td>
-						<td th:text="${tra.nrolicencia}"></td>
-						<td th:text="${tra.catlicencia}"></td>
-						<td th:text="${tra.idsituaciontransportista}"></td>
+						<td th:text="${tra.persona.primernombre}+' '+${tra.persona.segundonombre}"></td>
+						<td th:text="${tra.persona.primerapellido}+' '+${tra.persona.segundoapellido}"></td>
+						<td th:text="${tra.persona.telefono}"></td>
+						<td th:text="${tra.persona.direccion}"></td>
 						<td><a href="#"
 							th:href="@{/transportista/transportistaform?id=__${tra.idtransportista}__}">
 								<button type="button" class="btn btn-default">

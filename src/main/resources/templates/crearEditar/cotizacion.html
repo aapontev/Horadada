@@ -4,10 +4,10 @@
 
 <body>
 
-<header th:replace="view/Cabecera :: cabecera"></header>
 
 	<div class="jumbotron">
 		<div class="container">
+<header th:replace="view/Cabecera :: cabecera"></header>
 			<h1>FORMULARIO COTIZACION</h1>
 			<br />
 			<form action="#" th:action="@{/documentacion/addcotizacion}"  th:object="${cotizacion}" method="post" >

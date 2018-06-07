@@ -3,9 +3,9 @@
 <head th:replace="view/Cabecera :: head"></head>
 
 <body>
+	<div class="container">
 
 	<header th:replace="view/Cabecera :: cabecera"></header>
-	<div class="container">
 <h1>LISTA DE CONTACTOS</h1>
 		<br />
 		<div class="panel panel-default">
@@ -17,7 +17,7 @@
 						<th>NOMBRE</th>
 						<th>APELLIDO</th>
 						<th>TELEFONO</th>
-						<th>CIUDAD</th>
+						<th>DIRECCION</th>
 
 					</tr>
 				</thead>
@@ -26,8 +26,8 @@
 						<td><a href="#"
 							th:href="@{/control/personaform?idpersona=__${con.persona.idpersona}__}"
 							th:text="${con.persona.idpersona}"> </a></td>
-						<td th:text="${con.persona.primernombre}"></td>
-						<td th:text="${con.persona.primerapellido}"></td>
+						<td th:text="${con.persona.primernombre}+' '+${con.persona.segundonombre}"></td>
+						<td th:text="${con.persona.primerapellido}+' '+${con.persona.segundoapellido}"></td>
 						<td th:text="${con.persona.telefono}"></td>
 						<td th:text="${con.persona.direccion}"></td>
 						<td><a href="#"

@@ -4,10 +4,11 @@
 
 <body>
 
-<header th:replace="view/Cabecera :: cabecera"></header>
+
 
 	<div class="jumbotron">
 		<div class="container">
+		<header th:replace="view/Cabecera :: cabecera"></header>
 			<h1>FORMULARIO CLIENTE</h1>
 			<br />
 			<form action="#" th:action="@{/cliente/addcliente}"  th:object="${cliente}" method="post" >

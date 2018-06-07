@@ -4,9 +4,9 @@
 
 <body>
 
-	<header th:replace="view/Cabecera :: cabecera"></header>
+	
 	<div class="container">
-
+<header th:replace="view/Cabecera :: cabecera"></header>
 		<br />
 		<div class="panel panel-default">
 			<div class="panel-heading"></div>
@@ -26,7 +26,7 @@
 						<td th:text="${soli.idsolicitud}"></td>
 						<td th:text="${soli.cliente.razonsocial}"></td>
 						<td th:text="${soli.requerimiento}"></td>
-						<td th:text="${soli.fecharecepcion}"></td>
+						<td th:text="${#dates.format(soli.fecharecepcion, 'dd/MM/yyyy')}"></td>
 						<td th:text="${soli.estado}"></td>
 						 <td><a href="#"
 							th:href="@{/documentacion/solicitudform?id=__${soli.idsolicitud}__}">

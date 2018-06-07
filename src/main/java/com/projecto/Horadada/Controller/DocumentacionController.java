@@ -25,101 +25,136 @@ import com.projecto.Horadada.service.TablaMaestraService;
 @Controller
 @RequestMapping("/documentacion")
 public class DocumentacionController {
-	
+
 	@Autowired
 	@Qualifier("solicitudServiceimp")
 	private SolicitudService solicitudService;
-	
+
 	@Autowired
 	@Qualifier("clienteServiceImp")
 	private ClienteService clienteService;
-	
+
 	@Autowired
 	@Qualifier("cotizacionserviceimp")
 	private CotizacionService cotizacionservice;
-	
+
 	@Autowired
 	@Qualifier("cotizaciondetalleservice")
 	private CotizacionDetalleService cotizaciondetalleservice;
-	
+
 	@Autowired
 	@Qualifier("tablamaestraserviceimp")
 	private TablaMaestraService tablamaestraservice;
-	
-//*****************************COTIZACION***********************************
+
+	// *****************************COTIZACION***********************************
 	@GetMapping("/cotizacion")
 	public ModelAndView redirectCotizacion() {
 		ModelAndView mav = new ModelAndView("documentacion/cotizacionDoc");
-		List<Cotizacion> cotiza= cotizacionservice.findAll();
+		List<Cotizacion> cotiza = cotizacionservice.findAll();
 		mav.addObject("cotiza", cotiza);
 		return mav;
 	}
-	
+
 	@GetMapping("/cotizacionform")
-	public String redirectCotizacionForm(@RequestParam(name="id",required=false )int id,
-			Model model) {
+	public String redirectCotizacionForm(@RequestParam(name = "id", required = false) int id, Model model) {
 		List<Tablamaestra> moneda = tablamaestraservice.findByIdtablamaestra("Hora002");
-		List<Tablamaestra> estado = tablamaestraservice.findByIdtablamaestra("Hora011");
+		List<Tablamaestra> estado = tablamaestraservice.findByIdtablamaestra("Hora012");
 		List<Solicitud> idsoli = solicitudService.getidsolicitud();
-		Cotizacion cotizacion = new Cotizacion();	
-		
-		if(id != 0) {
-			cotizacion = cotizacionservice.findbyid(id);		
+		Cotizacion cotizacion = new Cotizacion();
+
+		if (id != 0) {
+			cotizacion = cotizacionservice.findbyid(id);
 		}
 		model.addAttribute("solici", idsoli);
-		model.addAttribute("cotizacion",cotizacion);
+		model.addAttribute("cotizacion", cotizacion);
 		model.addAttribute("moneda", moneda);
 		model.addAttribute("estado", estado);
 		return "crearEditar/cotizacion";
 	}
-	
+
 	@PostMapping("/addcotizacion")
-	public String addCotizacion (@ModelAttribute(name="cotizacion")Cotizacion cotizacion,Model model) {
-		if(null != cotizacionservice.save(cotizacion)) {
+	public String addCotizacion(@ModelAttribute(name = "cotizacion") Cotizacion cotizacion, Model model) {
+		if (null != cotizacionservice.save(cotizacion)) {
 			model.addAttribute("result", 1);
-		}else {			
-		
-		model.addAttribute("result", 0);
+		} else {
+
+			model.addAttribute("result", 0);
 		}
 		return "redirect:/documentacion/cotizacion";
 	}
-	
+
 	@GetMapping("/borrarcotizacion")
-	public String borrarCotizacion(@RequestParam(name="id",required=true)int id,Model model) {
-		//int soli = contactoService.findbyidcliente(id);
-		//if (cont == 0) {		
-			cotizacionservice.delete(id);
-		//}
+	public String borrarCotizacion(@RequestParam(name = "id", required = true) int id, Model model) {
+		// int soli = contactoService.findbyidcliente(id);
+		// if (cont == 0) {
+		cotizacionservice.delete(id);
+		// }
 		return "redirect:/documentacion/cotizacion";
 	}
+
 	@GetMapping("/cotizaciondetalle")
-	public String redirectCotizacionDetalle(@RequestParam(name="id",required=false)int id,
-			Model model) {
+	public String redirectCotizacionDetalle(@RequestParam(name = "id", required = false) int id, Model model) {
 		Cotizacion cotizacion = cotizacionservice.findbyid(id);
-		List<Cotizaciondetalle> cotizaDeta = cotizaciondetalleservice.findBycotizacion(cotizacion);	
-		
-		model.addAttribute("cotizadeta",cotizaDeta);
-		model.addAttribute("cotizaid",id);
+		List<Cotizaciondetalle> cotizaDeta = cotizaciondetalleservice.findBycotizacion(cotizacion);
+
+		model.addAttribute("cotizadeta", cotizaDeta);
+		model.addAttribute("cotizaid", id);
+		return "documentacion/cotizacionDetalle";
+	}
+	
+	@GetMapping("/cotizaciondetalleform")
+	public String redirectCotizacionDetalleform(@RequestParam(name = "item", required = false) int item, Model model) {
+		Cotizaciondetalle cotizaciondetalle = cotizaciondetalleservice.findByItem(item);
+
+		model.addAttribute("cotizadetalle", cotizaciondetalle);
 		return "crearEditar/cotizacionDetalle";
 	}
 	
-	//*************************DESPACHO*********************************
-	
+	@PostMapping("/addcotizaciondetalle")
+	public String addCotizacionDetalle(@ModelAttribute(name = "cotizaciondetalle") Cotizacion cotizacion, Model model) {
+		if (null != cotizacionservice.save(cotizacion)) {
+			model.addAttribute("result", 1);
+		} else {
+
+			model.addAttribute("result", 0);
+		}
+		return "redirect:/documentacion/cotizacion";
+	}
+/*	@GetMapping("/cotizaciondetalleform")
+	public String redirectCotizacionDetalleForm(@RequestParam(name = "id", required = false) int id, Model model) {
+		List<Tablamaestra> moneda = tablamaestraservice.findByIdtablamaestra("Hora002");
+		List<Tablamaestra> estado = tablamaestraservice.findByIdtablamaestra("Hora012");
+		List<Solicitud> idsoli = solicitudService.getidsolicitud();
+		Cotizaciondetalle cotizaciondetalle = new Cotizaciondetalle();
+
+		if (id != 0) {
+			cotizaciondetalle = cotizaciondetalleservice.findbyid(id);
+		}
+		model.addAttribute("solici", idsoli);
+		model.addAttribute("cotizaciondetalle", cotizaciondetalle);
+		model.addAttribute("moneda", moneda);
+		model.addAttribute("estado", estado);
+		return "crearEditar/cotizacion";
+	}*/
+	// *************************DESPACHO*********************************
+
 	@GetMapping("/despacho")
 	public String Despacho() {
 		return "documentacion/despachoDoc";
 	}
+
 	@GetMapping("/factura")
 	public String Factura() {
 		return "documentacion/facturaDoc";
 	}
+
 	@GetMapping("/ordenCompra")
 	public String OrdenCompra() {
 		return "documentacion/ordenCompraDoc";
 	}
-	
-	//*****************************Solicitud*******************************************
-	
+
+	// *****************************Solicitud*******************************************
+
 	@GetMapping("/solicitud")
 	public ModelAndView redirectSolicitud() {
 		ModelAndView mav = new ModelAndView("documentacion/solicitudDoc");
@@ -127,47 +162,47 @@ public class DocumentacionController {
 		mav.addObject("solicitud", solici);
 		return mav;
 	}
-	
+
 	@GetMapping("/solicitudform")
-	public String redirectSolicitudForm(@RequestParam(name="id",required=false )int id,
-			Model model) {
+	public String redirectSolicitudForm(@RequestParam(name = "id", required = false) int id, Model model) {
 		Solicitud solicitud = new Solicitud();
-		List<Cliente> cliente = clienteService.findByAll();		
-		
-		if(id != 0) {
-			solicitud = solicitudService.findByidsolicitud(id);		
+		int resu = 1;
+		List<Cliente> cliente = clienteService.findByAll();
+
+		if (id != 0) {
+			solicitud = solicitudService.findByidsolicitud(id);
+			resu = 0;
 		}
-		
-		model.addAttribute("solicitud",solicitud);
+		model.addAttribute("res", resu);
+		model.addAttribute("solicitud", solicitud);
 		model.addAttribute("cliente", cliente);
 		return "crearEditar/solicitud";
 	}
-	
+
 	@PostMapping("/addsolicitud")
-	public String addSolicitud (@ModelAttribute(name="solicitud")Solicitud solicitud,Model model) {
-		if(null != solicitudService.save(solicitud)) {
+	public String addSolicitud(@ModelAttribute(name = "solicitud") Solicitud solicitud, Model model) {
+		if (null != solicitudService.save(solicitud)) {
 			model.addAttribute("result", 1);
-		}else {			
-		
-		model.addAttribute("result", 0);
+		} else {
+
+			model.addAttribute("result", 0);
 		}
 		return "redirect:/documentacion/solicitud";
 	}
-	
+
 	@GetMapping("/borrarsolicitud")
-	public String borrarSolicitud(@RequestParam(name="id",required=true)int id,Model model) {
-		//int soli = contactoService.findbyidcliente(id);
-		//if (cont == 0) {		
-			solicitudService.delete(id);
-		//}
+	public String borrarSolicitud(@RequestParam(name = "id", required = true) int id, Model model) {
+		// int soli = contactoService.findbyidcliente(id);
+		// if (cont == 0) {
+		solicitudService.delete(id);
+		// }
 		return "redirect:/documentacion/solicitud";
 	}
-	//******************************VALORIZACION********************************************************
-	
+	// ******************************VALORIZACION********************************************************
+
 	@GetMapping("/valorizacion")
 	public String Valorizacion() {
 		return "documentacion/valorizacionDoc";
 	}
-	
-	
+
 }

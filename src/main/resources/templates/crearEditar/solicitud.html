@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="view/Cabecera :: head"></head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
 <body>
 
-<header th:replace="view/Cabecera :: cabecera"></header>
 
 	<div class="jumbotron">
 		<div class="container">
@@ -14,9 +16,10 @@
 				 REQUERIMIENTO :
 				<input type="text" class="form-control" th:field="*{requerimiento}"/> 
 				<br/> 
+				<div th:if="${res==0}">
 				 ESTADO :
-				<input type="text" class="form-control" th:field="*{estado}"/> 
-				<br/>
+				<input disabled type="text" class="form-control" th:field="*{estado}"/> 
+				<br/></div>
 				CLIENTE :
 				<br/>
 				<select th:field="*{cliente.idcliente}" class="custom-select col-sm-6 " id="inputGroupSelect03">									
@@ -27,18 +30,35 @@
 				</select>				
 		    	<br/>   <br/>
 				    FECHA RECEPCION :	
-					<input placeholder="dd/mm/aaaa" type="text" class="form-control" th:field="*{fecharecepcion}"/>
+				    <div class="control-group form-horizontal ">
+				              <div class="controls" style="position: relative">
+									<input type="text" class="form-control" id="fecharec" th:field="*{fecharecepcion}"/>
+									</div></div>
 				<br/>		    	
 				<button class="btn btn-lg btn-primary btn-block" type="submit">
 					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 					Accept
-				</button>	
-			
+				</button>				
 		</form>
 		</div>
 	</div>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
-<footer th:replace="view/Cabecera :: footer"></footer>
+<script type="text/javascript">
+$(document).ready(function() {
+  $(function() {
+    $('#fecharec').datetimepicker({
+      format: 'DD/MM/YYYY'
+    }).on('change', function(){
+        $('.datepicker').hide();
+    });
+  });
+});
+</script>
+
 
 </body>
 </html>

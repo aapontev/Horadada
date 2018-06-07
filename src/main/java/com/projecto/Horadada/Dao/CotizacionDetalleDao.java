@@ -14,4 +14,5 @@ import com.projecto.Horadada.Entity.Cotizaciondetalle;
 public interface CotizacionDetalleDao extends JpaRepository<Cotizaciondetalle, Serializable> {
 
 	public abstract List<Cotizaciondetalle> findBycotizacion (Cotizacion idCotizacion);
+	public abstract Cotizaciondetalle findByItem (int item);
 }

@@ -19,10 +19,10 @@ public interface PersonaDao extends JpaRepository<Persona, Serializable>{
 	public abstract List<Persona> findByTipopersona(int id);
 	public abstract Persona findPersonaByidpersona(int id);
 	
-	@Query(value="{call mant_persona1 (1, 459)}" ,nativeQuery=true)
+	@Query(value="{call mant_persona.mant_usuario(:tipo, :id)}" ,nativeQuery=true)
 	public abstract void updatetipopersona(@Param("tipo")int tipo,@Param("id") int id);
 	
 
-    @Procedure(name = "cambiaPersona")
-    public abstract void cambioPersona(@Param("v_tipopersona")int tipo, @Param("v_idpersona") int id);
+    @Procedure(name = "mant_persona1")
+    public abstract void mant_persona1(Integer tipo, Integer id);
 }

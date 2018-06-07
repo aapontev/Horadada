@@ -4,43 +4,50 @@
 
 <body>
 
+	<div class="jumbotron">
+		<div class="container">
 	<header th:replace="view/Cabecera :: cabecera"></header>
-	<div class="container">
-
-	<h1>CODIGO DE COTIZACION:  <a th:text="${cotizaid}"></a></h1>
-		<br />
-		<div class="panel panel-default">
-			<div class="panel-heading"></div>
-			<table class="table table-hover table-striped">
-				<thead>
-					<tr>
-						<th>ITEM</th>
-						<th>CANTIDAD</th>
-						<th>CCOSTOS</th>
-						<th>CODRECURSO</th>
-						<th>DESCRIPCION</th>
-						<th>DESCUENTO</th>
-						<th>UNIDAD DE MEDIDA</th>
-						<th>PRECIO UNITARIO</th>
-						<th>TOTAL DETALLE</th>						
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>							
-					<tr th:each="cotdet : ${cotizadeta}">						
-						<td th:text="${cotdet.item}"></td>
-						<td th:text="${cotdet.cantidad}"></td>
-						<td th:text="${cotdet.ccostos}"></td>
-						<td th:text="${cotdet.codrecurso}"></td>
-						<td th:text="${cotdet.descripcion}"></td>
-						<td th:text="${cotdet.descuento}"></td>	
-						<td th:text="${cotdet.idunidadmedida}"></td>	
-						<td th:text="${cotdet.preciounitario} "></td>		
-						<td th:text="${cotdet.totaldetalle}"></td>							 
-					</tr>
-				</tbody>
-			</table>
+			<h1>FORMULARIO COTIZACION</h1>
+			<br />
+			<form action="#" th:action="@{/documentacion/addcotizaciondetalle}"  th:object="${cotizaciondetalle}" method="post" >
+			<input type="hidden" th:field="*{item}"/>
+				CCOSTOS :
+				 <br>
+				<input  type="text" class="form-control" th:field="*{ccostos}"/>
+				 <br/>
+				RECURSO :
+				 <br>
+				<input  type="text" class="form-control" th:field="*{codrecurso}"/>
+				 <br/>
+				DESCRIPCION :		
+				<br>
+				<input  type="text" class="form-control" th:field="*{desccripcion}"/>
+				 <br/>
+				 CANTIDAD :
+				 <br>
+				<input  type="text" class="form-control" th:field="*{cantidad}"/>
+				 <br/>
+				DESCUENTO :	
+				<input  type="text" class="form-control" th:field="*{descuento}"/>
+				 <br/> 
+				 
+				 UNIDAD DE MEDIDA :	
+				<input  type="text" class="form-control" th:field="*{idunidadmedida}"/>
+				 <br/> 
+			    PRECIO UNITARIO :	
+				<input placeholder="dd/mm/aaaa" type="text" class="form-control" th:field="*{preciounitario}"/>
+				
+		    	<br/>   
+		    	TOTAL DETALLE :	
+				<input placeholder="dd/mm/aaaa" type="text" class="form-control" th:field="*{totaldetalle}"/>
+				
+		    	<br/>		    	
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					Aceptar
+				</button>	
 			
+		</form>
 		</div>
 	</div>
 	<footer th:replace="view/Cabecera :: footer"></footer>

@@ -4,6 +4,8 @@
 
 <body>
 
+	<div class="jumbotron">
+		<div class="container">
 <header th:replace="view/Cabecera :: cabecera"></header>
 <form action="#" th:action="@{/persona/addpersona2}"  th:object="${persona}" method="post" >
 
@@ -24,6 +26,8 @@ Seleccione Persona :
 					ACEPTAR
 				</button>	
 				</form>
+				</div>
+				</div>
 <footer th:replace="view/Cabecera :: footer"></footer>
 
 </body>

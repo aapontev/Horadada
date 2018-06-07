@@ -5,13 +5,13 @@ package com.projecto.Horadada.Entity;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedStoredProcedureQueries;
 import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.ParameterMode;
@@ -28,14 +28,12 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name = "PERSONA", schema = "HORADADA")
-@NamedStoredProcedureQueries({
-   @NamedStoredProcedureQuery(name = "cambiaPersona", 
-                              procedureName = "mant_persona.mant_usuario",
-                              parameters = {
-                                 @StoredProcedureParameter(mode = ParameterMode.IN, name = "v_tipopersona", type = Integer.class),
-                                 @StoredProcedureParameter(mode = ParameterMode.IN, name = "v_idpersona", type = Integer.class)
-                              })
-})
+@NamedStoredProcedureQuery(name = "persona.cambiaPersona", 
+		                  procedureName = "mant_persona1",
+		                  parameters = {
+		                     @StoredProcedureParameter(mode = ParameterMode.IN, name = "v_tipopersona", type = Integer.class),
+		                     @StoredProcedureParameter(mode = ParameterMode.IN, name = "v_idpersona", type = Integer.class)
+		                  })
 public class Persona  {
 
 	@Id

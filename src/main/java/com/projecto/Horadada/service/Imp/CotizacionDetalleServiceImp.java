@@ -24,4 +24,10 @@ public class CotizacionDetalleServiceImp implements CotizacionDetalleService{
 		return detallecotizacion;
 	}
 
+	@Override
+	public Cotizaciondetalle findByItem(int item) {
+		Cotizaciondetalle cotDetalle = cotizaciondetalledao.findByItem(item);
+		return cotDetalle;
+	}
+
 }

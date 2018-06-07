@@ -49,14 +49,14 @@ public class PersonaServiceImp implements PersonaService{
 	}
 
 	@Override
-	public void Update(int tipo,int id) {
+	public void update(int tipo,int id) {
 		personaDao.updatetipopersona(tipo, id);
 				
 	}
 
 	@Override
-	public void CambioPersona(int tipo, int id) {
-		personaDao.cambioPersona(tipo, id);
+	public void cambiaPersona(Integer tipo, Integer id) {
+		personaDao.mant_persona1(tipo, id);
 		
 	}
 

@@ -38,7 +38,7 @@ public class PersonaController {
 		id = persona.getIdpersona();
 		Persona per = personaService.findByidPersona(id);
 		if(tipo != per.getTipopersona()) {
-			personaService.Update(tipo, id);
+			personaService.cambiaPersona(tipo, id);
 		}
 		if(null != personaService.save(persona)) {
 			model.addAttribute("result", 1);
@@ -56,24 +56,6 @@ public class PersonaController {
 			return "redirect:/persona/";
 		}
 	}
-	
-	/*@PostMapping("/addpersona2")
-	public String addPersona2 (@ModelAttribute(name="idpersona")int idpersona,Model model) {
-		
-		Persona persona = personaService.Update(3, idpersona);
-		tipo = persona.getTipopersona();
-		
-		
-		if(tipo == 1) {
-			return "redirect:/mantenimiento/transportista";
-		}else if (tipo == 2) {
-			return "redirect:/mantenimiento/contacto";
-		}else if (tipo == 3){
-			return "redirect:/mantenimiento/trabajador";
-		}else {
-			return "redirect:/mantenimiento/persona";
-		}
-	}*/
 	
 	@GetMapping("/borrarpersona")
 	public String borrarPersona(@RequestParam(name="id",required=true)int id,Model model) {
