@@ -24,7 +24,7 @@ body a:hover{
 	padding:0em 0 2em;
 }
 .logo-top{
-	background:#D54F30;
+	background:#00365D;
 	padding:0.5em 1em 1em;
 }
 .logo-top-left{
@@ -33,6 +33,7 @@ body a:hover{
 }
 .logo-top-right{
 	float:right;
+	margin-top:0.9em;
 }
 .logo-top-left p{
 	color:#FFFFFF;
@@ -85,7 +86,7 @@ body a:hover{
 }
 .logo a{
 	font-size:2em;
-	color:#d54f30;
+	color:#00365D;
 	text-decoration:none;
 	font-family: 'Nunito', sans-serif;
 }
@@ -152,7 +153,7 @@ body a:hover{
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
   color: #fff;
-  background-color: #d54f30;
+  background-color: #00365D;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   color: #fff;
@@ -181,7 +182,7 @@ body a:hover{
   left: 0;
   right: 0;
   bottom: 0;
-  background:#d54f30;
+  background:#00365D;
   -webkit-transform: scaleY(0);
   transform: scaleY(0);
   -webkit-transform-origin: 50% 0;
@@ -595,7 +596,7 @@ h2.late {
 	padding:5em 0;
 }
 .globe{
-	background: #d54f30;
+	background: #00365D;
 	padding: 33px 25px;
 	border-radius: 75px;
 	-webkit-border-radius: 75px;
@@ -615,7 +616,7 @@ h2.late {
 }
 .about-grid h3{
 	font-size:1.5em;
-	color:#d54f30;
+	color:#00365D;
 	text-transform:capitalize;
 	margin:1em 0;
 	font-family: 'Nunito', sans-serif;
@@ -646,7 +647,7 @@ h2.late {
 }
 .about-bottom-grid-left h4{
 	font-size:1.5em;
-	color:#d54f30;
+	color:#00365D;
 	margin:1em 0;
 	font-family: 'Nunito', sans-serif;
 	text-transform:capitalize;
@@ -699,7 +700,7 @@ h2.late {
 }
 .services h3{
 	font-size: 2.5em;
-	color: #d54f30;
+	color: #00365D;
 	margin: 0 0 1em;
 	font-family: 'Nunito', sans-serif;
 	padding-bottom: 0.5em;
@@ -709,7 +710,7 @@ h2.late {
 .services-grd h4{
 	margin:1em 0;
 	text-transform:capitalize;
-	color:#d54f30;
+	color:#00365D;
 	font-size:1.5em;
 	font-family: 'Nunito', sans-serif;
 	line-height:1.2em;
@@ -776,7 +777,7 @@ h2.late {
 	padding:5em 0;
 	}
 .price h2{
-	color: #d54f30;
+	color: #00365D;
 	font-size: 2.5em;
 	margin: 0 0 2em;
 	font-family: 'Nunito', sans-serif;
@@ -819,7 +820,7 @@ h2.late {
 	}
 .value{
 	padding:1em 0;
-	background:#d54f30;
+	background:#00365D;
 	}
 .value p{
 	color:#fff;
@@ -843,7 +844,7 @@ h2.late {
 	margin: 0.5em 7em;
 	}
 .basic ul li span{
-	color:#d54f30;
+	color:#00365D;
 	font-weight: 500;
 	}
 .basic ul li.gd{
@@ -854,7 +855,7 @@ h2.late {
 	}
 .buy-me a{
 	padding:10px 35px;
-	background:#d54f30;
+	background:#00365D;
 	color:#fff;
 	font-size:16px;
 	font-family: 'Nunito', sans-serif;
@@ -867,7 +868,7 @@ h2.late {
 	}
 .buy-me a:hover{
 	text-decoration:none;
-	color:#d54f30;
+	color:#00365D;
 	background:#fff;
 	box-shadow: 0px 2px 0px #604944;
 	}
@@ -902,7 +903,7 @@ h2.late {
 .newsletter input[type="submit"]{
 	outline:none;
 	border:none;
-	background:#d54f30;
+	background:#00365D;
 	color:#fff;
 	padding:10px 0px;
 	width:31%;
@@ -918,7 +919,7 @@ h2.late {
 }
 .newsletter input[type="submit"]:hover{
 	background:#f5f5f5;
-	color:#d54f30;
+	color:#00365D;
 }
 /*-- //newsletter --*/
 /*-- contact --*/
@@ -927,7 +928,7 @@ h2.late {
 }
 .contact-grid h3{
 	font-size:2.5em;
-	color:#d54f30;
+	color:#00365D;
 	margin:0 0 0.5em;
 	font-family: 'Nunito', sans-serif;
 }
@@ -986,7 +987,7 @@ h2.late {
 .contact-grid input[type="submit"]{
 	outline:none;
 	border:none;
-	background:#d54f30;
+	background:#00365D;
 	color:#fff;
 	padding:14px 0px;
 	width:100%;
@@ -1001,7 +1002,7 @@ h2.late {
 }
 .contact-grid input[type="submit"]:hover{
 	background:#f5f5f5;
-	color:#d54f30;
+	color:#00365D;
 }
 /*-- //contact --*/
 /*-- footer --*/
@@ -1104,7 +1105,7 @@ h2.late {
 	text-decoration:none;
 }
 .dealer-grid-right h4 a:hover{
-	color:#d54f30;
+	color:#00365D;
 	text-decoration:none;
 }
 .dealer-grid-right p{
@@ -1384,14 +1385,14 @@ h2.late {
 }
 @media (max-width:767px){
 	.navbar-default .navbar-toggle {
-	  border-color: #D54F30;
-	  background-color: #D54F30;
+	  border-color: #00365D;
+	  background-color: #00365D;
 	}
 	.navbar-default .navbar-toggle .icon-bar {
 	  background-color: #fff;
 	}
 	.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-	  background-color: #D54F30 !important;
+	  background-color: #00365D !important;
 	}
 	.navbar-nav > li > a {
 	  text-align: center;

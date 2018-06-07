@@ -11,52 +11,89 @@
 
 <!-- //for-mobile-apps -->
 <link href="#" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-<link href="#" th:href="@{/css/bootstrap-datetimepicker.min.css}" rel="stylesheet" />
-<link href="#" th:href="@{/css/bootstrap-theme.min.css}" rel="stylesheet" />
+<link href="#" th:href="@{/css/bootstrap-datetimepicker.min.css}"
+	rel="stylesheet" />
+<link href="#" th:href="@{/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
 <link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
-<link href="#" th:href="@{/css/web1.css}" rel="stylesheet" type="text/css">
-<link href="#" th:href="@{/css/web2.css}" rel="stylesheet" type="text/css">
-<link href="#" th:href="@{/css/lightbox.css}" rel="stylesheet" type="text/css">
+<link href="#" th:href="@{/css/web1.css}" rel="stylesheet"
+	type="text/css">
+<link href="#" th:href="@{/css/web2.css}" rel="stylesheet"
+	type="text/css">
+<link href="#" th:href="@{/css/lightbox.css}" rel="stylesheet"
+	type="text/css">
+<script th:src="@{/js/moment.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/jquery.min.js}"></script>
 <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
-<script th:src="@{/js/bootstrap-datetimepicker.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap-datetimepicker.min.js}"
+	type="text/javascript"></script>
 <script th:src="@{/js/componentes.js}" type="text/javascript"></script>
-<script th:src="@{/js/moment.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/lightbox-plus-jquery.min.js}"></script>
 <script async defer
-	th:src="@{https://maps.googleapis.com/maps/api/js?key=AIzaSyA_kHJujF0ush4SjIUYJooHtj9FrFCiSmc&callback=initMap}">			
+	th:src="@{https://maps.googleapis.com/maps/api/js?key=AIzaSyA_kHJujF0ush4SjIUYJooHtj9FrFCiSmc&callback=initMap}">
+	
 </script>
 </head>
 
 <body>
 
-	<header class="top-area" id="home" th:fragment="header">
+	<header id="home" th:fragment="header">
 		<div class="header-top">
 			<div class="container">
 				<div class="logo-top">
 					<div class="logo-top-left">
-						<p>Horadada</p>
+					<img th:src="@{/imgs/favicon.png}" class="img-responsive" />
 					</div>
 					<div class="logo-top-right">
-						<ul>
-							<li><a href="#" class="f1"> </a></li>
-							<li><a href="#" class="f2"> </a></li>
-							<li><a href="#" class="f3"> </a></li>
-							<li><a href="#" class="f4"> </a></li>
-							<li><a href="#" class="f5"> </a></li>
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<button type="button" id="dropdownMenu1" data-toggle="dropdown"
+									class="btn btn-info navbar-btn dropdown-toggle">
+									Login <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li style="width: 250px;">
+										<form class="navbar-form form" role="form" action="#"
+											th:action="@{/loginCheck}" th:object="${credencialUsuario}"
+											method="POST">
+											<div class="form-group">
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="glyphicon glyphicon-user"></i></span> <input
+														id="emailInput" placeholder="usuario" class="form-control"
+														th:field="*{usuario}" type="text">
+												</div>
+												<br /> <br />
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="glyphicon glyphicon-lock"></i></span> <input
+														id="passwordInput" placeholder="password"
+														class="form-control" th:field="*{password}"
+														type="password">
+												</div>
+												<br /> <br />
+											</div>
+											<div class="form-group">
+												<!--BUTTON-->
+												<button type="submit" class="btn btn-primary form-control">Login</button>
+											</div>
+											<div class="form-group">
+												<!--RESET PASSWORD LINK-->
+												<span class="pull-right"><a href="#">Forgot
+														Password?</a></span>
+											</div>
+										</form>
+									</li>
+								</ul>
+							</li>
 						</ul>
-					</div>
-					<div class="logo-top-lft">
-						<p>
-							<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero de Contacto<span>+0646-784-900</span>
-						</p>
 					</div>
 					<div class="clearfix"></div>
 				</div>
 				<div class="logo">
 					<a href="index.html"><i class="glyphicon glyphicon-road"
-						aria-hidden="true"></i>Transportation<span>We Care About
-							Your Cargo</span></a>
+						aria-hidden="true"></i>Transportes Horadada<span>We Care
+							About Your Cargo</span></a>
 				</div>
 				<div class="header-nav">
 					<nav class="navbar navbar-default">
@@ -74,8 +111,7 @@
 						<div class="collapse navbar-collapse nav-wil"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
-								<li class="hvr-bounce-to-bottom"><a
-									href="index.html">Home</a></li>
+								<li class="hvr-bounce-to-bottom"><a href="index.html">Home</a></li>
 								<li class="hvr-bounce-to-bottom"><a href="#about"
 									class="scroll">About</a></li>
 								<li class="hvr-bounce-to-bottom"><a href="#services"
@@ -85,35 +121,13 @@
 								<li class="hvr-bounce-to-bottom"><a href="#contact"
 									class="scroll">Contact Us</a></li>
 							</ul>
-							<ul>
-								<li>
-									<div class="dropdown">
-										<div class="logo-top-right">
-											<button type="button" id="dropdownMenu1"
-												data-toggle="dropdown"
-												class="btn btn-outline-secondary dropdown-toggle">
-												INICIAR SESION <span class="caret"></span>
-											</button>
-											<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-												<form action="#" class="col-xs-12"
-													th:action="@{/loginCheck}" th:object="${credencialUsuario}"
-													method="POST">
-													<input type="text" class="form-control form-control-lg"
-														id="exampleInputEmail1" aria-describedby="emailHelp"
-														placeholder="Enter usuario" th:field="*{usuario}">
-													<br> <input type="password"
-														class="form-control form-control-lg"
-														id="exampleInputPassword1" placeholder="Password"
-														th:field="*{password}"> <br>
-													<button type="submit" class="btn btn-primary">INGRESAR</button>
-												</form>
-												<div class="dropdown-divider"></div>
-												<a class="dropdown-item" href="#">¿OLVIDO CONTRASEÑA?</a>
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
+
+							<div class="logo-top-right">
+								<p>
+									<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero
+									de Contacto<span>+0646-784-900</span>
+								</p>
+							</div>
 						</div>
 						<!-- /.navbar-collapse -->
 					</nav>
@@ -142,8 +156,12 @@
 		<script type="application/x-javascript">
 			
 			
+			
+			
 			 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } 
+		
+		
 		
 		
 		</script>
