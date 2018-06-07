@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
-<title>Transportation a Autos and Transportation Category Flat
-	Bootstrap Responsive Website Template | Home :: w3layouts</title>
+<link rel="shortcut icon" type="image/ico" href="#"
+	th:href="@{/imgs/favicon.png}" />
+<title>Horadada</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords"
-	content="Transportation Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<meta name="keywords" content="" />
 
 <!-- //for-mobile-apps -->
 <link href="#" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
@@ -18,7 +17,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="#" th:href="@{/css/web1.css}" rel="stylesheet" type="text/css">
 <link href="#" th:href="@{/css/web2.css}" rel="stylesheet" type="text/css">
 <link href="#" th:href="@{/css/lightbox.css}" rel="stylesheet" type="text/css">
-
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap-datetimepicker.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/componentes.js}" type="text/javascript"></script>
+<script th:src="@{/js/moment.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/lightbox-plus-jquery.min.js}"></script>
+<script async defer
+	th:src="@{https://maps.googleapis.com/maps/api/js?key=AIzaSyA_kHJujF0ush4SjIUYJooHtj9FrFCiSmc&callback=initMap}">			
+</script>
 </head>
 
 <body>
@@ -28,7 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<div class="logo-top">
 					<div class="logo-top-left">
-						<p>autem quibusdam et aut officiis debitis</p>
+						<p>Horadada</p>
 					</div>
 					<div class="logo-top-right">
 						<ul>
@@ -41,8 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="logo-top-lft">
 						<p>
-							<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Your
-							First Visit? Call For Info<span>+0646-784-900</span>
+							<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero de Contacto<span>+0646-784-900</span>
 						</p>
 					</div>
 					<div class="clearfix"></div>
@@ -68,7 +74,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="collapse navbar-collapse nav-wil"
 							id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
-								<li class="hvr-bounce-to-bottom active"><a
+								<li class="hvr-bounce-to-bottom"><a
 									href="index.html">Home</a></li>
 								<li class="hvr-bounce-to-bottom"><a href="#about"
 									class="scroll">About</a></li>
@@ -81,27 +87,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</ul>
 							<ul>
 								<li>
-								<div class="dropdown">
-								<div class="logo-top-right">
-									<button type="button" id="dropdownMenu1" data-toggle="dropdown"
-										class="btn btn-outline-secondary dropdown-toggle">
-										INICIAR SESION <span class="caret"></span>
-									</button>
-									<div class="dropdown-menu">
-										<form action="#" class="col-xs-12" th:action="@{/loginCheck}"
-											th:object="${credencialUsuario}" method="POST">
-											<input type="text" class="form-control form-control-lg"
-												id="exampleInputEmail1" aria-describedby="emailHelp"
-												placeholder="Enter usuario" th:field="*{usuario}"> <br>
-											<input type="password" class="form-control form-control-lg"
-												id="exampleInputPassword1" placeholder="Password"
-												th:field="*{password}"> <br>
-											<button type="submit" class="btn btn-primary">INGRESAR</button>
-										</form>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">¿OLVIDO CONTRASEÑA?</a>
-									</div>
-									</div>
+									<div class="dropdown">
+										<div class="logo-top-right">
+											<button type="button" id="dropdownMenu1"
+												data-toggle="dropdown"
+												class="btn btn-outline-secondary dropdown-toggle">
+												INICIAR SESION <span class="caret"></span>
+											</button>
+											<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+												<form action="#" class="col-xs-12"
+													th:action="@{/loginCheck}" th:object="${credencialUsuario}"
+													method="POST">
+													<input type="text" class="form-control form-control-lg"
+														id="exampleInputEmail1" aria-describedby="emailHelp"
+														placeholder="Enter usuario" th:field="*{usuario}">
+													<br> <input type="password"
+														class="form-control form-control-lg"
+														id="exampleInputPassword1" placeholder="Password"
+														th:field="*{password}"> <br>
+													<button type="submit" class="btn btn-primary">INGRESAR</button>
+												</form>
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item" href="#">¿OLVIDO CONTRASEÑA?</a>
+											</div>
+										</div>
 									</div>
 								</li>
 							</ul>
@@ -120,15 +129,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					by Alexander Aponte Villena</p>
 			</div>
 		</div>
-		<script th:src="@{/js/jquery.min.js}"></script>
-		<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
-		<script th:src="@{/js/bootstrap-datetimepicker.min.js}" type="text/javascript"></script>
-		<script th:src="@{/js/componentes.js}" type="text/javascript"></script>
-		<script th:src="@{/js/moment.min.js}" type="text/javascript"></script>
-		<script th:src="@{/js/lightbox-plus-jquery.min.js}"></script>
-		<script async defer
-			th:src="@{https://maps.googleapis.com/maps/api/js?key=AIzaSyA_kHJujF0ush4SjIUYJooHtj9FrFCiSmc&callback=initMap}">			
-		</script>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event) {
@@ -141,8 +141,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</script>
 		<script type="application/x-javascript">
 			
+			
 			 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } 
+		
 		
 		</script>
 	</footer>

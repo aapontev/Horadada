@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+<head th:replace="view/Cabecera :: head"></head>
 <body>
 
-
-	<div class="jumbotron">
 		<div class="container">
+		<header th:replace="view/Cabecera :: cabecera"></header>
 			<h1>FORMULARIO SOLICITUD</h1>
 			<form action="#" th:action="@{/documentacion/addsolicitud}"  th:object="${solicitud}" method="post" >
 			<input type="hidden" th:field="*{idsolicitud}"/>  
@@ -41,11 +36,6 @@
 				</button>				
 		</form>
 		</div>
-	</div>
-<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head">
+<head th:fragment="head"><link rel="shortcut icon" type="image/ico" href="#"
+	th:href="@{/imgs/favicon.png}" />
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,15 +10,24 @@
 <meta name="author" content="" />
 <link rel="icon" href="../../favicon.ico" />
 
-<title>Horadada</title>
+<title>Sistema de planificcion y control de Carga pesada</title>
 <!-- //for-mobile-apps -->
 <link href="#" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-<link href="#" th:href="@{/css/bootstrap-datetimepicker.min.css}" rel="stylesheet" />
 <link href="#" th:href="@{/css/bootstrap-theme.min.css}" rel="stylesheet" />
+<link href="#" th:href="@{/css/bootstrap-datetimepicker.min.css}" rel="stylesheet" />
 <link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
 <link href="#" th:href="@{/css/web1.css}" rel="stylesheet" type="text/css">
 <link href="#" th:href="@{/css/web2.css}" rel="stylesheet" type="text/css">
 <link href="#" th:href="@{/css/lightbox.css}" rel="stylesheet" type="text/css">
+<script th:src="@{/js/lightbox-plus-jquery.min.js}"></script>
+<script th:src="@{/js/moment.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap-datetimepicker.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/componentes.js}" type="text/javascript"></script>
+<script async defer
+	th:src="@{https://maps.googleapis.com/maps/api/js?key=AIzaSyA_kHJujF0ush4SjIUYJooHtj9FrFCiSmc&callback=initMap}">			
+</script>
 </head>
 
 <body>
@@ -27,7 +37,7 @@
 			<div class="container">
 				<div class="logo-top">
 					<div class="logo-top-left">
-						<p>autem quibusdam et aut officiis debitis</p>
+						<p>Horadada</p>
 					</div>
 					<div class="logo-top-right">
 						<ul>
@@ -40,8 +50,7 @@
 					</div>
 					<div class="logo-top-lft">
 						<p>
-							<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Your
-							First Visit? Call For Info<span>+0646-784-900</span>
+							<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero de Contacto<span>+0646-784-900</span>
 						</p>
 					</div>
 					<div class="clearfix"></div>
@@ -123,15 +132,6 @@
 					by Alexander Aponte Villena</p>
 			</div>
 		</div>
-		<script th:src="@{/js/jquery.min.js}"></script>
-		<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
-		<script th:src="@{/js/bootstrap-datetimepicker.min.js}" type="text/javascript"></script>
-		<script th:src="@{/js/componentes.js}" type="text/javascript"></script>
-		<script th:src="@{/js/moment.min.js}" type="text/javascript"></script>
-		<script th:src="@{/js/lightbox-plus-jquery.min.js}"></script>
-		<script async defer
-			th:src="@{https://maps.googleapis.com/maps/api/js?key=AIzaSyA_kHJujF0ush4SjIUYJooHtj9FrFCiSmc&callback=initMap}">			
-		</script>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event) {
@@ -142,12 +142,10 @@
 				});
 			});
 		</script>
-		<script type="application/x-javascript">
-			
+		<script type="application/x-javascript">	
 			
 			 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } 
-		
+		function hideURLbar(){ window.scrollTo(0,1); } 	
 		
 		</script>
 	</footer>
