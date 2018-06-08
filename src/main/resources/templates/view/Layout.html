@@ -38,12 +38,25 @@
 <body>
 
 	<header id="home" th:fragment="header">
-		<div class="header-top">
+		<div class="container">
+				<div class="header-nav">
 			<div class="container">
 				<div class="logo-top">
 					<div class="logo-top-left">
-					<img th:src="@{/imgs/favicon.png}" class="img-responsive" />
+						<img th:src="@{/imgs/favicon.png}" class="img-responsive" />
 					</div>
+					<div class="logo logo-top-lft">
+						<a href="index.html"><i class="glyphicon glyphicon-road"
+							aria-hidden="true"></i>Transportes Horadada<span>We Care
+								About Your Cargo</span></a>
+					</div>
+					<div class="logo logo-top-lft">
+						<p>
+							<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero
+							de Contacto +0646-784-900
+						</p>
+					</div>
+					<br> <br>
 					<div class="logo-top-right">
 						<ul class="nav navbar-nav">
 							<li class="dropdown">
@@ -87,48 +100,34 @@
 								</ul>
 							</li>
 						</ul>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="logo">
-					<a href="index.html"><i class="glyphicon glyphicon-road"
-						aria-hidden="true"></i>Transportes Horadada<span>We Care
-							About Your Cargo</span></a>
-				</div>
-				<div class="header-nav">
-					<nav class="navbar navbar-default">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed"
-								data-toggle="collapse"
-								data-target="#bs-example-navbar-collapse-1">
-								<span class="sr-only">Toggle navigation</span> <span
-									class="icon-bar"></span> <span class="icon-bar"></span> <span
-									class="icon-bar"></span>
-							</button>
-						</div>
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse nav-wil"
-							id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav">
-								<li class="hvr-bounce-to-bottom"><a href="index.html">Home</a></li>
-								<li class="hvr-bounce-to-bottom"><a href="#about"
-									class="scroll">About</a></li>
-								<li class="hvr-bounce-to-bottom"><a href="#services"
-									class="scroll">Services</a></li>
-								<li class="hvr-bounce-to-bottom"><a href="#pricing"
-									class="scroll">Pricing</a></li>
-								<li class="hvr-bounce-to-bottom"><a href="#contact"
-									class="scroll">Contact Us</a></li>
-							</ul>
-
-							<div class="logo-top-right">
-								<p>
-									<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero
-									de Contacto<span>+0646-784-900</span>
-								</p>
-							</div>
-						</div>
+					</div>						
+					<div class="clearfix"> </div>
+							<nav class="navbar navbar-default">
+								<!-- Brand and toggle get grouped for better mobile display -->
+								<div class="navbar-header">
+									<button type="button" class="navbar-toggle collapsed"
+										data-toggle="collapse"
+										data-target="#bs-example-navbar-collapse-1">
+										<span class="sr-only">Toggle navigation</span> <span
+											class="icon-bar"></span> <span class="icon-bar"></span> <span
+											class="icon-bar"></span>
+									</button>
+								</div>
+								<!-- Collect the nav links, forms, and other content for toggling -->
+								<div class="collapse navbar-collapse nav-wil"
+									id="bs-example-navbar-collapse-1">
+									<ul class="nav navbar-nav">
+										<li class="hvr-bounce-to-bottom"><a href="index.html">Home</a></li>
+										<li class="hvr-bounce-to-bottom"><a href="#about"
+											class="scroll">About</a></li>
+										<li class="hvr-bounce-to-bottom"><a href="#services"
+											class="scroll">Services</a></li>
+										<li class="hvr-bounce-to-bottom"><a href="#pricing"
+											class="scroll">Pricing</a></li>
+										<li class="hvr-bounce-to-bottom"><a href="#contact"
+											class="scroll">Contact Us</a></li>
+									</ul>		
+								</div>
 						<!-- /.navbar-collapse -->
 					</nav>
 				</div>
@@ -137,11 +136,13 @@
 	</header>
 
 	<footer th:fragment="footer">
-		<div class="footer-copy">
-			<div class="container">
+	<div class="footer">
+		<div class="logo logo-top-lft">
+			<div class="footer-grids">
 				<p>Copyright © 2018 Transportation. All rights reserved | Design
 					by Alexander Aponte Villena</p>
 			</div>
+		</div>
 		</div>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
@@ -155,14 +156,8 @@
 		</script>
 		<script type="application/x-javascript">
 			
-			
-			
-			
 			 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } 
-		
-		
-		
 		
 		</script>
 	</footer>
