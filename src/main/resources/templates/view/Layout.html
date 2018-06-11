@@ -37,112 +37,98 @@
 
 <body>
 
-	<header id="home" th:fragment="header">
-		<div class="container">
-				<div class="header-nav">
-			<div class="container">
-				<div class="logo-top">
-					<div class="logo-top-left">
-						<img th:src="@{/imgs/favicon.png}" class="img-responsive" />
-					</div>
-					<div class="logo logo-top-lft">
-						<a href="index.html"><i class="glyphicon glyphicon-road"
-							aria-hidden="true"></i>Transportes Horadada<span>We Care
-								About Your Cargo</span></a>
-					</div>
-					<div class="logo logo-top-lft">
-						<p>
-							<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero
-							de Contacto +0646-784-900
-						</p>
-					</div>
-					<br> <br>
-					<div class="logo-top-right">
-						<ul class="nav navbar-nav">
-							<li class="dropdown">
-								<button type="button" id="dropdownMenu1" data-toggle="dropdown"
-									class="btn btn-info navbar-btn dropdown-toggle">
-									Login <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li style="width: 250px;">
-										<form class="navbar-form form" role="form" action="#"
-											th:action="@{/loginCheck}" th:object="${credencialUsuario}"
-											method="POST">
-											<div class="form-group">
-												<div class="input-group">
-													<span class="input-group-addon"><i
-														class="glyphicon glyphicon-user"></i></span> <input
-														id="emailInput" placeholder="usuario" class="form-control"
-														th:field="*{usuario}" type="text">
-												</div>
-												<br /> <br />
-												<div class="input-group">
-													<span class="input-group-addon"><i
-														class="glyphicon glyphicon-lock"></i></span> <input
-														id="passwordInput" placeholder="password"
-														class="form-control" th:field="*{password}"
-														type="password">
-												</div>
-												<br /> <br />
-											</div>
-											<div class="form-group">
-												<!--BUTTON-->
-												<button type="submit" class="btn btn-primary form-control">Login</button>
-											</div>
-											<div class="form-group">
-												<!--RESET PASSWORD LINK-->
-												<span class="pull-right"><a href="#">Forgot
-														Password?</a></span>
-											</div>
-										</form>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>						
-					<div class="clearfix"> </div>
-							<nav class="navbar navbar-default">
-								<!-- Brand and toggle get grouped for better mobile display -->
-								<div class="navbar-header">
-									<button type="button" class="navbar-toggle collapsed"
-										data-toggle="collapse"
-										data-target="#bs-example-navbar-collapse-1">
-										<span class="sr-only">Toggle navigation</span> <span
-											class="icon-bar"></span> <span class="icon-bar"></span> <span
-											class="icon-bar"></span>
-									</button>
-								</div>
-								<!-- Collect the nav links, forms, and other content for toggling -->
-								<div class="collapse navbar-collapse nav-wil"
-									id="bs-example-navbar-collapse-1">
-									<ul class="nav navbar-nav">
-										<li class="hvr-bounce-to-bottom"><a href="index.html">Home</a></li>
-										<li class="hvr-bounce-to-bottom"><a href="#about"
-											class="scroll">About</a></li>
-										<li class="hvr-bounce-to-bottom"><a href="#services"
-											class="scroll">Services</a></li>
-										<li class="hvr-bounce-to-bottom"><a href="#pricing"
-											class="scroll">Pricing</a></li>
-										<li class="hvr-bounce-to-bottom"><a href="#contact"
-											class="scroll">Contact Us</a></li>
-									</ul>		
-								</div>
-						<!-- /.navbar-collapse -->
-					</nav>
-				</div>
+	<header th:fragment="header">
+		<div class="logo-top">
+
+			<div class="logo-top-left">
+				<img th:src="@{/imgs/favicon.png}" class="img-responsive" />
 			</div>
+			<div class="logo logo-top-lft">
+				<a href="index.html"><i class="glyphicon glyphicon-road"
+					aria-hidden="true"></i>Transportes Horadada<span>We Care
+						About Your Cargo</span></a>
+			</div>
+			<div class="logo logo-top-right">
+				<p style="color: #ffff">
+					<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero
+					de Contacto +0646-784-900
+				</p>
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<button type="button" id="dropdownMenu1" data-toggle="dropdown"
+						class="btn btn-info navbar-btn dropdown-toggle">
+						Login <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li style="width: 250px;">
+							<form class="navbar-form form" role="form" action="#"
+								th:action="@{/loginCheck}" th:object="${credencialUsuario}"
+								method="POST">
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-user"></i></span> <input id="emailInput"
+											placeholder="usuario" class="form-control"
+											th:field="*{usuario}" type="text">
+									</div>
+									<br /> <br />
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-lock"></i></span> <input
+											id="passwordInput" placeholder="password"
+											class="form-control" th:field="*{password}" type="password">
+									</div>
+									<br /> <br />
+								</div>
+								<div class="form-group">
+									<!--BUTTON-->
+									<button type="submit" class="btn btn-primary form-control">Login</button>
+								</div>
+							</form>
+						</li>
+					</ul>
+				</li>
+			</ul>
 		</div>
+		</div>
+		<nav class="navbar-default">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="hvr-bounce-to-bottom"><a href="index.html">Home</a></li>
+					<li class="hvr-bounce-to-bottom"><a href="#about"
+						class="scroll">About</a></li>
+					<li class="hvr-bounce-to-bottom"><a href="#services"
+						class="scroll">Services</a></li>
+					<li class="hvr-bounce-to-bottom"><a href="#pricing"
+						class="scroll">Pricing</a></li>
+					<li class="hvr-bounce-to-bottom"><a href="#contact"
+						class="scroll">Contact Us</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</nav>
 	</header>
 
 	<footer th:fragment="footer">
-	<div class="footer">
-		<div class="logo logo-top-lft">
-			<div class="footer-grids">
-				<p>Copyright © 2018 Transportation. All rights reserved | Design
-					by Alexander Aponte Villena</p>
+		<div class="footer">
+			<div class="logo logo-top-lft">
+				<div class="footer-grids">
+					<p>Copyright © 2018 Transportation. All rights reserved |
+						Design by Alexander Aponte Villena</p>
+				</div>
 			</div>
-		</div>
 		</div>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
@@ -156,8 +142,10 @@
 		</script>
 		<script type="application/x-javascript">
 			
+			
 			 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } 
+		
 		
 		</script>
 	</footer>
