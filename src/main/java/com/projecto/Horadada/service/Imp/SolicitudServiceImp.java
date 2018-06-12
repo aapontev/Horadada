@@ -18,7 +18,7 @@ public class SolicitudServiceImp implements SolicitudService{
 	private SolicitudDao solicitudDao;
 	@Override
 	public List<Solicitud> findByAll() {
-		List<Solicitud> solic=solicitudDao.findAll();
+		List<Solicitud> solic=(List<Solicitud>) solicitudDao.findAll();
 		return solic;
 	}
 	@Override

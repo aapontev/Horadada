@@ -1,4 +1,10 @@
+server:
+  port: 8092
+  connection-timeout: 6000
+    
 spring:
+  thymeleaf:
+    cache: false
   datasource:
     #url: jdbc:sqlserver://localhost:1433;databaseName=Horadada
     url: jdbc:oracle:thin:@localhost:1521:Horadada

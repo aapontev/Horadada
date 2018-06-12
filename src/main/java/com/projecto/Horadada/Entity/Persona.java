@@ -28,8 +28,8 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name = "PERSONA", schema = "HORADADA")
-@NamedStoredProcedureQuery(name = "persona.cambiaPersona", 
-		                  procedureName = "mant_persona1",
+@NamedStoredProcedureQuery(name = "cambiaPersona", 
+		                  procedureName = "mant_persona.mant_usuario",
 		                  parameters = {
 		                     @StoredProcedureParameter(mode = ParameterMode.IN, name = "v_tipopersona", type = Integer.class),
 		                     @StoredProcedureParameter(mode = ParameterMode.IN, name = "v_idpersona", type = Integer.class)

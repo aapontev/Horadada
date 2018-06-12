@@ -17,12 +17,12 @@ import com.projecto.Horadada.service.PersonaService;
 @Controller
 @RequestMapping("persona")
 public class PersonaController {
-	
+
 	@Autowired
 	@Qualifier("personaServiceImp")
 	private PersonaService personaService;
-	private int tipo;
-	private int id;
+	private int v_tipopersona;
+	private int v_idpersona;
 
 	@GetMapping("/")
 	public ModelAndView Persona() {
@@ -30,38 +30,41 @@ public class PersonaController {
 		mav.addObject("persona", personaService.findByTipopersona(0));
 		return mav;
 	}
-	
+
 	@PostMapping("/addpersona")
-	public String addPersona (@ModelAttribute(name="persona")Persona persona,Model model) {
-		
-		tipo = persona.getTipopersona();
-		id = persona.getIdpersona();
-		Persona per = personaService.findByidPersona(id);
-		if(tipo != per.getTipopersona()) {
-			personaService.cambiaPersona(tipo, id);
-		}
-		if(null != personaService.save(persona)) {
-			model.addAttribute("result", 1);
-		}else {			
-		model.addAttribute("result", 0);
-		}
-		if(tipo == 1) {
-			
-			return "redirect:/transportista/";
-		}else if (tipo == 2) {
-			return "redirect:/contacto/";
-		}else if (tipo == 3){
-			return "redirect:/trabajador/";
+	public String addPersona(@ModelAttribute(name = "persona") Persona persona, Model model) {
+
+		v_tipopersona = persona.getTipopersona();
+		v_idpersona = persona.getIdpersona();
+		if (v_idpersona != 0) {
+			Persona per = personaService.findByidPersona(v_idpersona);
+			if (v_tipopersona != per.getTipopersona()) {
+				personaService.update(v_tipopersona, v_idpersona);
+			}
 		}else {
+			if (null != personaService.save(persona)) {
+				model.addAttribute("result", 1);
+			} else {
+				model.addAttribute("result", 0);
+			}
+		}
+		
+		if (v_tipopersona == 1) {
+			return "redirect:/transportista/";
+		} else if (v_tipopersona == 2) {
+			return "redirect:/contacto/";
+		} else if (v_tipopersona == 3) {
+			return "redirect:/trabajador/";
+		} else {
 			return "redirect:/persona/";
 		}
 	}
-	
+
 	@GetMapping("/borrarpersona")
-	public String borrarPersona(@RequestParam(name="id",required=true)int id,Model model) {
-		
-			personaService.delete(id);
-		
+	public String borrarPersona(@RequestParam(name = "id", required = true) int id, Model model) {
+
+		personaService.delete(id);
+
 		return "redirect:/persona/";
 	}
 }

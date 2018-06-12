@@ -24,9 +24,7 @@
 				</thead>
 				<tbody>
 					<tr th:each="per : ${persona}">
-						<td><a href="#"
-							th:href="@{/control/personaform?idpersona=__${per.idpersona}__}"
-							th:text="${per.idpersona}"> </a></td>
+						<td th:text="${per.idpersona}"></td>
 						<td th:text="${per.primernombre}+' '+${per.segundonombre}"></td>
 						<td th:text="${per.primerapellido}+' '+${per.segundoapellido}"></td>
 						<td th:text="${per.telefono}"></td>

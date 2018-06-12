@@ -38,7 +38,7 @@ public class PersonaServiceImp implements PersonaService{
 
 	@Override
 	public List<Persona> findByall() {
-		List<Persona> tipPer = personaDao.findAll();
+		List<Persona> tipPer = (List<Persona>) personaDao.findAll();
 		return tipPer;
 	}
 
@@ -49,16 +49,9 @@ public class PersonaServiceImp implements PersonaService{
 	}
 
 	@Override
-	public void update(int tipo,int id) {
-		personaDao.updatetipopersona(tipo, id);
+	public void update(int v_tipopersona,int v_idpersona) {
+		personaDao.cambiaPersona(v_tipopersona, v_idpersona);
 				
 	}
-
-	@Override
-	public void cambiaPersona(Integer tipo, Integer id) {
-		personaDao.mant_persona1(tipo, id);
-		
-	}
-
 
 }

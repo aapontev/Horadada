@@ -17,7 +17,7 @@ public class CotizacionServiceImp implements CotizacionService{
 
 	@Override
 	public List<Cotizacion> findAll() {
-		List<Cotizacion> cotizacion = cotizaciondao.findAll();
+		List<Cotizacion> cotizacion = (List<Cotizacion>) cotizaciondao.findAll();
 		return cotizacion;
 	}
 

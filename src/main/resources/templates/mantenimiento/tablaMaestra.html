@@ -4,16 +4,26 @@
 
 <body>
 
-		<header th:replace="view/Cabecera :: cabecera"></header>
-			<button type="button" class="btn btn-primary btn-lg btn-block">Nueva
-				Tabla</button>
-			<div class="input-group mb-3 center-block">
-				<select class="custom-select col-sm-6 " id="inputGroupSelect03">
-					<option th:each="tm : ${valMa}" th:value="${tm}" th:text="${tm}">
-					</option>
-				</select>
+	<header th:replace="view/Cabecera :: cabecera"></header>
+	<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div align="right">
+		<button type="button" class="btn btn-primary">Nueva
+			Tabla</button>
 			</div>
-	
+		<br>
+		<br>
+		<div align="left">
+			<select class="custom-select col-sm-8">
+				<option th:each="tm : ${valMa}" th:value="${tm}" th:text="${tm}">
+				</option>
+			</select>
+		</div>
+	</div>
+	</div>
+	<br>
+	<br>
+
 	<footer th:replace="view/Cabecera :: footer"></footer>
 </body>
 </html>
