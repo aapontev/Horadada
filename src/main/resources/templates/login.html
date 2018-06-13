@@ -1,38 +1,155 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="view/layout :: head"></head>
+<head>
+<link rel="shortcut icon" type="image/ico" href="#"
+	th:href="@{/imgs/favicon.png}" />
+<title>Horadada</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+
+<!-- //for-mobile-apps -->
+<link href="#" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<link href="#" th:href="@{/css/bootstrap-datetimepicker.min.css}"
+	rel="stylesheet" />
+<link href="#" th:href="@{/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+<link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
+<link href="#" th:href="@{/css/web1.css}" rel="stylesheet"
+	type="text/css">
+<link href="#" th:href="@{/css/web2.css}" rel="stylesheet"
+	type="text/css">
+<link href="#" th:href="@{/css/lightbox.css}" rel="stylesheet"
+	type="text/css">
+<script th:src="@{/js/moment.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap-datetimepicker.min.js}"
+	type="text/javascript"></script>
+<script th:src="@{/js/componentes.js}" type="text/javascript"></script>
+<script th:src="@{/js/lightbox-plus-jquery.min.js}"></script>
+</head>
 
 <body>
+	<header>
+<div class="logo-top">
 
-				<header th:replace="view/layout :: header"></header>
-			<div class="banner-left">
-				<div class="view view-eighth vie">
-					<img th:src="@{/imgs/1.jpg}" alt=" " class="img-responsive" />
-					<div class="mask">
-						<h2 class="late">Letraset sheets</h2>
-						<p>with the release Letraset sheets Lorem voluptatibus maiores
-							alias consequatur aut perferendis doloribus omnis voluptas
-							assumenda est, omnis asperiores repellat</p>
-					</div>
-				</div>
+			<div class="container">
+			<div class="logo-top-left">
+				<img th:src="@{/imgs/favicon.png}" class="img-responsive" />
 			</div>
-			<div class="banner-right">
-				<div class="view view-eighth">
-					<img th:src="@{/imgs/2.jpg}" alt=" " class="img-responsive" />
-					<div class="mask">
-						<h2>Letraset sheets</h2>
-						<p>with the release Letraset sheets Lorem</p>
-					</div>
-				</div>
-				<div class="view view-eighth">
-					<img th:src="@{/imgs/3.jpg}" alt=" " class="img-responsive" />
-					<div class="mask">
-						<h2>Letraset sheets</h2>
-						<p>with the release Letraset sheets Lorem</p>
-					</div>
-				</div>
+			<div class="logo logo-top-lft">
+				<a href="index.html"><i class="glyphicon glyphicon-road"
+					aria-hidden="true"></i>Transportes Horadada<span>We Care
+						About Your Cargo</span></a>
 			</div>
-			<div class="clearfix"></div>
+			<div class="logo logo-top-right">
+				<p style="color: #ffff">
+					<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero
+					de Contacto +0646-784-900
+				</p>
+			</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar-collapse"
+						aria-expanded="false" aria-controls="navbar-collapse">
+						<span class="sr-only">[Toggle navigation]</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="hvr-bounce-to-bottom"><a href="#">Home</a></li>
+					<li class="hvr-bounce-to-bottom"><a href="#about"
+						class="scroll">About</a></li>
+					<li class="hvr-bounce-to-bottom"><a href="#services"
+						class="scroll">Services</a></li>
+					<li class="hvr-bounce-to-bottom"><a href="#pricing"
+						class="scroll">Pricing</a></li>
+					<li class="hvr-bounce-to-bottom"><a href="#contact"
+						class="scroll">Contact Us</a></li>
+					<div class="logo-top-right">
+						<li class="dropdown">
+						<button type="button" id="dropdownMenu1" data-toggle="dropdown"
+							class="btn btn-info navbar-btn dropdown-toggle">
+							Login <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li style="width: 250px;">
+								<form class="navbar-form form" role="form" action="#"
+									th:action="@{/loginCheck}" th:object="${credencialUsuario}"
+									method="POST">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon"><i
+												class="glyphicon glyphicon-user"></i></span> <input id="emailInput"
+												placeholder="usuario" class="form-control"
+												th:field="*{usuario}" type="text">
+										</div>
+										<br /> <br />
+										<div class="input-group">
+											<span class="input-group-addon"><i
+												class="glyphicon glyphicon-lock"></i></span> <input
+												id="passwordInput" placeholder="password"
+												class="form-control" th:field="*{password}" type="password">
+										</div>
+										<br /> <br />
+									</div>
+									<div class="form-group">
+										<!--BUTTON-->
+										<button type="submit" class="btn btn-primary form-control">Login</button>
+									</div>
+								</form>
+							</li>
+						</ul>
+						</li>
+						</div>
+				</ul>
+			</div>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+	<div class="banner-left">
+		<div class="view view-eighth vie">
+			<img th:src="@{/imgs/1.jpg}" alt=" " class="img-responsive" />
+			<div class="mask">
+				<h2 class="late">Letraset sheets</h2>
+				<p>with the release Letraset sheets Lorem voluptatibus maiores
+					alias consequatur aut perferendis doloribus omnis voluptas
+					assumenda est, omnis asperiores repellat</p>
+			</div>
+		</div>
+	</div>
+	<div class="banner-right">
+		<div class="view view-eighth">
+			<img th:src="@{/imgs/2.jpg}" alt=" " class="img-responsive" />
+			<div class="mask">
+				<h2>Letraset sheets</h2>
+				<p>with the release Letraset sheets Lorem</p>
+			</div>
+		</div>
+		<div class="view view-eighth">
+			<img th:src="@{/imgs/3.jpg}" alt=" " class="img-responsive" />
+			<div class="mask">
+				<h2>Letraset sheets</h2>
+				<p>with the release Letraset sheets Lorem</p>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="clearfix"></div>
 	<!-- //banner -->
 	<!-- about -->
 	<div class="about" id="about">
@@ -333,7 +450,7 @@
 				</div>
 				<div class="col-md-5 contact-grid">
 					<iframe
-						th:src="@{https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.958900464012!2d36.23097800000001!3d49.993379999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a0f009ab9f07%3A0xa21e10f67fa29ce!2sGeorgia+Education+Center!5e0!3m2!1sen!2sin!4v1436943860334}"
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.958900464012!2d36.23097800000001!3d49.993379999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a0f009ab9f07%3A0xa21e10f67fa29ce!2sGeorgia+Education+Center!5e0!3m2!1sen!2sin!4v1436943860334"
 						frameborder="0" style="border: 0" allowfullscreen></iframe>
 				</div>
 				<div class="col-md-4 contact-grid">
@@ -439,7 +556,31 @@
 		</div>
 	</div>
 	<!--FOOER AREA END-->
-	<footer th:replace="view/layout :: footer"></footer>
+	<footer>
+		<div class="footer">
+			<div class="logo logo-top-lft">
+				<div class="footer-grids">
+					<p>Copyright © 2018 Transportation. All rights reserved |
+						Design by Alexander Aponte Villena</p>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event) {
+					event.preventDefault();
+					$('html,body').animate({
+						scrollTop : $(this.hash).offset().top
+					}, 1000);
+				});
+			});
+		</script>
+		<script type="application/x-javascript">	
+			addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } 	
+				
+		</script>
+	</footer>
 
 </body>
 </html>

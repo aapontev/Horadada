@@ -27,7 +27,7 @@ public class ClienteController {
 	@Qualifier("contactoServiceImp")
 	private ContactoService contactoService;
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public ModelAndView Cliente() {
 		ModelAndView mav =new ModelAndView("mantenimiento/cliente");
 		mav.addObject("cli",clienteService.findByAll());

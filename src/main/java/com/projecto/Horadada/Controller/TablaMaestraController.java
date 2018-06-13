@@ -20,7 +20,7 @@ public class TablaMaestraController {
 	private TablaMaestraService tablaService;
 
 
-	@GetMapping("/")
+	@GetMapping("")
 	public ModelAndView TablaMaestra() {
 		List<String> valMa = tablaService.gettablamaestra();
 		ModelAndView mav = new ModelAndView("mantenimiento/tablaMaestra");

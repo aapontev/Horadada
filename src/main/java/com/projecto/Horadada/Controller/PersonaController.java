@@ -24,7 +24,7 @@ public class PersonaController {
 	private int v_tipopersona;
 	private int v_idpersona;
 
-	@GetMapping("/")
+	@GetMapping
 	public ModelAndView Persona() {
 		ModelAndView mav = new ModelAndView("mantenimiento/persona");
 		mav.addObject("persona", personaService.findByTipopersona(0));
@@ -50,13 +50,13 @@ public class PersonaController {
 		}
 		
 		if (v_tipopersona == 1) {
-			return "redirect:/transportista/";
+			return "redirect:/transportista";
 		} else if (v_tipopersona == 2) {
-			return "redirect:/contacto/";
+			return "redirect:/contacto";
 		} else if (v_tipopersona == 3) {
-			return "redirect:/trabajador/";
+			return "redirect:/trabajador";
 		} else {
-			return "redirect:/persona/";
+			return "redirect:/persona";
 		}
 	}
 

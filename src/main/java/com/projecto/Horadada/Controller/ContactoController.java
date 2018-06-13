@@ -37,10 +37,9 @@ public class ContactoController {
 	@Qualifier("personaServiceImp")
 	private PersonaService personaService;
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public ModelAndView Contacto() {
 		ModelAndView mav = new ModelAndView("mantenimiento/contacto");
-		// mav.addObject("cont",personaService.findByTipopersona(cm.TIPOPERCLIEN));
 		mav.addObject("cont", contactoService.findByAll());
 		return mav;
 	}

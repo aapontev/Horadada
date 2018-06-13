@@ -28,13 +28,13 @@ public class LoginController {
 	@PostMapping("/loginCheck")
 	public String loginCheck(@ModelAttribute(name="credencialUsuario")Usuarios usuario) {
 		if(usuario.getUsuario().equals("usu") && usuario.getPassword().equals("con")) {
-		return "principal";
+		return "index";
 	}
 	return "redirect:/login?error";	
 	}
-	@GetMapping("/principal")
-	public String principal() {
-		return "principal";
+	@GetMapping("/index")
+	public String index() {
+		return "index";
 	}
 	@GetMapping("/bienvenido")
 	public String principalWeb() {

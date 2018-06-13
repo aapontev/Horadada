@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/reporte")
 public class ReporteController {
 
-	@GetMapping("/")
+	@GetMapping("")
 	public String Reportes() {
 		return "reporte/reportes";
 	}

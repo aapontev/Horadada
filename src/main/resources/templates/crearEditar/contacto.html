@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="view/Cabecera :: head"></head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
 
+
+        <title th:text="#{IndexTitle}">Employees System</title>
+
+<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+</head>
 <body>
 
-
-	<div class="jumbotron">
+	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
 		<div class="container">
-<header th:replace="view/Cabecera :: cabecera"></header>
 			<h1>FORMULARIO CONTACTO</h1>
 			<br />
 			<form action="#" th:action="@{/contacto/addcontacto}"  th:object="${contacto}" method="post" >
@@ -37,12 +41,12 @@
 					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 					ACEPTAR
 				</button>	
-			
+			<br>
 		</form>
 		</div>
+	
+	<div class="footer">
+		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
 	</div>
-
-<footer th:replace="view/Cabecera :: footer"></footer>
-
 </body>
 </html>

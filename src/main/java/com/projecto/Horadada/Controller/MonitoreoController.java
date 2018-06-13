@@ -28,7 +28,7 @@ public class MonitoreoController {
 	@Qualifier("ubicacionserviceimp")
 	private UbicacionService ubicacionservice;
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public ModelAndView monitoreo() {
 		ModelAndView mav = new ModelAndView("monitoreo/monitoreo");
 		Ubicacion ubi = ubicacionservice.getUbicacionOne();

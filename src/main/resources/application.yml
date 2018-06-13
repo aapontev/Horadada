@@ -1,8 +1,10 @@
 server:
   port: 8092
-  connection-timeout: 6000
-    
+  connection-timeout: 6000  
+   
 spring:
+  messages:
+    basename: i18n/index
   thymeleaf:
     cache: false
   datasource:
@@ -10,7 +12,6 @@ spring:
     url: jdbc:oracle:thin:@localhost:1521:Horadada
     username: horadada
     password: aponte17
-
   jpa:
     properties:
       hibernate:
