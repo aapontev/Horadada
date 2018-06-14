@@ -25,7 +25,12 @@ public class ClienteServiceImp implements ClienteService{
 
 	@Override
 	public Cliente save(Cliente cliente) {
-		Cliente clie = clienteDao.save(cliente);
+		Cliente clie = null;
+		try {
+			clie = clienteDao.save(cliente);
+		} catch (Exception e) {
+			clie = null;
+		}
 		return clie;
 	}
 

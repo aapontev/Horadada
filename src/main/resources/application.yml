@@ -9,7 +9,7 @@ spring:
     cache: false
   datasource:
     #url: jdbc:sqlserver://localhost:1433;databaseName=Horadada
-    url: jdbc:oracle:thin:@localhost:1521:Horadada
+    url: jdbc:oracle:thin:@IQPC-003.quasys.com:1521:Horadada
     username: horadada
     password: aponte17
   jpa:
@@ -25,3 +25,4 @@ spring:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
         
         #mvn install:install-file -Dfile=C:\\app\\alexander\\product\\11.2.0\\dbhome_1\\jdbc\\lib\\ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
+        #https://es.stackoverflow.com/questions/65317/como-instalar-maven-en-windows

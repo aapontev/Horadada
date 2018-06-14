@@ -47,13 +47,15 @@ public class ClienteController {
 	
 	@PostMapping("/addcliente")
 	public String addCliente (@ModelAttribute(name="cliente")Cliente cliente,Model model) {
+		String cambio = null;
 		if(null != clienteService.save(cliente)) {
 			model.addAttribute("result", 1);
+			cambio = "redirect:/cliente";
 		}else {	
-		
-		model.addAttribute("result", 0);
+			model.addAttribute("result", 0);
+			cambio = "redirect:/cliente/clienteform?id=0";
 		}
-		return "redirect:/cliente/";
+		return cambio;
 	}
 	
 	@GetMapping("/borrarcliente")
