@@ -1,54 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="view/Cabecera :: head"></head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title th:text="#{IndexTitle}">Employees System</title>
+
+<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+</head>
+
 <body>
+	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+	<div class="container">
+		<h1>FORMULARIO SOLICITUD</h1>
+		<form action="#" th:action="@{/documentacion/addsolicitud}"
+			th:object="${solicitud}" method="post">
+			<input type="hidden" th:field="*{idsolicitud}" /> REQUERIMIENTO : <input
+				type="text" class="form-control" th:field="*{requerimiento}" /> <br />
+			<div th:if="${res==0}">
+				ESTADO : <input disabled type="text" class="form-control"
+					th:field="*{estado}" /> <br />
+			</div>
+			CLIENTE : <br /> <select th:field="*{cliente.idcliente}"
+				class="form-control custom-select col-sm-6 " id="inputGroupSelect03">
+				<option th:each="cli : ${cliente}" th:value="${cli.idcliente}"
+					th:text="${cli.razonsocial}"></option>
+			</select> <br /> <br /> FECHA RECEPCION :
+			<div class="control-group form-horizontal ">
+				<div class="controls" style="position: relative">
+					<input type="text" class="form-control" id="fecharec"
+						th:field="*{fecharecepcion}" />
+				</div>
+			</div>
+			<br />
+			<button class="btn btn-lg btn-primary btn-block" type="submit">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				Accept
+			</button>
+			<br />
 
-		<div class="container">
-		<header th:replace="view/Cabecera :: cabecera"></header>
-			<h1>FORMULARIO SOLICITUD</h1>
-			<form action="#" th:action="@{/documentacion/addsolicitud}"  th:object="${solicitud}" method="post" >
-			<input type="hidden" th:field="*{idsolicitud}"/>  
-				 REQUERIMIENTO :
-				<input type="text" class="form-control" th:field="*{requerimiento}"/> 
-				<br/> 
-				<div th:if="${res==0}">
-				 ESTADO :
-				<input disabled type="text" class="form-control" th:field="*{estado}"/> 
-				<br/></div>
-				CLIENTE :
-				<br/>
-				<select th:field="*{cliente.idcliente}" class="custom-select col-sm-6 " id="inputGroupSelect03">									
-				       <option th:each="cli : ${cliente}"
-				               th:value="${cli.idcliente}"
-				               th:text="${cli.razonsocial}">
-				       </option>
-				</select>				
-		    	<br/>   <br/>
-				    FECHA RECEPCION :	
-				    <div class="control-group form-horizontal ">
-				              <div class="controls" style="position: relative">
-									<input type="text" class="form-control" id="fecharec" th:field="*{fecharecepcion}"/>
-									</div></div>
-				<br/>		    	
-				<button class="btn btn-lg btn-primary btn-block" type="submit">
-					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					Accept
-				</button>				
 		</form>
-		</div>
+	</div>
 
-<script type="text/javascript">
-$(document).ready(function() {
-  $(function() {
-    $('#fecharec').datetimepicker({
-      format: 'DD/MM/YYYY'
-    }).on('change', function(){
-        $('.datepicker').hide();
-    });
-  });
-});
-</script>
-<footer th:replace="view/Cabecera :: footer"></footer>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(function() {
+				$('#fecharec').datetimepicker({
+					format : 'DD/MM/YYYY'
+				}).on('change', function() {
+					$('.datepicker').hide();
+				});
+			});
+		});
+	</script>
+
+	<div class="footer">
+		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+	</div>
 
 
 </body>

@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.projecto.Horadada.service.TablaMaestraService;
 
 @Controller
-@RequestMapping("/tablaMaestra")
+@RequestMapping("/tablamaestra")
 public class TablaMaestraController {
 
 	@Autowired
@@ -20,12 +20,11 @@ public class TablaMaestraController {
 	private TablaMaestraService tablaService;
 
 
-	@GetMapping("/")
+	@GetMapping("")
 	public ModelAndView TablaMaestra() {
 		List<String> valMa = tablaService.gettablamaestra();
 		ModelAndView mav = new ModelAndView("mantenimiento/tablaMaestra");
 		mav.addObject("valMa", valMa);
 		return mav;
 	}
-
 }

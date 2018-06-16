@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="view/Cabecera :: head"></head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
 
+
+        <title th:text="#{IndexTitle}">Employees System</title>
+
+<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+</head>
 <body>
 
-
+	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
 	<div class="container">
 	
-	<header th:replace="view/Cabecera :: cabecera"></header>
 <h1>LISTA DE CLIENTES</h1>
 		<br />
 		<div class="panel panel-default">
@@ -53,10 +58,12 @@
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 					NUEVO CLIENTE
 				</button>
-			</a>	
+			</a>
+			<br>	
 	</div>
-
-	<footer th:replace="view/Cabecera :: footer"></footer>
-
+	
+	<div class="footer">
+		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+	</div>
 </body>
 </html>

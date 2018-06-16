@@ -22,7 +22,7 @@ public class TrabajadorController {
 	@Qualifier("personaServiceImp")
 	private PersonaService personaService;
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public ModelAndView Trabajador() {
 		ModelAndView mav = new ModelAndView("mantenimiento/trabajador");
 		mav.addObject("traba", personaService.findByTipopersona(3));

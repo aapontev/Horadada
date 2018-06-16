@@ -36,7 +36,9 @@ public class TranportistaController {
 	@Qualifier("tablamaestraserviceimp")
 	private TablaMaestraService tablaService;
 	
-	@GetMapping("/")
+	private int tipoproceso; 
+	
+	@GetMapping("")
 	public ModelAndView Transportista() {
 		ModelAndView mav = new ModelAndView("mantenimiento/transportista");
 		mav.addObject("transport", transportistaservice.findByAll());
@@ -50,9 +52,12 @@ public class TranportistaController {
 		List<Persona> persona = personaService.findByTipopersona(0);
 		List<Tablamaestra> licencia = tablaService.findByIdtablamaestra("Hora011");
 		List<Tablamaestra> estado = tablaService.findByIdtablamaestra("Hora007");
+		tipoproceso = 0;
 		if(id != 0) {
-			transportista = transportistaservice.findByidtransportista(id);		
+			transportista = transportistaservice.findByidtransportista(id);	
+			tipoproceso = 1;			
 		}
+		model.addAttribute("tipoproceso",tipoproceso);
 		model.addAttribute("transportista",transportista);
 		model.addAttribute("licencia",licencia);
 		model.addAttribute("estado",estado);

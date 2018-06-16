@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="view/Cabecera :: head"></head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
 
+
+        <title th:text="#{IndexTitle}">Employees System</title>
+
+<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+</head>
 <body>
 
+	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
 	<div class="container">
-	<header th:replace="view/Cabecera :: cabecera"></header>
 		<h1>LISTA DE PERSONAS SIN CARGO</h1>
 		<br />
 		<div class="panel panel-default">
@@ -51,9 +57,8 @@
 				</button>
 			</a>
 		</div>
+	</div>	<div class="footer">
+		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
 	</div>
-
-	<footer th:replace="view/Cabecera :: footer"></footer>
-
 </body>
 </html>

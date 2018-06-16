@@ -1,45 +1,55 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="view/Cabecera :: head"></head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
 
+<title th:text="#{IndexTitle}">Employees System</title>
+
+<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+</head>
 <body>
-
-
-	<div class="jumbotron">
-		<div class="container">
-	<header th:replace="view/Cabecera :: cabecera"></header>
-			<h1>FORMULARIO TRANSPORTISTA</h1>
-			<br />
-			<form action="#" th:action="@{/transportista/addtransportista}"
-				th:object="${transportista}" method="post">
-				<input type="hidden" th:field="*{idtransportista}" /> CODIGO PERSONA
-				: <br /> <select th:field="*{persona.idpersona}"
+	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+	<div class="container">
+		<h1>FORMULARIO TRANSPORTISTA</h1>
+		<br />
+		<form action="#" th:action="@{/transportista/addtransportista}"
+			th:object="${transportista}" method="post">
+			<input type="hidden" th:field="*{idtransportista}" />
+			<div th:if="${tipoproceso==0}">
+				PERSONA: <br /> <select th:field="*{persona.idpersona}"
 					class="custom-select col-sm-6 " id="inputGroupSelect03">
 					<option th:each="per : ${persona}" th:value="${per.idpersona}"
 						th:text="${per.idpersona}+'. '+${per.primernombre}+' '+${per.primerapellido}">
 					</option>
-				</select> <br /> <br /> CATEGORIA LICENCIA: <br /> <select
-					th:field="*{catlicencia}" class="custom-select col-sm-6 "
-					id="inputGroupSelect03">
-					<option th:each="lic : ${licencia}" th:value="${lic.valor1}"
-						th:text="${lic.valor1}"></option>
-				</select> <br /> <br /> SITUACION : <br /> <select
-					th:field="*{idsituaciontransportista}"
-					class="custom-select col-sm-6 " id="inputGroupSelect03">
-					<option th:each="sit : ${estado}" th:value="${sit.clave1}"
-						th:text="${sit.clave1}+'. '+${sit.valor1}"></option>
-				</select> <br /> <br /> NRO LICENCIA : <input type="text"
-					class="form-control" th:field="*{nrolicencia}" /> <br /> <br />
-				<button class="btn btn-lg btn-primary btn-block" type="submit">
-					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					ACEPTAR
-				</button>
+				</select> <br /> <br />
+			</div>
+			<div th:if="${tipoproceso==1}">
+				PERSONA: <br /> <input  type="hidden" class="form-control"
+					th:field="*{persona.idpersona}"/>
+					<input   disabled type="text" class="form-control"
+					th:field="*{persona.idpersona}"/><br />
+			</div>
+			CATEGORIA LICENCIA: <br /> <select th:field="*{catlicencia}"
+				class="custom-select col-sm-6 " id="inputGroupSelect03">
+				<option th:each="lic : ${licencia}" th:value="${lic.valor1}"
+					th:text="${lic.valor1}"></option>
+			</select> <br /> <br /> SITUACION : <br /> <select
+				th:field="*{idsituaciontransportista}"
+				class="custom-select col-sm-6 " id="inputGroupSelect03">
+				<option th:each="sit : ${estado}" th:value="${sit.clave1}"
+					th:text="${sit.clave1}+'. '+${sit.valor1}"></option>
+			</select> <br /> <br /> NRO LICENCIA : <input type="text"
+				class="form-control" th:field="*{nrolicencia}" /> <br />
+			<button class="btn btn-lg btn-primary btn-block" type="submit">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				ACEPTAR
+			</button>
 
-			</form>
-		</div>
+		</form>
 	</div>
 
-	<footer th:replace="view/Cabecera :: footer"></footer>
-
+	<div class="footer">
+		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+	</div>
 </body>
 </html>

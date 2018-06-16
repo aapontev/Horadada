@@ -58,17 +58,17 @@ public class DocumentacionController {
 	@GetMapping("/cotizacionform")
 	public String redirectCotizacionForm(@RequestParam(name = "id", required = false) int id, Model model) {
 		List<Tablamaestra> moneda = tablamaestraservice.findByIdtablamaestra("Hora002");
-		List<Tablamaestra> estado = tablamaestraservice.findByIdtablamaestra("Hora012");
 		List<Solicitud> idsoli = solicitudService.getidsolicitud();
 		Cotizacion cotizacion = new Cotizacion();
-
+		int resu = 0;
 		if (id != 0) {
 			cotizacion = cotizacionservice.findbyid(id);
-		}
+			resu = 1;
+		}		
+		model.addAttribute("resu", resu);
 		model.addAttribute("solici", idsoli);
 		model.addAttribute("cotizacion", cotizacion);
 		model.addAttribute("moneda", moneda);
-		model.addAttribute("estado", estado);
 		return "crearEditar/cotizacion";
 	}
 

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/consulta")
 public class ConsultaController {
 
-	@GetMapping("/")
+	@GetMapping("")
 	public String consulta() {
 		return "consulta/consultar";
 	}
