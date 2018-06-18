@@ -105,11 +105,11 @@ public class CotizacionController {
 	}
 	
 	@PostMapping("/addcotizaciondetalle")
-	public String addCotizacionDetalle(@ModelAttribute(name = "cotizaciondetalle") Cotizacion cotizacion, Model model) {
-		if (null != cotizacionservice.save(cotizacion)) {
+	public String addCotizacionDetalle(@ModelAttribute(name = "cotizaciondetalle") Cotizaciondetalle cotidetalle, Model model) {
+		
+		if (null != cotizaciondetalleservice.save(cotidetalle)) {
 			model.addAttribute("result", 1);
 		} else {
-
 			model.addAttribute("result", 0);
 		}
 		return "redirect:/cotizacion";

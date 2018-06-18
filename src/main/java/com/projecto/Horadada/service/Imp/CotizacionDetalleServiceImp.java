@@ -30,4 +30,10 @@ public class CotizacionDetalleServiceImp implements CotizacionDetalleService{
 		return cotDetalle;
 	}
 
+	@Override
+	public Cotizaciondetalle save(Cotizaciondetalle cotizaciondetalle) {
+		Cotizaciondetalle cotdetalle = cotizaciondetalledao.save(cotizaciondetalle);
+		return cotdetalle;
+	}
+
 }
