@@ -3,14 +3,13 @@ package com.projecto.Horadada.Entity;
 
 
 import java.math.BigDecimal;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
+
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
@@ -23,18 +22,19 @@ import javax.persistence.Table;
 @Table(name = "ORDENCOMPRADETALLE", schema = "HORADADA")
 public class Ordencompradetalle  {
 
-	/**
-	 * 
-	 */
-	
-
-	@EmbeddedId
+	/*	@EmbeddedId
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orden_compra_detalle_seq")
 	@SequenceGenerator(name = "orden_compra_detalle_seq", sequenceName = "orden_compra_detalle_sequence", allocationSize = 1)
 	@AttributeOverrides({
 			@AttributeOverride(name = "idordencompradetalle", column = @Column(name = "IDORDENCOMPRADETALLE", nullable = false, precision = 3)),
 			@AttributeOverride(name = "idordencompra", column = @Column(name = "IDORDENCOMPRA", nullable = false, precision = 3)) })
-	private OrdencompradetalleId id;
+	private OrdencompradetalleId id; */
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orden_compra_detalle_seq")
+	@SequenceGenerator(name = "orden_compra_detalle_seq", sequenceName = "orden_compra_detalle_sequence", allocationSize = 1)
+	@Column(name = "IDORDENCOMPRADETALLE", unique = true, nullable = false, precision = 3)
+	private int idordencompradetalle;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "IDORDENCOMPRA", nullable = false, insertable = false, updatable = false)
@@ -70,15 +70,15 @@ public class Ordencompradetalle  {
 	public Ordencompradetalle() {
 	}
 
-	public Ordencompradetalle(OrdencompradetalleId id, Ordencompra ordencompra) {
-		this.id = id;
+	public Ordencompradetalle(int idordencompradetalle, Ordencompra ordencompra) {
+		this.idordencompradetalle = idordencompradetalle;
 		this.ordencompra = ordencompra;
 	}
 
-	public Ordencompradetalle(OrdencompradetalleId id, Ordencompra ordencompra, int item, String codrecurso,
+	public Ordencompradetalle(int idordencompradetalle, Ordencompra ordencompra, int item, String codrecurso,
 			String descripcion, String ccostos, int idunidadmedida, BigDecimal cantidad, BigDecimal preciounitario,
 			BigDecimal descuento, BigDecimal totaldetalle) {
-		this.id = id;
+		this.idordencompradetalle = idordencompradetalle;
 		this.ordencompra = ordencompra;
 		this.item = item;
 		this.codrecurso = codrecurso;
@@ -91,12 +91,12 @@ public class Ordencompradetalle  {
 		this.totaldetalle = totaldetalle;
 	}
 
-	public OrdencompradetalleId getId() {
-		return this.id;
+	public int getIdordencompradetalle() {
+		return this.idordencompradetalle;
 	}
 
-	public void setId(OrdencompradetalleId id) {
-		this.id = id;
+	public void setId(int idordencompradetalle) {
+		this.idordencompradetalle = idordencompradetalle;
 	}
 
 	public Ordencompra getOrdencompra() {

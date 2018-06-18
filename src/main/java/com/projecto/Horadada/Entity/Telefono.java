@@ -1,16 +1,12 @@
 package com.projecto.Horadada.Entity;
 // Generated 02-mar-2018 16:56:03 by Hibernate Tools 4.3.1
 
-
-
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
@@ -21,20 +17,30 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TELEFONOMONITOREO", schema = "HORADADA")
-public class Telefono  {
+public class Telefono {
 
-	/**
+	/*
+	 * @EmbeddedId
 	 * 
+	 * @GeneratedValue(strategy = GenerationType.SEQUENCE, generator =
+	 * "telefono_monitoreo_seq")
+	 * 
+	 * @SequenceGenerator(name = "telefono_monitoreo_seq", sequenceName =
+	 * "telefono_monitoreo_sequence", allocationSize = 1)
+	 * 
+	 * @AttributeOverrides({
+	 * 
+	 * @AttributeOverride(name = "idtelefono", column = @Column(name = "IDTELEFONO",
+	 * nullable = false, precision = 3)),
+	 * 
+	 * @AttributeOverride(name = "idpersona", column = @Column(name = "IDPERSONA",
+	 * nullable = false, precision = 3)) }) private TelefonoId id;
 	 */
-	
-
-	@EmbeddedId
+	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "telefono_monitoreo_seq")
 	@SequenceGenerator(name = "telefono_monitoreo_seq", sequenceName = "telefono_monitoreo_sequence", allocationSize = 1)
-	@AttributeOverrides({
-			@AttributeOverride(name = "idtelefono", column = @Column(name = "IDTELEFONO", nullable = false, precision = 3)),
-			@AttributeOverride(name = "idpersona", column = @Column(name = "IDPERSONA", nullable = false, precision = 3)) })
-	private TelefonoId id;
+	@Column(name = "IDTELEFONO", unique = true, nullable = false, precision = 3)
+	private int idtelefono;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "IDPERSONA", nullable = false, insertable = false, updatable = false)
@@ -55,14 +61,14 @@ public class Telefono  {
 	public Telefono() {
 	}
 
-	public Telefono(TelefonoId id, Persona persona) {
-		this.id = id;
+	public Telefono(int idtelefono, Persona persona) {
+		this.idtelefono = idtelefono;
 		this.persona = persona;
 	}
 
-	public Telefono(TelefonoId id, Persona persona, int idtipotelefono, Integer idoperador, String numerotelefono,
+	public Telefono(int idtelefono, Persona persona, int idtipotelefono, Integer idoperador, String numerotelefono,
 			String imei) {
-		this.id = id;
+		this.idtelefono = idtelefono;
 		this.persona = persona;
 		this.idtipotelefono = idtipotelefono;
 		this.idoperador = idoperador;
@@ -70,12 +76,12 @@ public class Telefono  {
 		this.imei = imei;
 	}
 
-	public TelefonoId getId() {
-		return this.id;
+	public int getIdtelefono() {
+		return this.idtelefono;
 	}
 
-	public void setId(TelefonoId id) {
-		this.id = id;
+	public void setId(int idtelefono) {
+		this.idtelefono = idtelefono;
 	}
 
 	public Persona getPersona() {

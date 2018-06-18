@@ -1,16 +1,13 @@
 package com.projecto.Horadada.Entity;
 // Generated 02-mar-2018 16:56:03 by Hibernate Tools 4.3.1
 
-
 import java.math.BigDecimal;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
@@ -21,20 +18,32 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "FACTURADETALLE", schema = "HORADADA")
-public class Facturadetalle  {
+public class Facturadetalle {
 
-	/**
+	/*
+	 * @EmbeddedId
+	 * 
+	 * @GeneratedValue(strategy = GenerationType.SEQUENCE, generator =
+	 * "factura_detalle_seq")
+	 * 
+	 * @SequenceGenerator(name = "factura_detalle_seq", sequenceName =
+	 * "factura_detalle_sequence", allocationSize = 1)
+	 * 
+	 * @AttributeOverrides({
+	 * 
+	 * @AttributeOverride(name = "iddetallefactura", column = @Column(name =
+	 * "IDDETALLEFACTURA", nullable = false, precision = 3)),
+	 * 
+	 * @AttributeOverride(name = "idfactura", column = @Column(name = "IDFACTURA",
+	 * nullable = false, precision = 3)) }) private FacturadetalleId id;
 	 * 
 	 */
-	
 
-	@EmbeddedId
+	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "factura_detalle_seq")
 	@SequenceGenerator(name = "factura_detalle_seq", sequenceName = "factura_detalle_sequence", allocationSize = 1)
-	@AttributeOverrides({
-			@AttributeOverride(name = "iddetallefactura", column = @Column(name = "IDDETALLEFACTURA", nullable = false, precision = 3)),
-			@AttributeOverride(name = "idfactura", column = @Column(name = "IDFACTURA", nullable = false, precision = 3)) })
-	private FacturadetalleId id;
+	@Column(name = "IDFACTURADETALLE", unique = true, nullable = false, precision = 3)
+	private int idfacturadetalle;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "IDFACTURA", nullable = false, insertable = false, updatable = false)
@@ -55,14 +64,14 @@ public class Facturadetalle  {
 	public Facturadetalle() {
 	}
 
-	public Facturadetalle(FacturadetalleId id, Factura factura) {
-		this.id = id;
+	public Facturadetalle(int idfacturadetalle, Factura factura) {
+		this.idfacturadetalle = idfacturadetalle;
 		this.factura = factura;
 	}
 
-	public Facturadetalle(FacturadetalleId id, Factura factura, int cantidad, String descripcion,
+	public Facturadetalle(int idfacturadetalle, Factura factura, int cantidad, String descripcion,
 			BigDecimal preciounitario, BigDecimal valorventa) {
-		this.id = id;
+		this.idfacturadetalle = idfacturadetalle;
 		this.factura = factura;
 		this.cantidad = cantidad;
 		this.descripcion = descripcion;
@@ -70,12 +79,12 @@ public class Facturadetalle  {
 		this.valorventa = valorventa;
 	}
 
-	public FacturadetalleId getId() {
-		return this.id;
+	public int getIdfacturadetalle() {
+		return this.idfacturadetalle;
 	}
 
-	public void setId(FacturadetalleId id) {
-		this.id = id;
+	public void setId(int idfacturadetalle) {
+		this.idfacturadetalle = idfacturadetalle;
 	}
 
 	public Factura getFactura() {
