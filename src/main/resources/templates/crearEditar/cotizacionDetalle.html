@@ -1,54 +1,75 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="view/Cabecera :: head"></head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title th:text="#{IndexTitle}">Employees System</title>
+
+<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+</head>
 
 <body>
+	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+	<div class="container">
+		<h1>FORMULARIO COTIZACION</h1>
+		<br />
+		<form action="#" th:action="@{/cotizacion/addcotizaciondetalle}"
+			th:object="${cotizadeta}" method="post">
+			<input type="hidden" th:field="*{item}" />
+			<div class="panel panel-default">
+				<div class="panel-heading">Detalles de Cotizacion</div>
+				<div class="panel-body">
+					<div class="row">
+						
+						<div class="col-xs-3">
+							RECURSO : <br> <input type="text" class="form-control"
+								th:field="*{codrecurso}" /> <br />
+						</div>
+						<div class="col-xs-3">
+							CANTIDAD : <br> <input type="number" class="form-control"
+								th:field="*{ccostos}" /> <br />
+						</div>						
+						<div class="col-xs-3">
+							UNIDAD DE MEDIDA : <input type="text" class="form-control"
+								th:field="*{cantidad}" /> <br />
+						</div>
+						<div class="col-xs-2">
+							CCOSTOS : <br> <input type="text" class="form-control"
+								th:field="*{ccostos}" /> <br />
+						</div>
+						<div class="col-xs-2">
+							DESCUENTO : <input type="text" class="form-control"
+								th:field="*{idunidadmedida}" /> <br />
+						</div>
+						<div class="col-xs-2">
+							PRECIO UNITARIO : <input type="text" class="form-control"
+								th:field="*{preciounitario}" /> <br />
+						</div>
+						<div class="col-xs-2">
+							TOTAL DETALLE : <input type="text" class="form-control"
+								th:field="*{totaldetalle}" /> <br />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">DESCRIPCION :</div>
+				<div class="panel-body">
+					<textarea class="form-control" th:field="*{descripcion}"> </textarea>
 
-		<div class="container">
-	<header th:replace="view/Cabecera :: cabecera"></header>
-			<h1>FORMULARIO COTIZACION</h1>
-			<br />
-			<form action="#" th:action="@{/documentacion/addcotizaciondetalle}"  th:object="${cotizaciondetalle}" method="post" >
-			<input type="hidden" th:field="*{item}"/>
-				CCOSTOS :
-				 <br>
-				<input  type="text" class="form-control" th:field="*{ccostos}"/>
-				 <br/>
-				RECURSO :
-				 <br>
-				<input  type="text" class="form-control" th:field="*{codrecurso}"/>
-				 <br/>
-				DESCRIPCION :		
-				<br>
-				<input  type="text" class="form-control" th:field="*{desccripcion}"/>
-				 <br/>
-				 CANTIDAD :
-				 <br>
-				<input  type="text" class="form-control" th:field="*{cantidad}"/>
-				 <br/>
-				DESCUENTO :	
-				<input  type="text" class="form-control" th:field="*{descuento}"/>
-				 <br/> 
-				 
-				 UNIDAD DE MEDIDA :	
-				<input  type="text" class="form-control" th:field="*{idunidadmedida}"/>
-				 <br/> 
-			    PRECIO UNITARIO :	
-				<input placeholder="dd/mm/aaaa" type="text" class="form-control" th:field="*{preciounitario}"/>
-				
-		    	<br/>   
-		    	TOTAL DETALLE :	
-				<input placeholder="dd/mm/aaaa" type="text" class="form-control" th:field="*{totaldetalle}"/>
-				
-		    	<br/>		    	
-				<button class="btn btn-lg btn-primary btn-block" type="submit">
-					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					Aceptar
-				</button>	
-			
+					<br />
+				</div>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				Aceptar
+			</button>
+			<br>
 		</form>
-		</div>
-	<footer th:replace="view/Cabecera :: footer"></footer>
+	</div>
 
+	<div class="footer">
+		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+	</div>
 </body>
 </html>

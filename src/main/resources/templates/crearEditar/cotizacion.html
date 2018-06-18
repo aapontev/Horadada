@@ -13,7 +13,7 @@
 	<div class="container">
 		<h1>FORMULARIO COTIZACION</h1>
 		<br />
-		<form action="#" th:action="@{/documentacion/addcotizacion}"
+		<form action="#" th:action="@{/cotizacion/addcotizacion}"
 			th:object="${cotizacion}" method="post">
 			<input type="hidden" th:field="*{idcotizacion}" />
 			<div class="panel panel-default">
@@ -49,12 +49,12 @@
 								th:field="*{cargos}" /> <br />
 						</div>
 						<div class="col-xs-4">
-							DESCUENTOS : <input type="text" class="form-control" id="descuentos"
-								th:field="*{descuentos}" /> <br />
+							DESCUENTOS : <input type="text" class="form-control"
+								id="descuentos" th:field="*{descuentos}" /> <br />
 						</div>
 						<div class="col-xs-4">
-							PERSEPCION : <input type="text" class="form-control" id="persepcion"
-								th:field="*{percepcion}" /> <br />
+							PERSEPCION : <input type="text" class="form-control"
+								id="persepcion" th:field="*{percepcion}" /> <br />
 						</div>
 					</div>
 				</div>
@@ -72,12 +72,12 @@
 								th:field="*{neto}" /> <br />
 						</div>
 						<div class="col-xs-3">
-							SUB-TOTAL : <input disabled type="text" class="form-control" id="subtotal"
-								th:field="*{subtotal}" /> <br />
+							SUB-TOTAL : <input disabled type="text" class="form-control"
+								id="subtotal" th:field="*{subtotal}" /> <br />
 						</div>
 						<div class="col-xs-3">
-							TOTAL : <input disabled type="text" class="form-control" id="total"
-								th:field="*{total}" /> <br />
+							TOTAL : <input disabled type="text" class="form-control"
+								id="total" th:field="*{total}" /> <br />
 						</div>
 					</div>
 				</div>
@@ -111,11 +111,12 @@
 		});
 	</script>
 	<script type="text/javascript">
-		$('#cargos,#descuentos,#persepcion,#igv,#neto,#subtotal,#total').priceFormat({
-			prefix : 'S/. ',
-			centsSeparator : ',',
-			thousandsSeparator : '.'
-		});
+		$('#cargos,#descuentos,#persepcion,#igv,#neto,#subtotal,#total')
+				.priceFormat({
+					prefix : '',
+					centsSeparator : '.',
+					thousandsSeparator : ','
+				});
 	</script>
 	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->

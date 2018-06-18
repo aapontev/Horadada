@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="view/Cabecera :: head"></head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title th:text="#{IndexTitle}">Employees System</title>
+
+<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+</head>
 
 <body>
-
-	
+	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
 	<div class="container">
-<header th:replace="view/Cabecera :: cabecera"></header>
-	<h1>CODIGO DE COTIZACION:  <a th:text="${cotizaid}"></a></h1>
+		<h1>
+			CODIGO DE COTIZACION: <a th:text="${cotizaid}"></a>
+		</h1>
 		<br />
 		<div class="panel panel-default">
 			<div class="panel-heading"></div>
@@ -22,25 +28,25 @@
 						<th>DESCUENTO</th>
 						<th>UNIDAD DE MEDIDA</th>
 						<th>PRECIO UNITARIO</th>
-						<th>TOTAL DETALLE</th>						
+						<th>TOTAL DETALLE</th>
 						<th></th>
 					</tr>
 				</thead>
-				<tbody>							
-					<tr th:each="cotdet : ${cotizadeta}">						
+				<tbody>
+					<tr th:each="cotdet : ${cotizadeta}">
 						<td th:text="${cotdet.item}"></td>
 						<td th:text="${cotdet.cantidad}"></td>
 						<td th:text="${cotdet.ccostos}"></td>
 						<td th:text="${cotdet.codrecurso}"></td>
 						<td th:text="${cotdet.descripcion}"></td>
-						<td th:text="${cotdet.descuento}"></td>	
-						<td th:text="${cotdet.idunidadmedida}"></td>	
-						<td th:text="${cotdet.preciounitario} "></td>		
-						<td th:text="${cotdet.totaldetalle}"></td>							 
+						<td th:text="${cotdet.descuento}"></td>
+						<td th:text="${cotdet.idunidadmedida}"></td>
+						<td th:text="${cotdet.preciounitario} "></td>
+						<td th:text="${cotdet.totaldetalle}"></td>
 					</tr>
 				</tbody>
 			</table>
-				<a href="#" th:href="@{/documentacion/cotizaciondetalle?id=0}">
+			<a href="#" th:href="@{/cotizacion/cotizaciondetalleform?item=0}">
 				<button class="btn btn-lg btn-primary btn-block" type="submit">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 					NUEVO DETALLE
@@ -48,7 +54,9 @@
 			</a>
 		</div>
 	</div>
-	<footer th:replace="view/Cabecera :: footer"></footer>
 
+	<div class="footer">
+		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+	</div>
 </body>
 </html>

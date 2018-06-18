@@ -12,7 +12,7 @@
 	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
 	<div class="container">
 		<h1>FORMULARIO SOLICITUD</h1>
-		<form action="#" th:action="@{/documentacion/addsolicitud}"
+		<form action="#" th:action="@{/solicitud/addsolicitud}"
 			th:object="${solicitud}" method="post">
 			<input type="hidden" th:field="*{idsolicitud}" /> REQUERIMIENTO : <input
 				type="text" class="form-control" th:field="*{requerimiento}" /> <br />
