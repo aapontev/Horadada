@@ -9,23 +9,22 @@
 		<div class="logo-top">
 
 			<div class="container">
-			<div class="logo-top-left">
-				<img th:src="@{/imgs/favicon.png}" class="img-responsive" />
-			</div>
-			<div class="logo logo-top-lft">
-				<a href="index.html"><i class="glyphicon glyphicon-road"
-					aria-hidden="true"></i>Transportes Horadada<span>We Care
-						About Your Cargo</span></a>
-			</div>
-			<div class="logo logo-top-right">
-				<p style="color: #ffff">
-					<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero
-					de Contacto +0646-784-900
-				</p>
-			</div>
+				<div class="logo-top-left">
+					<img th:src="@{/imgs/favicon.png}" class="img-responsive" />
+				</div>
+				<div class="logo logo-top-lft">
+					<a href="index.html"><i class="glyphicon glyphicon-road"
+						aria-hidden="true"></i>Transportes Horadada<span>We Care
+							About Your Cargo</span></a>
+				</div>
+				<div class="logo logo-top-right">
+					<p style="color: #ffff">
+						<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero
+						de Contacto +0646-784-900
+					</p>
+				</div>
 			</div>
 		</div>
-
 		<nav class="navbar navbar-default">
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -47,37 +46,31 @@
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Documentacion<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="/employees"
-									th:href="@{/documentacion/despacho}">Despacho</a></li>
-								<li><a href="/employees/new"
-									th:href="@{/cotizacion}">Cotización</a></li>
-								<li><a href="/employees/new"
-									th:href="@{/documentacion/factura}">Factura</a></li>
-								<li><a href="/employees/new"
-									th:href="@{/documentacion/valorizacion}">Valorizacion</a></li>
-								<li><a href="/employees/new"
-									th:href="@{/solicitud}">Solicitud</a></li>
-								<li><a href="/employees/new"
-									th:href="@{/documentacion/ordencompra}">Orden de Compra</a></li>
+								<li><a href="#" th:href="@{/solicitud}">Solicitud</a></li>
+								<li><a href="#" th:href="@{/cotizacion}">Cotización</a></li>
+								<li><a href="#" th:href="@{/ordencompra}">Orden De Compra</a></li>
+								<li><a href="#" th:href="@{/despacho}">Despacho</a></li>
+								<li><a href="#" th:href="@{/documentacion/factura}">Factura</a></li>
+								<li><a href="#" th:href="@{/documentacion/valorizacion}">Valorizacion</a></li>
 							</ul></li>
 						<li><a href="/" th:href="@{/monitoreo/}">Monitoreo<span></span></a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Mantenimiento<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="/employees" th:href="@{/cliente}">Cliente</a></li>
-								<li><a href="/employees/new" th:href="@{/contacto}">Contacto</a></li>
-								<li><a href="/employees/new" th:href="@{/trabajador}">Trabajador</a></li>
-								<li><a href="/employees/new" th:href="@{/transportista}">Transportista</a></li>
-								<li><a href="/employees/new" th:href="@{/persona}">Persona</a></li>
-								<li><a href="/employees/new" th:href="@{/tablamaestra}">Tablamaestra</a></li>
+								<li><a href="#" th:href="@{/cliente}">Cliente</a></li>
+								<li><a href="#" th:href="@{/contacto}">Contacto</a></li>
+								<li><a href="#" th:href="@{/trabajador}">Trabajador</a></li>
+								<li><a href="#" th:href="@{/transportista}">Transportista</a></li>
+								<li><a href="#" th:href="@{/persona}">Persona</a></li>
+								<li><a href="#" th:href="@{/tablamaestra}">Tablamaestra</a></li>
 							</ul></li>
 						<li><a href="/" th:href="@{/reporte}">Reportes<span></span></a></li>
-					<div class="logo-top-right">
-							<li>Bienvenido: <a href="#"
-								th:href="@{/login?logout}">Cerrar Sesion </a></li>
-					</div>
-						</ul>
+						<div class="logo-top-right">
+							<li>Bienvenido: <a href="#" th:href="@{/login?logout}">Cerrar
+									Sesion </a></li>
+						</div>
+					</ul>
 				</div>
 			</div>
 		</nav>

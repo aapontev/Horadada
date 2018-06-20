@@ -9,10 +9,13 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,12 +29,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "ORDENCOMPRA", schema = "HORADADA")
 public class Ordencompra  {
 
-	/**
-	 * 
-	 */
-	
-
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orden_compra_seq")
+	@SequenceGenerator(name = "orden_compra_seq", sequenceName = "orden_compra_sequence", allocationSize = 1)
 	@Column(name = "IDORDENCOMPRA", unique = true, nullable = false, precision = 10, scale = 0)
 	private int idordencompra;
 
@@ -75,9 +75,6 @@ public class Ordencompra  {
 	private Integer estadoordencompra;
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "ordencompra")
-	private Set<Ordencompradetalle> ordencompradetalles = new HashSet<Ordencompradetalle>(0);
-
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "ordencompra")
 	private Set<Despacho> despachos = new HashSet<Despacho>(0);
 
 	public Ordencompra() {
@@ -89,8 +86,7 @@ public class Ordencompra  {
 
 	public Ordencompra(int idordencompra, Cotizacion cotizacion, Date fechaenvio, BigDecimal subtotal,
 			BigDecimal descuentos, BigDecimal cargos, BigDecimal neto, BigDecimal igv, BigDecimal percepcion,
-			BigDecimal total, String observaciones, int idmoneda, Integer estadoordencompra,
-			Set<Ordencompradetalle> ordencompradetalles, Set<Despacho> despachos) {
+			BigDecimal total, String observaciones, int idmoneda, Integer estadoordencompra, Set<Despacho> despachos) {
 		this.idordencompra = idordencompra;
 		this.cotizacion = cotizacion;
 		this.fechaenvio = fechaenvio;
@@ -104,7 +100,6 @@ public class Ordencompra  {
 		this.observaciones = observaciones;
 		this.idmoneda = idmoneda;
 		this.estadoordencompra = estadoordencompra;
-		this.ordencompradetalles = ordencompradetalles;
 		this.despachos = despachos;
 	}
 
@@ -210,14 +205,6 @@ public class Ordencompra  {
 
 	public void setEstadoordencompra(Integer estadoordencompra) {
 		this.estadoordencompra = estadoordencompra;
-	}
-
-	public Set<Ordencompradetalle> getOrdencompradetalles() {
-		return this.ordencompradetalles;
-	}
-
-	public void setOrdencompradetalles(Set<Ordencompradetalle> ordencompradetalles) {
-		this.ordencompradetalles = ordencompradetalles;
 	}
 
 	public Set<Despacho> getDespachos() {

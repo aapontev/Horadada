@@ -6,9 +6,12 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,6 +27,8 @@ public class Despacho {
 
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "despacho_seq")
+	@SequenceGenerator(name = "despacho_seq", sequenceName = "despacho_sequence", allocationSize = 1)
 	@Column(name = "IDDESPACHO", unique = true, nullable = false, precision = 3)
 	private int iddespacho;
 

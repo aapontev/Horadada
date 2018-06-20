@@ -33,7 +33,7 @@
 							th:text="${coti.idcotizacion}"> </a></td>
 						<td th:text="${coti.cargos}"></td>
 						<td th:text="${coti.solicitud.idsolicitud}"></td>
-						<td th:text="${coti.fechaenvio}"></td>
+						<td th:text="${#dates.format(coti.fechaenvio,'dd/MM/yyyy')}"></td>
 						<td th:text="${coti.idmoneda}"></td>
 						<td th:text="${coti.total}"></td>
 						 <td><a href="#"
