@@ -8,4 +8,6 @@ import com.projecto.Horadada.Entity.Despacho;
 @Repository("despachodao")
 public interface DespachoDao extends CrudRepository<Despacho, Serializable>{
 
+	public abstract Despacho findByiddespacho(int id);
+
 }

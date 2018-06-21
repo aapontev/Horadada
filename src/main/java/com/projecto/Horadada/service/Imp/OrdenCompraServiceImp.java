@@ -40,5 +40,11 @@ public class OrdenCompraServiceImp implements OrdenCompraService{
 		
 	}
 
+	@Override
+	public List<Ordencompra> findByestadoordencompra(int i) {
+		List<Ordencompra> ordencompra = ordencompradao.findByestadoordencompra(i);
+		return ordencompra;
+	}
+
 
 }

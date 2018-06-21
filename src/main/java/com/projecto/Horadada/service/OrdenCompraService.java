@@ -12,4 +12,6 @@ public interface OrdenCompraService {
 	public abstract Object save(Ordencompra ordencompra);
 
 	public abstract void delete(int id);
+
+	public abstract List<Ordencompra> findByestadoordencompra(int i);
 }
