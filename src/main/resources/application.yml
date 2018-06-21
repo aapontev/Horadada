@@ -7,7 +7,7 @@ spring:
     basename: i18n/index
   datasource:
     #url: jdbc:sqlserver://localhost:1433;databaseName=Horadada
-    url: jdbc:oracle:thin:@localhost:1521:Horadada
+    url: jdbc:oracle:thin:@iqpc-003:1521:Horadada
     username: horadada
     password: aponte17
   jpa:

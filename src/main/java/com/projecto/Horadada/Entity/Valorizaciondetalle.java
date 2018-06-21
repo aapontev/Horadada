@@ -4,14 +4,13 @@ package com.projecto.Horadada.Entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
+
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
@@ -28,18 +27,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "VALORIZACIONDETALLE", schema = "HORADADA")
 public class Valorizaciondetalle  {
 
-	/**
-	 * 
-	 */
-	
-
-	@EmbeddedId
+	/*@EmbeddedId
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "valorizacion_detalle_seq")
 	@SequenceGenerator(name = "valorizacion_detalle_seq", sequenceName = "valorizacion_detalle_sequence", allocationSize = 1)
 	@AttributeOverrides({
 			@AttributeOverride(name = "idvalorizaciondetalle", column = @Column(name = "IDVALORIZACIONDETALLE", nullable = false, precision = 3)),
 			@AttributeOverride(name = "idvalorizacion", column = @Column(name = "IDVALORIZACION", nullable = false, precision = 3)) })
 	private ValorizaciondetalleId id;
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "valorizacion_detalle_seq")
+	@SequenceGenerator(name = "valorizacion_detalle_seq", sequenceName = "valorizacion_detalle_sequence", allocationSize = 1)
+	@Column(name = "IDVALORIZACIONDETALLE", unique = true, nullable = false, precision = 3)
+	private int idvalorizaciondetalle;	
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "IDVALORIZACION", nullable = false, insertable = false, updatable = false)
@@ -92,16 +92,16 @@ public class Valorizaciondetalle  {
 	public Valorizaciondetalle() {
 	}
 
-	public Valorizaciondetalle(ValorizaciondetalleId id, Valorizacion valorizacion) {
-		this.id = id;
+	public Valorizaciondetalle(int idvalorizaciondetalle, Valorizacion valorizacion) {
+		this.idvalorizaciondetalle = idvalorizaciondetalle;
 		this.valorizacion = valorizacion;
 	}
 
-	public Valorizaciondetalle(ValorizaciondetalleId id, Valorizacion valorizacion, Factura factura, Integer iddespacho,
+	public Valorizaciondetalle(int idvalorizaciondetalle, Valorizacion valorizacion, Factura factura, Integer iddespacho,
 			int item, Date fechacarga, Date fechadescarga, String nroguiatransporte, String guiaanexada,
 			Byte diasstamby, BigDecimal costostamby, BigDecimal neto, BigDecimal subtotal, BigDecimal igv,
 			BigDecimal total) {
-		this.id = id;
+		this.idvalorizaciondetalle = idvalorizaciondetalle;
 		this.valorizacion = valorizacion;
 		this.factura = factura;
 		this.iddespacho = iddespacho;
@@ -118,12 +118,12 @@ public class Valorizaciondetalle  {
 		this.total = total;
 	}
 
-	public ValorizaciondetalleId getId() {
-		return this.id;
+	public int getIdvalorizaciondetalle() {
+		return this.idvalorizaciondetalle;
 	}
 
-	public void setId(ValorizaciondetalleId id) {
-		this.id = id;
+	public void setId(int idvalorizaciondetalle) {
+		this.idvalorizaciondetalle = idvalorizaciondetalle;
 	}
 
 	public Valorizacion getValorizacion() {

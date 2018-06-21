@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.projecto.Horadada.Entity.Cotizacion;
 import com.projecto.Horadada.Entity.Cotizaciondetalle;
 import com.projecto.Horadada.Entity.Solicitud;
@@ -95,21 +94,28 @@ public class CotizacionController {
 	}
 	
 	@GetMapping("/cotizaciondetalleform")
-	public String redirectCotizacionDetalleform(@RequestParam(name = "item", required = false) int item, Model model) {
+	public String redirectCotizacionDetalleform(@RequestParam(name = "id", required = false) int id,
+			@RequestParam(name = "item", required = false) int item, Model model) {
+		
+		List<Tablamaestra> medida = tablamaestraservice.findByIdtablamaestra("Hora014");		
 		Cotizaciondetalle cotizaciondetalle = new Cotizaciondetalle();
+		Cotizacion cotizacion = cotizacionservice.findbyid(id);
+		
 		if(item != 0) {
 		 cotizaciondetalle = cotizaciondetalleservice.findByItem(item);
 		}
+		model.addAttribute("medida", medida);
+		model.addAttribute("cotizacion", cotizacion);
 		model.addAttribute("cotizadeta", cotizaciondetalle);
 		return "crearEditar/cotizacionDetalle";
 	}
 	
 	@PostMapping("/addcotizaciondetalle")
-	public String addCotizacionDetalle(@ModelAttribute(name = "cotizaciondetalle") Cotizacion cotizacion, Model model) {
-		if (null != cotizacionservice.save(cotizacion)) {
+	public String addCotizacionDetalle(@ModelAttribute(name = "cotizaciondetalle") Cotizaciondetalle cotidetalle, Model model) {
+
+		if (null != cotizaciondetalleservice.save(cotidetalle)) {
 			model.addAttribute("result", 1);
 		} else {
-
 			model.addAttribute("result", 0);
 		}
 		return "redirect:/cotizacion";

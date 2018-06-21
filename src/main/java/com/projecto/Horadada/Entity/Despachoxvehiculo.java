@@ -2,13 +2,11 @@ package com.projecto.Horadada.Entity;
 
 import java.util.Date;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,13 +22,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Despachoxvehiculo {
 
 
-	@EmbeddedId
+	/*@EmbeddedId
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "despacho_vehiculo_seq")
 	@SequenceGenerator(name = "despacho_vehiculo_seq", sequenceName = "despacho_vehiculo_sequence", allocationSize = 1)
 	@AttributeOverrides({
 			@AttributeOverride(name = "iddespachoxvehiculo", column = @Column(name = "IDDESPACHOXVEHICULO", nullable = false, precision = 3)),
 			@AttributeOverride(name = "iddespacho", column = @Column(name = "IDDESPACHO", nullable = false, precision = 3)) })
-	private DespachoxvehiculoId id;
+	private DespachoxvehiculoId id;*/
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "despacho_vehiculo_seq")
+	@SequenceGenerator(name = "despacho_vehiculo_seq", sequenceName = "despacho_vehiculo_sequence", allocationSize = 1)
+	@Column(name = "IDDESPACHOXVEHICULO", unique = true, nullable = false, precision = 3)
+	private int iddespachoxvehiculo;
 
 	@Column(name = "IDTRANSPORTISTA", nullable = false, precision = 3)
 	private int idtransportista;
@@ -54,14 +57,14 @@ public class Despachoxvehiculo {
 	public Despachoxvehiculo() {
 	}
 
-	public Despachoxvehiculo(DespachoxvehiculoId id, int idtransportista) {
-		this.id = id;
+	public Despachoxvehiculo(int iddespachoxvehiculo, int idtransportista) {
+		this.iddespachoxvehiculo = iddespachoxvehiculo;
 		this.idtransportista = idtransportista;
 	}
 
-	public Despachoxvehiculo(DespachoxvehiculoId id, int idtransportista, Date fechacarga, Date fechadescarga,
+	public Despachoxvehiculo(int iddespachoxvehiculo, int idtransportista, Date fechacarga, Date fechadescarga,
 			String horacarga, String horadescarga) {
-		this.id = id;
+		this.iddespachoxvehiculo = iddespachoxvehiculo;
 		this.idtransportista = idtransportista;
 		this.fechacarga = fechacarga;
 		this.fechadescarga = fechadescarga;
@@ -69,12 +72,12 @@ public class Despachoxvehiculo {
 		this.horadescarga = horadescarga;
 	}
 
-	public DespachoxvehiculoId getId() {
-		return this.id;
+	public int getIddespachoxvehiculo() {
+		return this.iddespachoxvehiculo;
 	}
 
-	public void setId(DespachoxvehiculoId id) {
-		this.id = id;
+	public void setId(int iddespachoxvehiculo) {
+		this.iddespachoxvehiculo = iddespachoxvehiculo;
 	}
 
 	public int getIdtransportista() {

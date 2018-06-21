@@ -3,14 +3,12 @@ package com.projecto.Horadada.Entity;
 
 import java.math.BigDecimal;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
@@ -22,14 +20,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "COTIZACIONDETALLE", schema = "HORADADA")
 public class Cotizaciondetalle {
-
-	@EmbeddedId
-	@AttributeOverrides({
-			@AttributeOverride(name = "idcotizaciondetalle", column = @Column(name = "IDCOTIZACIONDETALLE", nullable = false, precision = 3)),
-			@AttributeOverride(name = "idcotizacion", column = @Column(name = "IDCOTIZACION", nullable = false, precision = 3)) })
+	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cotizacion_detalle_seq")
 	@SequenceGenerator(name = "cotizacion_detalle_seq", sequenceName = "cotizacion_detalle_sequence", allocationSize = 1)
-	private CotizaciondetalleId id;
+	@Column(name = "IDCOTIZACIONDETALLE", unique = true, nullable = false, precision = 5)
+	private int idcotizaciondetalle;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "IDCOTIZACION", nullable = false, insertable = false, updatable = false)
@@ -65,15 +60,15 @@ public class Cotizaciondetalle {
 	public Cotizaciondetalle() {
 	}
 
-	public Cotizaciondetalle(CotizaciondetalleId id, Cotizacion cotizacion) {
-		this.id = id;
+	public Cotizaciondetalle(int idcotizaciondetalle, Cotizacion cotizacion) {
+		this.idcotizaciondetalle = idcotizaciondetalle;
 		this.cotizacion = cotizacion;
 	}
 
-	public Cotizaciondetalle(CotizaciondetalleId id, Cotizacion cotizacion, int item, String codrecurso,
+	public Cotizaciondetalle(int idcotizaciondetalle, Cotizacion cotizacion, int item, String codrecurso,
 			String descripcion, String ccostos, int idunidadmedida, BigDecimal cantidad, BigDecimal preciounitario,
 			BigDecimal descuento, BigDecimal totaldetalle) {
-		this.id = id;
+		this.idcotizaciondetalle = idcotizaciondetalle;
 		this.cotizacion = cotizacion;
 		this.item = item;
 		this.codrecurso = codrecurso;
@@ -86,12 +81,12 @@ public class Cotizaciondetalle {
 		this.totaldetalle = totaldetalle;
 	}
 
-	public CotizaciondetalleId getId() {
-		return this.id;
+	public int getIdcotizaciondetalle() {
+		return this.idcotizaciondetalle;
 	}
 
-	public void setId(CotizaciondetalleId id) {
-		this.id = id;
+	public void setId(int idcotizaciondetalle) {
+		this.idcotizaciondetalle = idcotizaciondetalle;
 	}
 
 	public Cotizacion getCotizacion() {
