@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title th:text="#{IndexTitle}">Employees System</title>
+
+<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+</head>
+
+<body>
+	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+	<div class="container">
+		<h1>FORMULARIO DESPACHO</h1>
+		<br />
+		<form action="#" th:action="@{/despacho/adddespacho}"
+			th:object="${despacho}" method="post">
+			<input type="hidden" th:field="*{iddespacho}" />
+			<div class="panel panel-default">
+				<div class="panel-heading">Detalles de Despacho</div>
+				<div class="panel-body">
+					<div class="row">
+						<div th:if="${resu==1}">
+							<div class="col-xs-3">
+								ESTADO : <input type="text" disabled class="form-control"
+									th:field="*{idestadodespacho}" /> <br />
+							</div>
+							<div class="col-xs-3">
+								ORDEN DE COMPRA : <input type="text" disabled
+									class="form-control" th:field="*{ordencompra.idordencompra}" /><br>
+							</div>
+						</div>
+						<div th:if="${resu==0}">
+							<div class="col-xs-3">
+								<br>ORDEN DE COMPRA : <select
+									th:field="*{ordencompra.idordencompra}" class="form-control"
+									id="inputGroupSelect03">
+									<option th:each="ordcom : ${ordencompra}"
+										th:value="${ordcom.idordencompra}"
+										th:text="${ordcom.idordencompra}"></option>
+								</select>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							FECHA INICIO : <input type="text" class="form-control"
+								id="fechainicio" th:field="*{fechainicio}" value="1990-12-01" /> <br />
+						</div>
+						<div class="col-xs-3">
+							FECHA FIN : <input type="text" class="form-control" id="fechafin"
+								th:field="*{fechafin}" /> <br />
+						</div>
+						<div class="col-xs-3">
+							CLIENTE : <input type="text" class="form-control"
+								th:field="*{cliente.idcliente}" /> <br />
+						</div>
+						<div class="col-xs-4">
+							DIAS ESTIMADOS : <input type="text" class="form-control" onkeypress="carga();"
+								id="diasestimados" th:field="*{diasestimados}" /> <br />
+						</div>
+						<div class="col-xs-4">
+							DIRECCION LLEGADA : <input type="text" class="form-control" id=""
+								th:field="*{direccionllegada}" /> <br />
+						</div>
+						<div class="col-xs-4">
+							DIRECCION PARTIDA : <input type="text" class="form-control" id=""
+								th:field="*{direccionpartida}" /> <br />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">DESCRIPCION :</div>
+				<div class="panel-body">
+					<textarea class="form-control" th:field="*{descripcionmateria}"> </textarea>
+
+					<br />
+				</div>
+			</div>
+
+			<button class="btn btn-lg btn-primary btn-block" type="submit">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				Aceptar
+			</button>
+			<br>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(function() {
+				$('#fechainicio,#fechafin').datetimepicker({
+					format : 'DD/MM/YYYY'
+				}).on('change', function() {
+					$('.datepicker').hide();
+				});
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		$('#cargos,#descuentos,#persepcion,#igv,#neto,#subtotal,#total')
+				.priceFormat({
+					prefix : '',
+					centsSeparator : '.',
+					thousandsSeparator : ','
+				});
+	</script>
+	<script type="text/javascript">
+		function carga() {
+			/*var fecha = new Date($('#fechainicio').val());
+			var dias = $('#diasestimados').val(); // Número de días a agregar
+			fecha.setDate(fecha.getDate() + dias);
+			$('#fechafin') == fecha ;
+			console.info(fecha);
+			var dias = $('#diasestimados').val();
+			Date.prototype.addDays = function(dias) {
+				  var dat = new Date(this.valueOf());
+				  dat.setDate(dat.getDate() + dias);
+				  return dat;
+				}
+
+				var dat = new Date();
+
+				alert(dat.addDays(5))
+				var fecha = new Date($('#fechainicio').val());
+				var dias = 2; // Número de días a agregar
+				fecha.setDate(fecha.getDate() + dias);
+				console.info(fecha)*/
+		};
+	</script>
+	<div class="footer">
+		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+	</div>
+</body>
+</html>

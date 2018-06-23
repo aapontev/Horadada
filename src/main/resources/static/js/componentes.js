@@ -62,3 +62,27 @@
       }
 	}
 	
+	/*function sumadias() {
+
+		var fecha = document.getElementById('fechainicio').value;
+		var dia= fecha.substr(0,2)
+		var mes = fecha.substr(3,2);
+		var año = fecha.substr(6,4);
+		   var fecha2 = new Date(mes + "/" + dia + "/" + año); 
+		   var diasasumar = document.getElementById('diasestimados').value; 
+		   var fechanueva = fecha2 + diasasumar;
+		   document.getElementById('fechafin').value = fechanueva;
+		   return fechanueva;
+		   
+		   Date.prototype.addDays = function(days) {
+  var dat = new Date(this.valueOf());
+  dat.setDate(dat.getDate() + days);
+  return dat;
+}
+
+var dat = new Date();
+
+alert(dat.addDays(5))
+		   
+	}
+	

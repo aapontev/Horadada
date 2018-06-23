@@ -21,5 +21,15 @@ public class DespachoServiceImp implements DespachoService{
 		List<Despacho> despachos = (List<Despacho>) despachodao.findAll();
 		return despachos;
 	}
+	@Override
+	public Despacho findByiddespacho(int id) {
+		Despacho despacho = despachodao.findByiddespacho(id);
+		return despacho;
+	}
+	@Override
+	public Despacho save(Despacho despacho) {
+		Despacho desp= despachodao.save(despacho);
+		return desp;
+	}
 
 }
