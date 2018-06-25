@@ -4,47 +4,49 @@
 <head lang="en">
 
 
-        <title th:text="#{IndexTitle}">Employees System</title>
+<title th:text="#{IndexTitle}">Employees System</title>
 
 <!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
 </head>
 <body>
 
 	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
-		<div class="container">
-			<h1>FORMULARIO CONTACTO</h1>
-			<br />
-			<form action="#" th:action="@{/contacto/addcontacto}"  th:object="${contacto}" method="post" >
-			<input type="hidden" th:field="*{idcontacto}"/>  
-			    CODIGO CLIENTE :	
-				 <br/>						
-				<select th:field="*{cliente.idcliente}" class="custom-select col-sm-6 " id="inputGroupSelect03">									
-				       <option th:each="cli : ${cliente}"
-				               th:value="${cli.idcliente}"
-				               th:text="${cli.idcliente}+'. '+${cli.razonsocial}">
-				       </option>
-				</select>
-				
-				 <br/>
-				 <br/>
-				 CODIGO PERSONA :
-				 <br/>
-				<select th:field="*{persona.idpersona}" class="custom-select col-sm-6 " id="inputGroupSelect03">									
-				       <option th:each="per : ${persona}"
-				               th:value="${per.idpersona}"
-				               th:text="${per.idpersona}+'. '+${per.primernombre}+' '+${per.primerapellido}">
-				       </option>
-				</select>
-				<br/> 
-		    	<br/>   		    	
-				<button class="btn btn-lg btn-primary btn-block" type="submit">
-					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					ACEPTAR
-				</button>	
+	<div class="container">
+		<form action="#" th:action="@{/contacto/addcontacto}"
+			th:object="${contacto}" method="post">
+			<input type="hidden" th:field="*{idcontacto}" />
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">
+					<b>FORMULARIO CONTACTO</b>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
+							CODIGO CLIENTE : <br /> <select th:field="*{cliente.idcliente}"
+								class="form-control" id="inputGroupSelect03">
+								<option th:each="cli : ${cliente}" th:value="${cli.idcliente}"
+									th:text="${cli.idcliente}+'. '+${cli.razonsocial}"></option>
+							</select>
+						</div>
+						<div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
+							CODIGO PERSONA : <br /> <select th:field="*{persona.idpersona}"
+								class="form-control" id="inputGroupSelect03">
+								<option th:each="per : ${persona}" th:value="${per.idpersona}"
+									th:text="${per.idpersona}+'. '+${per.nombrecompleto}">
+								</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				ACEPTAR
+			</button>
 			<br>
 		</form>
-		</div>
-	
+	</div>
+
 	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
 	</div>

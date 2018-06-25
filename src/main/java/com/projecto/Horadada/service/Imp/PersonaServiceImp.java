@@ -32,8 +32,12 @@ public class PersonaServiceImp implements PersonaService{
 
 	@Override
 	public Persona save(Persona persona) {
-		Persona per = personaDao.save(persona);
-		return per;
+		try {
+			Persona per = personaDao.save(persona);
+			return per;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
@@ -52,6 +56,12 @@ public class PersonaServiceImp implements PersonaService{
 	public void cambiaPersona(int v_tipopersona,int v_idpersona) {
 		personaDao.cambiaPersona(v_tipopersona, v_idpersona);
 				
+	}
+
+	@Override
+	public Persona updatetipopersona(int tipo, int id) {
+		Persona persona = personaDao.updatetipopersona(tipo, id);
+		return persona;
 	}
 
 }

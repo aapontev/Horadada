@@ -1,5 +1,7 @@
 package com.projecto.Horadada.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.projecto.Horadada.Entity.Persona;
+import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.service.PersonaService;
+import com.projecto.Horadada.service.TablaMaestraService;
 
 @Controller
 @RequestMapping("persona")
@@ -21,8 +25,12 @@ public class PersonaController {
 	@Autowired
 	@Qualifier("personaServiceImp")
 	private PersonaService personaService;
-	//private int v_tipopersona;
-	//private int v_idpersona;
+
+	@Autowired
+	@Qualifier("tablamaestraserviceimp")
+	private TablaMaestraService tablaService;
+	// private int v_tipopersona;
+	// private int v_idpersona;
 
 	@GetMapping
 	public ModelAndView Persona() {
@@ -33,18 +41,12 @@ public class PersonaController {
 
 	@PostMapping("/addpersona")
 	public String addPersona(@ModelAttribute(name = "persona") Persona persona, Model model) {
-		
-		Persona per = personaService.findByidPersona(persona.getIdpersona());
-		int tipo = per.getTipopersona();
-		if (null != personaService.save(persona)) {		
-			if (persona.getTipopersona() != tipo) {
-				personaService.cambiaPersona(persona.getTipopersona(), per.getIdpersona());
+			if (null != personaService.save(persona)) {
+					personaService.cambiaPersona(persona.getTipopersona(), persona.getIdpersona());				
+				model.addAttribute("resu", 1);
+			} else {
+				model.addAttribute("resu", 0);
 			}
-		//} else {
-		//	if (null != personaService.save(persona)) {
-		//	} 
-		}
-
 		if (persona.getTipopersona() == 1) {
 			return "redirect:/transportista";
 		} else if (persona.getTipopersona() == 2) {
@@ -55,7 +57,23 @@ public class PersonaController {
 			return "redirect:/persona";
 		}
 	}
-
+	@GetMapping("/personaform")
+	public String redirectPersonaForm(@RequestParam(name="idpersona",required=false)int id,
+			Model model) {
+		Persona per = new Persona();
+		int resu = 0;
+		List<Tablamaestra> persotip = tablaService.findByIdtablamaestra("Hora006");   
+		List<Tablamaestra> tipodoc = tablaService.findByIdtablamaestra("Hora013");
+		if(id != 0) {
+			 per = personaService.findByidPersona(id);	
+			 resu =1;
+		}
+		model.addAttribute("resu", resu);
+		model.addAttribute("tipopersona",persotip);
+		model.addAttribute("tipodoc",tipodoc);
+		model.addAttribute("persona",per);
+		return "crearEditar/persona";
+	}
 	@GetMapping("/borrarpersona")
 	public String borrarPersona(@RequestParam(name = "id", required = true) int id, Model model) {
 

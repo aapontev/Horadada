@@ -20,8 +20,7 @@
 				<thead>
 					<tr>
 						<th>CODIGO PERSONA</th>
-						<th>NOMBRE</th>
-						<th>APELLIDO</th>
+						<th>NOMBRES</th>
 						<th>TELEFONO</th>
 						<th>DIRECCION</th>
 
@@ -30,12 +29,10 @@
 				<tbody>
 					<tr th:each="con : ${cont}">
 						<td><a href="#"
-							th:href="@{/control/personaform?idpersona=__${con.persona.idpersona}__}"
+							th:href="@{/persona/personaform?idpersona=__${con.persona.idpersona}__}"
 							th:text="${con.persona.idpersona}"> </a></td>
 						<td
-							th:text="${con.persona.primernombre}+' '+${con.persona.segundonombre}"></td>
-						<td
-							th:text="${con.persona.primerapellido}+' '+${con.persona.segundoapellido}"></td>
+							th:text="${con.persona.nombrecompleto}"></td>
 						<td th:text="${con.persona.telefono}"></td>
 						<td th:text="${con.persona.direccion}"></td>
 						<td><a href="#"

@@ -34,7 +34,7 @@
 						<td th:text="${per.telefono}"></td>
 						<td th:text="${per.direccion}"></td>
 						<td><a href="#"
-							th:href="@{/control/personaform?idpersona=__${per.idpersona}__}">
+							th:href="@{/persona/personaform?idpersona=__${per.idpersona}__}">
 								<button type="button" class="btn btn-default">
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 								</button>
@@ -49,13 +49,12 @@
 				</tbody>
 			</table>
 		</div>
-		<a href="#" th:href="@{/control/personaform?idpersona=0}">
+		<a href="#" th:href="@{/persona/personaform?idpersona=0}">
 			<button class="btn btn-lg btn-primary btn-block" type="submit">
 				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 				NUEVA PERSONA
 			</button>
-		</a>
-			<br>
+		</a> <br>
 	</div>
 	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->

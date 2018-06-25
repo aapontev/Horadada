@@ -29,8 +29,12 @@ public class ContactoServiceImp implements ContactoService{
 
 	@Override
 	public Contacto save(Contacto contacto) {
-		Contacto cont = contactoDao.save(contacto);
-		return cont;
+		try {
+			Contacto cont = contactoDao.save(contacto);
+			return cont;			
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override

@@ -12,22 +12,45 @@
 
 	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
 	<div class="container">
-		<form action="#" th:action="@{/persona/addpersona}"
-			th:object="${persona}" method="post">
+		<div th:if="${resu == 0}">
+			<form action="#" th:action="@{/trabajador/addtrabajador}"
+				th:object="${persona}" method="post">
+				<div class="panel panel-default">
+					<div class="panel-heading text-center">
+						<b>NUEVO TRABAJADOR</b>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
+								Seleccione Persona : <select th:field="*{idpersona}"
+									class="form-control">
+									<option th:each="per : ${person}" th:value="${per.idpersona}"
+										th:text="${per.idpersona}+'. '+${per.nombrecompleto}">
+									</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
 
-			<br> Seleccione Persona : <br> <select
-				th:field="*{idpersona}" class="custom-select col-sm-6 "
-				id="inputGroupSelect03">
-				<option th:each="per : ${person}" th:value="${per.idpersona}"
-					th:text="${per.idpersona}+'. '+${per.primernombre}+' '+${per.primerapellido}">
-				</option>
-			</select> <br/> <br>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					ACEPTAR
+				</button>
+			</form>
+		</div>
 
-			<button class="btn btn-lg btn-primary btn-block" type="submit">
-				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-				ACEPTAR
-			</button>
-		</form>
+		<div th:if="${resu == 1}">
+			<h1>NO EXISTEN PERSONAS DISPONIBLE PARA REGISTRAR, POR FAVOR
+				PRIMERO INGRESE UN PERSONA</h1>
+			<div class="containner" align="center">
+			<a href="#" th:href="@{/persona/personaform?idpersona=0}"><button> <span class="glyphicon glyphicon-user">Crear	Persona</span></button>
+			</a> 
+			<a href="#" th:href="@{/trabajador}"> <button> <span class="glyphicon glyphicon-log-in">
+					Atras</span></button>
+			</a>
+			</div>
+		</div>
 		<br>
 	</div>
 

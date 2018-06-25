@@ -12,4 +12,5 @@ public interface PersonaService {
 	public abstract List<Persona> findByall();
 	public abstract void delete(int id);
 	public abstract void cambiaPersona(int v_tipopersona,int v_idpersona);
+	public abstract Persona updatetipopersona(int tipo,int id);
 }

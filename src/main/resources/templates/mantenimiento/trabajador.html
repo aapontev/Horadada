@@ -20,8 +20,7 @@
 				<thead>
 					<tr>
 						<th>CODIGO PERSONA</th>
-						<th>NOMBRE</th>
-						<th>APELLIDO</th>
+						<th>NOMBRE COMPLETO</th>
 						<th>TELEFONO</th>
 						<th>DIRECCION</th>
 						<th></th>
@@ -31,13 +30,17 @@
 				<tbody>
 					<tr th:each="tra : ${traba}">
 						<td><a href="#"
-							th:href="@{/control/personaform?idpersona=__${tra.idpersona}__}"
+							th:href="@{/persona/personaform?idpersona=__${tra.idpersona}__}"
 							th:text="${tra.idpersona}"> </a></td>
-						<td th:text="${tra.primernombre}+' '+${tra.segundonombre}"></td>
-						<td th:text="${tra.primerapellido}+' '+${tra.segundoapellido}"></td>
+						<td th:text="${tra.nombrecompleto}"></td>
 						<td th:text="${tra.telefono}"></td>
 						<td th:text="${tra.direccion}"></td>
-
+						<td><a href="#"
+							th:href="@{/trabajador/borrartrabajador?id=__${tra.idpersona}__}">
+								<button type="button" class="btn btn-danger">
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+								</button>
+						</a></td>
 					</tr>
 				</tbody>
 			</table>
@@ -47,8 +50,7 @@
 				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 				NUEVO TRABAJADOR
 			</button>
-		</a>
-			<br>
+		</a> <br>
 	</div>
 
 	<div class="footer">

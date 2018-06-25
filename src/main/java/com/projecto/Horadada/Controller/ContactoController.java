@@ -63,9 +63,8 @@ public class ContactoController {
 	public String addContacto (@ModelAttribute(name="contacto")Contacto contacto,Model model) {
 		if(null != contactoService.save(contacto)) {
 			model.addAttribute("result", 1);
-		}else {			
-		
-		model.addAttribute("result", 0);
+		}else {	
+			model.addAttribute("result", 0);
 		}
 		return "redirect:/contacto/";
 	}
