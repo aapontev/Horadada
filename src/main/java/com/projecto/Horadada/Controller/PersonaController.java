@@ -21,8 +21,8 @@ public class PersonaController {
 	@Autowired
 	@Qualifier("personaServiceImp")
 	private PersonaService personaService;
-	private int v_tipopersona;
-	private int v_idpersona;
+	//private int v_tipopersona;
+	//private int v_idpersona;
 
 	@GetMapping
 	public ModelAndView Persona() {
@@ -33,27 +33,23 @@ public class PersonaController {
 
 	@PostMapping("/addpersona")
 	public String addPersona(@ModelAttribute(name = "persona") Persona persona, Model model) {
-
-		v_tipopersona = persona.getTipopersona();
-		v_idpersona = persona.getIdpersona();
-		if (v_idpersona != 0) {
-			Persona per = personaService.findByidPersona(v_idpersona);
-			if (v_tipopersona != per.getTipopersona()) {
-				personaService.update(v_tipopersona, v_idpersona);
-			}
-		}else {
-			if (null != personaService.save(persona)) {
-				model.addAttribute("result", 1);
-			} else {
-				model.addAttribute("result", 0);
-			}
-		}
 		
-		if (v_tipopersona == 1) {
+		Persona per = personaService.findByidPersona(persona.getIdpersona());
+		int tipo = per.getTipopersona();
+		if (null != personaService.save(persona)) {		
+			if (persona.getTipopersona() != tipo) {
+				personaService.cambiaPersona(persona.getTipopersona(), per.getIdpersona());
+			}
+		//} else {
+		//	if (null != personaService.save(persona)) {
+		//	} 
+		}
+
+		if (persona.getTipopersona() == 1) {
 			return "redirect:/transportista";
-		} else if (v_tipopersona == 2) {
+		} else if (persona.getTipopersona() == 2) {
 			return "redirect:/contacto";
-		} else if (v_tipopersona == 3) {
+		} else if (persona.getTipopersona() == 3) {
 			return "redirect:/trabajador";
 		} else {
 			return "redirect:/persona";

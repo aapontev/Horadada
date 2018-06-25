@@ -20,25 +20,6 @@ import javax.persistence.Table;
 @Table(name = "FACTURADETALLE", schema = "HORADADA")
 public class Facturadetalle {
 
-	/*
-	 * @EmbeddedId
-	 * 
-	 * @GeneratedValue(strategy = GenerationType.SEQUENCE, generator =
-	 * "factura_detalle_seq")
-	 * 
-	 * @SequenceGenerator(name = "factura_detalle_seq", sequenceName =
-	 * "factura_detalle_sequence", allocationSize = 1)
-	 * 
-	 * @AttributeOverrides({
-	 * 
-	 * @AttributeOverride(name = "iddetallefactura", column = @Column(name =
-	 * "IDDETALLEFACTURA", nullable = false, precision = 3)),
-	 * 
-	 * @AttributeOverride(name = "idfactura", column = @Column(name = "IDFACTURA",
-	 * nullable = false, precision = 3)) }) private FacturadetalleId id;
-	 * 
-	 */
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "factura_detalle_seq")
 	@SequenceGenerator(name = "factura_detalle_seq", sequenceName = "factura_detalle_sequence", allocationSize = 1)

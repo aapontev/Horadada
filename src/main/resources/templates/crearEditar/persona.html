@@ -3,86 +3,93 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
-        <title th:text="#{IndexTitle}">Employees System</title>
+<title th:text="#{IndexTitle}">Employees System</title>
 
 <!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
 </head>
 
 <body>
 	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+	<div class="container">
+		<form action="#" th:action="@{/persona/addpersona}"
+			th:object="${persona}" method="post">
+			<input type="hidden" th:field="*{idpersona}" />
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">
+					<b>FORMULARIO PERSONA</b>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-2 col-md-3 col-sm-5 col-xs-12">
+							TIPO PERSONA : <br> <select th:field="*{tipopersona}"
+								class="custom-select col-sm-6 form-control"
+								id="inputGroupSelect03">
+								<option th:each="tipper : ${tipopersona}"
+									th:value="${tipper.clave1}"
+									th:text="${tipper.clave1}+'. '+${tipper.valor1}"></option>
+							</select> <br /> <br />
+						</div>
+						<div class="col-lg-8 col-md-9 col-sm-10 col-xs-12">
+							Apellidos y Nombres : <input type="text" class="form-control"
+								th:field="*{nombrecompleto}" /> <br />
+						</div>
 
-	<div class="jumbotron">
-		<div class="container">
-			<h1>FORMULARIO PERSONA</h1>
-			<form action="#" th:action="@{/persona/addpersona}"  th:object="${persona}" method="post">  
-			<input type="hidden" th:field="*{idpersona}"/> 
-			    Nombre :	
-				<input type="text" class="form-control" th:field="*{primernombre}"/>
-				 <br/>
-				 Apellido :
-				<input type="text" class="form-control" th:field="*{primerapellido}"/> 
-				<br/> 
-				Tipo documento :	
-				 <br>
-		    	<select th:field="*{codtipodocumento}" class="custom-select col-sm-6 " id="inputGroupSelect03">									
-				       <option th:each="tipdoc : ${tipodoc}"
-				               th:value="${tipdoc.clave1}"
-				               th:text="${tipdoc.clave1}+'. '+${tipdoc.valor1}">
-				       </option>
-				</select>
-		    	<br/>
-		    	<br/>
-				 Numero documento :	
-				<input type="text" class="form-control" th:field="*{numerodocumento}"/>
-				 <br/>
-				Telefono :
-				<input type="text" class="form-control" th:field="*{telefono}"/> 
-				<br/>
-				Ciudad :
-		    	<input type="text" class="form-control" th:field="*{direccion}"/>   
-		    	<br/>
-		    	
-				<div th:if="${resu==1}">
-				TIPO PERSONA : 
-				<br>
-		    	<select th:field="*{tipopersona}" class="custom-select col-sm-6 " id="inputGroupSelect03">									
-				       <option th:each="tipper : ${tipopersona}"
-				               th:value="${tipper.clave1}"
-				               th:text="${tipper.clave1}+'. '+${tipper.valor1}">
-				       </option>
-				</select>
-		    	<br/>
-		    	<br/></div>
-		    	Correo electronico :
-		    	<input type="email" class="form-control" th:field="*{correoelectronico}"/>   
-		    	<br/>
-		    	fecha nacimiento :
-				    <div class="control-group form-horizontal ">
-				              <div class="controls" style="position: relative">
-		    	<input type="text" class="form-control" th:field="*{fechanacimiento}" id="fechanac" />   
-		    	</div></div>
-		    	<br/>
-		    	<br/>   	
-		    	<br/>
-		    	<br/>   	    	
-				<button class="btn btn-lg btn-primary btn-block" type="submit">
-					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					ACEPTAR
-				</button>	
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							Tipo documento : <br> <select th:field="*{codtipodocumento}"
+								class="custom-select col-sm-6 form-control"
+								id="inputGroupSelect03">
+								<option th:each="tipdoc : ${tipodoc}"
+									th:value="${tipdoc.clave1}"
+									th:text="${tipdoc.clave1}+'. '+${tipdoc.valor1}"></option>
+							</select> <br /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							Numero documento : <input type="text" class="form-control"
+								th:field="*{numerodocumento}" /> <br />
+
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							Telefono : <input type="text" class="form-control"
+								th:field="*{telefono}" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							Ciudad : <input type="text" class="form-control"
+								th:field="*{direccion}" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							Correo electronico : <input type="email" class="form-control"
+								th:field="*{correoelectronico}" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							fecha nacimiento :
+							<div class="control-group form-horizontal ">
+								<div class="controls" style="position: relative">
+									<input type="text" class="form-control"
+										th:field="*{fechanacimiento}" id="fechanac" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				ACEPTAR
+			</button>
+			<br>
 		</form>
-		</div>
 	</div>
-<script type="text/javascript">
-$(document).ready(function() {
-  $(function() {
-    $('#fechanac').datetimepicker({
-      format: 'DD/MM/YYYY'
-    }).on('change', function(){
-        $('.datepicker').hide();
-    });
-  });
-});
-</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(function() {
+				$('#fechanac').datetimepicker({
+					format : 'DD/MM/YYYY'
+				}).on('change', function() {
+					$('.datepicker').hide();
+				});
+			});
+		});
+	</script>
 
 	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->

@@ -19,23 +19,6 @@ import javax.persistence.Table;
 @Table(name = "TELEFONOMONITOREO", schema = "HORADADA")
 public class Telefono {
 
-	/*
-	 * @EmbeddedId
-	 * 
-	 * @GeneratedValue(strategy = GenerationType.SEQUENCE, generator =
-	 * "telefono_monitoreo_seq")
-	 * 
-	 * @SequenceGenerator(name = "telefono_monitoreo_seq", sequenceName =
-	 * "telefono_monitoreo_sequence", allocationSize = 1)
-	 * 
-	 * @AttributeOverrides({
-	 * 
-	 * @AttributeOverride(name = "idtelefono", column = @Column(name = "IDTELEFONO",
-	 * nullable = false, precision = 3)),
-	 * 
-	 * @AttributeOverride(name = "idpersona", column = @Column(name = "IDPERSONA",
-	 * nullable = false, precision = 3)) }) private TelefonoId id;
-	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "telefono_monitoreo_seq")
 	@SequenceGenerator(name = "telefono_monitoreo_seq", sequenceName = "telefono_monitoreo_sequence", allocationSize = 1)
@@ -43,7 +26,7 @@ public class Telefono {
 	private int idtelefono;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "IDPERSONA", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "IDPERSONA", insertable = false, updatable = false)
 	private Persona persona;
 
 	@Column(name = "IDTIPOTELEFONO", precision = 3)

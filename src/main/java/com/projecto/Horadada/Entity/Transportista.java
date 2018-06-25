@@ -24,8 +24,6 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "TRANSPORTISTA", schema = "HORADADA", uniqueConstraints = @UniqueConstraint(columnNames = "IDPERSONA"))
 public class Transportista  {
 
-	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transportista_seq")
 	@SequenceGenerator(name = "transportista_seq", sequenceName = "transportista_sequence", allocationSize = 1)

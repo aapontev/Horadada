@@ -10,37 +10,50 @@
 
 <body>
 	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
-		<div class="container">
-			<h1>FORMULARIO CLIENTE</h1>
-			<br />
-			<form action="#" th:action="@{/cliente/addcliente}"  th:object="${cliente}" method="post" >
-			<input type="hidden" th:field="*{idcliente}"/>  
-			    RAZON SOCIAL :	
-				<input type="text" class="form-control" th:field="*{razonsocial}"/>
-				 <br/>
-				 RUC :
-				<input type="text" class="form-control" th:field="*{ruc}" maxlength="11"/> 
-				<br/> 
-				TELEFONO :
-				<input type="text" class="form-control" th:field="*{telefono}"/> 
-				<br/>
-				DIRECCION FISCAL :
-		    	<input type="text" class="form-control" th:field="*{direccionfiscal}"/>   
-		    	<br/>
-				CORREO :
-		    	<input type="text" class="form-control" th:field="*{correo}"/>   
-		    	<br/>
-		    	<br/>   		    	
-				<button class="btn btn-lg btn-primary btn-block" type="submit">
-					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					ACEPTAR
-				</button>	
-				<br>
+	<div class="container">
+		<form action="#" th:action="@{/cliente/addcliente}"
+			th:object="${cliente}" method="post">
+			<input type="hidden" th:field="*{idcliente}" />
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">
+					<b>FORMULARIO CLIENTE</b>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
+							RAZON SOCIAL : <input type="text" class="form-control"
+								th:field="*{razonsocial}" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							RUC : <input type="text" class="form-control" th:field="*{ruc}"
+								maxlength="11" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							TELEFONO : <input type="text" class="form-control"
+								th:field="*{telefono}" /> <br />
+						</div>
+						<div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
+							CORREO : <input type="text" class="form-control"
+								th:field="*{correo}" /> <br />
+						</div>
+
+						<div class="col-lg-6 col-md-7 col-sm-9 col-xs-12">
+							DIRECCION FISCAL : <input type="text" class="form-control"
+								th:field="*{direccionfiscal}" /> <br />
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				ACEPTAR
+			</button>
+			<br>
 		</form>
-		</div>
-        <div class="footer">
-            <!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
-        </div>
+	</div>
+	<div class="footer">
+		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+	</div>
 
 </body>
 </html>

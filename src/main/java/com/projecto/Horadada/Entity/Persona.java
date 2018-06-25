@@ -41,17 +41,20 @@ public class Persona  {
 	@SequenceGenerator(name = "persona_seq", sequenceName = "persona_sequence", allocationSize = 1)
 	@Column(name = "IDPERSONA", unique = true, nullable = false, precision = 3)
 	private int idpersona;
-
-	@Column(name = "PRIMERNOMBRE", length = 25)
+	
+	@Column(name = "NOMBRECOMPLETO", length = 80)
+	private String nombrecompleto;
+	
+	@Column(name = "PRIMERNOMBRE", length = 20)
 	private String primernombre;
 
-	@Column(name = "SEGUNDONOMBRE", length = 25)
+	@Column(name = "SEGUNDONOMBRE", length = 20)
 	private String segundonombre;
 
-	@Column(name = "PRIMERAPELLIDO", length = 25)
+	@Column(name = "PRIMERAPELLIDO", length = 20)
 	private String primerapellido;
 
-	@Column(name = "SEGUNDOAPELLIDO", length = 25)
+	@Column(name = "SEGUNDOAPELLIDO", length = 20)
 	private String segundoapellido;
 
 	@Column(name = "TIPOPERSONA", nullable = false, precision = 3)
@@ -110,12 +113,13 @@ public class Persona  {
 		this.tipopersona = tipopersona;
 	}
 
-	public Persona(int idpersona, String primernombre, String segundonombre, String primerapellido,
+	public Persona(int idpersona,String nombrecompleto, String primernombre, String segundonombre, String primerapellido,
 			String segundoapellido, int tipopersona, int codtipodocumento, int numerodocumento, Date fechanacimiento,
 			String edad, String direccion, Date fechacreacion, Date fechaupdate, String telefono,
 			String correoelectronico, Set<Transportista> transportistas, Set<Usuario> usuarios, Set<Contacto> contacto,
 			Set<Telefono> telefonomonitoreos) {
 		this.idpersona = idpersona;
+		this.nombrecompleto = nombrecompleto;
 		this.primernombre = primernombre;
 		this.segundonombre = segundonombre;
 		this.primerapellido = primerapellido;
@@ -142,6 +146,14 @@ public class Persona  {
 
 	public void setIdpersona(int idpersona) {
 		this.idpersona = idpersona;
+	}
+	
+	public String getNombrecompleto() {
+		return nombrecompleto;
+	}
+
+	public void setNombrecompleto(String nombrecompleto) {
+		this.nombrecompleto = nombrecompleto;
 	}
 
 	public String getPrimernombre() {

@@ -49,7 +49,7 @@ public class PersonaServiceImp implements PersonaService{
 	}
 
 	@Override
-	public void update(int v_tipopersona,int v_idpersona) {
+	public void cambiaPersona(int v_tipopersona,int v_idpersona) {
 		personaDao.cambiaPersona(v_tipopersona, v_idpersona);
 				
 	}

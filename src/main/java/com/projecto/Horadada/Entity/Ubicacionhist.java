@@ -7,9 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,14 +26,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "UBICACIONHIST", schema = "HORADADA")
 public class Ubicacionhist  {
 
-	/**
-	 * 
-	 */
-	
-
 	@GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "ubicacion"))
 	@Id
-	@GeneratedValue(generator = "generator")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ubicacion_hist_seq")
+	@SequenceGenerator(name = "ubicacion_hist_seq", sequenceName = "ubicacion_hist_sequence", allocationSize = 1)
 	@Column(name = "IDUBICACIONHIST", unique = true, nullable = false, precision = 3)
 	private int idubicacionhist;
 

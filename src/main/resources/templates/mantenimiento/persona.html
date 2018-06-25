@@ -4,7 +4,7 @@
 <head lang="en">
 
 
-        <title th:text="#{IndexTitle}">Employees System</title>
+<title th:text="#{IndexTitle}">Employees System</title>
 
 <!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
 </head>
@@ -20,8 +20,7 @@
 				<thead>
 					<tr>
 						<th>CODIGO PERSONA</th>
-						<th>NOMBRE</th>
-						<th>APELLIDO</th>
+						<th>APELLIDOS Y NOMBRES</th>
 						<th>TELEFONO</th>
 						<th>DIRECCION</th>
 						<th></th>
@@ -31,8 +30,7 @@
 				<tbody>
 					<tr th:each="per : ${persona}">
 						<td th:text="${per.idpersona}"></td>
-						<td th:text="${per.primernombre}+' '+${per.segundonombre}"></td>
-						<td th:text="${per.primerapellido}+' '+${per.segundoapellido}"></td>
+						<td th:text="${per.nombrecompleto}"></td>
 						<td th:text="${per.telefono}"></td>
 						<td th:text="${per.direccion}"></td>
 						<td><a href="#"
@@ -50,14 +48,16 @@
 					</tr>
 				</tbody>
 			</table>
-			<a href="#" th:href="@{/control/personaform?idpersona=0}">
-				<button class="btn btn-lg btn-primary btn-block" type="submit">
-					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-					NUEVA PERSONA
-				</button>
-			</a>
 		</div>
-	</div>	<div class="footer">
+		<a href="#" th:href="@{/control/personaform?idpersona=0}">
+			<button class="btn btn-lg btn-primary btn-block" type="submit">
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				NUEVA PERSONA
+			</button>
+		</a>
+			<br>
+	</div>
+	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
 	</div>
 </body>

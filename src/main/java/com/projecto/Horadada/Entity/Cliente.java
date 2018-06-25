@@ -23,7 +23,6 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cliente_seq")
 	@SequenceGenerator(name = "cliente_seq", sequenceName = "cliente_sequence", allocationSize = 1)
-
 	@Column(name = "IDCLIENTE", unique = true, nullable = false, precision = 3)
 	private int idcliente;
 

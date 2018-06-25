@@ -4,7 +4,7 @@
 <head lang="en">
 
 
-        <title th:text="#{IndexTitle}">Employees System</title>
+<title th:text="#{IndexTitle}">Employees System</title>
 
 <!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
 </head>
@@ -12,8 +12,8 @@
 
 	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
 	<div class="container">
-		<br />
 		<h1>LISTA TRABAJADORES</h1>
+		<br />
 		<div class="panel panel-default">
 			<div class="panel-heading"></div>
 			<table class="table table-hover table-striped">
@@ -37,19 +37,20 @@
 						<td th:text="${tra.primerapellido}+' '+${tra.segundoapellido}"></td>
 						<td th:text="${tra.telefono}"></td>
 						<td th:text="${tra.direccion}"></td>
-						
+
 					</tr>
 				</tbody>
 			</table>
-			<a href="#" th:href="@{/trabajador/trabajadorform?id=0}">
-				<button class="btn btn-lg btn-primary btn-block" type="submit">
-					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-					NUEVO TRABAJADOR
-				</button>
-			</a>
 		</div>
+		<a href="#" th:href="@{/trabajador/trabajadorform?id=0}">
+			<button class="btn btn-lg btn-primary btn-block" type="submit">
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				NUEVO TRABAJADOR
+			</button>
+		</a>
+			<br>
 	</div>
-	
+
 	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
 	</div>

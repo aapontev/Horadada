@@ -18,11 +18,6 @@ import javax.persistence.Table;
 @Table(name = "HISTORICOPRECIOS", schema = "HORADADA")
 public class Historicoprecios  {
 
-	/**
-	 * 
-	 */
-	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "historico_precios_seq")
 	@SequenceGenerator(name = "historico_precios_seq", sequenceName = "historico_precios_sequence", allocationSize = 1)

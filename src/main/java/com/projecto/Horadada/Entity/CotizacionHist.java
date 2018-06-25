@@ -6,7 +6,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,6 +24,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class CotizacionHist {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cotizacion_hist_seq")
+	@SequenceGenerator(name = "cotizacion_hist_seq", sequenceName = "cotizacion_hist_sequence", allocationSize = 1)
 	@Column(name = "IDCOTIZACIONHIST", unique = true, nullable = false, precision = 3)
 	private int idcotizacion;
 

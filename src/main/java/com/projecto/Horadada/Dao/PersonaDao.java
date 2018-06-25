@@ -18,7 +18,7 @@ public interface PersonaDao extends CrudRepository<Persona, Serializable>{
 	
 	//@Query(value="{call mant_persona.mant_usuario(:tipo, :id)}" ,nativeQuery=true)
 	@Procedure(name = "cambiaPersona")
-	public abstract void cambiaPersona(@Param("v_tipopersona")Integer v_tipopersona,@Param("v_idpersona") Integer v_idpersona);
+	public abstract void cambiaPersona(@Param("v_tipopersona")int v_tipopersona,@Param("v_idpersona") int v_idpersona);
 	
 
    // @Procedure(name = "mant_persona1")

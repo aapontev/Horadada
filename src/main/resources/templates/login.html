@@ -33,23 +33,23 @@
 
 <body>
 	<header>
-<div class="logo-top">
+		<div class="logo-top">
 
 			<div class="container">
-			<div class="logo-top-left">
-				<img th:src="@{/imgs/favicon.png}" class="img-responsive" />
-			</div>
-			<div class="logo logo-top-lft">
-				<a href="index.html"><i class="glyphicon glyphicon-road"
-					aria-hidden="true"></i>Transportes Horadada<span>We Care
-						About Your Cargo</span></a>
-			</div>
-			<div class="logo logo-top-right">
-				<p style="color: #ffff">
-					<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero
-					de Contacto +0646-784-900
-				</p>
-			</div>
+				<div class="logo-top-left">
+					<img th:src="@{/imgs/favicon.png}" class="img-responsive" />
+				</div>
+				<div class="logo logo-top-lft">
+					<a href="index.html"><i class="glyphicon glyphicon-road"
+						aria-hidden="true"></i>Transportes Horadada<span>We Care
+							About Your Cargo</span></a>
+				</div>
+				<div class="logo logo-top-right">
+					<p style="color: #ffff">
+						<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero
+						de Contacto +0646-784-900
+					</p>
+				</div>
 			</div>
 		</div>
 
@@ -67,87 +67,88 @@
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li class="hvr-bounce-to-bottom"><a href="#">Home</a></li>
-					<li class="hvr-bounce-to-bottom"><a href="#about"
-						class="scroll">About</a></li>
-					<li class="hvr-bounce-to-bottom"><a href="#services"
-						class="scroll">Services</a></li>
-					<li class="hvr-bounce-to-bottom"><a href="#pricing"
-						class="scroll">Pricing</a></li>
-					<li class="hvr-bounce-to-bottom"><a href="#contact"
-						class="scroll">Contact Us</a></li>
-					<div class="logo-top-right">
-						<li class="dropdown">
-						<button type="button" id="dropdownMenu1" data-toggle="dropdown"
-							class="btn btn-info navbar-btn dropdown-toggle">
-							Login <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" style="left: -150px">
-							<li style="width: 250px;">
-								<form class="navbar-form form" role="form" action="#"
-									th:action="@{/loginCheck}" th:object="${credencialUsuario}"
-									method="POST">
-									<div class="form-group">
-										<div class="input-group">
-											<span class="input-group-addon"><i
-												class="glyphicon glyphicon-user"></i></span> <input id="emailInput"
-												placeholder="usuario" class="form-control"
-												th:field="*{usuario}" type="text">
-										</div>
-										<br /> <br />
-										<div class="input-group">
-											<span class="input-group-addon"><i
-												class="glyphicon glyphicon-lock"></i></span> <input
-												id="passwordInput" placeholder="password"
-												class="form-control" th:field="*{password}" type="password">
-										</div>
-										<br /> <br />
-									</div>
-									<div class="form-group">
-										<!--BUTTON-->
-										<button type="submit" class="btn btn-primary form-control">Login</button>
-									</div>
-								</form>
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="hvr-bounce-to-bottom"><a href="#">Home</a></li>
+						<li class="hvr-bounce-to-bottom"><a href="#about"
+							class="scroll">About</a></li>
+						<li class="hvr-bounce-to-bottom"><a href="#services"
+							class="scroll">Services</a></li>
+						<li class="hvr-bounce-to-bottom"><a href="#pricing"
+							class="scroll">Pricing</a></li>
+						<li class="hvr-bounce-to-bottom"><a href="#contact"
+							class="scroll">Contact Us</a></li>
+						<div class="logo-top-right">
+							<li class="dropdown">
+								<button type="button" id="dropdownMenu1" data-toggle="dropdown"
+									class="btn btn-info navbar-btn dropdown-toggle">
+									Login <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" style="left: -150px">
+									<li style="width: 250px;">
+										<form class="navbar-form form" role="form" action="#"
+											th:action="@{/loginCheck}" th:object="${credencialUsuario}"
+											method="POST">
+											<div class="form-group">
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="glyphicon glyphicon-user"></i></span> <input
+														id="emailInput" placeholder="usuario" class="form-control"
+														th:field="*{usuario}" type="text">
+												</div>
+												<br /> <br />
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="glyphicon glyphicon-lock"></i></span> <input
+														id="passwordInput" placeholder="password"
+														class="form-control" th:field="*{password}"
+														type="password">
+												</div>
+												<br /> <br />
+											</div>
+											<div class="form-group">
+												<!--BUTTON-->
+												<button type="submit" class="btn btn-primary form-control">Login</button>
+											</div>
+										</form>
+									</li>
+								</ul>
 							</li>
-						</ul>
-						</li>
 						</div>
-				</ul>
-			</div>
+					</ul>
+				</div>
 			</div>
 		</nav>
 	</header>
 	<div class="container">
-	<div class="banner-left">
-		<div class="view view-eighth vie">
-			<img th:src="@{/imgs/1.jpg}" alt=" " class="img-responsive" />
-			<div class="mask">
-				<h2 class="late">Letraset sheets</h2>
-				<p>with the release Letraset sheets Lorem voluptatibus maiores
-					alias consequatur aut perferendis doloribus omnis voluptas
-					assumenda est, omnis asperiores repellat</p>
+		<div class="banner-left">
+			<div class="view view-eighth vie">
+				<img th:src="@{/imgs/1.jpg}" alt=" " class="img-responsive" />
+				<div class="mask">
+					<h2 class="late">Letraset sheets</h2>
+					<p>with the release Letraset sheets Lorem voluptatibus maiores
+						alias consequatur aut perferendis doloribus omnis voluptas
+						assumenda est, omnis asperiores repellat</p>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="banner-right">
-		<div class="view view-eighth">
-			<img th:src="@{/imgs/2.jpg}" alt=" " class="img-responsive" />
-			<div class="mask">
-				<h2>Letraset sheets</h2>
-				<p>with the release Letraset sheets Lorem</p>
+		<div class="banner-right">
+			<div class="view view-eighth">
+				<img th:src="@{/imgs/2.jpg}" alt=" " class="img-responsive" />
+				<div class="mask">
+					<h2>Letraset sheets</h2>
+					<p>with the release Letraset sheets Lorem</p>
+				</div>
+			</div>
+			<div class="view view-eighth">
+				<img th:src="@{/imgs/3.jpg}" alt=" " class="img-responsive" />
+				<div class="mask">
+					<h2>Letraset sheets</h2>
+					<p>with the release Letraset sheets Lorem</p>
+				</div>
 			</div>
 		</div>
-		<div class="view view-eighth">
-			<img th:src="@{/imgs/3.jpg}" alt=" " class="img-responsive" />
-			<div class="mask">
-				<h2>Letraset sheets</h2>
-				<p>with the release Letraset sheets Lorem</p>
-			</div>
-		</div>
-	</div>
 	</div>
 	<div class="clearfix"></div>
 	<!-- //banner -->
@@ -565,7 +566,7 @@
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript">
+		<!-- <script type="text/javascript">
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event) {
 					event.preventDefault();
@@ -575,11 +576,13 @@
 				});
 			});
 		</script>
-		<script type="application/x-javascript">	
+		<script type="application/x-javascript">
+				
 			addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } 	
 				
-		</script>
+		
+		</script> -->
 	</footer>
 
 </body>

@@ -31,7 +31,6 @@ public class Cotizacion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cotizacion_seq")
 	@SequenceGenerator(name = "cotizacion_seq", sequenceName = "cotizacion_sequence", allocationSize = 1)
-
 	@Column(name = "IDCOTIZACION", unique = true, nullable = false, precision = 5)
 	private int idcotizacion;
 

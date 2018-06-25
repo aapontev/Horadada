@@ -23,11 +23,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "TABLAMAESTRA", schema = "HORADADA")
 public class Tablamaestra  {
 
-	/**
-	 * 
-	 */
-	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "maestra_seq")
 	@SequenceGenerator(name = "maestra_seq", sequenceName = "maestra_sequence", allocationSize = 1)

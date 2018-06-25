@@ -27,14 +27,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "VALORIZACIONDETALLE", schema = "HORADADA")
 public class Valorizaciondetalle  {
 
-	/*@EmbeddedId
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "valorizacion_detalle_seq")
-	@SequenceGenerator(name = "valorizacion_detalle_seq", sequenceName = "valorizacion_detalle_sequence", allocationSize = 1)
-	@AttributeOverrides({
-			@AttributeOverride(name = "idvalorizaciondetalle", column = @Column(name = "IDVALORIZACIONDETALLE", nullable = false, precision = 3)),
-			@AttributeOverride(name = "idvalorizacion", column = @Column(name = "IDVALORIZACION", nullable = false, precision = 3)) })
-	private ValorizaciondetalleId id;
-	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "valorizacion_detalle_seq")
 	@SequenceGenerator(name = "valorizacion_detalle_seq", sequenceName = "valorizacion_detalle_sequence", allocationSize = 1)

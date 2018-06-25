@@ -5,7 +5,10 @@ package com.projecto.Horadada.Entity;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,12 +22,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "OBSERVACIONES", schema = "HORADADA")
 public class Observaciones  {
 
-	/**
-	 * 
-	 */
-	
-
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "observaciones_seq")
+	@SequenceGenerator(name = "observaciones_seq", sequenceName = "observaciones_sequence", allocationSize = 1)
 	@Column(name = "IDOBSERVACIONES", unique = true, nullable = false, precision = 3)
 	private int idobservaciones;
 
