@@ -7,4 +7,5 @@ import com.projecto.Horadada.Entity.Telefono;
 public interface TelefonoService {
 
 	public abstract List<Telefono> findByAll();
+	public abstract Telefono save(Telefono telefono);
 }

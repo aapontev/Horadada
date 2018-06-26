@@ -23,7 +23,7 @@
 					<div class="row">
 						<div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
 							CODIGO CLIENTE : <br /> <select th:field="*{cliente.idcliente}"
-								class="form-control" id="inputGroupSelect03">
+								class="form-control">
 								<option th:each="cli : ${cliente}" th:value="${cli.idcliente}"
 									th:text="${cli.idcliente}+'. '+${cli.razonsocial}"></option>
 							</select>

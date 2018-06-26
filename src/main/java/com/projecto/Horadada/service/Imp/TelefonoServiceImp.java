@@ -21,4 +21,10 @@ public class TelefonoServiceImp implements TelefonoService {
 		return telefono;
 	}
 
+	@Override
+	public Telefono save(Telefono telefono) {
+		Telefono telef = telefonodao.save(telefono);
+		return telef;
+	}
+
 }

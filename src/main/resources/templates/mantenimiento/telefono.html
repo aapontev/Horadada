@@ -31,7 +31,7 @@
 				<tbody>
 					<tr th:each="tel : ${telefono}">
 						<td th:text="${tel.idtelefono}"></td>
-						<td th:text="${tel.persona.primernombre}+' '+${tel.persona.primerapellido}"></td>
+						<td th:text="${tel.persona.nombrecompleto}"></td>
 						<td th:text="${tel.operador}"></td>
 						<td th:text="${tel.idtipotelefono}"></td>
 						<td th:text="${tel.numerotelefono}"></td>
@@ -53,7 +53,7 @@
 		<!--  <div th:if="${result == 1}" class="alert alert-success" role="alert">se elimino el cliente <div th:text="${cliid.razonsocial}"></div></div>
 		<div th:if="${result == 0}" class="alert alert-danger" role="alert">No se puede eliminar el cliente<div th:text="${cliid.razonsocial}"></div><div>,existen dependencias</div></div> 	
 			-->
-			<a href="#" >
+			<a href="#" th:href="@{/telefono/telefonoform?id=0}">
 				<button class="btn btn-lg btn-primary btn-block" type="submit">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 					NUEVO TELEFONO

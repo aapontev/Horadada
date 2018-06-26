@@ -48,6 +48,9 @@ public class Telefono {
 		this.idtelefono = idtelefono;
 		this.persona = persona;
 	}
+	public Telefono(Persona persona) {
+		this.persona = persona;
+	}
 
 	public Telefono(int idtelefono, Persona persona, int idtipotelefono, Integer idoperador, String numerotelefono,
 			String imei) {

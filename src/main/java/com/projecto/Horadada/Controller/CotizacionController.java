@@ -105,13 +105,14 @@ public class CotizacionController {
 		 cotizaciondetalle = cotizaciondetalleservice.findByItem(item);
 		}
 		model.addAttribute("medida", medida);
-		model.addAttribute("cotizacion", cotizacion);
+		model.addAttribute("cotizacion", cotizacion.getIdcotizacion());
 		model.addAttribute("cotizadeta", cotizaciondetalle);
 		return "crearEditar/cotizacionDetalle";
 	}
 	
 	@PostMapping("/addcotizaciondetalle")
 	public String addCotizacionDetalle(@ModelAttribute(name = "cotizaciondetalle") Cotizaciondetalle cotidetalle, Model model) {
+		
 
 		if (null != cotizaciondetalleservice.save(cotidetalle)) {
 			model.addAttribute("result", 1);
