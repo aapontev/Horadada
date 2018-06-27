@@ -10,19 +10,18 @@
 
 <body>
 	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+
 	<div class="container">
 		<h1>FORMULARIO COTIZACION</h1>
-		<br />
 		<form action="#" th:action="@{/cotizacion/addcotizaciondetalle}"
 			th:object="${cotizadeta}" method="post">
 			<input type="hidden" th:field="*{item}" />
-			<input type="text" th:field="*{cotizacion}" />
 			<div class="panel panel-default">
 				<div class="panel-heading">Detalles de Cotizacion</div>
-				<a th:text="${cotizacion}"></a>
 				<div class="panel-body">
+					<input type="hidden" th:value="${cotizacion}"
+						th:field="*{cotizacion.idcotizacion}" />
 					<div class="row">
-
 						<div class="col-xs-3">
 							RECURSO : <br> <input type="text" class="form-control"
 								th:field="*{codrecurso}" /> <br />
