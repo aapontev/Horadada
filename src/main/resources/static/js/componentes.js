@@ -84,5 +84,5 @@ var dat = new Date();
 
 alert(dat.addDays(5))
 		   
-	}
+	}*/
 	
