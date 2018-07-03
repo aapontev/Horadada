@@ -27,11 +27,15 @@ public class MonitoreoController {
 	@Autowired
 	@Qualifier("ubicacionserviceimp")
 	private UbicacionService ubicacionservice;
-	
+	private int resul = 0 ;
 	@GetMapping("")
 	public ModelAndView monitoreo() {
 		ModelAndView mav = new ModelAndView("monitoreo/monitoreo");
 		Ubicacion ubi = ubicacionservice.getUbicacionOne();
+		if (ubi != null) {
+			resul = 1;
+		}
+		mav.addObject("resu", resul);
 		mav.addObject("ubi", ubi);
 		return mav;
 	}

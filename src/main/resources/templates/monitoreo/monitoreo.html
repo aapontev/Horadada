@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<script async defer
-	th:src="@{https://maps.googleapis.com/maps/api/js?key=AIzaSyA_kHJujF0ush4SjIUYJooHtj9FrFCiSmc&callback=initMap}">	
-</script>
-</head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
 
+
+        <title th:text="#{IndexTitle}">Employees System</title>
+
+<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+</head>
 <body>
 
+	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
 	<div class="container">
-		<div class="row">
+	
+<h1>VENTANA DE MONITOREO</h1>
+		<br />
+		<div th:if="${resu==0}">
+		<h2>no cuenta con ubicaciones disponibles para mostrar, por favor realize un monitoreo de algun despacho</h2>
+		<h1>GRACIAS !!!</h1>
+		</div>
+		<div th:if="${resu==1}">
 			<div class="col-md-4">
 				<div class="well well-sm">
 					<form class="form-horizontal"
@@ -81,7 +91,10 @@
 				</div>
 			</div>
 		</div>
+		</div>
+	
+	<div class="footer">
+		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
 	</div>
-
 </body>
 </html>

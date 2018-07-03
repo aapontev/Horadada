@@ -1,9 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head></head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
 
+
+<title th:text="#{IndexTitle}">Employees System</title>
+
+<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+</head>
 <body>
 
-<h1>reportes</h1>
+	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+	<div class="container">
+
+		<h1>SELECCIONE EL TIPO DE DOCUMENTO QUE DECEA GENERAR</h1>
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+			Tipo documento : <br> <select
+				class="custom-select col-sm-6 form-control" id="inputGroupSelect03">
+				<option th:each="tipdoc : ${documentos}" th:value="${tipdoc.clave1}"
+					th:text="${tipdoc.clave1}+'. '+${tipdoc.valor1}"></option>
+			</select> <br /> <br /> <input class="button" type="submit" value="CONSULTAR"> <br />
+			<br />
+		</div>
+	</div>
+
+	<div class="footer">
+		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+	</div>
 </body>
 </html>
