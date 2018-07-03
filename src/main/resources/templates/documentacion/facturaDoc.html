@@ -1,19 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="view/Cabecera :: head"></head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
 
-<body>
 
-<header th:replace="view/Cabecera :: cabecera"></header>
-<input id="pac-input" class="controls" type="text"
-           placeholder="Enter a location">
- 
-    <div id="lienzoMapa"></div>
+<title th:text="#{IndexTitle}">Employees System</title>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3dLwM9xLOKJMFEm4BkCAe_SZ9yOchtaM&amp;libraries=places&callback=initMap"
-            async defer></script>
-<style>
-   
+<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/--><style>  
  
     .controls {
         margin-top: 10px;
@@ -45,6 +38,19 @@
         font-family: Roboto;
     }
 </style>
+</head>
+<body>
+
+	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+	<div class="container">
+<input id="pac-input" class="controls" type="text"
+           placeholder="Enter a location">
+ 
+    <div id="lienzoMapa"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3dLwM9xLOKJMFEm4BkCAe_SZ9yOchtaM&amp;libraries=places&callback=initMap"
+            async defer></script>
+
 <script>
        function initMap() {
            var map = new google.maps.Map(document.getElementById('lienzoMapa'), {
@@ -100,7 +106,9 @@
 
       }
 </script>
-<footer th:replace="view/Cabecera :: footer"></footer>
-
+	</div>
+	<div class="footer">
+		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+	</div>
 </body>
 </html>

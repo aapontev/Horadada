@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.projecto.Horadada.Dao.PersonaDao;
@@ -58,10 +60,16 @@ public class PersonaServiceImp implements PersonaService{
 				
 	}
 
-	@Override
+	/*@Override
 	public Persona updatetipopersona(int tipo, int id) {
 		Persona persona = personaDao.updatetipopersona(tipo, id);
 		return persona;
+	}*/
+
+	@Override
+	public Page<Persona> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return personaDao.findAll(pageable);
 	}
 
 }

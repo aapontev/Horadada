@@ -1,9 +1,11 @@
 package com.projecto.Horadada.Controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +13,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import com.projecto.Horadada.Entity.Cotizacion;
 import com.projecto.Horadada.Entity.Cotizaciondetalle;
 import com.projecto.Horadada.Entity.Solicitud;
 import com.projecto.Horadada.Entity.Tablamaestra;
+import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.CotizacionDetalleService;
 import com.projecto.Horadada.service.CotizacionService;
 import com.projecto.Horadada.service.SolicitudService;
@@ -42,11 +44,13 @@ public class CotizacionController {
 	private SolicitudService solicitudService;
 	
 	@GetMapping("")
-	public ModelAndView redirectCotizacion() {
-		ModelAndView mav = new ModelAndView("documentacion/cotizacionDoc");
-		List<Cotizacion> cotiza = cotizacionservice.findAll();
-		mav.addObject("cotiza", cotiza);
-		return mav;
+	public String redirectCotizacion(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
+		Pageable pageRequest = PageRequest.of(page, 5);
+		Page<Cotizacion> cotizacion = cotizacionservice.findAll(pageRequest);
+		PageRender<Cotizacion> pagerender = new PageRender<Cotizacion>("/documentacion/cotizacionDoc",cotizacion);
+		model.addAttribute("cotiza", cotizacion);
+		model.addAttribute("page", pagerender);
+		return "documentacion/cotizacionDoc";
 	}
 
 	@GetMapping("/cotizacionform")

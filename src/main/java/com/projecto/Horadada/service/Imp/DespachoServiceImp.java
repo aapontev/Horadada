@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.projecto.Horadada.Dao.DespachoDao;
@@ -30,6 +32,11 @@ public class DespachoServiceImp implements DespachoService{
 	public Despacho save(Despacho despacho) {
 		Despacho desp= despachodao.save(despacho);
 		return desp;
+	}
+	@Override
+	public Page<Despacho> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return despachodao.findAll(pageable);
 	}
 
 }

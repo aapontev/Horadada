@@ -48,7 +48,8 @@
 						</a></td>-->
 					</tr>
 				</tbody>
-			</table>	
+			</table>
+				<nav th:replace="fragments/paginator-nav :: paginator"></nav>	
 		</div>	
 		<!--  <div th:if="${result == 1}" class="alert alert-success" role="alert">se elimino el cliente <div th:text="${cliid.razonsocial}"></div></div>
 		<div th:if="${result == 0}" class="alert alert-danger" role="alert">No se puede eliminar el cliente<div th:text="${cliid.razonsocial}"></div><div>,existen dependencias</div></div> 	

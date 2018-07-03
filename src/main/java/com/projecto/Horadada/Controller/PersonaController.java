@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import com.projecto.Horadada.Entity.Persona;
 import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.service.PersonaService;
@@ -34,10 +33,10 @@ public class PersonaController {
 	private TelefonoService telefonoservice;
 
 	@GetMapping
-	public ModelAndView Persona() {
-		ModelAndView mav = new ModelAndView("mantenimiento/persona");
-		mav.addObject("persona", personaService.findByTipopersona(0));
-		return mav;
+	public String Persona(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
+	
+		model.addAttribute("persona", personaService.findByTipopersona(0));
+		return "mantenimiento/persona";
 	}
 
 	@PostMapping("/addpersona")

@@ -3,6 +3,9 @@ package com.projecto.Horadada.Controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import com.projecto.Horadada.Entity.Ordencompra;
 import com.projecto.Horadada.Entity.Tablamaestra;
+import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.OrdenCompraService;
 import com.projecto.Horadada.service.TablaMaestraService;
 
@@ -29,17 +32,18 @@ public class OrdenCompraController {
 	private TablaMaestraService tablamaestraservice;
 
 	@GetMapping("")
-	public ModelAndView OrdenCompra() {
-		ModelAndView mav = new ModelAndView("documentacion/ordenCompraDoc");
-		List<Ordencompra> ordenes = ordencompraservice.findAll();
-		mav.addObject("ordenes", ordenes);
-		return mav;
+	public String OrdenCompra(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
+		Pageable pageRequest = PageRequest.of(page, 5);
+		Page<Ordencompra> ordenes = ordencompraservice.findAll(pageRequest);
+		PageRender<Ordencompra> pagerender = new PageRender<Ordencompra>("/documentacion/ordenCompraDoc",ordenes);
+		model.addAttribute("ordenes", ordenes);
+		model.addAttribute("page", pagerender);
+		return "documentacion/ordenCompraDoc";
 	}
 	
 	@GetMapping("/ordencompraform")
 	public String redirectOrdenCompraForm(@RequestParam(name = "id", required = false) int id, Model model) {
 		List<Tablamaestra> moneda = tablamaestraservice.findByIdtablamaestra("Hora002");
-		//List<Solicitud> idsoli = solicitudService.getidsolicitud();
 		Ordencompra ordencompra = new Ordencompra();
 		int resu = 0;
 		if (id != 0) {
@@ -47,7 +51,6 @@ public class OrdenCompraController {
 			resu = 1;
 		}		
 		model.addAttribute("resu", resu);
-		//model.addAttribute("solici", idsoli);
 		model.addAttribute("ordencompra", ordencompra);
 		model.addAttribute("moneda", moneda);
 		return "crearEditar/ordencompra";

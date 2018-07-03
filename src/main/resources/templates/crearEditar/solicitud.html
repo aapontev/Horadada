@@ -14,30 +14,49 @@
 		<h1>FORMULARIO SOLICITUD</h1>
 		<form action="#" th:action="@{/solicitud/addsolicitud}"
 			th:object="${solicitud}" method="post">
-			<input type="hidden" th:field="*{idsolicitud}" /> REQUERIMIENTO : <input
-				type="text" class="form-control" th:field="*{requerimiento}" /> <br />
-			<div th:if="${res==0}">
-				ESTADO : <input disabled type="text" class="form-control"
-					th:field="*{estado}" /> <br />
-			</div>
-			CLIENTE : <br /> <select th:field="*{cliente.idcliente}"
-				class="form-control custom-select col-sm-6 " id="inputGroupSelect03">
-				<option th:each="cli : ${cliente}" th:value="${cli.idcliente}"
-					th:text="${cli.razonsocial}"></option>
-			</select> <br /> <br /> FECHA RECEPCION :
-			<div class="control-group form-horizontal ">
-				<div class="controls" style="position: relative">
-					<input type="text" class="form-control" id="fecharec"
-						th:field="*{fecharecepcion}" />
+			<input type="hidden" th:field="*{idsolicitud}" />
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">
+					<b>FORMULARIO DE SOLICITUD</b>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-8 col-md-9 col-sm-11 col-xs-12">
+							REQUERIMIENTO : <input type="text" class="form-control"
+								th:field="*{requerimiento}" /> 
+						</div>
+						<div class="col-lg-4 col-md-5 col-sm-7 col-xs-10">
+							CLIENTE :<select th:field="*{cliente.idcliente}"
+								class="form-control custom-select col-sm-6 "
+								id="inputGroupSelect03">
+								<option th:each="cli : ${cliente}" th:value="${cli.idcliente}"
+									th:text="${cli.razonsocial}"></option>
+							</select> 
+						</div>
+						<div th:if="${res==0}">
+							<div class="col-lg-6 col-md-7 col-sm-9 col-xs-12">
+								ESTADO : <input disabled type="text" class="form-control"
+									th:field="*{estado}" />
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-3 col-sm-5 col-xs-8">
+							FECHA RECEPCION :
+							<div class="control-group form-horizontal ">
+								<div class="controls" style="position: relative">
+									<input type="text" class="form-control" id="fecharec"
+										th:field="*{fecharecepcion}" />
+								</div>
+							</div>
+						</div>
+						<br />
+					</div>
 				</div>
 			</div>
-			<br />
 			<button class="btn btn-lg btn-primary btn-block" type="submit">
 				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 				Accept
 			</button>
 			<br />
-
 		</form>
 	</div>
 

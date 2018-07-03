@@ -88,6 +88,21 @@
 					<textarea class="form-control" th:field="*{observaciones}"> </textarea>
 				</div>
 			</div>
+							<table th:replace="factura/plantilla-items :: itemsFactura"></table>
+										<table id="cargarItemProductos"
+						class="table table-sm table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Precio</th>
+								<th>Cantidad</th>
+								<th>Total</th>
+								<th>Eliminar</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
 
 			<button class="btn btn-lg btn-primary btn-block" type="submit">
 				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
@@ -97,6 +112,7 @@
 		</form>
 	</div>
 
+	<script th:replace="factura/js/autocomplete-productos :: javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(function() {

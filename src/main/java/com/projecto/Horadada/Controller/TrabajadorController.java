@@ -23,7 +23,11 @@ public class TrabajadorController {
 	private PersonaService personaService;
 	
 	@GetMapping("")
-	public ModelAndView Trabajador() {
+	public ModelAndView Trabajador(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
+
+	//	Pageable pageRequest = PageRequest.of(page, 5);
+		//Page<Cliente> clientes = clienteService.findAll(pageRequest);
+		//PageRender<Cliente> pagerender = new PageRender<Cliente>("/mantenimiento/cliente",clientes);
 		ModelAndView mav = new ModelAndView("mantenimiento/trabajador");
 		mav.addObject("traba", personaService.findByTipopersona(3));
 		return mav;

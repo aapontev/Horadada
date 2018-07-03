@@ -3,6 +3,9 @@ package com.projecto.Horadada.Controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import com.projecto.Horadada.Entity.Despacho;
 import com.projecto.Horadada.Entity.Ordencompra;
+import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.DespachoService;
 import com.projecto.Horadada.service.OrdenCompraService;
 
@@ -29,11 +32,13 @@ public class DespachoController {
 	private OrdenCompraService ordencompraservice;
 
 	@GetMapping("")
-	public ModelAndView despachos() {
-		ModelAndView mav = new ModelAndView("documentacion/despachoDoc");
-		List<Despacho> despachos = despachoservice.findAll();
-		mav.addObject("despachos", despachos);
-		return mav;
+	public String despachos(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
+		Pageable pageRequest = PageRequest.of(page, 5);
+		Page<Despacho> despacho = despachoservice.findAll(pageRequest);
+		PageRender<Despacho> pagerender = new PageRender<Despacho>("/documentacion/despachoDoc",despacho);
+		model.addAttribute("despachos", despacho);
+		model.addAttribute("page", pagerender);
+		return "documentacion/despachoDoc";
 	}
 	
 	@GetMapping("/despachoform")
