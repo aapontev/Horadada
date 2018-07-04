@@ -62,4 +62,10 @@ public class ClienteServiceImp implements ClienteService{
 		return clienteDao.findAll(pageable);
 	}
 
+	@Override
+	public Cliente findOne(Long clienteId) {
+		// TODO Auto-generated method stub
+		return clienteDao.findById(clienteId).orElse(null);
+	}
+
 }

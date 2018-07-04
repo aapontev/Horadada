@@ -36,7 +36,7 @@ public class SolicitudController {
 	public String redirectSolicitud(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
 		Pageable pageRequest = PageRequest.of(page, 5);
 		Page<Solicitud> solicitud = solicitudService.findAll(pageRequest);
-		PageRender<Solicitud> pagerender = new PageRender<Solicitud>("/documentacion/solicitudDoc",solicitud);		
+		PageRender<Solicitud> pagerender = new PageRender<Solicitud>("/solicitud",solicitud);		
 		model.addAttribute("solicitud", solicitud);
 		model.addAttribute("page", pagerender);
 		return "documentacion/solicitudDoc";

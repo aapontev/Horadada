@@ -14,4 +14,5 @@ public interface ClienteService {
 	public abstract Cliente findByidcliente(int idcliente);
 	public abstract int delete(int idcliente);
 	public Page<Cliente> findAll(Pageable pageable);
+	public abstract Cliente findOne(Long clienteId);
 }

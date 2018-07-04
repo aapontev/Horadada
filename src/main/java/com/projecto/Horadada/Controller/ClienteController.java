@@ -36,7 +36,7 @@ public class ClienteController {
 
 		Pageable pageRequest = PageRequest.of(page, 5);
 		Page<Cliente> clientes = clienteService.findAll(pageRequest);
-		PageRender<Cliente> pagerender = new PageRender<Cliente>("/mantenimiento/cliente",clientes);
+		PageRender<Cliente> pagerender = new PageRender<Cliente>("/cliente",clientes);
 		model.addAttribute("cli", clientes);
 		model.addAttribute("page", pagerender);
 		return "mantenimiento/cliente";

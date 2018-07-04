@@ -42,7 +42,7 @@ public class ContactoController {
 	public String Contacto(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
 		Pageable pageRequest = PageRequest.of(page, 5);
 		Page<Contacto> contacto = contactoService.findAll(pageRequest);
-		PageRender<Contacto> pagerender = new PageRender<Contacto>("/mantenimiento/contacto",contacto);
+		PageRender<Contacto> pagerender = new PageRender<Contacto>("/contacto",contacto);
 		model.addAttribute("cont", contacto);
 		model.addAttribute("page", pagerender);
 		return "mantenimiento/contacto";

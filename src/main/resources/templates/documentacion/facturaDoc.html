@@ -6,106 +6,91 @@
 
 <title th:text="#{IndexTitle}">Employees System</title>
 
-<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/--><style>  
- 
-    .controls {
-        margin-top: 10px;
-        border: 1px solid transparent;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        height: 32px;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 300px;
-    }
-
-        #pac-input:focus {
-            border-color: #4d90fe;
-        }
-
-    .pac-container {
-        font-family: Roboto;
-    }
-</style>
+<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
 </head>
 <body>
 
 	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
-	<div class="container">
-<input id="pac-input" class="controls" type="text"
-           placeholder="Enter a location">
- 
-    <div id="lienzoMapa"></div>
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header"></div>
+			<div class="card-body">
+				<h4 class="card-title">
+					<a class="btn btn-light btn-xs"></a>
+				</h4>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3dLwM9xLOKJMFEm4BkCAe_SZ9yOchtaM&amp;libraries=places&callback=initMap"
-            async defer></script>
+				<form 
+					method="post">
 
-<script>
-       function initMap() {
-           var map = new google.maps.Map(document.getElementById('lienzoMapa'), {
-           center: {lat: -11.977729, lng: -77.017173},
-           zoom: 13
-        });
-        var input = /** @type {!HTMLInputElement} */(
-            document.getElementById('pac-input'));
+					<div class="form-group row">
+						<label for="cliente" class="col-sm-2 col-form-label"
+							></label>
+						<div class="col-sm-6">
+							<input name="cliente"
+								
+								class="form-control" disabled='disabled' />
+						</div>
+					</div>
 
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+					<div class="form-group row">
+						<label for="descripcion" class="col-sm-2 col-form-label"
+							></label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control"
+								/>
+							<div class="invalid-feedback"
+								></div>
+						</div>
+					</div>
 
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        autocomplete.bindTo('bounds', map);
+					<div class="form-group row">
+						<label for="observacion" class="col-sm-2 col-form-label"
+							></label>
+						<div class="col-sm-6">
+							<textarea  class="form-control"></textarea>
+						</div>
+					</div>
 
-        var infowindow = new google.maps.InfoWindow();
-        var marker = new google.maps.Marker({
-          map: map,
-          anchorPoint: new google.maps.Point(0, -29)
-       });
+					<div class="form-group row">
+						<label for="buscar_producto" class="col-sm-2 col-form-label"
+							></label>
+						<div class="col-sm-6">
+							<input type="text" name="buscar_producto" id="buscar_producto"
+								class="form-control" />
+						</div>
+					</div>
 
-        autocomplete.addListener('place_changed', function() {
-          infowindow.close();
-          marker.setVisible(false);
-          var place = autocomplete.getPlace();
-          if (!place.geometry) {
-            // User entered the name of a Place that was not suggested and
-            // pressed the Enter key, or the Place Details request failed.
-            window.alert("No details available for input: '" + place.name + "'");
-            return;
-          }
-          marker.setIcon(/** @type {google.maps.Icon} */({
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(35, 35)
-          }));
-          marker.setPosition(place.geometry.location);
-          marker.setVisible(true);
+					<table th:replace="factura/plantilla-items :: itemsFactura"></table>
 
-          var address = '';
-          if (place.address_components) {
-            address = [
-              (place.address_components[0] && place.address_components[0].short_name || ''),
-              (place.address_components[1] && place.address_components[1].short_name || ''),
-              (place.address_components[2] && place.address_components[2].short_name || '')
-            ].join(' ');
-          }
+					<table id="cargarItemProductos"
+						class="table table-sm table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Precio</th>
+								<th>Cantidad</th>
+								<th>Total</th>
+								<th>Eliminar</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+					<h5>
+						Total <span class="badge badge-secondary" id="gran_total">0</span>
+					</h5>
 
-          //infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-          infowindow.open(map, marker);
-        });
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" 
+								class="btn btn-secondary" />
+						</div>
+					</div>
+				</form>
 
-      }
-</script>
+
+			</div>
+		</div>
 	</div>
 	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->

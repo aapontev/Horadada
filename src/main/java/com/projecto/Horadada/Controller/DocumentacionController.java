@@ -40,10 +40,7 @@ public class DocumentacionController {
 	
 	// *************************DESPACHO*********************************
 
-	@GetMapping("/factura")
-	public String Factura() {
-		return "documentacion/facturaDoc";
-	}
+
 
 	// ******************************VALORIZACION********************************************************
 

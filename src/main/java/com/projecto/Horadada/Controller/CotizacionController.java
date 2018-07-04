@@ -47,7 +47,7 @@ public class CotizacionController {
 	public String redirectCotizacion(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
 		Pageable pageRequest = PageRequest.of(page, 5);
 		Page<Cotizacion> cotizacion = cotizacionservice.findAll(pageRequest);
-		PageRender<Cotizacion> pagerender = new PageRender<Cotizacion>("/documentacion/cotizacionDoc",cotizacion);
+		PageRender<Cotizacion> pagerender = new PageRender<Cotizacion>("/cotizacionDoc",cotizacion);
 		model.addAttribute("cotiza", cotizacion);
 		model.addAttribute("page", pagerender);
 		return "documentacion/cotizacionDoc";
