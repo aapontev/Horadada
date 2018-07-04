@@ -1,6 +1,7 @@
 package com.projecto.Horadada.Controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -13,11 +14,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.projecto.Horadada.Entity.Ordencompra;
 import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.OrdenCompraService;
-import com.projecto.Horadada.service.TablaMaestraService;
+import com.projecto.Horadada.service.UtilitarioService;
 
 @Controller
 @RequestMapping("/ordencompra")
@@ -28,8 +30,8 @@ public class OrdenCompraController {
 	private OrdenCompraService ordencompraservice;
 
 	@Autowired
-	@Qualifier("tablamaestraserviceimp")
-	private TablaMaestraService tablamaestraservice;
+	@Qualifier("utilitarioservice")
+	private UtilitarioService utilitarioservice;
 
 	@GetMapping("")
 	public String OrdenCompra(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
@@ -43,7 +45,7 @@ public class OrdenCompraController {
 	
 	@GetMapping("/ordencompraform")
 	public String redirectOrdenCompraForm(@RequestParam(name = "id", required = false) int id, Model model) {
-		List<Tablamaestra> moneda = tablamaestraservice.findByIdtablamaestra("Hora002");
+		List<Tablamaestra> moneda = utilitarioservice.findByIdtablamaestra("Hora002");
 		Ordencompra ordencompra = new Ordencompra();
 		int resu = 0;
 		if (id != 0) {

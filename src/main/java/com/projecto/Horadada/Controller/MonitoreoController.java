@@ -2,7 +2,6 @@
 package com.projecto.Horadada.Controller;
 
 import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -17,21 +16,23 @@ import org.springframework.web.servlet.ModelAndView;
 import com.projecto.Horadada.Entity.Ubicacion;
 import com.projecto.Horadada.Entity.Ubicacionhist;
 import com.projecto.Horadada.Entity.Vehiculo;
-import com.projecto.Horadada.service.UbicacionService;
+import com.projecto.Horadada.service.UtilitarioService;
 
 @Controller
 @RestController
 @RequestMapping("/monitoreo")
 public class MonitoreoController {
-	
+
 	@Autowired
-	@Qualifier("ubicacionserviceimp")
-	private UbicacionService ubicacionservice;
-	private int resul = 0 ;
+	@Qualifier("utilitarioservice")
+	private UtilitarioService utilitarioservice;
+	
+	private int resul = 0;
+
 	@GetMapping("")
 	public ModelAndView monitoreo() {
 		ModelAndView mav = new ModelAndView("monitoreo/monitoreo");
-		Ubicacion ubi = ubicacionservice.getUbicacionOne();
+		Ubicacion ubi = utilitarioservice.getUbicacionOne();
 		if (ubi != null) {
 			resul = 1;
 		}
@@ -39,32 +40,34 @@ public class MonitoreoController {
 		mav.addObject("ubi", ubi);
 		return mav;
 	}
-	
+
 	@PostMapping("/obtieneubicacion")
-	public ModelAndView obtieneUbicacion(@RequestParam(name="iddespacho")int iddespacho,
-			@RequestParam(name="idtransportista") int idtransportista) {
-		Ubicacion ubi = ubicacionservice.getUbicacion(iddespacho, idtransportista);
+	public ModelAndView obtieneUbicacion(@RequestParam(name = "iddespacho") int iddespacho,
+			@RequestParam(name = "idtransportista") int idtransportista) {
+		Ubicacion ubi = utilitarioservice.getUbicacion(iddespacho, idtransportista);
 		ModelAndView mav = new ModelAndView("monitoreo/monitoreo");
 		mav.addObject("ubi", ubi);
 		return mav;
 	}
-	
+
 	@GetMapping("/web")
-	public ResponseEntity<Ubicacion> monitoreoWeb(){
-		Ubicacion ubi = ubicacionservice.getUbicacionOne();
-		return new ResponseEntity<Ubicacion>(ubi,HttpStatus.OK);
+	public ResponseEntity<Ubicacion> monitoreoWeb() {
+		Ubicacion ubi = utilitarioservice.getUbicacionOne();
+		return new ResponseEntity<Ubicacion>(ubi, HttpStatus.OK);
 	}
+
 	@PostMapping("/obtieneubicacionmobil")
-	public ResponseEntity<Ubicacion> obtieneMobil(@RequestParam(name="longitud")String longitud,@RequestParam(name="hora")String hora,
-			@RequestParam(name="latitud") String latitud,@RequestParam(name="direccion")String direccion) {
+	public ResponseEntity<Ubicacion> obtieneMobil(@RequestParam(name = "longitud") String longitud,
+			@RequestParam(name = "hora") String hora, @RequestParam(name = "latitud") String latitud,
+			@RequestParam(name = "direccion") String direccion) {
 		Vehiculo veh = new Vehiculo();
-		Ubicacionhist uhist= new Ubicacionhist();
+		Ubicacionhist uhist = new Ubicacionhist();
 		uhist = null;
 		veh = null;
 		Date date = new Date();
-		Ubicacion ubi = new Ubicacion(105,veh,1,longitud,latitud,date,hora,direccion,uhist);
-				ubicacionservice.save(ubi);
-				return new ResponseEntity<Ubicacion>(ubi,HttpStatus.OK);
+		Ubicacion ubi = new Ubicacion(105, veh, 1, longitud, latitud, date, hora, direccion, uhist);
+		utilitarioservice.save(ubi);
+		return new ResponseEntity<Ubicacion>(ubi, HttpStatus.OK);
 	}
 
 }

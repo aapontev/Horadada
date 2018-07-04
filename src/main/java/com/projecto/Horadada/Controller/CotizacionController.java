@@ -21,7 +21,7 @@ import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.CotizacionDetalleService;
 import com.projecto.Horadada.service.CotizacionService;
 import com.projecto.Horadada.service.SolicitudService;
-import com.projecto.Horadada.service.TablaMaestraService;
+import com.projecto.Horadada.service.UtilitarioService;
 
 @Controller
 @RequestMapping("/cotizacion")
@@ -36,8 +36,8 @@ public class CotizacionController {
 	private CotizacionDetalleService cotizaciondetalleservice;
 
 	@Autowired
-	@Qualifier("tablamaestraserviceimp")
-	private TablaMaestraService tablamaestraservice;
+	@Qualifier("utilitarioservice")
+	private UtilitarioService utilitarioservice;
 
 	@Autowired
 	@Qualifier("solicitudServiceimp")
@@ -55,7 +55,7 @@ public class CotizacionController {
 
 	@GetMapping("/cotizacionform")
 	public String redirectCotizacionForm(@RequestParam(name = "id", required = false) int id, Model model) {
-		List<Tablamaestra> moneda = tablamaestraservice.findByIdtablamaestra("Hora002");
+		List<Tablamaestra> moneda = utilitarioservice.findByIdtablamaestra("Hora002");
 		List<Solicitud> idsoli = solicitudService.getidsolicitud();
 		Cotizacion cotizacion = new Cotizacion();
 		int resu = 0;
@@ -101,7 +101,7 @@ public class CotizacionController {
 	public String redirectCotizacionDetalleform(@RequestParam(name = "id", required = false) int id,
 			@RequestParam(name = "item", required = false) int item, Model model) {
 		
-		List<Tablamaestra> medida = tablamaestraservice.findByIdtablamaestra("Hora014");		
+		List<Tablamaestra> medida = utilitarioservice.findByIdtablamaestra("Hora014");		
 		Cotizaciondetalle cotizaciondetalle = new Cotizaciondetalle();
 		Cotizacion cotizacion = cotizacionservice.findbyid(id);
 		
@@ -116,8 +116,7 @@ public class CotizacionController {
 	
 	@PostMapping("/addcotizaciondetalle")
 	public String addCotizacionDetalle(@ModelAttribute(name = "cotizaciondetalle") Cotizaciondetalle cotidetalle, Model model) {
-		
-
+	
 		if (null != cotizaciondetalleservice.save(cotidetalle)) {
 			model.addAttribute("result", 1);
 		} else {

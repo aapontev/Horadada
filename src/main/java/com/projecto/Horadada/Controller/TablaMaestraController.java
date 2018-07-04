@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.projecto.Horadada.Entity.Tablamaestra;
-import com.projecto.Horadada.service.TablaMaestraService;
+import com.projecto.Horadada.service.UtilitarioService;
 
 @Controller
 @RequestMapping("/tablamaestra")
 public class TablaMaestraController {
 
 	@Autowired
-	@Qualifier("tablamaestraserviceimp")
-	private TablaMaestraService tablaService;
+	@Qualifier("utilitarioservice")
+	private UtilitarioService utilitarioservice;
 
 	int resu =0;
 	@GetMapping("")
 	public ModelAndView TablaMaestra(@RequestParam(name="tipotabla",required=false)String tipotabla) {
 		resu=0;
-		List<Tablamaestra> tablas = tablaService.findByIdtablamaestra(tipotabla);
-		List<String> valMa = tablaService.gettablamaestra();
-		ModelAndView mav = new ModelAndView("mantenimiento/tablaMaestra");
+		List<Tablamaestra> tablas = utilitarioservice.findByIdtablamaestra(tipotabla);
+		List<String> valMa = utilitarioservice.gettablamaestra();
+		ModelAndView mav = new ModelAndView("utilitarios/tablaMaestra");
 		if(tipotabla != null) {
 			resu = 1 ;
 		}

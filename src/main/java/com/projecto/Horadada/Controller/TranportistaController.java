@@ -20,8 +20,8 @@ import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.Entity.Transportista;
 import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.PersonaService;
-import com.projecto.Horadada.service.TablaMaestraService;
 import com.projecto.Horadada.service.TransportistaService;
+import com.projecto.Horadada.service.UtilitarioService;
 
 @Controller
 @RequestMapping("/transportista")
@@ -36,8 +36,8 @@ public class TranportistaController {
 	private PersonaService personaService;
 	
 	@Autowired
-	@Qualifier("tablamaestraserviceimp")
-	private TablaMaestraService tablaService;
+	@Qualifier("utilitarioservice")
+	private UtilitarioService utilitarioservice;
 	
 	private int tipoproceso; 
 	
@@ -57,8 +57,8 @@ public class TranportistaController {
 			Model model) {
 		Transportista transportista = new Transportista();
 		List<Persona> persona = personaService.findByTipopersona(0);
-		List<Tablamaestra> licencia = tablaService.findByIdtablamaestra("Hora011");
-		List<Tablamaestra> estado = tablaService.findByIdtablamaestra("Hora007");
+		List<Tablamaestra> licencia = utilitarioservice.findByIdtablamaestra("Hora011");
+		List<Tablamaestra> estado = utilitarioservice.findByIdtablamaestra("Hora007");
 		tipoproceso = 0;
 		if(id != 0) {
 			transportista = transportistaservice.findByidtransportista(id);	

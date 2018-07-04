@@ -1,6 +1,7 @@
 package com.projecto.Horadada.Controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.projecto.Horadada.Entity.Persona;
 import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.service.PersonaService;
-import com.projecto.Horadada.service.TablaMaestraService;
-import com.projecto.Horadada.service.TelefonoService;
+import com.projecto.Horadada.service.UtilitarioService;
 
 @Controller
 @RequestMapping("persona")
@@ -25,12 +25,8 @@ public class PersonaController {
 	private PersonaService personaService;
 
 	@Autowired
-	@Qualifier("tablamaestraserviceimp")
-	private TablaMaestraService tablaService;
-
-	@Autowired
-	@Qualifier("telefonoserviceimp")
-	private TelefonoService telefonoservice;
+	@Qualifier("utilitarioservice")
+	private UtilitarioService utilitarioservice;
 
 	@GetMapping
 	public String Persona(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
@@ -63,8 +59,8 @@ public class PersonaController {
 	public String redirectPersonaForm(@RequestParam(name = "idpersona", required = false) int id, Model model) {
 		Persona per = new Persona();
 		int resu = 0;
-		List<Tablamaestra> persotip = tablaService.findByIdtablamaestra("Hora006");
-		List<Tablamaestra> tipodoc = tablaService.findByIdtablamaestra("Hora013");
+		List<Tablamaestra> persotip = utilitarioservice.findByIdtablamaestra("Hora006");
+		List<Tablamaestra> tipodoc = utilitarioservice.findByIdtablamaestra("Hora013");
 		if (id != 0) {
 			per = personaService.findByidPersona(id);
 			resu = 1;

@@ -14,25 +14,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.projecto.Horadada.Entity.Persona;
 import com.projecto.Horadada.Entity.Telefono;
 import com.projecto.Horadada.Util.PageRender;
-import com.projecto.Horadada.service.TelefonoService;
+import com.projecto.Horadada.service.UtilitarioService;
 
 @Controller
-@RequestMapping("telefono")
+@RequestMapping("/telefono")
 public class TelefonoController {
 
 	@Autowired
-	@Qualifier("telefonoserviceimp")
-	private TelefonoService telefonoservice;
+	@Qualifier("utilitarioservice")
+	private UtilitarioService utilitarioservice;
 
 	@GetMapping
 	public String listaTelefono(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
 
 		Pageable pageRequest = PageRequest.of(page, 5);
-		Page<Telefono> telefono = telefonoservice.findAll(pageRequest);
-		PageRender<Telefono> pagerender = new PageRender<Telefono>("/mantenimiento/telefono", telefono);
+		Page<Telefono> telefono = utilitarioservice.findAllTel(pageRequest);
+		PageRender<Telefono> pagerender = new PageRender<Telefono>("/telefono", telefono);
 		model.addAttribute("telefono", telefono);
 		model.addAttribute("page", pagerender);
-		return "mantenimiento/telefono";
+		return "utilitarios/telefono";
 	}
 
 	@GetMapping("/personaform")
