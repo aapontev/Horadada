@@ -222,7 +222,12 @@ public class Cotizacion implements Serializable {
 	public void setAprobado(int aprobado) {
 		this.aprobado = aprobado;
 	}
-
+	
+	public void addCotizaciondetalle(Cotizaciondetalle cotizaionDetalle) {
+		this.cotizaciondetalles.add(cotizaionDetalle);
+	}
+	
+	
 	private static final long serialVersionUID = 1L;
 
 }

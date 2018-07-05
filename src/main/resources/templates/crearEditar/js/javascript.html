@@ -2,68 +2,106 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 	<script type="text/javascript" th:fragment="mapa">
-	 
-	var marker;          //variable del marcador
-	var coords = {};    //coordenadas obtenidas con la geolocalización
-	 
-	initMap = function () 
-	{	 
-	        navigator.geolocation.getCurrentPosition(
-	          function (position){
-	            coords =  {
-	              lng: position.coords.longitude,
-	              lat: position.coords.latitude
-	            };
-	            setMapa(coords);  //pasamos las coordenadas al metodo para crear el mapa            
-	           
-	          },function(error){console.log(error);});    
-	}
-	function setMapa (coords)
-	{   
-	      var map = new google.maps.Map(document.getElementById('mapa'),
-	      {
-	        zoom: 13,
-	        center:new google.maps.LatLng(coords.lat,coords.lng),	 
-	      });
-	 
-	      marker = new google.maps.Marker({
-	        map: map,
-	        draggable: true,
-	        animation: google.maps.Animation.DROP,
-	        position: new google.maps.LatLng(coords.lat,coords.lng),	 
-	      });
-	      
-	      marker.addListener( 'dragend', function (event)
-	      {
-	        $("#lati").val(this.getPosition().lat());
-	        $("#longi").val(this.getPosition().lng());
-	      });
-	}	 
+		var marker; //variable del marcador
+		var coords = {}; //coordenadas obtenidas con la geolocalización	 
+		initMap = function() {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				coords = {
+					lng : position.coords.longitude,
+					lat : position.coords.latitude
+				};
+				setMapa(coords); //pasamos las coordenadas al metodo para crear el mapa  	            	           
+			}, function(error) {
+				console.log(error);
+			});
+		}
+		function setMapa(coords) {
+			var geocoder = new google.maps.Geocoder;
+			var infowindow = new google.maps.InfoWindow;
+			var map = new google.maps.Map(document.getElementById('mapa'), {
+				zoom : 13,
+				center : new google.maps.LatLng(coords.lat, coords.lng),
+			});
+			marker = new google.maps.Marker({
+				map : map,
+				draggable : true,
+				animation : google.maps.Animation.DROP,
+				position : new google.maps.LatLng(coords.lat, coords.lng),
+			});
+			marker.addListener('dragend', function(event) {
+				$("#lati").val(this.getPosition().lat());
+				$("#longi").val(this.getPosition().lng());
+
+				var latlng = {
+					lat : this.getPosition().lat(),
+					lng : this.getPosition().lng()
+				};
+				geocoder.geocode({
+					'location' : latlng
+				}, function(results, status) {
+					if (status === 'OK') {
+						if (results[0]) {
+							$("#calle").val(results[0].formatted_address);
+						} else {
+							window.alert('No results found');
+						}
+					} else {
+						window.alert('Geocoder failed due to: ' + status);
+					}
+				})
+			});
+		}
 	</script>
+
 	<script type="text/javascript" th:fragment="servicio">
+		$(document).ready(function() {
+			$("#buscar_servicio").autocomplete({
+				source : function(request, response) {
+					$.ajax({
+						url : "/servicios/cargar-servicio/" + request.term,
+						dataType : "json",
+						data : {
+							term : request.term
+						},
+						success : function(data) {
+							response($.map(data, function(item) {
+								return {
+									//value : item.idservicio,
+									label : item.nombreservicio,
+									fecha : item.fechaingreso,
+								};
+							}));
+						},
+					});
+				},
+				select : function(event, ui) {
+					$("#buscar_servicio").val(ui.item.label);
+				}
+			});
+		});
+	</script>
+	<script type="text/javascript" th:fragment="calcula">
+	var id = "0";
+		var itemsHelper = {
 
-	$(document).ready(function() {
+			additem : function() {
+				id = parseInt(id) + 1;
 
-		$("#buscar_servicio").autocomplete({
+				var linea = $("#plantillaItemsCotizacion").html();
+				linea = linea.replace(/{ID}/g, id);
+				linea = linea.replace(/{RECURSO}/g, $("#recurso").val());
+				linea = linea.replace(/{CANTIDAD}/g, $("#cantidad").val());
+				linea = linea.replace(/{CCOSTOS}/g, $("#ccostos").val());
+				linea = linea.replace(/{TOTAL}/g, $("#totdeta").val());
+				$("#cargarSolicitudes tbody").append(linea);
 
-			source : function(request, response) {
-				$.ajax({
-					url : "/factura/cargar-productos/" + request.term,
-					dataType : "json",
-					data : {
-						term : request.term
-					},
-					success : function(data) {
-						response($.map(data, function(item) {
-							return {
-								value : item.id,
-								label : item.nombre,
-								precio : item.precio,
-							};
-						}));
-					},
-				});
-			}})}
+				return false;
+			},
+			eliminarLineaFactura : function(id) {
+				$("#row_" + id).remove();
+				this.calcularGranTotal();
+			}
+		}
 	</script>
 
 </body>

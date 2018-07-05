@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<table th:fragment="itemscotizacion" class="hidden">
+
+		<tbody id="plantillaItemsCotizacion">
+			<tr id="row_{ID}">
+				<td class="d-none"><input type="hidden" value="{ID}"
+					name="item_id[]" /></td>
+				<td>{RECURSO}</td>
+				<td>{CANTIDAD}</td>
+				<td>{CCOSTOS}</td>
+				<td>{TOTAL}</td>
+			</tr>
+
+		</tbody>
+
+	</table>
+
+</body>
+</html>

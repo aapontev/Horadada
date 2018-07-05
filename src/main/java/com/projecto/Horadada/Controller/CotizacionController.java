@@ -57,6 +57,7 @@ public class CotizacionController {
 	public String redirectCotizacionForm(@RequestParam(name = "id", required = false) int id, Model model) {
 		List<Tablamaestra> moneda = utilitarioservice.findByIdtablamaestra("Hora002");
 		List<Solicitud> idsoli = solicitudService.getidsolicitud();
+		List<Tablamaestra> medida = utilitarioservice.findByIdtablamaestra("Hora014");	
 		Cotizacion cotizacion = new Cotizacion();
 		int resu = 0;
 		if (id != 0) {
@@ -67,6 +68,7 @@ public class CotizacionController {
 		model.addAttribute("solici", idsoli);
 		model.addAttribute("cotizacion", cotizacion);
 		model.addAttribute("moneda", moneda);
+		model.addAttribute("medida", medida);
 		return "crearEditar/cotizacion";
 	}
 

@@ -44,18 +44,7 @@
 									th:text="${mon.valor1}"></option>
 							</select> <br />
 						</div>
-						<div class="col-xs-4">
-							CARGOS : <input type="text" class="form-control" id="cargos"
-								th:field="*{cargos}" /> <br />
-						</div>
-						<div class="col-xs-4">
-							DESCUENTOS : <input type="text" class="form-control"
-								id="descuentos" th:field="*{descuentos}" /> <br />
-						</div>
-						<div class="col-xs-4">
-							PERSEPCION : <input type="text" class="form-control"
-								id="persepcion" th:field="*{percepcion}" /> <br />
-						</div>
+
 					</div>
 				</div>
 			</div>
@@ -64,45 +53,91 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-xs-3">
-							IGV : <input disabled type="text" class="form-control" id="igv"
-								th:field="*{igv}" /> <br />
+							RECURSO : <br> <input type="text" class="form-control"
+								id="recurso" /> <br />
 						</div>
-						<div class="col-xs-3">
-							NETO : <input disabled type="text" class="form-control" id="neto"
-								th:field="*{neto}" /> <br />
+						<div class="col-xs-1">
+							CANT : <br> <input type="number" class="form-control"
+								id="cantidad" /> <br />
 						</div>
-						<div class="col-xs-3">
-							SUB-TOTAL : <input disabled type="text" class="form-control"
-								id="subtotal" th:field="*{subtotal}" /> <br />
+						<div class="col-xs-2">
+							UNIDAD DE MEDIDA : <br /> <select class="form-control"
+								id="inputGroupSelect03">
+								<option th:each="med : ${medida}" th:value="${med.clave1}"
+									th:text="${med.clave1}+'. '+${med.valor1}"></option>
+							</select><br />
 						</div>
-						<div class="col-xs-3">
-							TOTAL : <input disabled type="text" class="form-control"
-								id="total" th:field="*{total}" /> <br />
+						<div class="col-xs-2">
+							CCOSTOS : <br> <input type="text" class="form-control"
+								id="ccostos" /> <br />
 						</div>
+						<div class="col-xs-2">
+							TOTAL DETALLE : <input type="text" class="form-control"
+								id="totdeta" /> <br />
+						</div>
+						<div class="col-xs-2">
+							<a href="#" class="btn btn-primary"
+								onclick="itemsHelper.additem();">agregar</a>
+						</div>
+
+						<table
+							th:replace="crearEditar/plantilla-cotizacion :: itemscotizacion"></table>
+
+						<table id="cargarSolicitudes"
+							class="table table-sm table-striped table-hover">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Recurso</th>
+									<th>Cantidad</th>
+									<th>precio</th>
+									<th>Total</th>
+									<th>Eliminar</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">OBSERVACIONES :</div>
+				<div class="panel-heading">MONTOS :</div>
 				<div class="panel-body">
-					<textarea class="form-control" th:field="*{observaciones}"> </textarea>
+					<div class="col-xs-4">
+						CARGOS : <input type="text" class="form-control" id="cargos" /> <br />
+					</div>
+					<div class="col-xs-4">
+						DESCUENTOS : <input type="text" class="form-control"
+							id="descuentos" /> <br />
+					</div>
+					<div class="col-xs-4">
+						PERSEPCION : <input type="text" class="form-control"
+							id="persepcion" /> <br />
+					</div>
+					<div class="col-xs-3">
+						IGV : <input disabled type="text" class="form-control" id="igv" />
+						<br />
+					</div>
+					<div class="col-xs-3">
+						NETO : <input disabled type="text" class="form-control" id="neto" />
+						<br />
+					</div>
+					<div class="col-xs-3">
+						SUB-TOTAL : <input disabled type="text" class="form-control"
+							id="subtotal" /> <br />
+					</div>
+					<div class="col-xs-3">
+						TOTAL : <input disabled type="text" class="form-control"
+							id="total" /> <br />
+					</div>
+					<div class="panel-body">
+						OBSERVACIONES :
+						<textarea class="form-control"> </textarea>
+					</div>
 				</div>
 			</div>
-							<table th:replace="factura/plantilla-items :: itemsFactura"></table>
-										<table id="cargarItemProductos"
-						class="table table-sm table-striped table-hover">
-						<thead>
-							<tr>
-								<th>Nombre</th>
-								<th>Precio</th>
-								<th>Cantidad</th>
-								<th>Total</th>
-								<th>Eliminar</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
+
 
 			<button class="btn btn-lg btn-primary btn-block" type="submit">
 				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
@@ -112,7 +147,7 @@
 		</form>
 	</div>
 
-	<script th:replace="factura/js/autocomplete-productos :: javascript"></script>
+	<script th:replace="crearEditar/js/javascript :: calcula"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(function() {
@@ -125,12 +160,12 @@
 		});
 	</script>
 	<script type="text/javascript">
-		$('#cargos,#descuentos,#persepcion,#igv,#neto,#subtotal,#total')
+		/*$('#cargos,#descuentos,#persepcion,#igv,#neto,#subtotal,#total')
 				.priceFormat({
 					prefix : '',
 					centsSeparator : '.',
 					thousandsSeparator : ''
-				});
+				});*/
 	</script>
 	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->

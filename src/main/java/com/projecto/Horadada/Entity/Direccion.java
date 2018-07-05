@@ -28,7 +28,7 @@ public class Direccion implements Serializable {
 	@Column(name = "LATITUD", nullable = false, length = 20)
 	private String latitud;
 
-	@Column(name = "CALLE", length = 45)
+	@Column(name = "CALLE", length = 100)
 	private String calle;
 
 	public Direccion() {

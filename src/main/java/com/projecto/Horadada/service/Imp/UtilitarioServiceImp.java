@@ -141,4 +141,10 @@ public class UtilitarioServiceImp implements UtilitarioService {
 		// TODO Auto-generated method stub
 		return direcciondao.save(direccion);
 	}
+
+	@Override
+	public List<Tiposervicio> findByNombre(String term) {
+		// TODO Auto-generated method stub
+		return serviciodao.findByNombreservicioLikeIgnoreCase("%"+term+"%");
+	}
 }

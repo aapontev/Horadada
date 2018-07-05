@@ -1,20 +1,4 @@
-/*--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
---*/
-html, body{
-	background:	#fff;
-	font-family: 'Open Sans', sans-serif;
-}
-p{
-	margin:0;
-}
-ul,label{
-	margin:0;
-	padding:0;
-}
+
 body a:hover{
 	text-decoration:none;
 }
@@ -1629,8 +1613,12 @@ h2.late {
 	}
 }
 #mapa {
-	width: 700px;
-	height: 400px;
+	  overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+	
+ 
 }
 @media (max-width: 320px){
 	.logo-top-left p,.services-grd p,.footer-grid p,.dealer-grid-right p,.footer-copy p,.logo-top-lft p,.view p,.about-grid p,.about-bottom-grid-left p,.about-bottom-grid-right-grdr p {
