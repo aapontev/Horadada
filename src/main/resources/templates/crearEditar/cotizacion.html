@@ -69,15 +69,14 @@
 						</div>
 						<div class="col-xs-2">
 							CCOSTOS : <br> <input type="text" class="form-control"
-								id="ccostos" /> <br />
+								id="ccostos" value="0.00" /> <br />
 						</div>
 						<div class="col-xs-2">
 							TOTAL DETALLE : <input type="text" class="form-control"
-								id="totdeta" /> <br />
+								id="totdeta" value="0.00" /> <br />
 						</div>
 						<div class="col-xs-2">
-							<a href="#" class="btn btn-primary"
-								onclick="itemsHelper.additem();">agregar</a>
+							<a class="btn btn-primary" onclick="itemsHelper.additem();">agregar</a>
 						</div>
 
 						<table
@@ -87,7 +86,7 @@
 							class="table table-sm table-striped table-hover">
 							<thead>
 								<tr>
-									<th></th>
+									<th>Item</th>
 									<th>Recurso</th>
 									<th>Cantidad</th>
 									<th>precio</th>
@@ -106,35 +105,36 @@
 				<div class="panel-body">
 					<div class="col-xs-4">
 						CARGOS : <input type="text" class="form-control" id="cargos"
-							value="0.00" /> <br />
+							value="0.00" onChange="updatePrice()" /> <br />
 					</div>
 					<div class="col-xs-4">
 						DESCUENTOS : <input type="text" class="form-control"
-							id="descuentos" value="0.00" /> <br />
+							id="descuentos" value="0.00" onChange="updatePrice()" /> <br />
 					</div>
 					<div class="col-xs-4">
 						PERSEPCION : <input type="text" class="form-control"
-							id="persepcion" value="0.00" /> <br />
+							id="persepcion" value="0.00" onChange="updatePrice()" /> <br />
 					</div>
 					<div class="col-xs-3">
-						IGV : <input disabled type="text" class="form-control" id="igv" />
-						<br />
+						IGV : <input disabled type="text" class="form-control" id="igv"
+							value="0.00" /> <br />
 					</div>
 					<div class="col-xs-3">
-						NETO : <input disabled type="text" class="form-control" id="neto" />
-						<br />
+						NETO : <input disabled type="text" class="form-control" id="neto"
+							value="0.00" /> <br />
 					</div>
 					<div class="col-xs-3">
 						SUB-TOTAL : <input disabled type="text" class="form-control"
-							id="subtotal" /> <br />
+							id="subtotal" value="0.00" /> <br />
 					</div>
 					<div class="col-xs-3">
 						TOTAL : <input disabled type="text" class="form-control"
-							id="total" /> <br />
+							id="total" value="0.00" /> <br />
 					</div>
 					<div class="panel-body">
 						OBSERVACIONES :
 						<textarea class="form-control"> </textarea>
+					<input type="hidden" th:value="${igv}"	id="impuesto"/>
 					</div>
 				</div>
 			</div>
@@ -161,17 +161,13 @@
 		});
 	</script>
 	<script type="text/javascript">
-		/*$('#cargos,#descuentos,#persepcion,#igv,#neto,#subtotal,#total')
+		$(
+				'#cargos,#descuentos,#persepcion,#igv,#neto,#subtotal,#total,#ccostos,#totdeta')
 				.priceFormat({
 					prefix : '',
 					centsSeparator : '.',
 					thousandsSeparator : ''
-				});*/
-		var descuento = parseFloat($("#cargos").val())
-				+ parseFloat($("#descuentos").val())
-				+ parseFloat($("#persepcion").val());
-		var subtotal = $('#neto').val() - descuento;
-		$('#subtotal').val(subtotal);
+				});
 	</script>
 	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->

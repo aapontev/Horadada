@@ -1,6 +1,10 @@
 package com.projecto.Horadada.Controller;
 
+import java.math.BigDecimal;
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -8,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,9 +60,12 @@ public class CotizacionController {
 
 	@GetMapping("/cotizacionform")
 	public String redirectCotizacionForm(@RequestParam(name = "id", required = false) int id, Model model) {
+		String impuesto;
 		List<Tablamaestra> moneda = utilitarioservice.findByIdtablamaestra("Hora002");
 		List<Solicitud> idsoli = solicitudService.getidsolicitud();
 		List<Tablamaestra> medida = utilitarioservice.findByIdtablamaestra("Hora014");	
+		List<Tablamaestra> igv = utilitarioservice.findByIdtablamaestra("Hora008");	
+		impuesto = igv.get(0).getValor1();
 		Cotizacion cotizacion = new Cotizacion();
 		int resu = 0;
 		if (id != 0) {
@@ -69,11 +77,12 @@ public class CotizacionController {
 		model.addAttribute("cotizacion", cotizacion);
 		model.addAttribute("moneda", moneda);
 		model.addAttribute("medida", medida);
+		model.addAttribute("igv", impuesto);
 		return "crearEditar/cotizacion";
 	}
 
 	@PostMapping("/addcotizacion")
-	public String addCotizacion(@ModelAttribute(name = "cotizacion") Cotizacion cotizacion, Model model) {
+	/*public String addCotizacion(@ModelAttribute(name = "cotizacion") Cotizacion cotizacion, Model model) {
 		if (null != cotizacionservice.save(cotizacion)) {
 			model.addAttribute("result", 1);
 		} else {
@@ -82,13 +91,59 @@ public class CotizacionController {
 		}
 		return "redirect:/cotizacion";
 	}
+*/
+	public String Guardar(@Valid Cotizacion cotizacion, Model model,BindingResult result,
+			@RequestParam(name= "recurso[]",required= false)String[]recurso,
+			@RequestParam(name= "ccostos[]",required= false)String[]ccostos,
+			@RequestParam(name= "cantidad[]",required= false)String[]cantidad,
+			@RequestParam(name= "descripcion[]",required= false)String[]descripcion,
+			@RequestParam(name= "descuento[]",required= false)String[]descuento,
+			@RequestParam(name= "Preciounitario[]",required= false)String[]Preciounitario,
+			@RequestParam(name= "totaldetalle[]",required= false)String[]totaldetalle,
+			@RequestParam(name= "idunidadmedida[]",required= false)int[]idunidadmedida) {
+		Cotizacion cotiz = new Cotizacion(); 
+		
+		if (result.hasErrors()) {
+			model.addAttribute("titulo", "Crear Factura");
+			return "crearEditar/cotizacion";
+		}
 
+		if (recurso == null || recurso.length == 0) {
+			model.addAttribute("titulo", "Crear Factura");
+			model.addAttribute("error", "Error: La factura NO puede no tener líneas!");
+			return "crearEditar/cotizacion";
+		}
+		for (int i = 0; i < recurso.length; i++) {
+			Cotizaciondetalle linea = new Cotizaciondetalle();
+			linea.setItem(i);
+			linea.setCcostos(ccostos[i]);
+			//linea.setCantidad(cantidad[i]);
+			linea.setCodrecurso(recurso[i]);
+			linea.setCotizacion(cotizacion);
+			linea.setDescripcion(descripcion[i]);
+			//linea.setDescuento(descuento[i]);
+			//linea.setPreciounitario(Preciounitario[i]);
+			//linea.setTotaldetalle(totaldetalle[i]);
+			linea.setIdunidadmedida(idunidadmedida[i]);
+			
+			cotiz.addCotizaciondetalle(linea);
+
+		}
+		cotizacionservice.save(cotizacion);
+
+		return "redirect:/cotizacion";
+	}
 	@GetMapping("/borrarcotizacion")
 	public String borrarCotizacion(@RequestParam(name = "id", required = true) int id, Model model) {
 		cotizacionservice.delete(id);
 		return "redirect:/cotizacion";
 	}
 
+	
+	
+	
+	
+	
 	@GetMapping("/cotizaciondetalle")
 	public String redirectCotizacionDetalle(@RequestParam(name = "id", required = false) int id, Model model) {
 		Cotizacion cotizacion = cotizacionservice.findbyid(id);

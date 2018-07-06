@@ -84,7 +84,6 @@
 		var id = "0";
 		var total = "0.0";
 		var itemsHelper = {
-
 			additem : function() {
 				id = parseInt(id) + 1;
 				total = parseFloat($("#totdeta").val()) + parseFloat(total);
@@ -95,13 +94,29 @@
 				linea = linea.replace(/{CCOSTOS}/g, $("#ccostos").val());
 				linea = linea.replace(/{TOTAL}/g, $("#totdeta").val());
 				$("#cargarSolicitudes tbody").append(linea);
-				$('#neto').val(total);
+				$('#neto').val(parseFloat(total).toFixed(2));
+				updatePrice();
 				return false;
 			},
 			eliminarLineaFactura : function(id) {
 				$("#row_" + id).remove();
-				this.calcularGranTotal();
+				id = parseInt(id) + 1;
+				updatePrice();
 			}
+		}
+		function updatePrice() {
+			var descuento = parseFloat($("#cargos").val())
+					+ parseFloat($("#descuentos").val())
+					+ parseFloat($("#persepcion").val());
+			var subtotal = $('#neto').val() - descuento;
+			$('#subtotal').val(subtotal);
+			calculaIgv();
+		}
+		function calculaIgv() {
+			var igv = parseFloat($("#impuesto").val()).toFixed(2) * parseFloat($("#subtotal").val()).toFixed(2);
+			var total = igv + parseFloat($("#subtotal").val()).toFixed(2);
+			$("#igv").val(parseFloat(igv).toFixed(2));
+			$("#total").val(total);
 		}
 	</script>
 
