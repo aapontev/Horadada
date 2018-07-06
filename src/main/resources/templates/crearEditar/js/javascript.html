@@ -81,12 +81,13 @@
 		});
 	</script>
 	<script type="text/javascript" th:fragment="calcula">
-	var id = "0";
+		var id = "0";
+		var total = "0.0";
 		var itemsHelper = {
 
 			additem : function() {
 				id = parseInt(id) + 1;
-
+				total = parseFloat($("#totdeta").val()) + parseFloat(total);
 				var linea = $("#plantillaItemsCotizacion").html();
 				linea = linea.replace(/{ID}/g, id);
 				linea = linea.replace(/{RECURSO}/g, $("#recurso").val());
@@ -94,7 +95,7 @@
 				linea = linea.replace(/{CCOSTOS}/g, $("#ccostos").val());
 				linea = linea.replace(/{TOTAL}/g, $("#totdeta").val());
 				$("#cargarSolicitudes tbody").append(linea);
-
+				$('#neto').val(total);
 				return false;
 			},
 			eliminarLineaFactura : function(id) {

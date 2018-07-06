@@ -105,15 +105,16 @@
 				<div class="panel-heading">MONTOS :</div>
 				<div class="panel-body">
 					<div class="col-xs-4">
-						CARGOS : <input type="text" class="form-control" id="cargos" /> <br />
+						CARGOS : <input type="text" class="form-control" id="cargos"
+							value="0.00" /> <br />
 					</div>
 					<div class="col-xs-4">
 						DESCUENTOS : <input type="text" class="form-control"
-							id="descuentos" /> <br />
+							id="descuentos" value="0.00" /> <br />
 					</div>
 					<div class="col-xs-4">
 						PERSEPCION : <input type="text" class="form-control"
-							id="persepcion" /> <br />
+							id="persepcion" value="0.00" /> <br />
 					</div>
 					<div class="col-xs-3">
 						IGV : <input disabled type="text" class="form-control" id="igv" />
@@ -166,6 +167,11 @@
 					centsSeparator : '.',
 					thousandsSeparator : ''
 				});*/
+		var descuento = parseFloat($("#cargos").val())
+				+ parseFloat($("#descuentos").val())
+				+ parseFloat($("#persepcion").val());
+		var subtotal = $('#neto').val() - descuento;
+		$('#subtotal').val(subtotal);
 	</script>
 	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
