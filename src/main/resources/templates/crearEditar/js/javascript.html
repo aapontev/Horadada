@@ -99,24 +99,29 @@
 				return false;
 			},
 			eliminarLineaFactura : function(id) {
+				var monto = parseFloat($("#totalitem_" + id).val());
+				var neto = $('#neto').val() - monto ;
+				$('#neto').val(parseFloat(neto).toFixed(2));
 				$("#row_" + id).remove();
-				id = parseInt(id) + 1;
+				id = parseInt(id) - 1;
 				updatePrice();
 			}
 		}
 		function updatePrice() {
-			var descuento = parseFloat($("#cargos").val())
-					+ parseFloat($("#descuentos").val())
-					+ parseFloat($("#persepcion").val());
+			var descuento = parseFloat($("#cargos").val()).toFixed(2);
+			+parseFloat($("#descuentos").val()).toFixed(2);
+			+parseFloat($("#persepcion").val()).toFixed(2);
 			var subtotal = $('#neto').val() - descuento;
-			$('#subtotal').val(subtotal);
+			$('#subtotal').val(parseFloat(subtotal).toFixed(2));
 			calculaIgv();
 		}
 		function calculaIgv() {
-			var igv = parseFloat($("#impuesto").val()).toFixed(2) * parseFloat($("#subtotal").val()).toFixed(2);
-			var total = igv + parseFloat($("#subtotal").val()).toFixed(2);
+			var igv = parseFloat($("#impuesto").val()).toFixed(2)
+					* parseFloat($("#subtotal").val()).toFixed(2);
+			var subtotal = parseFloat($("#subtotal").val());
+			var total = igv + subtotal;
 			$("#igv").val(parseFloat(igv).toFixed(2));
-			$("#total").val(total);
+			$("#total").val(parseFloat(total).toFixed(2));
 		}
 	</script>
 
