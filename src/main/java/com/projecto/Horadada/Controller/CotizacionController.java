@@ -1,9 +1,8 @@
 package com.projecto.Horadada.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.projecto.Horadada.Entity.Cotizacion;
 import com.projecto.Horadada.Entity.Cotizaciondetalle;
 import com.projecto.Horadada.Entity.Solicitud;
@@ -52,7 +50,7 @@ public class CotizacionController {
 	public String redirectCotizacion(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
 		Pageable pageRequest = PageRequest.of(page, 5);
 		Page<Cotizacion> cotizacion = cotizacionservice.findAll(pageRequest);
-		PageRender<Cotizacion> pagerender = new PageRender<Cotizacion>("/cotizacionDoc",cotizacion);
+		PageRender<Cotizacion> pagerender = new PageRender<Cotizacion>("/cotizacion",cotizacion);
 		model.addAttribute("cotiza", cotizacion);
 		model.addAttribute("page", pagerender);
 		return "documentacion/cotizacionDoc";
@@ -68,7 +66,7 @@ public class CotizacionController {
 		impuesto = igv.get(0).getValor1();
 		Cotizacion cotizacion = new Cotizacion();
 		int resu = 0;
-		if (id != 0) {
+		if (id != 0) {			
 			cotizacion = cotizacionservice.findbyid(id);
 			resu = 1;
 		}		
@@ -82,23 +80,10 @@ public class CotizacionController {
 	}
 
 	@PostMapping("/addcotizacion")
-	/*public String addCotizacion(@ModelAttribute(name = "cotizacion") Cotizacion cotizacion, Model model) {
-		if (null != cotizacionservice.save(cotizacion)) {
-			model.addAttribute("result", 1);
-		} else {
-
-			model.addAttribute("result", 0);
-		}
-		return "redirect:/cotizacion";
-	}
-*/
 	public String Guardar(@Valid Cotizacion cotizacion, Model model,BindingResult result,
 			@RequestParam(name= "recurso[]",required= false)String[]recurso,
 			@RequestParam(name= "ccostos[]",required= false)String[]ccostos,
 			@RequestParam(name= "cantidad[]",required= false)String[]cantidad,
-			//@RequestParam(name= "descripcion[]",required= false)String[]descripcion,
-			//@RequestParam(name= "descuento[]",required= false)String[]descuento,
-			//@RequestParam(name= "Preciounitario[]",required= false)String[]Preciounitario,
 			@RequestParam(name= "totaldetalle[]",required= false)String[]totaldetalle,
 			@RequestParam(name= "idunidadmedida[]",required= false)String[]idunidadmedida) {
 				
@@ -106,28 +91,26 @@ public class CotizacionController {
 			model.addAttribute("titulo", "Crear Factura");
 			return "crearEditar/cotizacion";
 		}
-
 		if (recurso == null || recurso.length == 0) {
 			model.addAttribute("titulo", "Crear Factura");
 			model.addAttribute("error", "Error: La factura NO puede no tener líneas!");
 			return "crearEditar/cotizacion";
 		}
+		List<Cotizaciondetalle> cot = new ArrayList<Cotizaciondetalle>();
 		for (int i = 1; i < recurso.length; i++) {
-			Cotizacion cotiza = cotizacionservice.findbyid(cotizacion.getIdcotizacion());
 			Cotizaciondetalle linea = new Cotizaciondetalle();
 			linea.setItem(i);
 			linea.setCcostos(ccostos[i]);
-			linea.setCantidad(18.00);
-			linea.setCodrecurso("fds");
-			//linea.setCotizacion(cotiza);
-			linea.setDescripcion("gfd");
-			linea.setDescuento(18.00);
-			linea.setPreciounitario(3418.00);
-			linea.setTotaldetalle(18.00);
-			linea.setIdunidadmedida(Integer.parseInt(idunidadmedida[i]));					
-			cotiza.addCotizaciondetalle(linea);
+			linea.setCantidad(Double.parseDouble(cantidad[i]));
+			linea.setCodrecurso(recurso[i]);
+			linea.setDescripcion(cotizacion.getObservaciones());
+			linea.setDescuento(0.00);
+			linea.setPreciounitario(0.00);
+			linea.setTotaldetalle(Double.parseDouble(totaldetalle[i]));
+			linea.setIdunidadmedida(Integer.parseInt(idunidadmedida[i]));		
+			cot.add(linea);
 		}
-
+		cotizacion.setCotizaciondetalles(cot);
 		cotizacionservice.save(cotizacion);
 		return "redirect:/cotizacion";
 	}

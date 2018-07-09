@@ -8,6 +8,5 @@ import com.projecto.Horadada.Entity.Cotizaciondetalle;
 @Repository("cotizaciondetalledao")
 public interface CotizacionDetalleDao extends CrudRepository<Cotizaciondetalle, Serializable> {
 
-	//public abstract List<Cotizaciondetalle> findBycotizacion (Cotizacion idCotizacion);
 	public abstract Cotizaciondetalle findByItem (int item);
 }

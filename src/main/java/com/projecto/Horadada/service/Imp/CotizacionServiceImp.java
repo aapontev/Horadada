@@ -47,4 +47,10 @@ public class CotizacionServiceImp implements CotizacionService{
 		return cotizaciondao.findAll(pageable);
 	}
 
+	@Override
+	public List<Cotizacion> findByaprobado(int estado) {
+		// TODO Auto-generated method stub
+		return cotizaciondao.findByaprobado(estado);
+	}
+
 }

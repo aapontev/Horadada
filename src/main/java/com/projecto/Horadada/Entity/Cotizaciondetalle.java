@@ -26,7 +26,7 @@ public class Cotizaciondetalle implements Serializable {
 	@Column(name = "ITEM", precision = 2)
 	private int item;
 
-	@Column(name = "CODRECURSO", length = 3)
+	@Column(name = "CODRECURSO", length = 15)
 	private String codrecurso;
 
 	@Column(name = "DESCRIPCION", length = 100)

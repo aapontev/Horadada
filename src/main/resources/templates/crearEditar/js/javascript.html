@@ -10,7 +10,7 @@
 					lng : position.coords.longitude,
 					lat : position.coords.latitude
 				};
-				setMapa(coords); //pasamos las coordenadas al metodo para crear el mapa  	            	           
+				setMapa(coords); //pasamos las coordenadas al metodo para crear el mapa  	   cargacotizacion(this)          	           
 			}, function(error) {
 				console.log(error);
 			});
@@ -54,6 +54,33 @@
 	</script>
 
 	<script type="text/javascript" th:fragment="servicio">
+		$(document).ready(function() {
+			$("#buscar_servicio").autocomplete({
+				source : function(request, response) {
+					$.ajax({
+						url : "/servicios/cargar-servicio/" + request.term,
+						dataType : "json",
+						data : {
+							term : request.term
+						},
+						success : function(data) {
+							response($.map(data, function(item) {
+								return {
+									//value : item.idservicio,
+									label : item.nombreservicio,
+									fecha : item.fechaingreso,
+								};
+							}));
+						},
+					});
+				},
+				select : function(event, ui) {
+					$("#buscar_servicio").val(ui.item.label);
+				}
+			});
+		});
+	</script>
+		<script type="text/javascript" th:fragment="ordencompra">
 		$(document).ready(function() {
 			$("#buscar_servicio").autocomplete({
 				source : function(request, response) {

@@ -225,7 +225,8 @@ public class Cotizacion implements Serializable {
 	}
 	
 	public void addCotizaciondetalle(Cotizaciondetalle cotizaionDetalle) {
-		this.cotizaciondetalles.add(cotizaionDetalle);
+		cotizaciondetalles.add(cotizaionDetalle);
+		//return cotizaionDetalle;
 	}
 		
 	private static final long serialVersionUID = 1L;

@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.projecto.Horadada.Entity.Cotizacion;
 import com.projecto.Horadada.Entity.Ordencompra;
 import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.Util.PageRender;
+import com.projecto.Horadada.service.CotizacionService;
 import com.projecto.Horadada.service.OrdenCompraService;
 import com.projecto.Horadada.service.UtilitarioService;
 
@@ -33,6 +35,10 @@ public class OrdenCompraController {
 	@Qualifier("utilitarioservice")
 	private UtilitarioService utilitarioservice;
 
+	@Autowired
+	@Qualifier("cotizacionserviceimp")
+	private CotizacionService cotizacionservice;
+	
 	@GetMapping("")
 	public String OrdenCompra(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
 		Pageable pageRequest = PageRequest.of(page, 5);
@@ -46,6 +52,7 @@ public class OrdenCompraController {
 	@GetMapping("/ordencompraform")
 	public String redirectOrdenCompraForm(@RequestParam(name = "id", required = false) int id, Model model) {
 		List<Tablamaestra> moneda = utilitarioservice.findByIdtablamaestra("Hora002");
+		List<Cotizacion> cotizacion = cotizacionservice.findByaprobado(0);
 		Ordencompra ordencompra = new Ordencompra();
 		int resu = 0;
 		if (id != 0) {
@@ -55,11 +62,12 @@ public class OrdenCompraController {
 		model.addAttribute("resu", resu);
 		model.addAttribute("ordencompra", ordencompra);
 		model.addAttribute("moneda", moneda);
+		model.addAttribute("cotizacion", cotizacion);
 		return "crearEditar/ordencompra";
 	}
 	
 	@PostMapping("/addordencompra")
-	public String addOrdencompra(@ModelAttribute(name = "cotizacion") Ordencompra ordencompra, Model model) {
+	public String addOrdencompra(@ModelAttribute(name = "ordencompra") Ordencompra ordencompra, Model model) {
 		if (null != ordencompraservice.save(ordencompra)) {
 			model.addAttribute("result", 1);
 		} else {

@@ -12,4 +12,5 @@ public interface CotizacionService {
 	public abstract Cotizacion save(Cotizacion cotizacion);
 	public abstract void delete(int id);
 	public Page<Cotizacion> findAll(Pageable pageable);
+	public abstract List<Cotizacion> findByaprobado(int estado);
 }

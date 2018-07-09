@@ -3,7 +3,6 @@ package com.projecto.Horadada.service.Imp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
 import com.projecto.Horadada.Dao.CotizacionDetalleDao;
 import com.projecto.Horadada.Entity.Cotizaciondetalle;
 import com.projecto.Horadada.service.CotizacionDetalleService;
@@ -14,12 +13,6 @@ public class CotizacionDetalleServiceImp implements CotizacionDetalleService{
 	@Autowired
 	@Qualifier("cotizaciondetalledao")
 	CotizacionDetalleDao cotizaciondetalledao;
-
-	/*@Override
-	public List<Cotizaciondetalle> findBycotizacion(Cotizacion idCotizacion) {
-		//List<Cotizaciondetalle> detallecotizacion = cotizaciondetalledao.findBycotizacion(idCotizacion);
-		return detallecotizacion;
-	}*/
 
 	@Override
 	public Cotizaciondetalle findByItem(int item) {

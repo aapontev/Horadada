@@ -5,13 +5,13 @@
 	<table th:fragment="itemscotizacion" class="hidden">
 
 		<tbody id="plantillaItemsCotizacion">
-			<tr id="row_{ID}">
+			<tr id="row_{ID}" th:each="coti : ${cotdetalle}">
 				<td>{ID}</td>
-				<td><input type="hidden" value="{RECURSO}" name="recurso[]" />{RECURSO}</td>
-				<td><input type="hidden" value="{CANTIDAD}" name="cantidad[]" />{CANTIDAD}</td>
-				<td><input type="hidden" value="{CCOSTOS}" name="ccostos[]" />{CCOSTOS}</td>
-				<td><input type="hidden" value="{IDUNIDADMEDIDA}" name="idunidadmedida[]"/>{IDUNIDADMEDIDA}</td>
-				<td><input type="hidden" value="{TOTAL}" name="totaldetalle[]"
+				<td th:text="${coti.codrecurso}"><input type="hidden" value="{RECURSO}" name="recurso[]" />{RECURSO}</td>
+				<td th:text="${coti.cantidad}"><input type="hidden" value="{CANTIDAD}" name="cantidad[]" />{CANTIDAD}</td>
+				<td th:text="${coti.ccostos}"><input type="hidden" value="{CCOSTOS}" name="ccostos[]" />{CCOSTOS}</td>
+				<td th:text="${coti.idunidadmedida}"><input type="hidden" value="{IDUNIDADMEDIDA}" name="idunidadmedida[]"/>{IDUNIDADMEDIDA}</td>
+				<td th:text="${coti.totaldetalle}"><input type="hidden" value="{TOTAL}" name="totaldetalle[]"
 					id="totalitem_{ID}" />{TOTAL}</td>
 				<td><a class="btn btn-danger btn-xs"
 					onclick="itemsHelper.eliminarLineaFactura({ID});">x</a></td>
