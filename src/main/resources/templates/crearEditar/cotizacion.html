@@ -62,9 +62,9 @@
 						</div>
 						<div class="col-xs-2">
 							UNIDAD DE MEDIDA : <br /> <select class="form-control"
-								id="inputGroupSelect03">
+								id="medida">
 								<option th:each="med : ${medida}" th:value="${med.clave1}"
-									th:text="${med.clave1}+'. '+${med.valor1}"></option>
+									th:text="${med.clave1}+'. '+${med.valor1}" ></option>
 							</select><br />
 						</div>
 						<div class="col-xs-2">
@@ -104,36 +104,36 @@
 				<div class="panel-heading">MONTOS :</div>
 				<div class="panel-body">
 					<div class="col-xs-4">
-						CARGOS : <input type="text" class="form-control" id="cargos"
+						CARGOS : <input type="text" class="form-control" id="cargos" th:field="*{cargos}"
 							value="0.00" onChange="updatePrice()" /> <br />
 					</div>
 					<div class="col-xs-4">
-						DESCUENTOS : <input type="text" class="form-control"
+						DESCUENTOS : <input type="text" class="form-control" th:field="*{descuentos}"
 							id="descuentos" value="0.00" onChange="updatePrice()" /> <br />
 					</div>
 					<div class="col-xs-4">
-						PERSEPCION : <input type="text" class="form-control"
+						PERSEPCION : <input type="text" class="form-control" th:field="*{percepcion}"
 							id="persepcion" value="0.00" onChange="updatePrice()" /> <br />
 					</div>
 					<div class="col-xs-3">
-						IGV : <input disabled type="text" class="form-control" id="igv"
+						IGV : <input  type="text" class="form-control" id="igv" th:field="*{igv}"
 							value="0.00" /> <br />
 					</div>
 					<div class="col-xs-3">
-						NETO : <input disabled type="text" class="form-control" id="neto"
-							value="0.00" /> <br />
+						NETO : <input  type="text" class="form-control" id="neto"
+							value="0.00" th:field="*{neto}"/> <br />
 					</div>
 					<div class="col-xs-3">
-						SUB-TOTAL : <input disabled type="text" class="form-control"
-							id="subtotal" value="0.00" /> <br />
+						SUB-TOTAL : <input  type="text" class="form-control"
+							id="subtotal" value="0.00" th:field="*{subtotal}"/> <br />
 					</div>
 					<div class="col-xs-3">
-						TOTAL : <input disabled type="text" class="form-control"
+						TOTAL : <input  type="text" class="form-control" th:field="*{total}"
 							id="total" value="0.00" /> <br />
 					</div>
 					<div class="panel-body">
 						OBSERVACIONES :
-						<textarea class="form-control"> </textarea>
+						<textarea class="form-control" th:field="*{observaciones}"> </textarea>
 					<input type="hidden" th:value="${igv}"	id="impuesto"/>
 					</div>
 				</div>

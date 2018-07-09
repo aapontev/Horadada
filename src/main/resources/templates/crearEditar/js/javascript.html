@@ -91,6 +91,7 @@
 				linea = linea.replace(/{ID}/g, id);
 				linea = linea.replace(/{RECURSO}/g, $("#recurso").val());
 				linea = linea.replace(/{CANTIDAD}/g, $("#cantidad").val());
+				linea = linea.replace(/{IDUNIDADMEDIDA}/g, $("#medida").val());
 				linea = linea.replace(/{CCOSTOS}/g, $("#ccostos").val());
 				linea = linea.replace(/{TOTAL}/g, $("#totdeta").val());
 				$("#cargarSolicitudes tbody").append(linea);
@@ -100,7 +101,7 @@
 			},
 			eliminarLineaFactura : function(id) {
 				var monto = parseFloat($("#totalitem_" + id).val());
-				var neto = $('#neto').val() - monto ;
+				var neto = $('#neto').val() - monto;
 				$('#neto').val(parseFloat(neto).toFixed(2));
 				$("#row_" + id).remove();
 				id = parseInt(id) - 1;
@@ -108,9 +109,9 @@
 			}
 		}
 		function updatePrice() {
-			var descuento = parseFloat($("#cargos").val()).toFixed(2);
-			+parseFloat($("#descuentos").val()).toFixed(2);
-			+parseFloat($("#persepcion").val()).toFixed(2);
+			var descuento = parseFloat($("#cargos").val())
+					+ parseFloat($("#descuentos").val())
+					+ parseFloat($("#persepcion").val());
 			var subtotal = $('#neto').val() - descuento;
 			$('#subtotal').val(parseFloat(subtotal).toFixed(2));
 			calculaIgv();

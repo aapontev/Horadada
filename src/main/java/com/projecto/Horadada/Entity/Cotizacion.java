@@ -69,7 +69,8 @@ public class Cotizacion implements Serializable {
 	@Column(name = "APROBADO", precision = 2)
 	private int aprobado;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cotizacion", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "IDCOTIZACION")
 	private List<Cotizaciondetalle> cotizaciondetalles;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cotizacion", cascade = CascadeType.ALL)
@@ -226,8 +227,7 @@ public class Cotizacion implements Serializable {
 	public void addCotizaciondetalle(Cotizaciondetalle cotizaionDetalle) {
 		this.cotizaciondetalles.add(cotizaionDetalle);
 	}
-	
-	
+		
 	private static final long serialVersionUID = 1L;
 
 }

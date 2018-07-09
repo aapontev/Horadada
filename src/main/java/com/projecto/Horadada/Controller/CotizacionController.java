@@ -1,7 +1,9 @@
 package com.projecto.Horadada.Controller;
 
 import java.util.List;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.projecto.Horadada.Entity.Cotizacion;
 import com.projecto.Horadada.Entity.Cotizaciondetalle;
 import com.projecto.Horadada.Entity.Solicitud;
@@ -71,10 +74,10 @@ public class CotizacionController {
 		}		
 		model.addAttribute("resu", resu);
 		model.addAttribute("solici", idsoli);
-		model.addAttribute("cotizacion", cotizacion);
 		model.addAttribute("moneda", moneda);
 		model.addAttribute("medida", medida);
 		model.addAttribute("igv", impuesto);
+		model.addAttribute("cotizacion", cotizacion);
 		return "crearEditar/cotizacion";
 	}
 
@@ -93,13 +96,12 @@ public class CotizacionController {
 			@RequestParam(name= "recurso[]",required= false)String[]recurso,
 			@RequestParam(name= "ccostos[]",required= false)String[]ccostos,
 			@RequestParam(name= "cantidad[]",required= false)String[]cantidad,
-			@RequestParam(name= "descripcion[]",required= false)String[]descripcion,
-			@RequestParam(name= "descuento[]",required= false)String[]descuento,
-			@RequestParam(name= "Preciounitario[]",required= false)String[]Preciounitario,
+			//@RequestParam(name= "descripcion[]",required= false)String[]descripcion,
+			//@RequestParam(name= "descuento[]",required= false)String[]descuento,
+			//@RequestParam(name= "Preciounitario[]",required= false)String[]Preciounitario,
 			@RequestParam(name= "totaldetalle[]",required= false)String[]totaldetalle,
-			@RequestParam(name= "idunidadmedida[]",required= false)int[]idunidadmedida) {
-		Cotizacion cotiz = new Cotizacion(); 
-		
+			@RequestParam(name= "idunidadmedida[]",required= false)String[]idunidadmedida) {
+				
 		if (result.hasErrors()) {
 			model.addAttribute("titulo", "Crear Factura");
 			return "crearEditar/cotizacion";
@@ -110,24 +112,23 @@ public class CotizacionController {
 			model.addAttribute("error", "Error: La factura NO puede no tener líneas!");
 			return "crearEditar/cotizacion";
 		}
-		for (int i = 0; i < recurso.length; i++) {
+		for (int i = 1; i < recurso.length; i++) {
+			Cotizacion cotiza = cotizacionservice.findbyid(cotizacion.getIdcotizacion());
 			Cotizaciondetalle linea = new Cotizaciondetalle();
 			linea.setItem(i);
 			linea.setCcostos(ccostos[i]);
-			//linea.setCantidad(cantidad[i]);
-			linea.setCodrecurso(recurso[i]);
-			linea.setCotizacion(cotizacion);
-			linea.setDescripcion(descripcion[i]);
-			//linea.setDescuento(descuento[i]);
-			//linea.setPreciounitario(Preciounitario[i]);
-			//linea.setTotaldetalle(totaldetalle[i]);
-			linea.setIdunidadmedida(idunidadmedida[i]);
-			
-			cotiz.addCotizaciondetalle(linea);
-
+			linea.setCantidad(18.00);
+			linea.setCodrecurso("fds");
+			//linea.setCotizacion(cotiza);
+			linea.setDescripcion("gfd");
+			linea.setDescuento(18.00);
+			linea.setPreciounitario(3418.00);
+			linea.setTotaldetalle(18.00);
+			linea.setIdunidadmedida(Integer.parseInt(idunidadmedida[i]));					
+			cotiza.addCotizaciondetalle(linea);
 		}
-		cotizacionservice.save(cotizacion);
 
+		cotizacionservice.save(cotizacion);
 		return "redirect:/cotizacion";
 	}
 	@GetMapping("/borrarcotizacion")
@@ -136,20 +137,15 @@ public class CotizacionController {
 		return "redirect:/cotizacion";
 	}
 
-	
-	
-	
-	
-	
-	@GetMapping("/cotizaciondetalle")
+	/*@GetMapping("/cotizaciondetalle")
 	public String redirectCotizacionDetalle(@RequestParam(name = "id", required = false) int id, Model model) {
 		Cotizacion cotizacion = cotizacionservice.findbyid(id);
-		List<Cotizaciondetalle> cotizaDeta = cotizaciondetalleservice.findBycotizacion(cotizacion);
+		//List<Cotizaciondetalle> cotizaDeta = cotizaciondetalleservice.findBycotizacion(cotizacion);
 
 		model.addAttribute("cotizadeta", cotizaDeta);
 		model.addAttribute("cotizaid", id);
 		return "documentacion/cotizacionDetalle";
-	}
+	}*/
 	
 	@GetMapping("/cotizaciondetalleform")
 	public String redirectCotizacionDetalleform(@RequestParam(name = "id", required = false) int id,

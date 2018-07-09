@@ -1,15 +1,11 @@
 package com.projecto.Horadada.Entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -23,9 +19,9 @@ public class Cotizaciondetalle implements Serializable {
 	@Column(name = "IDCOTIZACIONDETALLE", unique = true, nullable = false, precision = 5)
 	private int idcotizaciondetalle;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	/*@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "IDCOTIZACION", nullable = false, insertable = false, updatable = false)
-	private Cotizacion cotizacion;
+	private Cotizacion cotizacion;*/
 
 	@Column(name = "ITEM", precision = 2)
 	private int item;
@@ -42,31 +38,31 @@ public class Cotizaciondetalle implements Serializable {
 	@Column(name = "IDUNIDADMEDIDA", precision = 2)
 	private int idunidadmedida;
 
-	@Column(name = "CANTIDAD", precision = 6, scale = 4)
-	private BigDecimal cantidad;
+	@Column(name = "CANTIDAD", precision = 6, scale = 2)
+	private Double cantidad;
 
 	@Column(name = "PRECIOUNITARIO", precision = 12, scale = 2)
-	private BigDecimal preciounitario;
+	private Double preciounitario;
 
 	@Column(name = "DESCUENTO", precision = 12, scale = 2)
-	private BigDecimal descuento;
+	private Double descuento;
 
 	@Column(name = "TOTALDETALLE", precision = 12, scale = 2)
-	private BigDecimal totaldetalle;
+	private Double totaldetalle;
 
 	public Cotizaciondetalle() {
 	}
 
-	public Cotizaciondetalle(int idcotizaciondetalle, Cotizacion cotizacion) {
+	public Cotizaciondetalle(int idcotizaciondetalle) {
 		this.idcotizaciondetalle = idcotizaciondetalle;
-		this.cotizacion = cotizacion;
+		//this.cotizacion = cotizacion;
 	}
 
-	public Cotizaciondetalle(int idcotizaciondetalle, Cotizacion cotizacion, int item, String codrecurso,
-			String descripcion, String ccostos, int idunidadmedida, BigDecimal cantidad, BigDecimal preciounitario,
-			BigDecimal descuento, BigDecimal totaldetalle) {
+	public Cotizaciondetalle(int idcotizaciondetalle, int item, String codrecurso,
+			String descripcion, String ccostos, int idunidadmedida, Double cantidad, Double preciounitario,
+			Double descuento, Double totaldetalle) {
 		this.idcotizaciondetalle = idcotizaciondetalle;
-		this.cotizacion = cotizacion;
+		//this.cotizacion = cotizacion;
 		this.item = item;
 		this.codrecurso = codrecurso;
 		this.descripcion = descripcion;
@@ -86,13 +82,13 @@ public class Cotizaciondetalle implements Serializable {
 		this.idcotizaciondetalle = idcotizaciondetalle;
 	}
 
-	public Cotizacion getCotizacion() {
+	/*public Cotizacion getCotizacion() {
 		return this.cotizacion;
 	}
 
 	public void setCotizacion(Cotizacion cotizacion) {
 		this.cotizacion = cotizacion;
-	}
+	}*/
 
 	public int getItem() {
 		return this.item;
@@ -134,35 +130,35 @@ public class Cotizaciondetalle implements Serializable {
 		this.idunidadmedida = idunidadmedida;
 	}
 
-	public BigDecimal getCantidad() {
+	public Double getCantidad() {
 		return this.cantidad;
 	}
 
-	public void setCantidad(BigDecimal cantidad) {
+	public void setCantidad(Double cantidad) {
 		this.cantidad = cantidad;
 	}
 
-	public BigDecimal getPreciounitario() {
+	public Double getPreciounitario() {
 		return this.preciounitario;
 	}
 
-	public void setPreciounitario(BigDecimal preciounitario) {
+	public void setPreciounitario(Double preciounitario) {
 		this.preciounitario = preciounitario;
 	}
 
-	public BigDecimal getDescuento() {
+	public Double getDescuento() {
 		return this.descuento;
 	}
 
-	public void setDescuento(BigDecimal descuento) {
+	public void setDescuento(Double descuento) {
 		this.descuento = descuento;
 	}
 
-	public BigDecimal getTotaldetalle() {
+	public Double getTotaldetalle() {
 		return this.totaldetalle;
 	}
 
-	public void setTotaldetalle(BigDecimal totaldetalle) {
+	public void setTotaldetalle(Double totaldetalle) {
 		this.totaldetalle = totaldetalle;
 	}
 

@@ -6,16 +6,15 @@
 
 		<tbody id="plantillaItemsCotizacion">
 			<tr id="row_{ID}">
-				<td >{ID}</td>
-				<td><input type="hidden" value="{RECURSO}"
-					name="recurso[]" />{RECURSO}</td>
-				<td><input type="hidden" value="{CANTIDAD}"
-					name="cantidad[]" />{CANTIDAD}</td>
-				<td><input type="hidden" value="{CCOSTOS}"
-					name="ccostos[]" />{CCOSTOS}</td>
-				<td><input type="hidden" value="{TOTAL}"
-					name="totaldetalle[]" id="totalitem_{ID}"/>{TOTAL}</td>
-				<td><a class="btn btn-danger btn-xs" onclick="itemsHelper.eliminarLineaFactura({ID});">x</a></td>
+				<td>{ID}</td>
+				<td><input type="hidden" value="{RECURSO}" name="recurso[]" />{RECURSO}</td>
+				<td><input type="hidden" value="{CANTIDAD}" name="cantidad[]" />{CANTIDAD}</td>
+				<td><input type="hidden" value="{CCOSTOS}" name="ccostos[]" />{CCOSTOS}</td>
+				<td><input type="hidden" value="{IDUNIDADMEDIDA}" name="idunidadmedida[]"/>{IDUNIDADMEDIDA}</td>
+				<td><input type="hidden" value="{TOTAL}" name="totaldetalle[]"
+					id="totalitem_{ID}" />{TOTAL}</td>
+				<td><a class="btn btn-danger btn-xs"
+					onclick="itemsHelper.eliminarLineaFactura({ID});">x</a></td>
 			</tr>
 
 		</tbody>
