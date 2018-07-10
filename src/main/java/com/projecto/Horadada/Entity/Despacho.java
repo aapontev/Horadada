@@ -32,10 +32,6 @@ public class Despacho implements Serializable {
 	private int iddespacho;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "IDCLIENTE")
-	private Cliente cliente;
-
-	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "IDORDENCOMPRA", nullable = false)
 	private Ordencompra ordencompra;
 
@@ -45,11 +41,11 @@ public class Despacho implements Serializable {
 	@Column(name = "DESCRIPCIONMATERIA", length = 150)
 	private String descripcionmateria;
 
-	@Column(name = "DIRECCIONPARTIDA", length = 65)
-	private String direccionpartida;
+	@Column(name = "IDDIRECCIONPARTIDA")
+	private int iddireccionpartida;
 
-	@Column(name = "DIRECCIONLLEGADA", length = 65)
-	private String direccionllegada;
+	@Column(name = "IDDIRECCIONLLEGADA")
+	private int iddireccionllegada;
 
 	@Column(name = "DIASESTIMADOS", precision = 4)
 	private int diasestimados;
@@ -75,16 +71,15 @@ public class Despacho implements Serializable {
 		this.ordencompra = ordencompra;
 	}
 
-	public Despacho(int iddespacho, Cliente cliente, Ordencompra ordencompra, int idestadodespacho,
-			String descripcionmateria, String direccionpartida, String direccionllegada, int diasestimados,
+	public Despacho(int iddespacho,  Ordencompra ordencompra, int idestadodespacho,
+			String descripcionmateria, int iddireccionpartida, int iddireccionllegada, int diasestimados,
 			Date fechainicio, Date fechafin) {
 		this.iddespacho = iddespacho;
-		this.cliente = cliente;
 		this.ordencompra = ordencompra;
 		this.idestadodespacho = idestadodespacho;
 		this.descripcionmateria = descripcionmateria;
-		this.direccionpartida = direccionpartida;
-		this.direccionllegada = direccionllegada;
+		this.iddireccionpartida = iddireccionpartida;
+		this.iddireccionllegada = iddireccionllegada;
 		this.diasestimados = diasestimados;
 		this.fechainicio = fechainicio;
 		this.fechafin = fechafin;
@@ -96,14 +91,6 @@ public class Despacho implements Serializable {
 
 	public void setIddespacho(int iddespacho) {
 		this.iddespacho = iddespacho;
-	}
-
-	public Cliente getCliente() {
-		return this.cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
 	}
 
 	public Ordencompra getOrdencompra() {
@@ -130,20 +117,20 @@ public class Despacho implements Serializable {
 		this.descripcionmateria = descripcionmateria;
 	}
 
-	public String getDireccionpartida() {
-		return this.direccionpartida;
+	public int getIddireccionpartida() {
+		return this.iddireccionpartida;
 	}
 
-	public void setDireccionpartida(String direccionpartida) {
-		this.direccionpartida = direccionpartida;
+	public void setDireccionpartida(int iddireccionpartida) {
+		this.iddireccionpartida = iddireccionpartida;
 	}
 
-	public String getDireccionllegada() {
-		return this.direccionllegada;
+	public int getIddireccionllegada() {
+		return this.iddireccionllegada;
 	}
 
-	public void setDireccionllegada(String direccionllegada) {
-		this.direccionllegada = direccionllegada;
+	public void setDireccionllegada(int iddireccionllegada) {
+		this.iddireccionllegada = iddireccionllegada;
 	}
 
 	public int getDiasestimados() {

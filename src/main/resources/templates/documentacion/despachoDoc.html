@@ -32,8 +32,8 @@
 							th:href="@{/ordencompra/ordencompraform?id=__${des.ordencompra.idordencompra}__}"
 							th:text="${des.ordencompra.idordencompra}"> </a></td>
 						<td th:text="${des.descripcionmateria}"></td>
-						<td th:text="${des.direccionpartida}"></td>
-						<td th:text="${des.direccionllegada}"></td>
+						<td th:text="${des.iddireccionpartida}"></td>
+						<td th:text="${des.iddireccionllegada}"></td>
 						<td th:text="${#dates.format(des.fechainicio,'dd/MM/yyyy')}"></td>
 						<td th:text="${des.diasestimados}"></td>
 						 <td><a href="#"

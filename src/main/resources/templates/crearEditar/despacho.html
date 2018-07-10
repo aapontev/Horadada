@@ -32,7 +32,7 @@
 						</div>
 						<div th:if="${resu==0}">
 							<div class="col-xs-3">
-								<br>ORDEN DE COMPRA : <select
+								ORDEN DE COMPRA : <select
 									th:field="*{ordencompra.idordencompra}" class="form-control"
 									id="inputGroupSelect03">
 									<option th:each="ordcom : ${ordencompra}"
@@ -43,27 +43,32 @@
 						</div>
 						<div class="col-xs-3">
 							FECHA INICIO : <input type="text" class="form-control"
-								id="fechainicio" th:field="*{fechainicio}" value="1990-12-01" /> <br />
+								id="fechainicio" th:field="*{fechainicio}"
+								onChange="calculaDias()" /> <br />
 						</div>
 						<div class="col-xs-3">
 							FECHA FIN : <input type="text" class="form-control" id="fechafin"
-								th:field="*{fechafin}" /> <br />
-						</div>
-						<div class="col-xs-3">
-							CLIENTE : <input type="text" class="form-control"
-								th:field="*{cliente.idcliente}" /> <br />
+								th:field="*{fechafin}" onChange="calculaDias()" /> <br />
 						</div>
 						<div class="col-xs-4">
-							DIAS ESTIMADOS : <input type="text" class="form-control" onkeypress="carga();"
+							DIAS ESTIMADOS : <input type="text" class="form-control"
 								id="diasestimados" th:field="*{diasestimados}" /> <br />
 						</div>
 						<div class="col-xs-4">
-							DIRECCION LLEGADA : <input type="text" class="form-control" id=""
-								th:field="*{direccionllegada}" /> <br />
+							DIRECCION LLEGADA : <select th:field="*{iddireccionllegada}" name="llega"
+								class="form-control" id="inputGroupSelect03">
+								<option th:each="dir : ${direccion}"
+									th:value="${dir.iddireccion}"
+									th:text="${dir.iddireccion}+'. '+${dir.nombredireccion}"></option>
+							</select>
 						</div>
 						<div class="col-xs-4">
-							DIRECCION PARTIDA : <input type="text" class="form-control" id=""
-								th:field="*{direccionpartida}" /> <br />
+							DIRECCION PARTIDA : <select th:field="*{iddireccionpartida}" name="sale"
+								class="form-control" id="inputGroupSelect03">
+								<option th:each="dir : ${direccion}"
+									th:value="${dir.iddireccion}"
+									th:text="${dir.iddireccion}+'. '+${dir.nombredireccion}"></option>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -85,48 +90,8 @@
 		</form>
 	</div>
 
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$(function() {
-				$('#fechainicio,#fechafin').datetimepicker({
-					format : 'DD/MM/YYYY'
-				}).on('change', function() {
-					$('.datepicker').hide();
-				});
-			});
-		});
-	</script>
-	<script type="text/javascript">
-		$('#cargos,#descuentos,#persepcion,#igv,#neto,#subtotal,#total')
-				.priceFormat({
-					prefix : '',
-					centsSeparator : '.',
-					thousandsSeparator : ','
-				});
-	</script>
-	<script type="text/javascript">
-		function carga() {
-			/*var fecha = new Date($('#fechainicio').val());
-			var dias = $('#diasestimados').val(); // Número de días a agregar
-			fecha.setDate(fecha.getDate() + dias);
-			$('#fechafin') == fecha ;
-			console.info(fecha);
-			var dias = $('#diasestimados').val();
-			Date.prototype.addDays = function(dias) {
-				  var dat = new Date(this.valueOf());
-				  dat.setDate(dat.getDate() + dias);
-				  return dat;
-				}
+	<script th:replace="crearEditar/js/scriptDespacho :: despacho"></script>
 
-				var dat = new Date();
-
-				alert(dat.addDays(5))
-				var fecha = new Date($('#fechainicio').val());
-				var dias = 2; // Número de días a agregar
-				fecha.setDate(fecha.getDate() + dias);
-				console.info(fecha)*/
-		};
-	</script>
 	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
 	</div>

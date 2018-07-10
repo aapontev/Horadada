@@ -80,32 +80,27 @@
 			});
 		});
 	</script>
-		<script type="text/javascript" th:fragment="ordencompra">
-		$(document).ready(function() {
-			$("#buscar_servicio").autocomplete({
-				source : function(request, response) {
-					$.ajax({
-						url : "/servicios/cargar-servicio/" + request.term,
-						dataType : "json",
-						data : {
-							term : request.term
-						},
-						success : function(data) {
-							response($.map(data, function(item) {
-								return {
-									//value : item.idservicio,
-									label : item.nombreservicio,
-									fecha : item.fechaingreso,
-								};
-							}));
-						},
-					});
-				},
-				select : function(event, ui) {
-					$("#buscar_servicio").val(ui.item.label);
-				}
-			});
-		});
+	<script type="text/javascript" th:fragment="ordencompra">
+		var cargacotizacion = {
+			carga : function(request, response) {
+				$.ajax({
+					url : "/cotizacion/cargar-cotizacion/" + request.value,
+					dataType : "json",
+					data : {
+						term : request.value
+					},
+					success : function(data) {
+						response($.map(data, function(item) {
+							return {
+								//value : item.idservicio,
+								label : item.nombreservicio,
+								fecha : item.fechaingreso,
+							};
+						}));
+					},
+				});
+			}
+		}
 	</script>
 	<script type="text/javascript" th:fragment="calcula">
 		var id = "0";
@@ -123,6 +118,9 @@
 				linea = linea.replace(/{TOTAL}/g, $("#totdeta").val());
 				$("#cargarSolicitudes tbody").append(linea);
 				$('#neto').val(parseFloat(total).toFixed(2));
+				$('#cargos').val(0.00);
+				$('#descuentos').val(0.00);
+				$('#persepcion').val(0.00);
 				updatePrice();
 				return false;
 			},

@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.projecto.Horadada.Entity.Despacho;
+import com.projecto.Horadada.Entity.Direccion;
 import com.projecto.Horadada.Entity.Ordencompra;
 import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.DespachoService;
 import com.projecto.Horadada.service.OrdenCompraService;
+import com.projecto.Horadada.service.UtilitarioService;
 
 @Controller
 @RequestMapping("/despacho")
@@ -30,6 +32,10 @@ public class DespachoController {
 	@Autowired
 	@Qualifier("ordencompraservice")
 	private OrdenCompraService ordencompraservice;
+	
+	@Autowired
+	@Qualifier("utilitarioservice")
+	private UtilitarioService utilitarioservice;
 
 	@GetMapping("")
 	public String despachos(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
@@ -46,20 +52,25 @@ public class DespachoController {
 			Model model) {
 		Despacho despacho = new Despacho();
 		List<Ordencompra> ordencompra = ordencompraservice.findByestadoordencompra(1);
+		List<Direccion> direccion = utilitarioservice.findAll();
 		int resu= 0;
 		if(id != 0) {
 			despacho =despachoservice.findByiddespacho(id);	
 			resu = 1;
-		}
-		
+		}		
 		model.addAttribute("ordencompra", ordencompra);
 		model.addAttribute("despacho",despacho);
 		model.addAttribute("resu",resu);
+		model.addAttribute("direccion",direccion);
 		return "crearEditar/despacho";
 	}
 	
 	@PostMapping("/adddespacho")
 	public String addDespacho(@ModelAttribute(name = "despacho") Despacho despacho, Model model) {
+		Ordencompra orcom = despacho.getOrdencompra();
+		Ordencompra orden = ordencompraservice.findbyid(orcom.getIdordencompra());
+		orden.setEstadoordencompra(2);
+		despacho.setOrdencompra(orden);
 		if (null != despachoservice.save(despacho)) {
 			model.addAttribute("result", 1);
 		} else {

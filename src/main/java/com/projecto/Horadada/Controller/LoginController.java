@@ -10,32 +10,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.projecto.Horadada.Model.Usuarios;
 
 @Controller
-public class LoginController {	
+public class LoginController {
 
 	@GetMapping("/")
 	public String redirctLogin() {
 		return "redirect:/login";
 	}
-	
+
 	@GetMapping("/login")
-	public String showLoginForm(Model model,
-			@RequestParam(name="error",required=false)String error,@RequestParam(name="logout",required=false)String logout) {
+	public String showLoginForm(Model model, @RequestParam(name = "error", required = false) String error,
+			@RequestParam(name = "logout", required = false) String logout) {
 		model.addAttribute("error", error);
 		model.addAttribute("logout", logout);
 		model.addAttribute("credencialUsuario", new Usuarios());
 		return "login";
-	}	
+	}
+
 	@PostMapping("/loginCheck")
-	public String loginCheck(@ModelAttribute(name="credencialUsuario")Usuarios usuario) {
-		if(usuario.getUsuario().equals("usu") && usuario.getPassword().equals("con")) {
-		return "index";
+	public String loginCheck(@ModelAttribute(name = "credencialUsuario") Usuarios usuario) {
+		if (usuario.getUsuario().equals("usu") && usuario.getPassword().equals("con")) {
+			return "index";
+		}
+		return "redirect:/login?error";
 	}
-	return "redirect:/login?error";	
-	}
+
 	@GetMapping("/index")
 	public String index() {
 		return "index";
 	}
+
 	@GetMapping("/bienvenido")
 	public String principalWeb() {
 		return "pageWeb/bienvenido";

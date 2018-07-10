@@ -68,6 +68,11 @@ public class OrdenCompraController {
 	
 	@PostMapping("/addordencompra")
 	public String addOrdencompra(@ModelAttribute(name = "ordencompra") Ordencompra ordencompra, Model model) {
+		Cotizacion cotiza = ordencompra.getCotizacion();
+		Cotizacion coti = cotizacionservice.findbyid(cotiza.getIdcotizacion());
+		coti.setAprobado(1);
+		ordencompra.setEstadoordencompra(1);
+		ordencompra.setCotizacion(coti);
 		if (null != ordencompraservice.save(ordencompra)) {
 			model.addAttribute("result", 1);
 		} else {

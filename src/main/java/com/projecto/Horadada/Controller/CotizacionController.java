@@ -2,7 +2,9 @@ package com.projecto.Horadada.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -157,4 +159,10 @@ public class CotizacionController {
 		}
 		return "redirect:/cotizacion";
 	}
+	
+	/*@GetMapping(value = "/cargar-cotizacion/{term}", produces = { "application/json" })
+	public @ResponseBody Cotizacion cargarCotizacion(@PathVariable String term) {
+		Cotizacion cot = cotizacionservice.findbyid(Integer.parseInt(term));
+		return cot;
+	}*/
 }

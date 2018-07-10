@@ -27,8 +27,8 @@
 							</div>
 						</div>
 						<div class="col-xs-3">
-							Cotizacion :<br /> <select 
-								class="form-control" id="inputGroupSelect03" onChange="cargacotizacion(this)">
+							Cotizacion :<br /> <select th:field="*{cotizacion.idcotizacion}"
+								class="form-control" id="inputGroupSelect03" onChange="cargacotizacion.carga(this)">
 								<option th:each="cot : ${cotizacion}" th:value="${cot.idcotizacion}"
 									th:text="${cot.idcotizacion}"></option>
 							</select> <br />
@@ -98,7 +98,7 @@
 			<br>
 		</form>
 	</div>
-
+	<script th:replace="crearEditar/js/javascript :: ordencompra"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(function() {
@@ -111,7 +111,7 @@
 		});
 	</script>
 	<script type="text/javascript">
-		$('#descuentos,#persepcion,#igv,#neto,#subtotal,#total')
+		$('#descuentos,#persepcion,#igv,#neto,#subtotal,#total,#cargos')
 				.priceFormat({
 					prefix : '',
 					centsSeparator : '.',

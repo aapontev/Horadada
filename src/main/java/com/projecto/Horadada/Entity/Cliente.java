@@ -39,9 +39,6 @@ public class Cliente implements Serializable {
 	private String correo;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
-	private List<Despacho> despachos;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Factura> facturas;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
@@ -60,13 +57,12 @@ public class Cliente implements Serializable {
 		this.idcliente = idcliente;
 	}
 
-	public Cliente(int idcliente, String ruc, String razonsocial, List<Despacho> despachos, List<Factura> facturas,
+	public Cliente(int idcliente, String ruc, String razonsocial, List<Factura> facturas,
 			List<Contacto> contactos, List<Valorizacion> valorizacions, List<Solicitud> solicituds,
 			String direccionfiscal, String telefono, String correo) {
 		this.idcliente = idcliente;
 		this.ruc = ruc;
 		this.razonsocial = razonsocial;
-		this.despachos = despachos;
 		this.facturas = facturas;
 		this.contactos = contactos;
 		this.valorizacions = valorizacions;
@@ -98,14 +94,6 @@ public class Cliente implements Serializable {
 
 	public void setRazonsocial(String razonsocial) {
 		this.razonsocial = razonsocial;
-	}
-
-	public List<Despacho> getDespachos() {
-		return this.despachos;
-	}
-
-	public void setDespachos(List<Despacho> despachos) {
-		this.despachos = despachos;
 	}
 
 	public List<Factura> getFacturas() {

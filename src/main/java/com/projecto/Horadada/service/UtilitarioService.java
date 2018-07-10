@@ -30,4 +30,5 @@ public interface UtilitarioService {
 	public abstract void deleteDire(int id);
 	public abstract Direccion save(Direccion direccion);
 	public abstract List<Tiposervicio> findByNombre(String term);
+	public abstract List<Direccion> findAll();
 }

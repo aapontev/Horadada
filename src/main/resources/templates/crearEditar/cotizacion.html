@@ -52,26 +52,26 @@
 				<div class="panel-heading">Detalles de Cotizacion</div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-xs-3">
+						<div class="col-lg-2 col-md-3 col-sm-5 col-xs-10">
 							RECURSO : <br> <input type="text" class="form-control"
 								id="recurso" /> <br />
 						</div>
-						<div class="col-xs-1">
+						<div class="col-lg-1 col-md-2 col-sm-4 col-xs-9">
 							CANT : <br> <input type="number" class="form-control"
 								id="cantidad" /> <br />
 						</div>
-						<div class="col-xs-2">
+						<div class="col-lg-2 col-md-3 col-sm-5 col-xs-10">
 							UNIDAD DE MEDIDA : <br /> <select class="form-control"
 								id="medida">
 								<option th:each="med : ${medida}" th:value="${med.clave1}"
 									th:text="${med.clave1}+'. '+${med.valor1}" ></option>
 							</select><br />
 						</div>
-						<div class="col-xs-2">
+						<div class="col-lg-2 col-md-3 col-sm-5 col-xs-10">
 							CCOSTOS : <br> <input type="text" class="form-control"
 								id="ccostos" value="0.00" /> <br />
 						</div>
-						<div class="col-xs-2">
+						<div class="col-lg-2 col-md-3 col-sm-5 col-xs-10">
 							TOTAL DETALLE : <input type="text" class="form-control"
 								id="totdeta" value="0.00" /> <br />
 						</div>
@@ -106,15 +106,15 @@
 				<div class="panel-body">
 					<div class="col-xs-4">
 						CARGOS : <input type="text" class="form-control" id="cargos" th:field="*{cargos}"
-							value="0.00" onChange="updatePrice()" /> <br />
+							onChange="updatePrice()" /> <br />
 					</div>
 					<div class="col-xs-4">
 						DESCUENTOS : <input type="text" class="form-control" th:field="*{descuentos}"
-							id="descuentos" value="0.00" onChange="updatePrice()" /> <br />
+							id="descuentos" onChange="updatePrice()" /> <br />
 					</div>
 					<div class="col-xs-4">
 						PERSEPCION : <input type="text" class="form-control" th:field="*{percepcion}"
-							id="persepcion" value="0.00" onChange="updatePrice()" /> <br />
+							id="persepcion" onChange="updatePrice()" /> <br />
 					</div>
 					<div class="col-xs-3">
 						IGV : <input  type="text" class="form-control" id="igv" th:field="*{igv}"

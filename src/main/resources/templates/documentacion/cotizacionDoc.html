@@ -28,9 +28,7 @@
 				</thead>
 				<tbody>							
 					<tr th:each="coti : ${cotiza}">
-						<td><a href="#"
-							th:href="@{/cotizacion/cotizaciondetalle?id=__${coti.idcotizacion}__}"
-							th:text="${coti.idcotizacion}"> </a></td>
+						<td th:text="${coti.idcotizacion}"></td>
 						<td th:text="${coti.cargos}"></td>
 						<td th:text="${coti.solicitud.idsolicitud}"></td>
 						<td th:text="${#dates.format(coti.fechaenvio,'dd/MM/yyyy')}"></td>

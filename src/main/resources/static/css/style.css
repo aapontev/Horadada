@@ -993,8 +993,11 @@ h2.late {
 /*-- //contact --*/
 /*-- footer --*/
 .footer{
-	padding:2em 0;
+	padding:1em 0;
 	background:#3B3B3B;
+	/*position: fixed;*/
+   	bottom: 0;
+   	width: 100%;
 }
 .footer-grid h3{
 	font-size:2em;
