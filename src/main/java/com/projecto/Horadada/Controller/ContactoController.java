@@ -24,7 +24,6 @@ import com.projecto.Horadada.service.PersonaService;
 @Controller
 @RequestMapping("/contacto")
 public class ContactoController {
-
 	
 	@Autowired
 	@Qualifier("contactoServiceImp")

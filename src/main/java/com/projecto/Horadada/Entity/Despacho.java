@@ -118,18 +118,18 @@ public class Despacho implements Serializable {
 	}
 
 	public int getIddireccionpartida() {
-		return this.iddireccionpartida;
+		return iddireccionpartida;
 	}
 
-	public void setDireccionpartida(int iddireccionpartida) {
+	public void setIddireccionpartida(int iddireccionpartida) {
 		this.iddireccionpartida = iddireccionpartida;
 	}
 
 	public int getIddireccionllegada() {
-		return this.iddireccionllegada;
+		return iddireccionllegada;
 	}
 
-	public void setDireccionllegada(int iddireccionllegada) {
+	public void setIddireccionllegada(int iddireccionllegada) {
 		this.iddireccionllegada = iddireccionllegada;
 	}
 

@@ -13,11 +13,13 @@ import com.projecto.Horadada.Dao.ServicioDao;
 import com.projecto.Horadada.Dao.TablaMaestraDao;
 import com.projecto.Horadada.Dao.TelefonoDao;
 import com.projecto.Horadada.Dao.UbicacionDao;
+import com.projecto.Horadada.Dao.VehiculoDao;
 import com.projecto.Horadada.Entity.Direccion;
 import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.Entity.Telefono;
 import com.projecto.Horadada.Entity.Tiposervicio;
 import com.projecto.Horadada.Entity.Ubicacion;
+import com.projecto.Horadada.Entity.Vehiculo;
 import com.projecto.Horadada.service.UtilitarioService;
 
 @Service("utilitarioservice")
@@ -42,6 +44,10 @@ public class UtilitarioServiceImp implements UtilitarioService {
 	@Autowired
 	@Qualifier("direcciondao")
 	private DireccionDao direcciondao;
+
+	@Autowired
+	@Qualifier("vehiculodao")
+	private VehiculoDao vehiculodao;
 	
 	@Override
 	public Page<Tiposervicio> findAllServ(Pageable pageable) {
@@ -152,5 +158,30 @@ public class UtilitarioServiceImp implements UtilitarioService {
 	public List<Direccion> findAll() {
 		// TODO Auto-generated method stub
 		return (List<Direccion>) direcciondao.findAll();
+	}
+
+	@Override
+	public Page<Vehiculo> findAll(Pageable pageRequest) {
+		// TODO Auto-generated method stub
+		return vehiculodao.findAll(pageRequest);
+	}
+
+	@Override
+	public Vehiculo findByidvehiculo(int id) {
+		// TODO Auto-generated method stub
+		return vehiculodao.findByidvehiculo(id);
+	}
+
+	@Override
+	public void deleteVeh(int id) {
+		// TODO Auto-generated method stub
+		vehiculodao.deleteById(id);
+		
+	}
+
+	@Override
+	public Vehiculo save(Vehiculo vehiculo) {
+		// TODO Auto-generated method stub
+		return vehiculodao.save(vehiculo);
 	}
 }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title th:text="#{IndexTitle}">Employees System</title>
+
+<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+</head>
+<body>
+
+	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+	<div class="container">
+		<form action="#" th:action="@{/vehiculo/addvehiculo}"
+			th:object="${vehiculo}" method="post">
+			<input type="hidden" th:field="*{idvehiculo}" />
+			<div class="panel panel-default">
+				<div class="panel-heading text-center">
+					<b>FORMULARIO VEHICULO</b>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
+							MARCA : <input type="text" class="form-control" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							MODELO : <input type="text" class="form-control" />
+							<br />
+						</div>
+						<div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
+							NRO EJES : <input type="text" class="form-control" /> <br />
+						</div>
+
+						<div class="col-lg-6 col-md-7 col-sm-9 col-xs-12">
+							PLACA : <input type="text" class="form-control" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							COLOR : <input type="text" class="form-control" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							DETALLE : <input type="text" class="form-control" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							ULTIMA REVISION : <input type="text" class="form-control" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							ASEGURADORA : <input type="text" class="form-control" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							PESO MAXIMO : <input type="text" class="form-control" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							PESO MINIMO : <input type="text" class="form-control" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							TARJETA CIRCULACION : <input type="text" class="form-control" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							TRANSPORTISTA : <input type="text" class="form-control" /> <br />
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="footer">
+		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+	</div>
+</body>
+</html>

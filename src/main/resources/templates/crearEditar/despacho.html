@@ -55,15 +55,16 @@
 								id="diasestimados" th:field="*{diasestimados}" /> <br />
 						</div>
 						<div class="col-xs-4">
-							DIRECCION LLEGADA : <select th:field="*{iddireccionllegada}" name="llega"
-								class="form-control" id="inputGroupSelect03">
+							DIRECCION LLEGADA : <select
+								th:field="*{iddireccionllegada}" class="form-control"
+								id="inputGroupSelect03">
 								<option th:each="dir : ${direccion}"
 									th:value="${dir.iddireccion}"
 									th:text="${dir.iddireccion}+'. '+${dir.nombredireccion}"></option>
 							</select>
 						</div>
 						<div class="col-xs-4">
-							DIRECCION PARTIDA : <select th:field="*{iddireccionpartida}" name="sale"
+							DIRECCION PARTIDA : <select th:field="*{iddireccionpartida}"
 								class="form-control" id="inputGroupSelect03">
 								<option th:each="dir : ${direccion}"
 									th:value="${dir.iddireccion}"

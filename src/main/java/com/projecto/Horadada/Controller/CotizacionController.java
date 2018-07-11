@@ -99,9 +99,9 @@ public class CotizacionController {
 			return "crearEditar/cotizacion";
 		}
 		List<Cotizaciondetalle> cot = new ArrayList<Cotizaciondetalle>();
-		for (int i = 1; i < recurso.length; i++) {
+		for (int i = 0; i < recurso.length; i++) {
 			Cotizaciondetalle linea = new Cotizaciondetalle();
-			linea.setItem(i);
+			linea.setItem(i+1);
 			linea.setCcostos(ccostos[i]);
 			linea.setCantidad(Double.parseDouble(cantidad[i]));
 			linea.setCodrecurso(recurso[i]);

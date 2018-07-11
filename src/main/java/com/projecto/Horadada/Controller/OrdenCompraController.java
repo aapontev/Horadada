@@ -43,7 +43,7 @@ public class OrdenCompraController {
 	public String OrdenCompra(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
 		Pageable pageRequest = PageRequest.of(page, 5);
 		Page<Ordencompra> ordenes = ordencompraservice.findAll(pageRequest);
-		PageRender<Ordencompra> pagerender = new PageRender<Ordencompra>("/documentacion/ordenCompraDoc",ordenes);
+		PageRender<Ordencompra> pagerender = new PageRender<Ordencompra>("/ordencompra",ordenes);
 		model.addAttribute("ordenes", ordenes);
 		model.addAttribute("page", pagerender);
 		return "documentacion/ordenCompraDoc";

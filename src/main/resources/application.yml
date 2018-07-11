@@ -23,3 +23,5 @@ spring:
         
         #mvn install:install-file -Dfile=C:\\app\\alexander\\product\\11.2.0\\dbhome_1\\jdbc\\lib\\ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
         #https://es.stackoverflow.com/questions/65317/como-instalar-maven-en-windows
+        #http://fipeapi.appspot.com/api/1/carros/marcas.json
+        #http://fipeapi.appspot.com/api/1/carros/veiculos/21.json

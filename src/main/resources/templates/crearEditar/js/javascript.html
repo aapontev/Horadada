@@ -80,6 +80,7 @@
 			});
 		});
 	</script>
+
 	<script type="text/javascript" th:fragment="ordencompra">
 		var cargacotizacion = {
 			carga : function(request, response) {
@@ -102,6 +103,7 @@
 			}
 		}
 	</script>
+
 	<script type="text/javascript" th:fragment="calcula">
 		var id = "0";
 		var total = "0.0";
@@ -133,6 +135,26 @@
 				updatePrice();
 			}
 		}
+		$("form").submit(function() {
+			$("#plantillaItemsCotizacion").remove();
+			return;
+		});
+		$(document).ready(function() {
+			$(function() {
+				$('#fechaen').datetimepicker({
+					format : 'DD/MM/YYYY'
+				}).on('change', function() {
+					$('.datepicker').hide();
+				});
+			});
+		});
+		$(
+				'#cargos,#descuentos,#persepcion,#igv,#neto,#subtotal,#total,#ccostos,#totdeta')
+				.priceFormat({
+					prefix : '',
+					centsSeparator : '.',
+					thousandsSeparator : ''
+				});
 		function updatePrice() {
 			var descuento = parseFloat($("#cargos").val())
 					+ parseFloat($("#descuentos").val())

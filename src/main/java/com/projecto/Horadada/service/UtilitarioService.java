@@ -10,6 +10,7 @@ import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.Entity.Telefono;
 import com.projecto.Horadada.Entity.Tiposervicio;
 import com.projecto.Horadada.Entity.Ubicacion;
+import com.projecto.Horadada.Entity.Vehiculo;
 
 public interface UtilitarioService {
 
@@ -31,4 +32,8 @@ public interface UtilitarioService {
 	public abstract Direccion save(Direccion direccion);
 	public abstract List<Tiposervicio> findByNombre(String term);
 	public abstract List<Direccion> findAll();
+	public abstract Page<Vehiculo> findAll(Pageable pageRequest);
+	public abstract Vehiculo findByidvehiculo(int id);
+	public abstract void deleteVeh(int id);
+	public abstract Vehiculo save(Vehiculo vehiculo);
 }

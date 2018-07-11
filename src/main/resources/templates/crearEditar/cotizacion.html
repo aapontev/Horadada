@@ -64,16 +64,16 @@
 							UNIDAD DE MEDIDA : <br /> <select class="form-control"
 								id="medida">
 								<option th:each="med : ${medida}" th:value="${med.clave1}"
-									th:text="${med.clave1}+'. '+${med.valor1}" ></option>
+									th:text="${med.clave1}+'. '+${med.valor1}"></option>
 							</select><br />
 						</div>
 						<div class="col-lg-2 col-md-3 col-sm-5 col-xs-10">
 							CCOSTOS : <br> <input type="text" class="form-control"
-								id="ccostos" value="0.00" /> <br />
+								id="ccostos" /> <br />
 						</div>
 						<div class="col-lg-2 col-md-3 col-sm-5 col-xs-10">
 							TOTAL DETALLE : <input type="text" class="form-control"
-								id="totdeta" value="0.00" /> <br />
+								id="totdeta" /> <br />
 						</div>
 						<div class="col-xs-2">
 							<a class="btn btn-primary" onclick="itemsHelper.additem();">agregar</a>
@@ -105,71 +105,50 @@
 				<div class="panel-heading">MONTOS :</div>
 				<div class="panel-body">
 					<div class="col-xs-4">
-						CARGOS : <input type="text" class="form-control" id="cargos" th:field="*{cargos}"
-							onChange="updatePrice()" /> <br />
+						CARGOS : <input type="text" class="form-control" id="cargos"
+							th:field="*{cargos}" onChange="updatePrice()" /> <br />
 					</div>
 					<div class="col-xs-4">
-						DESCUENTOS : <input type="text" class="form-control" th:field="*{descuentos}"
-							id="descuentos" onChange="updatePrice()" /> <br />
+						DESCUENTOS : <input type="text" class="form-control"
+							th:field="*{descuentos}" id="descuentos" onChange="updatePrice()" />
+						<br />
 					</div>
 					<div class="col-xs-4">
-						PERSEPCION : <input type="text" class="form-control" th:field="*{percepcion}"
-							id="persepcion" onChange="updatePrice()" /> <br />
+						PERSEPCION : <input type="text" class="form-control"
+							th:field="*{percepcion}" id="persepcion" onChange="updatePrice()" />
+						<br />
 					</div>
 					<div class="col-xs-3">
-						IGV : <input  type="text" class="form-control" id="igv" th:field="*{igv}"
-							value="0.00" /> <br />
+						IGV : <input type="text" class="form-control" id="igv"
+							th:field="*{igv}" /> <br />
 					</div>
 					<div class="col-xs-3">
-						NETO : <input  type="text" class="form-control" id="neto"
-							value="0.00" th:field="*{neto}"/> <br />
+						NETO : <input type="text" class="form-control" id="neto"
+							th:field="*{neto}" /> <br />
 					</div>
 					<div class="col-xs-3">
-						SUB-TOTAL : <input  type="text" class="form-control"
-							id="subtotal" value="0.00" th:field="*{subtotal}"/> <br />
+						SUB-TOTAL : <input type="text" class="form-control" id="subtotal"
+							th:field="*{subtotal}" /> <br />
 					</div>
 					<div class="col-xs-3">
-						TOTAL : <input  type="text" class="form-control" th:field="*{total}"
-							id="total" value="0.00" /> <br />
+						TOTAL : <input type="text" class="form-control"
+							th:field="*{total}" id="total"  /> <br />
 					</div>
 					<div class="panel-body">
 						OBSERVACIONES :
 						<textarea class="form-control" th:field="*{observaciones}"> </textarea>
-					<input type="hidden" th:value="${igv}"	id="impuesto"/>
+						<input type="hidden" th:value="${igv}" id="impuesto" />
 					</div>
 				</div>
 			</div>
 
-
-			<button class="btn btn-lg btn-primary btn-block" type="submit">
-				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-				Aceptar
-			</button>
-			<br>
+			<input class="btn btn-lg btn-primary btn-block" type="submit"
+				value="Aceptar" /> <br>
 		</form>
 	</div>
 
 	<script th:replace="crearEditar/js/javascript :: calcula"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$(function() {
-				$('#fechaen').datetimepicker({
-					format : 'DD/MM/YYYY'
-				}).on('change', function() {
-					$('.datepicker').hide();
-				});
-			});
-		});
-	</script>
-	<script type="text/javascript">
-		$(
-				'#cargos,#descuentos,#persepcion,#igv,#neto,#subtotal,#total,#ccostos,#totdeta')
-				.priceFormat({
-					prefix : '',
-					centsSeparator : '.',
-					thousandsSeparator : ''
-				});
-	</script>
+
 	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
 	</div>
