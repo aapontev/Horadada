@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.projecto.Horadada.Entity.Direccion;
+import com.projecto.Horadada.Entity.Persona;
 import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.Entity.Telefono;
 import com.projecto.Horadada.Entity.Tiposervicio;
@@ -36,4 +37,7 @@ public interface UtilitarioService {
 	public abstract Vehiculo findByidvehiculo(int id);
 	public abstract void deleteVeh(int id);
 	public abstract Vehiculo save(Vehiculo vehiculo);
+	public abstract List<Telefono> findBypersona(Persona id);
+	public abstract Telefono findByimei(String imei);
+	public abstract Telefono findBynumerotelefono(String numero);
 }

@@ -45,19 +45,10 @@
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 							Numero documento : <input type="text" class="form-control"
 								th:field="*{numerodocumento}" /> <br />
-
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							Telefono : <input type="text" class="form-control"
-								th:field="*{telefono}" /> <br />
 						</div>
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 							DIRECCION : <input type="text" class="form-control"
 								th:field="*{direccion}" /> <br />
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							Correo electronico : <input type="email" class="form-control"
-								th:field="*{correoelectronico}" /> <br />
 						</div>
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 							fecha nacimiento :
@@ -67,6 +58,39 @@
 										th:field="*{fechanacimiento}" id="fechanac" />
 								</div>
 							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-heading text-center">
+					<b>Contactarlo</b>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							número Telefono : <input type="text" class="form-control"
+								name="numerotelefono" /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							Tipo telefono : <br> <select 
+								class="custom-select col-sm-6 form-control"
+								name="tipotelefono">
+								<option th:each="tiptel : ${tipotelefono}"
+									th:value="${tiptel.clave1}"
+									th:text="${tiptel.clave1}+'. '+${tiptel.valor1}"></option>
+							</select> <br /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							operador telefono : <br> <select 
+								class="custom-select col-sm-6 form-control"
+								name="operador">
+								<option th:each="ope : ${operador}"
+									th:value="${ope.clave1}"
+									th:text="${ope.clave1}+'. '+${ope.valor1}"></option>
+							</select> <br /> <br />
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							Correo electronico : <input type="email" class="form-control"
+								th:field="*{correoelectronico}" /> <br />
 						</div>
 					</div>
 				</div>

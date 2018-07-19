@@ -55,9 +55,8 @@
 								id="diasestimados" th:field="*{diasestimados}" /> <br />
 						</div>
 						<div class="col-xs-4">
-							DIRECCION LLEGADA : <select
-								th:field="*{iddireccionllegada}" class="form-control"
-								id="inputGroupSelect03">
+							DIRECCION LLEGADA : <select th:field="*{iddireccionllegada}"
+								class="form-control" id="inputGroupSelect03">
 								<option th:each="dir : ${direccion}"
 									th:value="${dir.iddireccion}"
 									th:text="${dir.iddireccion}+'. '+${dir.nombredireccion}"></option>
@@ -72,6 +71,58 @@
 							</select>
 						</div>
 					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">Detalles de Cotizacion</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-lg-2 col-md-3 col-sm-5 col-xs-10">
+									Fecha carga : <br> <input type="text" class="form-control"
+										id="fechacarga" /> <br />
+								</div>
+								<div class="col-lg-2 col-md-3 col-sm-5 col-xs-10">
+									fecha descarga : <br> <input type="text" id="fechadescarga"
+										class="form-control" /> <br />
+								</div>
+								<div class="col-lg-2 col-md-3 col-sm-5 col-xs-10">
+									transportista : <br /> <select class="form-control"
+										id="transportista">
+										<option th:each="tra : ${transportista}" th:value="${tra.idtransportista}"
+											th:text="${tra.idtransportista}+'. '+${tra.persona.nombrecompleto}"></option>
+									</select><br />
+								</div>
+								<div class="col-lg-2 col-md-3 col-sm-5 col-xs-10">
+									hora carga : <br> <input type="text" class="form-control"
+										id="horacarga" /> <br />
+								</div>
+								<div class="col-lg-2 col-md-3 col-sm-5 col-xs-10">
+									hora descarga : <input type="text" class="form-control"
+										id="horadescarga" /> <br />
+								</div>
+								<div class="col-xs-2">
+									<a class="btn btn-primary" onclick="itemsHelper.additem();">agregar</a>
+								</div>
+
+									<table
+							th:replace="crearEditar/plantilla-Despacho :: itemsdespacho"></table> 
+
+								<table id="cargarDespachos"
+									class="table table-sm table-striped table-hover">
+									<thead>
+										<tr>
+											<th>Fecha carga</th>
+											<th>fecha descarga</th>
+											<th>transportista</th>
+											<th>hora carga</th>
+											<th>hora descarga</th>
+											<th>Eliminar</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="panel panel-default">
@@ -83,11 +134,8 @@
 				</div>
 			</div>
 
-			<button class="btn btn-lg btn-primary btn-block" type="submit">
-				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-				Aceptar
-			</button>
-			<br>
+<input class="btn btn-lg btn-primary btn-block" type="submit"
+				value="Aceptar" /> <br>
 		</form>
 	</div>
 

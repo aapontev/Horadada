@@ -23,7 +23,6 @@ import com.projecto.Horadada.service.SolicitudService;
 @RequestMapping("/solicitud")
 public class SolicitudController {
 
-
 	@Autowired
 	@Qualifier("solicitudServiceimp")
 	private SolicitudService solicitudService;
@@ -31,12 +30,12 @@ public class SolicitudController {
 	@Autowired
 	@Qualifier("clienteServiceImp")
 	private ClienteService clienteService;
-	
+
 	@GetMapping("")
 	public String redirectSolicitud(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
 		Pageable pageRequest = PageRequest.of(page, 5);
 		Page<Solicitud> solicitud = solicitudService.findAll(pageRequest);
-		PageRender<Solicitud> pagerender = new PageRender<Solicitud>("/solicitud",solicitud);		
+		PageRender<Solicitud> pagerender = new PageRender<Solicitud>("/solicitud", solicitud);
 		model.addAttribute("solicitud", solicitud);
 		model.addAttribute("page", pagerender);
 		return "documentacion/solicitudDoc";
@@ -73,4 +72,6 @@ public class SolicitudController {
 		solicitudService.delete(id);
 		return "redirect:/documentacion/solicitud";
 	}
+
+	
 }

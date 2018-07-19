@@ -4,7 +4,7 @@
 <head lang="en">
 
 
-        <title th:text="#{IndexTitle}">Employees System</title>
+<title th:text="#{IndexTitle}">Employees System</title>
 
 <!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
 </head>
@@ -12,16 +12,14 @@
 
 	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
 	<div class="container">
-	
-<h1>TELEFONOS</h1>
+
+		<h1>TELEFONOS</h1>
 		<br />
-		<div class="panel panel-default">
-			<div class="panel-heading"></div>
+		<div class="table-responsive">
 			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
 						<th>CODIGO TELEFONO</th>
-						<th>PERSONA</th>
 						<th>OPERADOR</th>
 						<th>TIPO DE TELEFONO</th>
 						<th>NUMERO DE TELEFONO</th>
@@ -31,8 +29,7 @@
 				<tbody>
 					<tr th:each="tel : ${telefono}">
 						<td th:text="${tel.idtelefono}"></td>
-						<td th:text="${tel.persona.nombrecompleto}"></td>
-						<td th:text="${tel.operador}"></td>
+						<td th:text="${tel.idoperador}"></td>
 						<td th:text="${tel.idtipotelefono}"></td>
 						<td th:text="${tel.numerotelefono}"></td>
 						<!--  <td><a href="#"
@@ -49,17 +46,16 @@
 					</tr>
 				</tbody>
 			</table>
-				<nav th:replace="fragments/paginator-nav :: paginator"></nav>	
-		</div>	
-			<a href="#" th:href="@{/telefono/telefonoform?id=0}">
-				<button class="btn btn-lg btn-primary btn-block" type="submit">
-					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-					NUEVO TELEFONO
-				</button>
-			</a>
-			<br>	
+		</div>
+		<nav th:replace="fragments/paginator-nav :: paginator"></nav>
+		<a href="#" th:href="@{/telefono/telefonoform?id=0}">
+			<button class="btn btn-lg btn-primary btn-block" type="submit">
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				NUEVO TELEFONO
+			</button>
+		</a> <br>
 	</div>
-	
+
 	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
 	</div>

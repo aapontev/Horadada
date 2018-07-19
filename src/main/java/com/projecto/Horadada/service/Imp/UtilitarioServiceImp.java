@@ -15,6 +15,7 @@ import com.projecto.Horadada.Dao.TelefonoDao;
 import com.projecto.Horadada.Dao.UbicacionDao;
 import com.projecto.Horadada.Dao.VehiculoDao;
 import com.projecto.Horadada.Entity.Direccion;
+import com.projecto.Horadada.Entity.Persona;
 import com.projecto.Horadada.Entity.Tablamaestra;
 import com.projecto.Horadada.Entity.Telefono;
 import com.projecto.Horadada.Entity.Tiposervicio;
@@ -183,5 +184,23 @@ public class UtilitarioServiceImp implements UtilitarioService {
 	public Vehiculo save(Vehiculo vehiculo) {
 		// TODO Auto-generated method stub
 		return vehiculodao.save(vehiculo);
+	}
+
+	@Override
+	public List<Telefono> findBypersona(Persona id) {
+		// TODO Auto-generated method stub
+		return null;//telefonodao.findBypersona(id);
+	}
+
+	@Override
+	public Telefono findByimei(String imei) {
+		// TODO Auto-generated method stub
+		return telefonodao.findByimei(imei);
+	}
+
+	@Override
+	public Telefono findBynumerotelefono(String numero) {
+		// TODO Auto-generated method stub
+		return telefonodao.findBynumerotelefono(numero);
 	}
 }

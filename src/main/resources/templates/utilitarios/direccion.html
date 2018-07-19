@@ -14,8 +14,7 @@
 	<div class="container">
 
 		<h1>Direcciones</h1>
-		<div class="panel panel-default">
-			<div class="panel-heading"></div>
+		<div class="table-responsive">
 			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
@@ -44,8 +43,8 @@
 					</tr>
 				</tbody>
 			</table>
-			<nav th:replace="fragments/paginator-nav :: paginator"></nav>
 		</div>
+		<nav th:replace="fragments/paginator-nav :: paginator"></nav>
 		<a href="#" th:href="@{/direccion/direccionform?id=0}">
 			<button class="btn btn-lg btn-primary btn-block" type="submit">
 				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>

@@ -1,6 +1,10 @@
 package com.projecto.Horadada.Controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
+import org.exolab.castor.types.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -13,12 +17,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.bea.xml.stream.samples.Parse;
+import com.projecto.Horadada.Entity.Cotizaciondetalle;
 import com.projecto.Horadada.Entity.Despacho;
+import com.projecto.Horadada.Entity.Despachoxvehiculo;
 import com.projecto.Horadada.Entity.Direccion;
 import com.projecto.Horadada.Entity.Ordencompra;
+import com.projecto.Horadada.Entity.Transportista;
 import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.DespachoService;
 import com.projecto.Horadada.service.OrdenCompraService;
+import com.projecto.Horadada.service.TransportistaService;
 import com.projecto.Horadada.service.UtilitarioService;
 
 @Controller
@@ -36,6 +45,10 @@ public class DespachoController {
 	@Autowired
 	@Qualifier("utilitarioservice")
 	private UtilitarioService utilitarioservice;
+
+	@Autowired
+	@Qualifier("transportistaServiceImp")
+	private TransportistaService transportistaservice;
 
 	@GetMapping("")
 	public String despachos(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
@@ -57,6 +70,8 @@ public class DespachoController {
 			despacho = despachoservice.findByiddespacho(id);
 			resu = 1;
 		}
+		Transportista transportista = transportistaservice.findByidsituaciontransportista(1);
+		model.addAttribute("transportista", transportista);
 		model.addAttribute("ordencompra", ordencompra);
 		model.addAttribute("despacho", despacho);
 		model.addAttribute("resu", resu);
@@ -65,7 +80,33 @@ public class DespachoController {
 	}
 
 	@PostMapping("/adddespacho")
-	public String addDespacho(@ModelAttribute(name = "despacho") Despacho despacho, Model model) {
+	public String addDespacho(@ModelAttribute(name = "despacho") Despacho despacho, Model model,
+			@RequestParam(name = "fechacarga[]", required = false) String[] fechacarga,
+			@RequestParam(name = "fechadescarga[]", required = false) String[] fechadescarga,
+			@RequestParam(name = "transport[]", required = false) String[] transport,
+			@RequestParam(name = "horacarga[]", required = false) String[] horacarga,
+			@RequestParam(name = "horadescarga[]", required = false) String[] horadescarga) {
+		java.util.Date date1 = new java.util.Date();
+		List<Despachoxvehiculo> desxvehiculo = new ArrayList<Despachoxvehiculo>();
+		for (int i = 0; i < transport.length; i++) {
+		    try {
+				date1=new SimpleDateFormat("dd/MM/yyyy").parse(fechacarga[i]);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			Despachoxvehiculo linea = new Despachoxvehiculo();
+			linea.setFechacarga(date1);
+		//	linea.setFechadescarga(fechadescarga[i]);
+			linea.setHoracarga(horacarga[i]);
+			linea.setHoradescarga(horadescarga[i]);
+			linea.setIdtransportista(Integer.parseInt(transport[i]));
+			
+			desxvehiculo.add(linea);
+		}
+		despacho.setDespachoxvehiculo(desxvehiculo);
+		
+		
 		Ordencompra orcom = despacho.getOrdencompra();
 		Ordencompra orden = ordencompraservice.findbyid(orcom.getIdordencompra());
 		orden.setEstadoordencompra(2);

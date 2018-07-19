@@ -48,4 +48,10 @@ public class TransportistaServicImp implements TransportistaService {
 		return transportistaDao.findAll(pageable);
 	}
 
+	@Override
+	public Transportista findByidsituaciontransportista(int i) {
+		// TODO Auto-generated method stub
+		return transportistaDao.findByidsituaciontransportista(i);
+	}
+
 }

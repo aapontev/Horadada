@@ -59,6 +59,11 @@ public class Despacho implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "FECHAFIN")
 	private Date fechafin;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "IDDESPACHO")
+	private List<Despachoxvehiculo> despachoxvehiculo;
+
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "despacho", cascade = CascadeType.ALL)
 	private List<Valorizaciondetalle> valorizaciondetalles;
@@ -73,7 +78,7 @@ public class Despacho implements Serializable {
 
 	public Despacho(int iddespacho,  Ordencompra ordencompra, int idestadodespacho,
 			String descripcionmateria, int iddireccionpartida, int iddireccionllegada, int diasestimados,
-			Date fechainicio, Date fechafin) {
+			Date fechainicio, Date fechafin ,List<Despachoxvehiculo> despachoxvehiculo,List<Valorizaciondetalle> valorizaciondetalles) {
 		this.iddespacho = iddespacho;
 		this.ordencompra = ordencompra;
 		this.idestadodespacho = idestadodespacho;
@@ -83,6 +88,8 @@ public class Despacho implements Serializable {
 		this.diasestimados = diasestimados;
 		this.fechainicio = fechainicio;
 		this.fechafin = fechafin;
+		this.despachoxvehiculo = despachoxvehiculo;
+		this.valorizaciondetalles = valorizaciondetalles;
 	}
 
 	public int getIddespacho() {
@@ -156,6 +163,24 @@ public class Despacho implements Serializable {
 	public void setFechafin(Date fechafin) {
 		this.fechafin = fechafin;
 	}
+	
+	public List<Despachoxvehiculo> getDespachoxvehiculo() {
+		return despachoxvehiculo;
+	}
+
+	public void setDespachoxvehiculo(List<Despachoxvehiculo> despachoxvehiculo) {
+		this.despachoxvehiculo = despachoxvehiculo;
+	}
+
+	public List<Valorizaciondetalle> getValorizaciondetalles() {
+		return valorizaciondetalles;
+	}
+
+	public void setValorizaciondetalles(List<Valorizaciondetalle> valorizaciondetalles) {
+		this.valorizaciondetalles = valorizaciondetalles;
+	}
+
+
 
 	private static final long serialVersionUID = 1L;
 

@@ -13,4 +13,5 @@ public interface TransportistaService {
 	public abstract Transportista save(Transportista transportista);
 	public abstract void delete(int id);
 	public Page<Transportista> findAll(Pageable pageable);
+	public abstract Transportista findByidsituaciontransportista(int i);
 	}

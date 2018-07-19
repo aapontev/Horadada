@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<table th:fragment="itemsdespacho" class="hidden">
+
+		<tbody id="plantillaItemsDespacho">
+			<tr id="row_{ID}">
+				<td><input type="hidden" value="{FECHACARGA}"
+					name="fechacarga[]" />{FECHACARGA}</td>
+				<td><input type="hidden" value="{FECHADESCARGA}"
+					name="fechadescarga[]" />{FECHADESCARGA}</td>
+				<td><input type="hidden" value="{TRANSPORT}" name="transport[]" />{TRANSPORT}</td>
+				<td><input type="hidden" value="{HORACARGA}" name="horacarga[]" />{HORACARGA}</td>
+				<td><input type="hidden" value="{HORADESCARGA}"
+					name="horadescarga[]" />{HORADESCARGA}</td>
+				<td><a class="btn btn-danger btn-xs"
+					onclick="itemsHelper.eliminarLineaFactura({ID});">x</a></td>
+			</tr>
+
+		</tbody>
+
+	</table>
+
+</body>
+</html>

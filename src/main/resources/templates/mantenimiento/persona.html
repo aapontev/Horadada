@@ -14,14 +14,12 @@
 	<div class="container">
 		<h1>LISTA DE PERSONAS SIN CARGO</h1>
 		<br />
-		<div class="panel panel-default">
-			<div class="panel-heading"></div>
+		<div class="table-responsive">
 			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
 						<th>CODIGO PERSONA</th>
 						<th>APELLIDOS Y NOMBRES</th>
-						<th>TELEFONO</th>
 						<th>DIRECCION</th>
 						<th></th>
 
@@ -31,7 +29,6 @@
 					<tr th:each="per : ${persona}">
 						<td th:text="${per.idpersona}"></td>
 						<td th:text="${per.nombrecompleto}"></td>
-						<td th:text="${per.telefono}"></td>
 						<td th:text="${per.direccion}"></td>
 						<td><a href="#"
 							th:href="@{/persona/personaform?idpersona=__${per.idpersona}__}">

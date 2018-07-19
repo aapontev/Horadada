@@ -1,5 +1,6 @@
 package com.projecto.Horadada.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.projecto.Horadada.Entity.Persona;
 import com.projecto.Horadada.Entity.Tablamaestra;
+import com.projecto.Horadada.Entity.Telefono;
 import com.projecto.Horadada.service.PersonaService;
 import com.projecto.Horadada.service.UtilitarioService;
 
@@ -29,14 +31,27 @@ public class PersonaController {
 	private UtilitarioService utilitarioservice;
 
 	@GetMapping
-	public String Persona(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
-	
+	public String Persona(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
+
 		model.addAttribute("persona", personaService.findByTipopersona(0));
 		return "mantenimiento/persona";
 	}
 
 	@PostMapping("/addpersona")
-	public String addPersona(@ModelAttribute(name = "persona") Persona persona, Model model) {
+	public String addPersona(@ModelAttribute(name = "persona") Persona persona, Model model,
+			@RequestParam(name = "numerotelefono", required = false) String numeroTelefono,
+			@RequestParam(name = "operador", required = false) int operador,
+			@RequestParam(name = "tipotelefono", required = false) int tipotelefono) {
+
+		List<Telefono> telefonomonitoreos = new ArrayList<Telefono>();
+		Telefono telefono = new Telefono();
+		if (null == utilitarioservice.findBynumerotelefono(numeroTelefono)) {
+			telefono.setIdoperador(operador);
+			telefono.setIdtipotelefono(tipotelefono);
+			telefono.setNumerotelefono(numeroTelefono);
+			telefonomonitoreos.add(telefono);
+		}
+		persona.setTelefonomonitoreos(telefonomonitoreos);
 		if (null != personaService.save(persona)) {
 			personaService.cambiaPersona(persona.getTipopersona(), persona.getIdpersona());
 			model.addAttribute("resu", 1);
@@ -61,12 +76,16 @@ public class PersonaController {
 		int resu = 0;
 		List<Tablamaestra> persotip = utilitarioservice.findByIdtablamaestra("Hora006");
 		List<Tablamaestra> tipodoc = utilitarioservice.findByIdtablamaestra("Hora013");
+		List<Tablamaestra> operador = utilitarioservice.findByIdtablamaestra("Hora004");
+		List<Tablamaestra> tipotelefono = utilitarioservice.findByIdtablamaestra("Hora005");
 		if (id != 0) {
 			per = personaService.findByidPersona(id);
 			resu = 1;
 		}
 		model.addAttribute("resu", resu);
 		model.addAttribute("tipopersona", persotip);
+		model.addAttribute("operador", operador);
+		model.addAttribute("tipotelefono", tipotelefono);
 		model.addAttribute("tipodoc", tipodoc);
 		model.addAttribute("persona", per);
 		return "crearEditar/persona";

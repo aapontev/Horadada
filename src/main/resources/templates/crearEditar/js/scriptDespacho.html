@@ -2,9 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 	<script type="text/javascript" th:fragment="despacho">
+	var itemsHelper = {
+			additem : function() {
+				var linea = $("#plantillaItemsDespacho").html();
+				linea = linea.replace(/{FECHACARGA}/g, $("#fechacarga").val());
+				linea = linea.replace(/{FECHADESCARGA}/g, $("#fechadescarga").val());
+				linea = linea.replace(/{TRANSPORT}/g, $("#transportista").val());
+				linea = linea.replace(/{HORACARGA}/g, $("#horacarga").val());
+				linea = linea.replace(/{HORADESCARGA}/g, $("#horadescarga").val());
+				$("#cargarDespachos tbody").append(linea);
+				updatePrice();
+				return false;
+			}};
+	$("form").submit(function() {
+		$("#plantillaItemsDespacho").remove();
+		return;
+	});
 		$(document).ready(function() {
 			$(function() {
-				$('#fechainicio,#fechafin').datetimepicker({
+				$('#fechainicio,#fechafin,#fechacarga,#fechadescarga').datetimepicker({
 					format : 'DD/MM/YYYY'
 				}).on('change', function() {
 					$('.datepicker').hide();
@@ -22,12 +38,6 @@
 		}
 		 
 		 function formatDate(fecha) {
-			   /* var d = new Date(date),
-			        day = '' + d.getDate(),
-			        month = '' + (d.getMonth() + 1),
-			        year = d.getFullYear();
-
-			    */
 			    var day = parseInt(fecha.substr(0,2));
 			    var month = parseInt(fecha.substr(3,2));
 			    var year = parseInt(fecha.substr(6,4));

@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import com.projecto.Horadada.Entity.Telefono;
 import com.projecto.Horadada.Entity.Ubicacion;
 import com.projecto.Horadada.Entity.Ubicacionhist;
 import com.projecto.Horadada.Entity.Vehiculo;
+import com.projecto.Horadada.service.PersonaService;
 import com.projecto.Horadada.service.UtilitarioService;
 
 @Controller
@@ -26,6 +28,10 @@ public class MonitoreoController {
 	@Autowired
 	@Qualifier("utilitarioservice")
 	private UtilitarioService utilitarioservice;
+	
+	@Autowired
+	@Qualifier("personaServiceImp")
+	private PersonaService personaService;
 	
 	private int resul = 0;
 
@@ -59,7 +65,8 @@ public class MonitoreoController {
 	@PostMapping("/obtieneubicacionmobil")
 	public ResponseEntity<Ubicacion> obtieneMobil(@RequestParam(name = "longitud") String longitud,
 			@RequestParam(name = "hora") String hora, @RequestParam(name = "latitud") String latitud,
-			@RequestParam(name = "direccion") String direccion) {
+			@RequestParam(name = "direccion") String direccion,@RequestParam(name = "imei") String imei) {
+		Telefono tel = new Telefono();
 		Vehiculo veh = new Vehiculo();
 		Ubicacionhist uhist = new Ubicacionhist();
 		uhist = null;
@@ -68,6 +75,14 @@ public class MonitoreoController {
 		Ubicacion ubi = new Ubicacion(105, veh, 1, longitud, latitud, date, hora, direccion, uhist);
 		utilitarioservice.save(ubi);
 		return new ResponseEntity<Ubicacion>(ubi, HttpStatus.OK);
+	}
+	
+	@GetMapping("/enviacoordenadas")
+	public void enviacoordenadas(@RequestParam(name = "imei") String mobil) {
+		
+		Telefono telefono = utilitarioservice.findByimei(mobil);
+		//Persona persona = personaService.findByidPersona(telefono.getPersona().getIdpersona());
+		//System.out.println(persona.getNombrecompleto());
 	}
 
 }

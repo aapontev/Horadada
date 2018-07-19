@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.ParameterMode;
@@ -79,9 +80,6 @@ public class Persona implements Serializable {
 	@Column(name = "FECHAUPDATE")
 	private Date fechaupdate;
 
-	@Column(name = "TELEFONO", length = 40)
-	private String telefono;
-
 	@Column(name = "CORREOELECTRONICO", length = 60)
 	private String correoelectronico;
 
@@ -94,7 +92,8 @@ public class Persona implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "persona", cascade = CascadeType.ALL)
 	private List<Contacto> contacto;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "persona", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "IDPERSONA")
 	private List<Telefono> telefonomonitoreos;
 
 	@PrePersist
@@ -112,7 +111,7 @@ public class Persona implements Serializable {
 
 	public Persona(int idpersona, String nombrecompleto, String primernombre, String segundonombre,
 			String primerapellido, String segundoapellido, int tipopersona, int codtipodocumento, int numerodocumento,
-			Date fechanacimiento, String edad, String direccion, Date fechacreacion, Date fechaupdate, String telefono,
+			Date fechanacimiento, String edad, String direccion, Date fechacreacion, Date fechaupdate,
 			String correoelectronico, List<Transportista> transportistas, List<Usuario> usuarios,
 			List<Contacto> contacto, List<Telefono> telefonomonitoreos) {
 		this.idpersona = idpersona;
@@ -129,7 +128,6 @@ public class Persona implements Serializable {
 		this.direccion = direccion;
 		this.fechacreacion = fechacreacion;
 		this.fechaupdate = fechaupdate;
-		this.telefono = telefono;
 		this.correoelectronico = correoelectronico;
 		this.transportistas = transportistas;
 		this.usuarios = usuarios;
@@ -247,14 +245,6 @@ public class Persona implements Serializable {
 
 	public void setFechaupdate(Date fechaupdate) {
 		this.fechaupdate = fechaupdate;
-	}
-
-	public String getTelefono() {
-		return this.telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
 	}
 
 	public String getCorreoelectronico() {

@@ -36,7 +36,7 @@ public class Transportista implements Serializable {
 	private String catlicencia;
 
 	@Column(name = "IDSITUACIONTRANSPORTISTA", precision = 5, scale = 0)
-	private Integer idsituaciontransportista;
+	private int idsituaciontransportista;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "transportista", cascade = CascadeType.ALL)
 	private List<Vehiculo> vehiculos;
@@ -51,7 +51,7 @@ public class Transportista implements Serializable {
 	}
 
 	public Transportista(int idtransportista, Persona persona, String nrolicencia, String catlicencia,
-			Integer idsituaciontransportista, List<Vehiculo> vehiculos) {
+			int idsituaciontransportista, List<Vehiculo> vehiculos) {
 		this.idtransportista = idtransportista;
 		this.persona = persona;
 		this.nrolicencia = nrolicencia;
@@ -92,11 +92,11 @@ public class Transportista implements Serializable {
 		this.catlicencia = catlicencia;
 	}
 
-	public Integer getIdsituaciontransportista() {
+	public int getIdsituaciontransportista() {
 		return this.idsituaciontransportista;
 	}
 
-	public void setIdsituaciontransportista(Integer idsituaciontransportista) {
+	public void setIdsituaciontransportista(int idsituaciontransportista) {
 		this.idsituaciontransportista = idsituaciontransportista;
 	}
 
