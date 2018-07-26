@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import com.projecto.Horadada.Entity.Telefono;
 import com.projecto.Horadada.Entity.Ubicacion;
 import com.projecto.Horadada.Entity.Ubicacionhist;
 import com.projecto.Horadada.Entity.Vehiculo;
@@ -66,7 +65,7 @@ public class MonitoreoController {
 	public ResponseEntity<Ubicacion> obtieneMobil(@RequestParam(name = "longitud") String longitud,
 			@RequestParam(name = "hora") String hora, @RequestParam(name = "latitud") String latitud,
 			@RequestParam(name = "direccion") String direccion,@RequestParam(name = "imei") String imei) {
-		Telefono tel = new Telefono();
+		//Telefono tel = new Telefono();
 		Vehiculo veh = new Vehiculo();
 		Ubicacionhist uhist = new Ubicacionhist();
 		uhist = null;
@@ -80,7 +79,7 @@ public class MonitoreoController {
 	@GetMapping("/enviacoordenadas")
 	public void enviacoordenadas(@RequestParam(name = "imei") String mobil) {
 		
-		Telefono telefono = utilitarioservice.findByimei(mobil);
+		//Telefono telefono = utilitarioservice.findByimei(mobil);
 		//Persona persona = personaService.findByidPersona(telefono.getPersona().getIdpersona());
 		//System.out.println(persona.getNombrecompleto());
 	}
