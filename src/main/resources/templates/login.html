@@ -5,32 +5,37 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>HTML Template</title>
+<title>HTML Template</title>
 
-	<!-- Google font 
+<!-- Google font 
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
 
 	<!-- Bootstrap -->
 <link href="#" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
 
-	<!-- Owl Carousel -->
-	<link type="text/css" rel="stylesheet" th:href="@{/css/owl.carousel.css}" />
-	<link type="text/css" rel="stylesheet" th:href="@{/css/owl.theme.default.css}" />
+<!-- Owl Carousel -->
+<link type="text/css" rel="stylesheet"
+	th:href="@{/css/owl.carousel.css}" />
+<link type="text/css" rel="stylesheet"
+	th:href="@{/css/owl.theme.default.css}" />
 
-	<!-- Magnific Popup -->
-	<link type="text/css" rel="stylesheet" th:href="@{/css/magnific-popup.css}" />
+<!-- Magnific Popup -->
+<link type="text/css" rel="stylesheet"
+	th:href="@{/css/magnific-popup.css}" />
 
-	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+<!-- Font Awesome Icon -->
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
 
-	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+<!-- Custom stlylesheet -->
+<link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
 
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
@@ -39,7 +44,7 @@
 	<!-- Header -->
 	<header id="home">
 		<!-- Background Image -->
-		<div class="bg-img" style="background-image: url('./img/background1.jpg');">
+		<div class="bg-img" style="background-image: url('./imgs/1.jpg');">
 			<div class="overlay"></div>
 		</div>
 		<!-- /Background Image -->
@@ -51,9 +56,9 @@
 				<div class="navbar-header">
 					<!-- Logo -->
 					<div class="navbar-brand">
-						<a href="index.html">
-							<img class="logo" src="img/logo.png" alt="logo">
-							<img class="logo-alt" src="img/logo-alt.png" alt="logo">
+						<a href="index.html"> <img class="logo" src="imgs/favicon.png"
+							alt="logo"> <img class="logo-alt" src="imgs/favicon.png"
+							alt="logo">
 						</a>
 					</div>
 					<!-- /Logo -->
@@ -76,9 +81,38 @@
 					<li class="has-dropdown"><a href="#blog">Blog</a>
 						<ul class="dropdown">
 							<li><a href="blog-single.html">blog post</a></li>
-						</ul>
-					</li>
+						</ul></li>
 					<li><a href="#contact">Contact</a></li>
+					<li class="has-dropdown"><a>Blog</a>
+						<ul class="dropdown">
+
+							<li>
+								<form class="navbar-form form" role="form" action="#"
+									th:action="@{/loginCheck}" th:object="${credencialUsuario}"
+									method="POST">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon"><i
+												class="glyphicon glyphicon-user"></i></span> <input id="emailInput"
+												placeholder="usuario" class="form-control"
+												th:field="*{usuario}" type="text">
+										</div>
+										<br /> <br />
+										<div class="input-group">
+											<span class="input-group-addon"><i
+												class="glyphicon glyphicon-lock"></i></span> <input
+												id="passwordInput" placeholder="password"
+												class="form-control" th:field="*{password}" type="password">
+										</div>
+										<br /> <br />
+									</div>
+									<div class="form-group">
+										<!--BUTTON-->
+										<button type="submit" class="btn btn-primary form-control">Login</button>
+									</div>
+								</form>
+							</li>
+						</ul></li>
 				</ul>
 				<!-- /Main navigation -->
 
@@ -95,8 +129,9 @@
 					<div class="col-md-10 col-md-offset-1">
 						<div class="home-content">
 							<h1 class="white-text">We Are Creative Agency</h1>
-							<p class="white-text">Morbi mattis felis at nunc. Duis viverra diam non justo. In nisl. Nullam sit amet magna in magna gravida vehicula. Mauris tincidunt sem sed arcu. Nunc posuere.
-							</p>
+							<p class="white-text">Morbi mattis felis at nunc. Duis
+								viverra diam non justo. In nisl. Nullam sit amet magna in magna
+								gravida vehicula. Mauris tincidunt sem sed arcu. Nunc posuere.</p>
 							<button class="white-btn">Get Started!</button>
 							<button class="main-btn">Learn more</button>
 						</div>
@@ -131,7 +166,8 @@
 					<div class="about">
 						<i class="fa fa-cogs"></i>
 						<h3>Fully Customizible</h3>
-						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet.</p>
+						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam
+							semper libero sit amet.</p>
 						<a href="#">Read more</a>
 					</div>
 				</div>
@@ -142,7 +178,8 @@
 					<div class="about">
 						<i class="fa fa-magic"></i>
 						<h3>Awesome Features</h3>
-						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet.</p>
+						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam
+							semper libero sit amet.</p>
 						<a href="#">Read more</a>
 					</div>
 				</div>
@@ -153,7 +190,8 @@
 					<div class="about">
 						<i class="fa fa-mobile"></i>
 						<h3>Fully Responsive</h3>
-						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet.</p>
+						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam
+							semper libero sit amet.</p>
 						<a href="#">Read more</a>
 					</div>
 				</div>
@@ -192,8 +230,9 @@
 						<span>Category</span>
 						<h3>Lorem ipsum dolor</h3>
 						<div class="work-link">
-							<a href="#"><i class="fa fa-external-link"></i></a>
-							<a class="lightbox" href="./img/work1.jpg"><i class="fa fa-search"></i></a>
+							<a href="#"><i class="fa fa-external-link"></i></a> <a
+								class="lightbox" href="./img/work1.jpg"><i
+								class="fa fa-search"></i></a>
 						</div>
 					</div>
 				</div>
@@ -207,8 +246,9 @@
 						<span>Category</span>
 						<h3>Lorem ipsum dolor</h3>
 						<div class="work-link">
-							<a href="#"><i class="fa fa-external-link"></i></a>
-							<a class="lightbox" href="./img/work2.jpg"><i class="fa fa-search"></i></a>
+							<a href="#"><i class="fa fa-external-link"></i></a> <a
+								class="lightbox" href="./img/work2.jpg"><i
+								class="fa fa-search"></i></a>
 						</div>
 					</div>
 				</div>
@@ -222,8 +262,9 @@
 						<span>Category</span>
 						<h3>Lorem ipsum dolor</h3>
 						<div class="work-link">
-							<a href="#"><i class="fa fa-external-link"></i></a>
-							<a class="lightbox" href="./img/work3.jpg"><i class="fa fa-search"></i></a>
+							<a href="#"><i class="fa fa-external-link"></i></a> <a
+								class="lightbox" href="./img/work3.jpg"><i
+								class="fa fa-search"></i></a>
 						</div>
 					</div>
 				</div>
@@ -237,8 +278,9 @@
 						<span>Category</span>
 						<h3>Lorem ipsum dolor</h3>
 						<div class="work-link">
-							<a href="#"><i class="fa fa-external-link"></i></a>
-							<a class="lightbox" href="./img/work4.jpg"><i class="fa fa-search"></i></a>
+							<a href="#"><i class="fa fa-external-link"></i></a> <a
+								class="lightbox" href="./img/work4.jpg"><i
+								class="fa fa-search"></i></a>
 						</div>
 					</div>
 				</div>
@@ -252,8 +294,9 @@
 						<span>Category</span>
 						<h3>Lorem ipsum dolor</h3>
 						<div class="work-link">
-							<a href="#"><i class="fa fa-external-link"></i></a>
-							<a class="lightbox" href="./img/work5.jpg"><i class="fa fa-search"></i></a>
+							<a href="#"><i class="fa fa-external-link"></i></a> <a
+								class="lightbox" href="./img/work5.jpg"><i
+								class="fa fa-search"></i></a>
 						</div>
 					</div>
 				</div>
@@ -267,8 +310,9 @@
 						<span>Category</span>
 						<h3>Lorem ipsum dolor</h3>
 						<div class="work-link">
-							<a href="#"><i class="fa fa-external-link"></i></a>
-							<a class="lightbox" href="./img/work6.jpg"><i class="fa fa-search"></i></a>
+							<a href="#"><i class="fa fa-external-link"></i></a> <a
+								class="lightbox" href="./img/work6.jpg"><i
+								class="fa fa-search"></i></a>
 						</div>
 					</div>
 				</div>
@@ -303,7 +347,8 @@
 					<div class="service">
 						<i class="fa fa-diamond"></i>
 						<h3>App Development</h3>
-						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
+						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam
+							semper libero.</p>
 					</div>
 				</div>
 				<!-- /service -->
@@ -313,7 +358,8 @@
 					<div class="service">
 						<i class="fa fa-rocket"></i>
 						<h3>Graphic Design</h3>
-						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
+						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam
+							semper libero.</p>
 					</div>
 				</div>
 				<!-- /service -->
@@ -323,7 +369,8 @@
 					<div class="service">
 						<i class="fa fa-cogs"></i>
 						<h3>Creative Idea</h3>
-						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
+						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam
+							semper libero.</p>
 					</div>
 				</div>
 				<!-- /service -->
@@ -333,7 +380,8 @@
 					<div class="service">
 						<i class="fa fa-diamond"></i>
 						<h3>Marketing</h3>
-						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
+						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam
+							semper libero.</p>
 					</div>
 				</div>
 				<!-- /service -->
@@ -343,7 +391,8 @@
 					<div class="service">
 						<i class="fa fa-pencil"></i>
 						<h3>Awesome Support</h3>
-						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
+						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam
+							semper libero.</p>
 					</div>
 				</div>
 				<!-- /service -->
@@ -353,7 +402,8 @@
 					<div class="service">
 						<i class="fa fa-flask"></i>
 						<h3>Brand Design</h3>
-						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero.</p>
+						<p>Maecenas tempus tellus eget condimentum rhoncus sem quam
+							semper libero.</p>
 					</div>
 				</div>
 				<!-- /service -->
@@ -382,7 +432,9 @@
 					<div class="section-header">
 						<h2 class="title">Why Choose Us</h2>
 					</div>
-					<p>Molestie at elementum eu facilisis sed odio. Scelerisque in dictum non consectetur a erat. Aliquam id diam maecenas ultricies mi eget mauris. Ultrices sagittis orci a scelerisque purus.</p>
+					<p>Molestie at elementum eu facilisis sed odio. Scelerisque in
+						dictum non consectetur a erat. Aliquam id diam maecenas ultricies
+						mi eget mauris. Ultrices sagittis orci a scelerisque purus.</p>
 					<div class="feature">
 						<i class="fa fa-check"></i>
 						<p>Quis varius quam quisque id diam vel quam elementum.</p>
@@ -405,10 +457,10 @@
 				<!-- About slider -->
 				<div class="col-md-6">
 					<div id="about-slider" class="owl-carousel owl-theme">
-						<img class="img-responsive" src="./img/about1.jpg" alt="">
-						<img class="img-responsive" src="./img/about2.jpg" alt="">
-						<img class="img-responsive" src="./img/about1.jpg" alt="">
-						<img class="img-responsive" src="./img/about2.jpg" alt="">
+						<img class="img-responsive" src="./img/about1.jpg" alt=""> <img
+							class="img-responsive" src="./img/about2.jpg" alt=""> <img
+							class="img-responsive" src="./img/about1.jpg" alt=""> <img
+							class="img-responsive" src="./img/about2.jpg" alt="">
 					</div>
 				</div>
 				<!-- /About slider -->
@@ -427,7 +479,8 @@
 	<div id="numbers" class="section sm-padding">
 
 		<!-- Background Image -->
-		<div class="bg-img" style="background-image: url('./img/background2.jpg');">
+		<div class="bg-img"
+			style="background-image: url('./img/background2.jpg');">
 			<div class="overlay"></div>
 		</div>
 		<!-- /Background Image -->
@@ -442,7 +495,9 @@
 				<div class="col-sm-3 col-xs-6">
 					<div class="number">
 						<i class="fa fa-users"></i>
-						<h3 class="white-text"><span class="counter">451</span></h3>
+						<h3 class="white-text">
+							<span class="counter">451</span>
+						</h3>
 						<span class="white-text">Happy clients</span>
 					</div>
 				</div>
@@ -452,7 +507,9 @@
 				<div class="col-sm-3 col-xs-6">
 					<div class="number">
 						<i class="fa fa-trophy"></i>
-						<h3 class="white-text"><span class="counter">12</span></h3>
+						<h3 class="white-text">
+							<span class="counter">12</span>
+						</h3>
 						<span class="white-text">Awards won</span>
 					</div>
 				</div>
@@ -462,7 +519,9 @@
 				<div class="col-sm-3 col-xs-6">
 					<div class="number">
 						<i class="fa fa-coffee"></i>
-						<h3 class="white-text"><span class="counter">154</span>K</h3>
+						<h3 class="white-text">
+							<span class="counter">154</span>K
+						</h3>
 						<span class="white-text">Cups of Coffee</span>
 					</div>
 				</div>
@@ -472,7 +531,9 @@
 				<div class="col-sm-3 col-xs-6">
 					<div class="number">
 						<i class="fa fa-file"></i>
-						<h3 class="white-text"><span class="counter">45</span></h3>
+						<h3 class="white-text">
+							<span class="counter">45</span>
+						</h3>
 						<span class="white-text">Projects completed</span>
 					</div>
 				</div>
@@ -508,7 +569,9 @@
 						<div class="price-head">
 							<span class="price-title">Basic plan</span>
 							<div class="price">
-								<h3>$9<span class="duration">/ month</span></h3>
+								<h3>
+									$9<span class="duration">/ month</span>
+								</h3>
 							</div>
 						</div>
 						<ul class="price-content">
@@ -535,7 +598,9 @@
 						<div class="price-head">
 							<span class="price-title">Silver plan</span>
 							<div class="price">
-								<h3>$19<span class="duration">/ month</span></h3>
+								<h3>
+									$19<span class="duration">/ month</span>
+								</h3>
 							</div>
 						</div>
 						<ul class="price-content">
@@ -562,7 +627,9 @@
 						<div class="price-head">
 							<span class="price-title">Gold plan</span>
 							<div class="price">
-								<h3>$39<span class="duration">/ month</span></h3>
+								<h3>
+									$39<span class="duration">/ month</span>
+								</h3>
 							</div>
 						</div>
 						<ul class="price-content">
@@ -597,7 +664,8 @@
 	<div id="testimonial" class="section md-padding">
 
 		<!-- Background Image -->
-		<div class="bg-img" style="background-image: url('./img/background3.jpg');">
+		<div class="bg-img"
+			style="background-image: url('./img/background3.jpg');">
 			<div class="overlay"></div>
 		</div>
 		<!-- /Background Image -->
@@ -619,7 +687,9 @@
 								<h3 class="white-text">John Doe</h3>
 								<span>Web Designer</span>
 							</div>
-							<p class="white-text">Molestie at elementum eu facilisis sed odio. Scelerisque in dictum non consectetur a erat. Aliquam id diam maecenas ultricies mi eget mauris.</p>
+							<p class="white-text">Molestie at elementum eu facilisis sed
+								odio. Scelerisque in dictum non consectetur a erat. Aliquam id
+								diam maecenas ultricies mi eget mauris.</p>
 						</div>
 						<!-- /testimonial -->
 
@@ -630,7 +700,9 @@
 								<h3 class="white-text">John Doe</h3>
 								<span>Web Designer</span>
 							</div>
-							<p class="white-text">Molestie at elementum eu facilisis sed odio. Scelerisque in dictum non consectetur a erat. Aliquam id diam maecenas ultricies mi eget mauris.</p>
+							<p class="white-text">Molestie at elementum eu facilisis sed
+								odio. Scelerisque in dictum non consectetur a erat. Aliquam id
+								diam maecenas ultricies mi eget mauris.</p>
 						</div>
 						<!-- /testimonial -->
 
@@ -669,9 +741,9 @@
 							<img class="img-responsive" src="./img/team1.jpg" alt="">
 							<div class="overlay">
 								<div class="team-social">
-									<a href="#"><i class="fa fa-facebook"></i></a>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
+										class="fa fa-google-plus"></i></a> <a href="#"><i
+										class="fa fa-twitter"></i></a>
 								</div>
 							</div>
 						</div>
@@ -690,9 +762,9 @@
 							<img class="img-responsive" src="./img/team2.jpg" alt="">
 							<div class="overlay">
 								<div class="team-social">
-									<a href="#"><i class="fa fa-facebook"></i></a>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
+										class="fa fa-google-plus"></i></a> <a href="#"><i
+										class="fa fa-twitter"></i></a>
 								</div>
 							</div>
 						</div>
@@ -711,9 +783,9 @@
 							<img class="img-responsive" src="./img/team3.jpg" alt="">
 							<div class="overlay">
 								<div class="team-social">
-									<a href="#"><i class="fa fa-facebook"></i></a>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
+										class="fa fa-google-plus"></i></a> <a href="#"><i
+										class="fa fa-twitter"></i></a>
 								</div>
 							</div>
 						</div>
@@ -762,7 +834,8 @@
 								<li><i class="fa fa-comments"></i>57</li>
 							</ul>
 							<h3>Molestie at elementum eu facilisis sed odio</h3>
-							<p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
+							<p>Nec feugiat nisl pretium fusce id velit ut tortor pretium.
+								Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
 							<a href="blog-single.html">Read more</a>
 						</div>
 					</div>
@@ -782,7 +855,8 @@
 								<li><i class="fa fa-comments"></i>57</li>
 							</ul>
 							<h3>Molestie at elementum eu facilisis sed odio</h3>
-							<p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
+							<p>Nec feugiat nisl pretium fusce id velit ut tortor pretium.
+								Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
 							<a href="blog-single.html">Read more</a>
 						</div>
 					</div>
@@ -793,7 +867,7 @@
 				<div class="col-md-4">
 					<div class="blog">
 						<div class="blog-img">
-							<img class="img-responsive"  src="./img/blog3.jpg" alt="">
+							<img class="img-responsive" src="./img/blog3.jpg" alt="">
 						</div>
 						<div class="blog-content">
 							<ul class="blog-meta">
@@ -802,7 +876,8 @@
 								<li><i class="fa fa-comments"></i>57</li>
 							</ul>
 							<h3>Molestie at elementum eu facilisis sed odio</h3>
-							<p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
+							<p>Nec feugiat nisl pretium fusce id velit ut tortor pretium.
+								Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
 							<a href="blog-single.html">Read more</a>
 						</div>
 					</div>
@@ -866,9 +941,9 @@
 				<!-- contact form -->
 				<div class="col-md-8 col-md-offset-2">
 					<form class="contact-form">
-						<input type="text" class="input" placeholder="Name">
-						<input type="email" class="input" placeholder="Email">
-						<input type="text" class="input" placeholder="Subject">
+						<input type="text" class="input" placeholder="Name"> <input
+							type="email" class="input" placeholder="Email"> <input
+							type="text" class="input" placeholder="Subject">
 						<textarea class="input" placeholder="Message"></textarea>
 						<button class="main-btn">Send message</button>
 					</form>
@@ -915,7 +990,10 @@
 
 					<!-- footer copyright -->
 					<div class="footer-copyright">
-						<p>Copyright © 2017. All Rights Reserved. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+						<p>
+							Copyright © 2017. All Rights Reserved. Designed by <a
+								href="https://colorlib.com" target="_blank">Colorlib</a>
+						</p>
 					</div>
 					<!-- /footer copyright -->
 
@@ -937,10 +1015,7 @@
 	<!-- Preloader -->
 	<div id="preloader">
 		<div class="preloader">
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
+			<span></span> <span></span> <span></span> <span></span>
 		</div>
 	</div>
 	<!-- /Preloader -->
