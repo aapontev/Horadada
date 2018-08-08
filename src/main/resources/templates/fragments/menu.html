@@ -6,22 +6,11 @@
 </head>
 <body>
 	<div th:fragment="menu">
-		<div class="logo-top">
-			<div class="container">
-				<div class="logo-top-left">
-					<img th:src="@{/imgs/favicon.png}" class="img-responsive" />
-				</div>
-				<div class="logo logo-top-lft">
-					<a th:href="@{/index}"><i class="glyphicon glyphicon-road"
-						aria-hidden="true"></i>Transportes Horadada<span></span></a>
-				</div>
-				<div class="logo-top-right">
-					<p style="color: #ffff">
-						<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Numero
-						de Contacto 012533874
-					</p>
-				</div>
-			</div>
+		<div class="container">
+			<img th:src="@{/imgs/favicon.png}" class="img-responsive" /> <i th:href="@{/index}" class="glyphicon glyphicon-road"
+				aria-hidden="true">Transportes Horadada</i>
+			<i class="glyphicon glyphicon-earphone" aria-hidden="true">Numero
+				de Contacto 012533874</i>
 		</div>
 		<nav class="navbar navbar-default">
 			<div class="container">
@@ -39,11 +28,9 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="/" th:href="@{/consulta}">Consultar<span></span></a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button"
-							aria-expanded="false">Documentacion<span class="caret"></span></a>
-							<ul class="dropdown-menu">
+						<li><a href="/" th:href="@{/consulta}">Consultar</a></li>
+						<li class="has-dropdown"><a href="#">Documentacion</a>
+							<ul class="dropdown">
 								<li><a href="#" th:href="@{/solicitud}">Solicitud</a></li>
 								<li><a href="#" th:href="@{/cotizacion}">Cotización</a></li>
 								<li><a href="#" th:href="@{/ordencompra}">Orden De
@@ -53,36 +40,29 @@
 								<li><a href="#" th:href="@{/documentacion/valorizacion}">Valorizacion</a></li>
 							</ul></li>
 						<li><a href="/" th:href="@{/monitoreo/}">Monitoreo<span></span></a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button"
-							aria-expanded="false">Mantenimiento<span class="caret"></span></a>
-							<ul class="dropdown-menu">
+						<li class="has-dropdown"><a href="#">Mantenimiento</a>
+							<ul class="dropdown">
 								<li><a href="#" th:href="@{/cliente}">Cliente</a></li>
 								<li><a href="#" th:href="@{/contacto}">Contacto</a></li>
 								<li><a href="#" th:href="@{/trabajador}">Trabajador</a></li>
 								<li><a href="#" th:href="@{/transportista}">Transportista</a></li>
 								<li><a href="#" th:href="@{/persona}">Persona</a></li>
 							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" 
-							aria-expanded="false">Utilitarios<span class="caret"></span></a>
-							<ul class="dropdown-menu">
+						<li class="has-dropdown"><a href="#">Utilitarios</a>
+							<ul class="dropdown">
 								<li><a href="#" th:href="@{/direccion}">Direccion</a></li>
 								<li><a href="#" th:href="@{/servicios}">Servicios</a></li>
 								<li><a href="#" th:href="@{/tablamaestra}">Tablamaestra</a></li>
 								<li><a href="#" th:href="@{/telefono}">Telefono</a></li>
 								<li><a href="#" th:href="@{/vehiculo}">Vehiculo</a></li>
 							</ul></li>
-						<li><a href="/" th:href="@{/reporte}">Reportes<span></span></a></li>
-						<div class="logo-top-right">
-							<li>Bienvenido: <a href="#" th:href="@{/login?logout}">Cerrar
-									Sesion </a></li>
-						</div>
+						<li><a href="/" th:href="@{/reporte}">Reportes</a></li>
+						<li>Bienvenido: <a href="#" th:href="@{/login?logout}">Cerrar
+								Sesion </a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
-
 	</div>
 </body>
 </html>
