@@ -82,7 +82,6 @@ public class VehiculoController {
 		return "redirect:/vehiculo";
 	}
 
-	@SuppressWarnings("restriction")
 	public List<MarcaAuto> obtieneMarca() {
 		List<MarcaAuto> marcas = new ArrayList<MarcaAuto>();
 		try {
@@ -116,7 +115,6 @@ public class VehiculoController {
 		return marcas;
 	}
 
-	@SuppressWarnings("restriction")
 	public List<ModeloAuto> obtieneModelo(int ids) {
 		List<ModeloAuto> modelos = new ArrayList<ModeloAuto>();
 		try {
