@@ -6,12 +6,10 @@
 </head>
 <body>
 	<div th:fragment="menu">
-		<div class="container">
-			<img th:src="@{/imgs/favicon.png}" class="img-responsive" /> <i
-				th:href="@{/index}" class="glyphicon glyphicon-road"
-				aria-hidden="true">Transportes Horadada</i> <i
-				class="glyphicon glyphicon-earphone" aria-hidden="true">Numero
-				de Contacto 012533874</i>
+		<div class="container" align="center">
+			<img th:src="@{/imgs/favicon.png}" class="pull-left" /> 
+			<h3><i th:href="@{/index}" class="glyphicon glyphicon-road" aria-hidden="true"> Transportes Horadada</i></h3>
+			<h4><i class="glyphicon glyphicon-earphone pull-right" aria-hidden="true">Numero de Contacto 012533874</i></h4>
 		</div>
 		<nav class="navbar navbar-default">
 			<div class="container">
