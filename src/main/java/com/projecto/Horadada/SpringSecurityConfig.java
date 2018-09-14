@@ -11,19 +11,17 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
-
-	
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{	
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/**","/css/**","/js/**","/imgs/**","/fonts/**").permitAll()
-		.antMatchers("/consulta/**").hasAnyRole("USER")
+		http.authorizeRequests().antMatchers("/","/index","/css/**","/js/**","/imgs/**","/fonts/**").permitAll()
+		.antMatchers("/index").hasAnyRole("USER")
+		.antMatchers("/consulta/**").hasAnyRole("ADMIN")
 		.anyRequest().authenticated()
 		.and()
-		.formLogin()
-		.loginPage("/login")
-		.permitAll()
+			.formLogin().loginPage("/principal")
+			.permitAll()
 		.and()
 		.logout().permitAll();
 	}
