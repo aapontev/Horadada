@@ -12,10 +12,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class LoginController {
 	@GetMapping("/")
 	public String redirctLogin() {
-		return "redirect:/principal";
+		return "redirect:/login";
 	}
 
-	@GetMapping("/principal")
+	@GetMapping("/login")
 	public String login(@RequestParam(value="error", required=false) String error,
 			@RequestParam(value="logout", required = false) String logout,
 			Model model, Principal principal, RedirectAttributes flash) {
@@ -33,6 +33,6 @@ public class LoginController {
 			model.addAttribute("success", "Ha cerrado sesión con éxito!");
 		}
 		
-		return "pageHoradada";
+		return "login";
 	}
 }

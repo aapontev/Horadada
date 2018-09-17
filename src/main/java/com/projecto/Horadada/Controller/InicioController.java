@@ -14,7 +14,7 @@ import com.projecto.Horadada.Model.Usuarios;
 public class InicioController {
 
 
-	@GetMapping("/page")
+	@GetMapping("/logint")
 	public String showLoginForm(Model model, Principal principal, @RequestParam(name = "error", required = false) String error,
 			@RequestParam(name = "logout", required = false) String logout, RedirectAttributes flas) {
 		
@@ -27,7 +27,7 @@ public class InicioController {
 			model.addAttribute("error", "tiene problemas de autentificacion por favor vuelva a intentarlo");
 		}
 			
-		return "pageHoradada";
+		return "login";
 	}
 
 	@GetMapping("/index")

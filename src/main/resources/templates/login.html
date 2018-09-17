@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Horadada</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="/imgs/favicon.ico" rel="icon">
+</head>
+
+<body class="text-center">
+	<form class="form-signin" th:action="@{/principal}" method="POST">
+		<img class="mb-4" src="/imgs/Horadada.jpg" alt="" width="122" height="122">
+		<h1 class="h3 mb-3 font-weight-normal">Inicie sesión</h1>
+		<label for="inputEmail" class="sr-only">Nombre de usuario</label> 
+		<input type="text" id="username" name="username" class="form-control" placeholder="Nombre de usuario" required autofocus> 
+		<label for="inputPassword" class="sr-only">Contraseña</label> 
+		<input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
+		<div class="checkbox mb-3">
+			<label> 
+				<input type="checkbox" value="remember-me">Recordar
+			</label>
+		</div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Ingrese</button>
+		<p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+	</form>
+
+
+</body>
+</html>

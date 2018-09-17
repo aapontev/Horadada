@@ -6,60 +6,40 @@
 </head>
 <body>
 	<div th:fragment="menu">
-		<div class="container" align="center">
-			<img th:src="@{/imgs/favicon.png}" class="pull-left" /> 
-			<h3><i th:href="@{/index}" class="glyphicon glyphicon-road" aria-hidden="true"> Transportes Horadada</i></h3>
-			<h4><i class="glyphicon glyphicon-earphone pull-right" aria-hidden="true">Numero de Contacto 012533874</i></h4>
-		</div>
-		<nav class="navbar navbar-default">
-			<div class="container">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#navbar-collapse"
-						aria-expanded="false" aria-controls="navbar-collapse">
-						<span class="sr-only">[Toggle navigation]</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span>
-					</button>
-				</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="navbar-collapse">
-					<ul class="main-nav nav navbar-nav navbar-right">
-						<li><a href="#" th:href="@{/consulta}">Consultar</a></li>
-						<li class="has-dropdown"><a href="#">Documentacion</a>
-							<ul class="dropdown">
-								<li><a href="#" th:href="@{/solicitud}">Solicitud</a></li>
-								<li><a href="#" th:href="@{/cotizacion}">Cotización</a></li>
-								<li><a href="#" th:href="@{/ordencompra}">Orden De
-										Compra</a></li>
-								<li><a href="#" th:href="@{/despacho}">Despacho</a></li>
-								<li><a href="#" th:href="@{/factura}">Factura</a></li>
-								<li><a href="#" th:href="@{/documentacion/valorizacion}">Valorizacion</a></li>
-							</ul></li>
-						<li><a href="#" th:href="@{/monitoreo/}">Monitoreo<span></span></a></li>
-						<li class="has-dropdown"><a href="#">Mantenimiento</a>
-							<ul class="dropdown">
-								<li><a href="#" th:href="@{/cliente}">Cliente</a></li>
-								<li><a href="#" th:href="@{/contacto}">Contacto</a></li>
-								<li><a href="#" th:href="@{/trabajador}">Trabajador</a></li>
-								<li><a href="#" th:href="@{/transportista}">Transportista</a></li>
-								<li><a href="#" th:href="@{/persona}">Persona</a></li>
-							</ul></li>
-						<li class="has-dropdown"><a href="#">Utilitarios</a>
-							<ul class="dropdown">
-								<li><a href="#" th:href="@{/direccion}">Direccion</a></li>
-								<li><a href="#" th:href="@{/servicios}">Servicios</a></li>
-								<li><a href="#" th:href="@{/tablamaestra}">Tablamaestra</a></li>
-								<li><a href="#" th:href="@{/telefono}">Telefono</a></li>
-								<li><a href="#" th:href="@{/vehiculo}">Vehiculo</a></li>
-							</ul></li>
-						<li><a href="/" th:href="@{/reporte}">Reportes</a></li>
-						<li class="pull-right">Bienvenido: <a href="#"
-							th:href="@{/login?logout}">Cerrar Sesion </a></li>
-					</ul>
-				</div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">Navbar</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" href="#">Home
+							<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Dropdown </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Action</a> <a
+								class="dropdown-item" href="#">Another action</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</div></li>
+					<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
+					</li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search"
+						placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form>
 			</div>
 		</nav>
 	</div>

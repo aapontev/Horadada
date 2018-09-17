@@ -20,7 +20,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/consulta/**").hasAnyRole("ADMIN")
 		.anyRequest().authenticated()
 		.and()
-			.formLogin().loginPage("/principal")
+			.formLogin().loginPage("/login")
 			.permitAll()
 		.and()
 		.logout().permitAll();
