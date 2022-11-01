@@ -9,7 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.projecto.Horadada.Entity.Tablamaestra;
+import com.projecto.Horadada.Entity.TablaMaestra;
+import com.projecto.Horadada.Util.Constantes;
 import com.projecto.Horadada.service.UtilitarioService;
 
 @Controller
@@ -23,7 +24,7 @@ public class ReporteController {
 	@GetMapping("")
 	public String Reportes(Model model) {
 		
-		List<Tablamaestra> documentos = utilitarioservice.findByIdtablamaestra("Hora009");
+		List<TablaMaestra> documentos = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_DOCUMENTOS);
 		model.addAttribute("documentos", documentos);
 		return "reporte/reportes";
 	}

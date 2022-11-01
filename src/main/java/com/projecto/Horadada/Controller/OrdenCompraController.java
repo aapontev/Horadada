@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projecto.Horadada.Entity.Cotizacion;
-import com.projecto.Horadada.Entity.Ordencompra;
-import com.projecto.Horadada.Entity.Tablamaestra;
+import com.projecto.Horadada.Entity.OrdenCompra;
+import com.projecto.Horadada.Entity.TablaMaestra;
+import com.projecto.Horadada.Util.Constantes;
 import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.CotizacionService;
 import com.projecto.Horadada.service.OrdenCompraService;
@@ -42,8 +43,8 @@ public class OrdenCompraController {
 	@GetMapping("")
 	public String OrdenCompra(@RequestParam(name = "page", defaultValue = "0") int page,Model model) {
 		Pageable pageRequest = PageRequest.of(page, 5);
-		Page<Ordencompra> ordenes = ordencompraservice.findAll(pageRequest);
-		PageRender<Ordencompra> pagerender = new PageRender<Ordencompra>("/ordencompra",ordenes);
+		Page<OrdenCompra> ordenes = ordencompraservice.findAll(pageRequest);
+		PageRender<OrdenCompra> pagerender = new PageRender<OrdenCompra>("/ordencompra",ordenes);
 		model.addAttribute("ordenes", ordenes);
 		model.addAttribute("page", pagerender);
 		return "documentacion/ordenCompraDoc";
@@ -51,9 +52,9 @@ public class OrdenCompraController {
 	
 	@GetMapping("/ordencompraform")
 	public String redirectOrdenCompraForm(@RequestParam(name = "id", required = false) int id, Model model) {
-		List<Tablamaestra> moneda = utilitarioservice.findByIdtablamaestra("Hora002");
+		List<TablaMaestra> moneda = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_MONEDA);
 		List<Cotizacion> cotizacion = cotizacionservice.findByaprobado(0);
-		Ordencompra ordencompra = new Ordencompra();
+		OrdenCompra ordencompra = new OrdenCompra();
 		int resu = 0;
 		if (id != 0) {
 			ordencompra = ordencompraservice.findbyid(id);
@@ -67,11 +68,11 @@ public class OrdenCompraController {
 	}
 	
 	@PostMapping("/addordencompra")
-	public String addOrdencompra(@ModelAttribute(name = "ordencompra") Ordencompra ordencompra, Model model) {
+	public String addOrdencompra(@ModelAttribute(name = "ordencompra") OrdenCompra ordencompra, Model model) {
 		Cotizacion cotiza = ordencompra.getCotizacion();
-		Cotizacion coti = cotizacionservice.findbyid(cotiza.getIdcotizacion());
+		Cotizacion coti = cotizacionservice.findbyid(cotiza.getIdCotizacion());
 		coti.setAprobado(1);
-		ordencompra.setEstadoordencompra(1);
+		ordencompra.setEstadoOrdenCompra(1);
 		ordencompra.setCotizacion(coti);
 		if (null != ordencompraservice.save(ordencompra)) {
 			model.addAttribute("result", 1);

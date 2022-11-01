@@ -13,33 +13,29 @@ import com.projecto.Horadada.Entity.Persona;
 import com.projecto.Horadada.service.PersonaService;
 
 @Service("personaServiceImp")
-public class PersonaServiceImp implements PersonaService{
-	
+public class PersonaServiceImp implements PersonaService {
+
 	@Autowired
 	@Qualifier("personaDao")
 	private PersonaDao personaDao;
 
 	@Override
 	public List<Persona> findByTipopersona(int id) {
-		
-		List<Persona> tipPer = personaDao.findByTipopersona(id);
+
+		List<Persona> tipPer = personaDao.findByTipoPersona(id);
 		return tipPer;
 	}
 
 	@Override
 	public Persona findByidPersona(int id) {
-		Persona per = personaDao.findPersonaByidpersona(id);
+		Persona per = personaDao.findPersonaByidPersona(id);
 		return per;
 	}
 
 	@Override
 	public Persona save(Persona persona) {
-		try {
-			Persona per = personaDao.save(persona);
-			return per;
-		} catch (Exception e) {
-			return null;
-		}
+		Persona per = personaDao.save(persona);
+		return per;
 	}
 
 	@Override
@@ -51,25 +47,21 @@ public class PersonaServiceImp implements PersonaService{
 	@Override
 	public void delete(int id) {
 		personaDao.deleteById(id);
-		
+
 	}
 
 	@Override
-	public void cambiaPersona(int v_tipopersona,int v_idpersona) {
-		personaDao.cambiaPersona(v_tipopersona, v_idpersona);
-				
-	}
+	public void cambiaPersona(int tipopersona, int idpersona) {
+		personaDao.cambiaPersona(tipopersona, idpersona);
 
-	/*@Override
-	public Persona updatetipopersona(int tipo, int id) {
-		Persona persona = personaDao.updatetipopersona(tipo, id);
-		return persona;
-	}*/
+	}
 
 	@Override
 	public Page<Persona> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return personaDao.findAll(pageable);
 	}
+
+	
 
 }

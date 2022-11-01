@@ -8,6 +8,6 @@ import com.projecto.Horadada.Entity.Direccion;
 @Repository("direcciondao")
 public interface DireccionDao extends PagingAndSortingRepository<Direccion, Serializable> {
 
-	public abstract Direccion findByIddireccion(int id);
+	public abstract Direccion findByIdDireccion(int id);
 
 }

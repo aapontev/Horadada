@@ -11,69 +11,75 @@
 <body>
 
 	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
-	<div class="container">
+	<div class="jumbotron">
 
-		<div class="col-md-4">
-			<div class="well well-sm">
-				<form class="form-horizontal" action="#" th:action="@{/direccion/addireccion}"
-			th:object="${direccion}" method="post">
-			<input type="hidden" th:field="*{iddireccion}" />
-					<fieldset>
-						<legend class="text-center header">DATOS DE DESPACHO</legend>
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-file"></i></span> <input type="text" th:field="*{nombredireccion}"
-								placeholder="Nombre de direccion" class="nav-tabs form-control">
-						</div>
-						<br />
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-file"></i></span> <input type="text" th:field="*{calle}"
-								placeholder="Direccion" class="nav-tabs form-control" id="calle">
-						</div>
-						<br />
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-file"></i></span> <input id="longi"  th:field="*{longitud}"
-								type="text" placeholder="Longitud"
-								class="nav-tabs form-control">
-						</div>
-						<br />
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="glyphicon glyphicon-export"></i></span> <input id="lati" th:field="*{latitud}"
-								 type="text" placeholder="Latitud"
-								class="nav-tabs form-control">
-						</div>
-						<br />
-						<button class="btn btn-lg btn-primary btn-block" type="submit">
-							<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-							Guardar
-						</button>
+		<div class="container">
+			<br />
 
-					</fieldset>
-				</form>
+			<div class="col-md-4">
+				<div class="well well-sm">
+					<form class="form-horizontal" action="#"
+						th:action="@{/direccion/addireccion}" th:object="${direccion}"
+						method="post">
+						<input type="hidden" th:field="*{idDireccion}" />
+						<fieldset>
+							<legend class="text-center header">DATOS DE DESPACHO</legend>
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="glyphicon glyphicon-file"></i></span> <input type="text"
+									th:field="*{nombreDireccion}" placeholder="Nombre de direccion"
+									maxlength="20" class="nav-tabs form-control">
+							</div>
+							<br />
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="glyphicon glyphicon-file"></i></span> <input type="text"
+									th:field="*{calle}" placeholder="Direccion"
+									class="nav-tabs form-control" id="calle">
+							</div>
+							<br />
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="glyphicon glyphicon-file"></i></span> <input id="longi"
+									th:field="*{longitud}" type="text" placeholder="Longitud"
+									class="nav-tabs form-control">
+							</div>
+							<br />
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="glyphicon glyphicon-export"></i></span> <input id="lati"
+									th:field="*{latitud}" type="text" placeholder="Latitud"
+									class="nav-tabs form-control">
+							</div>
+							<br />
+							<button class="btn btn-lg btn-primary btn-block" type="submit">
+								<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+								Guardar
+							</button>
+
+						</fieldset>
+					</form>
+				</div>
 			</div>
-		</div>
-		<div class="mapa">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8">
-						<div class="well well-sm">
+			<div class="mapa">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8">
+							<div class="well well-sm">
 								<div id="mapa"></div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<div class="footer">
+				<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+			</div>
+			<script th:replace="crearEditar/js/javascript :: mapa"></script>
+			<script async defer
+				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_kHJujF0ush4SjIUYJooHtj9FrFCiSmc&callback=initMap"></script>
 		</div>
 	</div>
-
-	<div class="footer">
-		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
-	</div>
-	<script th:replace="crearEditar/js/javascript :: mapa"></script>
-	<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_kHJujF0ush4SjIUYJooHtj9FrFCiSmc&callback=initMap"></script>
 
 </body>
 </html>

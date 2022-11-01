@@ -25,7 +25,7 @@ public class DespachoServiceImp implements DespachoService{
 	}
 	@Override
 	public Despacho findByiddespacho(int id) {
-		Despacho despacho = despachodao.findByiddespacho(id);
+		Despacho despacho = despachodao.findByidDespacho(id);
 		return despacho;
 	}
 	@Override

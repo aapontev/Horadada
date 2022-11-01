@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+<head>
 
+<title>Horadada</title>
 
-        <title th:text="#{IndexTitle}">Employees System</title>
+<title th:text="#{IndexTitle}">Employees System</title>
 
-<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+<th:block th:include="fragments/header :: head"></th:block>
 </head>
-<body>
-	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+</head>
 
-	<div class="container">
-		<div class="bgc">
-			<div align="center">
-				<img class="img-responsive" th:src="@{/imgs/Horadada.jpg}" />
-
-			</div>
+<body class="text-center">
+	<form class="form-signin" th:action="@{/loginCheck}"
+		th:object="${credencialUsuario}" action="#" method="POST">
+		<img class="mb-4" src="/imgs/Horadada.jpg" alt="" width="72"
+			height="72">
+		<div>
+			<label th:if="${error}" style="color: red">ingrese usuario y
+				contraseña correctas</label> <label th:if="${logout}" style="color: blue">Cerró
+				sesión</label>
 		</div>
-	</div>
-	<br />
+		<h1 class="h3 mb-3 font-weight-normal">
+			<b>INICIE SESIÓN</b>
+		</h1>
+		<label for="inputEmail" class="sr-only">Email address</label> <input
+			type="text" id="username" name="username" th:field="*{usuario}"
+			class="form-control" placeholder="Usuario" required> <label
+			for="inputPassword" class="sr-only">Password</label> <input
+			type="password" id="password" name="password" class="form-control"
+			th:field="*{password}" placeholder="Contraseña" required>
 
-	<div class="footer">
-		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
-	</div>
-
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar
+		</button>
+		<p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+	</form>
 </body>
 </html>

@@ -8,15 +8,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.projecto.Horadada.Entity.Tablamaestra;
+import com.projecto.Horadada.Entity.TablaMaestra;
 
 @Repository("tablaMaestraDao")
-public interface TablaMaestraDao extends CrudRepository<Tablamaestra, Serializable>{
+public interface TablaMaestraDao extends CrudRepository<TablaMaestra, Serializable>{
 
 	
 	@Query(value="select  distinct t.idtablamaestra from tablamaestra t order by t.idtablamaestra asc" ,nativeQuery=true)
-	public abstract List<String> gettablamaestra();
+	public abstract List<String> gettablaMaestra();
 	
-	public abstract List<Tablamaestra> findByidtablamaestra(String idtabla);
+	public abstract List<TablaMaestra> findByidTablaMaestra(String idtabla);
+	
+
+	public abstract TablaMaestra findByidTablaMaestraAndClave1(String idtabla, String clave1);
 
 }

@@ -23,24 +23,21 @@ public class LoginController {
 		model.addAttribute("error", error);
 		model.addAttribute("logout", logout);
 		model.addAttribute("credencialUsuario", new Usuarios());
-		return "login";
+		return "index";
 	}
 
 	@PostMapping("/loginCheck")
 	public String loginCheck(@ModelAttribute(name = "credencialUsuario") Usuarios usuario) {
 		if (usuario.getUsuario().equals("usu") && usuario.getPassword().equals("con")) {
-			return "index";
+			
+			return "redirect:/principal";
 		}
 		return "redirect:/login?error";
 	}
 
-	@GetMapping("/index")
+	@GetMapping("/principal")
 	public String index() {
-		return "index";
+		return "principal";
 	}
 
-	@GetMapping("/bienvenido")
-	public String principalWeb() {
-		return "pageWeb/bienvenido";
-	}
 }

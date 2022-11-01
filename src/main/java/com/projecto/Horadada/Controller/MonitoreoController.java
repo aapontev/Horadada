@@ -1,7 +1,6 @@
 
 package com.projecto.Horadada.Controller;
 
-import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import com.projecto.Horadada.Entity.Ubicacion;
-import com.projecto.Horadada.Entity.Ubicacionhist;
-import com.projecto.Horadada.Entity.Vehiculo;
 import com.projecto.Horadada.service.PersonaService;
 import com.projecto.Horadada.service.UtilitarioService;
 
@@ -66,12 +63,12 @@ public class MonitoreoController {
 			@RequestParam(name = "hora") String hora, @RequestParam(name = "latitud") String latitud,
 			@RequestParam(name = "direccion") String direccion,@RequestParam(name = "imei") String imei) {
 		//Telefono tel = new Telefono();
-		Vehiculo veh = new Vehiculo();
-		Ubicacionhist uhist = new Ubicacionhist();
-		uhist = null;
-		veh = null;
-		Date date = new Date();
-		Ubicacion ubi = new Ubicacion(105, veh, 1, longitud, latitud, date, hora, direccion, uhist);
+		//Vehiculo veh = new Vehiculo();
+		//UbicacionHist uhist = new UbicacionHist();
+		//uhist = null;
+		//veh = null;
+		//Date date = new Date();
+		Ubicacion ubi = new Ubicacion(); //105, veh, 1, longitud, latitud, date, hora, direccion, uhist
 		utilitarioservice.save(ubi);
 		return new ResponseEntity<Ubicacion>(ubi, HttpStatus.OK);
 	}

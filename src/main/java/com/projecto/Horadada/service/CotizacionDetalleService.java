@@ -1,9 +1,9 @@
 package com.projecto.Horadada.service;
 
-import com.projecto.Horadada.Entity.Cotizaciondetalle;
+import com.projecto.Horadada.Entity.CotizacionDetalle;
 
 public interface CotizacionDetalleService {
 
-	public abstract Cotizaciondetalle findByItem (int item);
-	public abstract Cotizaciondetalle save (Cotizaciondetalle cotizaciondetalle);
+	public abstract CotizacionDetalle findByItem (int item);
+	public abstract CotizacionDetalle save (CotizacionDetalle cotizaciondetalle);
 }

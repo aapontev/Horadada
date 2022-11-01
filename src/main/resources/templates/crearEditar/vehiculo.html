@@ -10,10 +10,13 @@
 <body>
 
 	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
-	<div class="container">
+	<div class="jumbotron">
+
+		<div class="container">
+			<br />
 		<form action="#" th:action="@{/vehiculo/addvehiculo}"
 			th:object="${vehiculo}" method="post">
-			<input type="hidden" th:field="*{idvehiculo}" />
+			<input type="hidden" th:field="*{idVehiculo}" />
 			<div class="panel panel-default">
 				<div class="panel-heading text-center">
 					<b>FORMULARIO VEHICULO</b>
@@ -23,15 +26,15 @@
 						<div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
 							MARCA : <select 
 								class="form-control">
-								<option th:each="veh : ${marcas}" th:value="${veh.id}"
-									th:text="${veh.id}+'. '+${veh.name}"></option>
+								<option th:each="mar : ${marcas}" th:value="${mar.id}"
+									th:text="${mar.id}+'. '+${mar.name}"></option>
 							</select>
 						</div>
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 							MODELO : <select 
 								class="form-control">
-								<option 
-									></option>
+								<option th:each="mod : ${modelo}" th:value="${mod.id}"
+									th:text="${mod.id}+'. '+${mod.name}"></option>
 							</select>
 						</div>
 						<div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
@@ -69,6 +72,7 @@
 				</div>
 			</div>
 		</form>
+	</div>
 	</div>
 	<div class="footer">
 		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->

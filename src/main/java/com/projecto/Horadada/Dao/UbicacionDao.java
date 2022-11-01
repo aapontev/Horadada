@@ -18,7 +18,7 @@ public interface UbicacionDao extends CrudRepository<Ubicacion, Serializable>{
 			"  AND rownum = 1 order by idUbicacion desc" ,nativeQuery=true)
 	public abstract Ubicacion getUbicacion(@Param("iddespacho") int iddespacho,@Param("idtransportista")int idtransportista);
 	
-	@Query(value="select * from ubicacion where idUbicacion =1", nativeQuery = true)
+	@Query(value="select * from ubicacion where id_Ubicacion =1", nativeQuery = true)
 	public abstract Ubicacion getUbicacionOne();
 	
 }

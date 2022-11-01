@@ -13,7 +13,7 @@ import com.projecto.Horadada.Entity.Contacto;
 public interface ContactoDao extends PagingAndSortingRepository<Contacto, Serializable> {
 	
 	@Query(value="select COUNT(*) from contacto where idcliente = :id" ,nativeQuery=true)
-	public abstract int getclienteIdcliente(@Param("id") int id);
+	public abstract int getclienteIdCliente(@Param("id") int id);
 	
-	public abstract Contacto findByidcontacto(int id);
+	public abstract Contacto findByidContacto(int id);
 }

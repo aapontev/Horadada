@@ -4,25 +4,26 @@
 <head lang="en">
 
 <title th:text="#{IndexTitle}">Employees System</title>
-
-<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
+<th:block th:include="fragments/header :: head"></th:block>
 </head>
 
 <body>
-	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+
 	<div class="container">
+		<th:block th:include="fragments/menu :: menu"></th:block>
+		<br />
 		<form action="#" th:action="@{/persona/addpersona}"
 			th:object="${persona}" method="post">
-			<input type="hidden" th:field="*{idpersona}" />
+			<input type="hidden" th:field="*{idPersona}" />
 			<div class="panel panel-default">
-				<div class="panel-heading text-center">
+				<div class="text-center">
 					<b>FORMULARIO PERSONA</b>
 				</div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-lg-2 col-md-3 col-sm-5 col-xs-12">
-							TIPO PERSONA : <br> <select th:field="*{tipopersona}"
-								class="form-control">
+						<div class="col-lg-2">
+							Tipo Persona : <br> <select th:field="*{tipoPersona}"
+								class="custom-select col-sm-12 form-control">
 								<option th:each="tipper : ${tipopersona}"
 									th:value="${tipper.clave1}"
 									th:text="${tipper.clave1}+'. '+${tipper.valor1}"></option>
@@ -30,11 +31,11 @@
 						</div>
 						<div class="col-lg-8 col-md-9 col-sm-10 col-xs-12">
 							Apellidos y Nombres : <input type="text" class="form-control"
-								th:field="*{nombrecompleto}" /> <br />
+								id="nombres" th:field="*{nombreCompleto}" /> <br />
 						</div>
 
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							Tipo documento : <br> <select th:field="*{codtipodocumento}"
+							Tipo documento : <br> <select th:field="*{codTipoDocumento}"
 								class="custom-select col-sm-6 form-control"
 								id="inputGroupSelect03">
 								<option th:each="tipdoc : ${tipodoc}"
@@ -44,7 +45,7 @@
 						</div>
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 							Numero documento : <input type="text" class="form-control"
-								th:field="*{numerodocumento}" /> <br />
+								th:field="*{numeroDocumento}" /> <br />
 						</div>
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 							DIRECCION : <input type="text" class="form-control"
@@ -55,14 +56,14 @@
 							<div class="control-group form-horizontal ">
 								<div class="controls" style="position: relative">
 									<input type="text" class="form-control"
-										th:field="*{fechanacimiento}" id="fechanac" />
+										th:field="*{fechaNacimiento}" id="fechanac" />
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="panel-heading text-center">
-					<b>Contactarlo</b>
+				<div class="text-center">
+					<b>CONTACTARLO</b>
 				</div>
 				<div class="panel-body">
 					<div class="row">
@@ -71,26 +72,23 @@
 								name="numerotelefono" /> <br />
 						</div>
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							Tipo telefono : <br> <select 
-								class="custom-select col-sm-6 form-control"
-								name="tipotelefono">
+							Tipo telefono : <br> <select
+								class="custom-select col-sm-6 form-control" name="tipotelefono">
 								<option th:each="tiptel : ${tipotelefono}"
 									th:value="${tiptel.clave1}"
 									th:text="${tiptel.clave1}+'. '+${tiptel.valor1}"></option>
 							</select> <br /> <br />
 						</div>
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							operador telefono : <br> <select 
-								class="custom-select col-sm-6 form-control"
-								name="operador">
-								<option th:each="ope : ${operador}"
-									th:value="${ope.clave1}"
+							operador telefono : <br> <select
+								class="custom-select col-sm-6 form-control" name="operador">
+								<option th:each="ope : ${operador}" th:value="${ope.clave1}"
 									th:text="${ope.clave1}+'. '+${ope.valor1}"></option>
 							</select> <br /> <br />
 						</div>
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 							Correo electronico : <input type="email" class="form-control"
-								th:field="*{correoelectronico}" /> <br />
+								th:field="*{correoElectronico}" /> <br />
 						</div>
 					</div>
 				</div>
@@ -101,21 +99,21 @@
 			</button>
 			<br>
 		</form>
+
+		<th:block th:include="fragments/footer :: footer"></th:block>
 	</div>
+
 	<script type="text/javascript">
-		$(document).ready(function() {
+	$(document).ready(function() {
 			$(function() {
 				$('#fechanac').datetimepicker({
-					format : 'DD/MM/YYYY'
+					format : 'YYYY/MM/DD'
 				}).on('change', function() {
 					$('.datepicker').hide();
 				});
 			});
 		});
+		$('#nombres').replace(/\b[a-z]/g,c=>c.toUpperCase());
 	</script>
-
-	<div class="footer">
-		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
-	</div>
 </body>
 </html>

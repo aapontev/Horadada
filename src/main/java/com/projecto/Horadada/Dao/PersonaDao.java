@@ -11,12 +11,14 @@ import com.projecto.Horadada.Entity.Persona;
 @Repository("personaDao")
 public interface PersonaDao extends PagingAndSortingRepository<Persona, Serializable>{
 	
-	public abstract List<Persona> findByTipopersona(int id);
-	public abstract Persona findPersonaByidpersona(int id);
+	public abstract List<Persona> findByTipoPersona(int id);
+	
+	public abstract Persona findPersonaByidPersona(int id);
 	
 	@Procedure(name = "cambiaPersona")
-	public abstract void cambiaPersona(@Param("v_tipopersona")int v_tipopersona,@Param("v_idpersona") int v_idpersona);	
+	public abstract void cambiaPersona(@Param("tipopersona")int v_tipopersona,@Param("id_persona") int v_idpersona);	
 
 	//@Query(value="update persona set tipopersona = :tipo where idpersona = :id" ,nativeQuery=true)
 	//public abstract Persona updatetipopersona(@Param("tipo")int tipo,@Param("id")int id);
+	
 }

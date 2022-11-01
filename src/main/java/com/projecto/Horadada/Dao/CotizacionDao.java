@@ -9,6 +9,6 @@ import com.projecto.Horadada.Entity.Cotizacion;
 @Repository("Cotizaciondao")
 public interface CotizacionDao extends PagingAndSortingRepository<Cotizacion, Serializable> {
 
-	public abstract Cotizacion findByidcotizacion(int id);
-	public abstract List<Cotizacion> findByaprobado(int estado);
+	public abstract Cotizacion findByidCotizacion(int id);
+	public abstract List<Cotizacion> findByaprobado(Integer estado);
 }

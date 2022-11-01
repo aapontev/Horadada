@@ -4,14 +4,14 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import com.projecto.Horadada.Entity.Ordencompra;
+import com.projecto.Horadada.Entity.OrdenCompra;
 
 public interface OrdenCompraService {
 
-	public abstract List<Ordencompra> findAll();
-	public abstract Ordencompra findbyid(int id);
-	public abstract Object save(Ordencompra ordencompra);
+	public abstract List<OrdenCompra> findAll();
+	public abstract OrdenCompra findbyid(int id);
+	public abstract Object save(OrdenCompra ordencompra);
 	public abstract void delete(int id);
-	public abstract List<Ordencompra> findByestadoordencompra(int i);
-	public Page<Ordencompra> findAll(Pageable pageable);
+	public abstract List<OrdenCompra> findByestadoordencompra(int i);
+	public Page<OrdenCompra> findAll(Pageable pageable);
 }

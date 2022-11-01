@@ -2,7 +2,6 @@ package com.projecto.Horadada.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -17,9 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.projecto.Horadada.Entity.Cotizacion;
-import com.projecto.Horadada.Entity.Cotizaciondetalle;
+import com.projecto.Horadada.Entity.CotizacionDetalle;
 import com.projecto.Horadada.Entity.Solicitud;
-import com.projecto.Horadada.Entity.Tablamaestra;
+import com.projecto.Horadada.Entity.TablaMaestra;
+import com.projecto.Horadada.Util.Constantes;
 import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.CotizacionDetalleService;
 import com.projecto.Horadada.service.CotizacionService;
@@ -59,10 +59,10 @@ public class CotizacionController {
 	@GetMapping("/cotizacionform")
 	public String redirectCotizacionForm(@RequestParam(name = "id", required = false) int id, Model model) {
 		String impuesto;
-		List<Tablamaestra> moneda = utilitarioservice.findByIdtablamaestra("Hora002");
+		List<TablaMaestra> moneda = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_MONEDA);
 		List<Solicitud> idsoli = solicitudService.getidsolicitud();
-		List<Tablamaestra> medida = utilitarioservice.findByIdtablamaestra("Hora014");
-		List<Tablamaestra> igv = utilitarioservice.findByIdtablamaestra("Hora008");
+		List<TablaMaestra> medida = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_UNIDAD_MEDIDA);
+		List<TablaMaestra> igv = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_VALOR_IGV);
 		impuesto = igv.get(0).getValor1();
 		Cotizacion cotizacion = new Cotizacion();
 		int resu = 0;
@@ -80,7 +80,7 @@ public class CotizacionController {
 	}
 
 	@PostMapping("/addcotizacion")
-	public String Guardar(@Valid Cotizacion cotizacion, Model model, BindingResult result,
+	public String Guardar( Cotizacion cotizacion, Model model, BindingResult result,
 			@RequestParam(name = "recurso[]", required = false) String[] recurso,
 			@RequestParam(name = "ccostos[]", required = false) String[] ccostos,
 			@RequestParam(name = "cantidad[]", required = false) String[] cantidad,
@@ -96,21 +96,21 @@ public class CotizacionController {
 			model.addAttribute("error", "Error: La factura NO puede no tener líneas!");
 			return "crearEditar/cotizacion";
 		}
-		List<Cotizaciondetalle> cot = new ArrayList<Cotizaciondetalle>();
+		List<CotizacionDetalle> cot = new ArrayList<CotizacionDetalle>();
 		for (int i = 0; i < recurso.length; i++) {
-			Cotizaciondetalle linea = new Cotizaciondetalle();
+			CotizacionDetalle linea = new CotizacionDetalle();
 			linea.setItem(i + 1);
 			linea.setCcostos(ccostos[i]);
 			linea.setCantidad(Double.parseDouble(cantidad[i]));
-			linea.setCodrecurso(recurso[i]);
+			linea.setCodRecurso(recurso[i]);
 			linea.setDescripcion(cotizacion.getObservaciones());
 			linea.setDescuento(0.00);
-			linea.setPreciounitario(0.00);
-			linea.setTotaldetalle(Double.parseDouble(totaldetalle[i]));
-			linea.setIdunidadmedida(Integer.parseInt(idunidadmedida[i]));
+			linea.setPrecioUnitario(0.00);
+			linea.setTotalDetalle(Double.parseDouble(totaldetalle[i]));
+			linea.setIdUnidadMedida(Integer.parseInt(idunidadmedida[i]));
 			cot.add(linea);
 		}
-		cotizacion.setCotizaciondetalles(cot);
+		cotizacion.setCotizacionDetalles(cot);
 		cotizacionservice.save(cotizacion);
 		return "redirect:/cotizacion";
 	}
@@ -121,36 +121,25 @@ public class CotizacionController {
 		return "redirect:/cotizacion";
 	}
 
-	/*
-	 * @GetMapping("/cotizaciondetalle") public String
-	 * redirectCotizacionDetalle(@RequestParam(name = "id", required = false) int
-	 * id, Model model) { Cotizacion cotizacion = cotizacionservice.findbyid(id);
-	 * //List<Cotizaciondetalle> cotizaDeta =
-	 * cotizaciondetalleservice.findBycotizacion(cotizacion);
-	 * 
-	 * model.addAttribute("cotizadeta", cotizaDeta); model.addAttribute("cotizaid",
-	 * id); return "documentacion/cotizacionDetalle"; }
-	 */
-
 	@GetMapping("/cotizaciondetalleform")
 	public String redirectCotizacionDetalleform(@RequestParam(name = "id", required = false) int id,
 			@RequestParam(name = "item", required = false) int item, Model model) {
 
-		List<Tablamaestra> medida = utilitarioservice.findByIdtablamaestra("Hora014");
-		Cotizaciondetalle cotizaciondetalle = new Cotizaciondetalle();
+		List<TablaMaestra> medida = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_UNIDAD_MEDIDA);
+		CotizacionDetalle cotizaciondetalle = new CotizacionDetalle();
 		Cotizacion cotizacion = cotizacionservice.findbyid(id);
 
 		if (item != 0) {
 			cotizaciondetalle = cotizaciondetalleservice.findByItem(item);
 		}
 		model.addAttribute("medida", medida);
-		model.addAttribute("cotizacion", cotizacion.getIdcotizacion());
+		model.addAttribute("cotizacion", cotizacion.getIdCotizacion());
 		model.addAttribute("cotizadeta", cotizaciondetalle);
 		return "crearEditar/cotizacionDetalle";
 	}
 
 	@PostMapping("/addcotizaciondetalle")
-	public String addCotizacionDetalle(@ModelAttribute(name = "cotizaciondetalle") Cotizaciondetalle cotidetalle,
+	public String addCotizacionDetalle(@ModelAttribute(name = "cotizaciondetalle") CotizacionDetalle cotidetalle,
 			Model model) {
 
 		if (null != cotizaciondetalleservice.save(cotidetalle)) {

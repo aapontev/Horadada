@@ -1,53 +1,26 @@
 package com.projecto.Horadada.Entity;
-
-import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CLIENTE", schema = "HORADADA")
-public class Cliente implements Serializable {
+@Table(name = "Cliente")
+public class Cliente implements java.io.Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cliente_seq")
-	@SequenceGenerator(name = "cliente_seq", sequenceName = "cliente_sequence", allocationSize = 1)
-	@Column(name = "IDCLIENTE", unique = true, nullable = false, precision = 3)
+	private static final long serialVersionUID = 1L;
 	private int idcliente;
-
-	@Column(name = "RUC", length = 11)
-	private String ruc;
-
-	@Column(name = "RAZONSOCIAL", length = 40)
-	private String razonsocial;
-
-	@Column(name = "DIRECCIONFISCAL", length = 40)
-	private String direccionfiscal;
-
-	@Column(name = "TELEFONO", length = 40)
-	private String telefono;
-
-	@Column(name = "CORREO", length = 60)
 	private String correo;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
+	private String direccionfiscal;
+	private String razonsocial;
+	private String ruc;
+	private String telefono;
 	private List<Factura> facturas;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Contacto> contactos;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Valorizacion> valorizacions;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Solicitud> solicituds;
 
 	public Cliente() {
@@ -57,29 +30,60 @@ public class Cliente implements Serializable {
 		this.idcliente = idcliente;
 	}
 
-	public Cliente(int idcliente, String ruc, String razonsocial, List<Factura> facturas,
-			List<Contacto> contactos, List<Valorizacion> valorizacions, List<Solicitud> solicituds,
-			String direccionfiscal, String telefono, String correo) {
+	public Cliente(int idcliente, String correo, String direccionfiscal, String razonsocial, String ruc,
+			String telefono, List<Factura> facturas, List<Contacto> contactos, List<Valorizacion> valorizacions,
+			List<Solicitud> solicituds) {
 		this.idcliente = idcliente;
-		this.ruc = ruc;
+		this.correo = correo;
+		this.direccionfiscal = direccionfiscal;
 		this.razonsocial = razonsocial;
+		this.ruc = ruc;
+		this.telefono = telefono;
 		this.facturas = facturas;
 		this.contactos = contactos;
 		this.valorizacions = valorizacions;
 		this.solicituds = solicituds;
-		this.direccionfiscal = direccionfiscal;
-		this.telefono = telefono;
-		this.correo = correo;
 	}
 
-	public int getIdcliente() {
+	@Id
+
+	@Column(name = "idcliente", unique = true, nullable = false)
+	public int getidcliente() {
 		return this.idcliente;
 	}
 
-	public void setIdcliente(int idcliente) {
+	public void setidcliente(int idcliente) {
 		this.idcliente = idcliente;
 	}
 
+	@Column(name = "correo", length = 60)
+	public String getCorreo() {
+		return this.correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	@Column(name = "direccionfiscal", length = 40)
+	public String getdireccionfiscal() {
+		return this.direccionfiscal;
+	}
+
+	public void setdireccionfiscal(String direccionfiscal) {
+		this.direccionfiscal = direccionfiscal;
+	}
+
+	@Column(name = "razonsocial", length = 40)
+	public String getrazonsocial() {
+		return this.razonsocial;
+	}
+
+	public void setrazonsocial(String razonsocial) {
+		this.razonsocial = razonsocial;
+	}
+
+	@Column(name = "ruc", length = 11)
 	public String getRuc() {
 		return this.ruc;
 	}
@@ -88,14 +92,16 @@ public class Cliente implements Serializable {
 		this.ruc = ruc;
 	}
 
-	public String getRazonsocial() {
-		return this.razonsocial;
+	@Column(name = "telefono", length = 40)
+	public String getTelefono() {
+		return this.telefono;
 	}
 
-	public void setRazonsocial(String razonsocial) {
-		this.razonsocial = razonsocial;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
 	public List<Factura> getFacturas() {
 		return this.facturas;
 	}
@@ -104,6 +110,7 @@ public class Cliente implements Serializable {
 		this.facturas = facturas;
 	}
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
 	public List<Contacto> getContactos() {
 		return this.contactos;
 	}
@@ -112,6 +119,7 @@ public class Cliente implements Serializable {
 		this.contactos = contactos;
 	}
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
 	public List<Valorizacion> getValorizacions() {
 		return this.valorizacions;
 	}
@@ -120,6 +128,7 @@ public class Cliente implements Serializable {
 		this.valorizacions = valorizacions;
 	}
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
 	public List<Solicitud> getSolicituds() {
 		return this.solicituds;
 	}
@@ -127,31 +136,5 @@ public class Cliente implements Serializable {
 	public void setSolicituds(List<Solicitud> solicituds) {
 		this.solicituds = solicituds;
 	}
-
-	public String getDireccionfiscal() {
-		return direccionfiscal;
-	}
-
-	public void setDireccionfiscal(String direccionfiscal) {
-		this.direccionfiscal = direccionfiscal;
-	}
-
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
-	public String getCorreo() {
-		return correo;
-	}
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
-
-	private static final long serialVersionUID = 1L;
 
 }

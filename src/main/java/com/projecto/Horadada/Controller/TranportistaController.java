@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projecto.Horadada.Entity.Persona;
-import com.projecto.Horadada.Entity.Tablamaestra;
+import com.projecto.Horadada.Entity.TablaMaestra;
 import com.projecto.Horadada.Entity.Transportista;
+import com.projecto.Horadada.Util.Constantes;
 import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.PersonaService;
 import com.projecto.Horadada.service.TransportistaService;
@@ -57,8 +58,8 @@ public class TranportistaController {
 			Model model) {
 		Transportista transportista = new Transportista();
 		List<Persona> persona = personaService.findByTipopersona(0);
-		List<Tablamaestra> licencia = utilitarioservice.findByIdtablamaestra("Hora011");
-		List<Tablamaestra> estado = utilitarioservice.findByIdtablamaestra("Hora007");
+		List<TablaMaestra> licencia = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_TIPO_lICENCIA);
+		List<TablaMaestra> estado = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_ESTADO_TRANSPORTISTA);
 		tipoproceso = 0;
 		if(id != 0) {
 			transportista = transportistaservice.findByidtransportista(id);	

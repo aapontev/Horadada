@@ -27,7 +27,7 @@ public class TransportistaServicImp implements TransportistaService {
 
 	@Override
 	public Transportista findByidtransportista(int id) {
-		Transportista transportista = transportistaDao.findByidtransportista(id);
+		Transportista transportista = transportistaDao.findByidTransportista(id);
 		return transportista;
 	}
 
@@ -51,7 +51,7 @@ public class TransportistaServicImp implements TransportistaService {
 	@Override
 	public Transportista findByidsituaciontransportista(int i) {
 		// TODO Auto-generated method stub
-		return transportistaDao.findByidsituaciontransportista(i);
+		return transportistaDao.findByidSituacionTransportista(i);
 	}
 
 }

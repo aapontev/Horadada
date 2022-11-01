@@ -25,7 +25,7 @@ public class CotizacionServiceImp implements CotizacionService{
 
 	@Override
 	public Cotizacion findbyid(int id) {
-		Cotizacion coti= cotizaciondao.findByidcotizacion(id);
+		Cotizacion coti= cotizaciondao.findByidCotizacion(id);
 		return coti;
 	}
 

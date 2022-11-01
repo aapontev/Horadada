@@ -9,6 +9,6 @@ import com.projecto.Horadada.Entity.Transportista;
 @Repository("transportistaDao")
 public interface TransportistaDao extends PagingAndSortingRepository<Transportista, Serializable> {
 
-	public abstract Transportista findByidtransportista(int id);
-	public abstract Transportista findByidsituaciontransportista(int id);
+	public abstract Transportista findByidTransportista(int id);
+	public abstract Transportista findByidSituacionTransportista(Integer id);
 }

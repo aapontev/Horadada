@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.projecto.Horadada.Entity.Despacho;
-import com.projecto.Horadada.Entity.Despachoxvehiculo;
+import com.projecto.Horadada.Entity.DespachoXvehiculo;
 import com.projecto.Horadada.Entity.Direccion;
-import com.projecto.Horadada.Entity.Ordencompra;
+import com.projecto.Horadada.Entity.OrdenCompra;
 import com.projecto.Horadada.Entity.Transportista;
 import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.DespachoService;
@@ -60,7 +60,7 @@ public class DespachoController {
 	@GetMapping("/despachoform")
 	public String despachoForm(@RequestParam(name = "id", required = false) int id, Model model) {
 		Despacho despacho = new Despacho();
-		List<Ordencompra> ordencompra = ordencompraservice.findByestadoordencompra(1);
+		List<OrdenCompra> ordencompra = ordencompraservice.findByestadoordencompra(1);
 		List<Direccion> direccion = utilitarioservice.findAll();
 		int resu = 0;
 		if (id != 0) {
@@ -84,7 +84,7 @@ public class DespachoController {
 			@RequestParam(name = "horacarga[]", required = false) String[] horacarga,
 			@RequestParam(name = "horadescarga[]", required = false) String[] horadescarga) {
 		java.util.Date date1 = new java.util.Date();
-		List<Despachoxvehiculo> desxvehiculo = new ArrayList<Despachoxvehiculo>();
+		List<DespachoXvehiculo> desxvehiculo = new ArrayList<DespachoXvehiculo>();
 		for (int i = 0; i < transport.length; i++) {
 		    try {
 				date1=new SimpleDateFormat("dd/MM/yyyy").parse(fechacarga[i]);
@@ -92,22 +92,22 @@ public class DespachoController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
-			Despachoxvehiculo linea = new Despachoxvehiculo();
-			linea.setFechacarga(date1);
+			DespachoXvehiculo linea = new DespachoXvehiculo();
+			linea.setFechaCarga(date1);
 		//	linea.setFechadescarga(fechadescarga[i]);
-			linea.setHoracarga(horacarga[i]);
-			linea.setHoradescarga(horadescarga[i]);
-			linea.setIdtransportista(Integer.parseInt(transport[i]));
+			linea.setHoraCarga(horacarga[i]);
+			linea.setHoraDescarga(horadescarga[i]);
+			linea.setIdTransportista(Integer.parseInt(transport[i]));
 			
 			desxvehiculo.add(linea);
 		}
-		despacho.setDespachoxvehiculo(desxvehiculo);
+		despacho.setDespachoXvehiculos(desxvehiculo);
 		
 		
-		Ordencompra orcom = despacho.getOrdencompra();
-		Ordencompra orden = ordencompraservice.findbyid(orcom.getIdordencompra());
-		orden.setEstadoordencompra(2);
-		despacho.setOrdencompra(orden);
+		OrdenCompra orcom = despacho.getOrdenCompra();
+		OrdenCompra orden = ordencompraservice.findbyid(orcom.getIdOrdenCompra());
+		orden.setEstadoOrdenCompra(2);
+		despacho.setOrdenCompra(orden);
 		if (null != despachoservice.save(despacho)) {
 			model.addAttribute("result", 1);
 		} else {

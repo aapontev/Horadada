@@ -3,106 +3,113 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
+
 <title th:text="#{IndexTitle}">Employees System</title>
 
 <!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
 </head>
-
 <body>
+
 	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
-	<div class="container">
-		<h1>FORMULARIO ORDEN DE COMPRA</h1>
-		<br />
-		<form action="#" th:object="${ordencompra}"
-			th:action="@{/ordencompra/addordencompra}" method="post">
-			<input type="hidden" th:field="*{idordencompra}" />
-			<div class="panel panel-default">
-				<div class="panel-heading">Detalles Orden de Compra</div>
-				<div class="panel-body">
-					<div class="row">
-						<div th:if="${resu==1}">
+	<div class="jumbotron">
+
+		<div class="container">
+			<br />
+			<h1>FORMULARIO ORDEN DE COMPRA</h1>
+			<br />
+			<form action="#" th:object="${ordencompra}"
+				th:action="@{/ordencompra/addordencompra}" method="post">
+				<input type="hidden" th:field="*{idordencompra}" />
+				<div class="panel panel-default">
+					<div class="panel-heading">Detalles Orden de Compra</div>
+					<div class="panel-body">
+						<div class="row">
+							<div th:if="${resu==1}">
+								<div class="col-xs-3">
+									ESTADO : <input type="text" disabled class="form-control"
+										th:field="*{estadoordencompra}" /> <br />
+								</div>
+							</div>
 							<div class="col-xs-3">
-								ESTADO : <input type="text" disabled class="form-control"
-									th:field="*{estadoordencompra}"/> <br />
+								Cotizacion :<br /> <select
+									th:field="*{cotizacion.idcotizacion}" class="form-control"
+									id="inputGroupSelect03" onChange="cargacotizacion.carga(this)">
+									<option th:each="cot : ${cotizacion}"
+										th:value="${cot.idcotizacion}" th:text="${cot.idcotizacion}"></option>
+								</select> <br />
+							</div>
+							<div class="col-xs-3">
+								FECHA ENVIO : <input placeholder="dd/mm/aaaa" type="text"
+									class="form-control" id="fechaen" th:field="*{fechaenvio}" />
+								<br />
+							</div>
+							<div class="col-xs-3">
+								MONEDA : <br /> <select th:field="*{idmoneda}"
+									class="form-control" id="inputGroupSelect03">
+									<option th:each="mon : ${moneda}" th:value="${mon.clave1}"
+										th:text="${mon.valor1}"></option>
+								</select> <br />
+							</div>
+							<div class="col-xs-4">
+								CARGOS : <input type="text" class="form-control" id="cargos"
+									th:field="*{cargos}" /> <br />
+							</div>
+							<div class="col-xs-4">
+								DESCUENTOS : <input type="text" class="form-control"
+									id="descuentos" th:field="*{descuentos}" /> <br />
+							</div>
+							<div class="col-xs-4">
+								PERSEPCION : <input type="text" class="form-control"
+									id="persepcion" th:field="*{percepcion}" /> <br />
 							</div>
 						</div>
-						<div class="col-xs-3">
-							Cotizacion :<br /> <select th:field="*{cotizacion.idcotizacion}"
-								class="form-control" id="inputGroupSelect03" onChange="cargacotizacion.carga(this)">
-								<option th:each="cot : ${cotizacion}" th:value="${cot.idcotizacion}"
-									th:text="${cot.idcotizacion}"></option>
-							</select> <br />
-						</div>
-						<div class="col-xs-3">
-							FECHA ENVIO : <input placeholder="dd/mm/aaaa" type="text"
-								class="form-control" id="fechaen" th:field="*{fechaenvio}" /> <br />
-						</div>
-						<div class="col-xs-3">
-							MONEDA : <br /> <select th:field="*{idmoneda}"
-								class="form-control" id="inputGroupSelect03">
-								<option th:each="mon : ${moneda}" th:value="${mon.clave1}"
-									th:text="${mon.valor1}"></option>
-							</select> <br />
-						</div>
-						<div class="col-xs-4">
-							CARGOS : <input type="text" class="form-control" id="cargos"
-								th:field="*{cargos}" /> <br />
-						</div>
-						<div class="col-xs-4">
-							DESCUENTOS : <input type="text" class="form-control"
-								id="descuentos" th:field="*{descuentos}" /> <br />
-						</div>
-						<div class="col-xs-4">
-							PERSEPCION : <input type="text" class="form-control"
-								id="persepcion" th:field="*{percepcion}" /> <br />
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">Detalles Orden de Compra</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-xs-3">
+								IGV : <input type="text" class="form-control" id="igv"
+									th:field="*{igv}" /> <br />
+							</div>
+							<div class="col-xs-3">
+								NETO : <input type="text" class="form-control" id="neto"
+									th:field="*{neto}" /> <br />
+							</div>
+							<div class="col-xs-3">
+								SUB-TOTAL : <input type="text" class="form-control"
+									id="subtotal" th:field="*{subtotal}" /> <br />
+							</div>
+							<div class="col-xs-3">
+								TOTAL : <input type="text" class="form-control" id="total"
+									th:field="*{total}" /> <br />
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">Detalles Orden de Compra</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-xs-3">
-							IGV : <input  type="text" class="form-control" id="igv"
-								th:field="*{igv}" /> <br />
-						</div>
-						<div class="col-xs-3">
-							NETO : <input  type="text" class="form-control" id="neto"
-								th:field="*{neto}" /> <br />
-						</div>
-						<div class="col-xs-3">
-							SUB-TOTAL : <input  type="text" class="form-control"
-								id="subtotal" th:field="*{subtotal}" /> <br />
-						</div>
-						<div class="col-xs-3">
-							TOTAL : <input type="text" class="form-control"
-								id="total" th:field="*{total}" /> <br />
-						</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">OBSERVACIONES :</div>
+					<div class="panel-body">
+						<textarea class="form-control" th:field="*{observaciones}"> </textarea>
+
+						<br />
 					</div>
 				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">OBSERVACIONES :</div>
-				<div class="panel-body">
-					<textarea class="form-control" th:field="*{observaciones}"> </textarea>
 
-					<br />
-				</div>
-			</div>
-
-			<button class="btn btn-lg btn-primary btn-block" type="submit">
-				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-				Aceptar
-			</button>
-			<br>
-		</form>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					Aceptar
+				</button>
+				<br>
+			</form>
+		</div>
 	</div>
 	<script th:replace="crearEditar/js/javascript :: ordencompra"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(function() {
-				$('#fechaen').datetimepicker({
+				$('#fechaen,#fechaendf').datetimepicker({
 					format : 'DD/MM/YYYY'
 				}).on('change', function() {
 					$('.datepicker').hide();

@@ -54,8 +54,8 @@ public class TrabajadorController {
 	@PostMapping("/addtrabajador")
 	public String addTrabajador(@ModelAttribute(name = "persona") Persona persona, Model model) {
 		
-		Persona per = personaService.findByidPersona(persona.getIdpersona());
-		per.setTipopersona(3);
+		Persona per = personaService.findByidPersona(persona.getIdPersona());
+		per.setTipoPersona(3);
 			if (null != personaService.save(per)) {									
 				model.addAttribute("resu", 1);
 			} else {
@@ -67,7 +67,7 @@ public class TrabajadorController {
 	@GetMapping("/borrartrabajador")
 	public String borrarTrabajador(@RequestParam(name = "id", required = true) int id, Model model) {
 		Persona per = personaService.findByidPersona(id);
-		per.setTipopersona(0);
+		per.setTipoPersona(0);
 			if (null != personaService.save(per)) {									
 				model.addAttribute("resu", 1);
 			} else {

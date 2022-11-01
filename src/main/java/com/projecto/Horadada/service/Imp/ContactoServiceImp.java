@@ -25,7 +25,7 @@ public class ContactoServiceImp implements ContactoService{
 
 	@Override
 	public int findbyidcliente(int id) {
-		int con = contactoDao.getclienteIdcliente(id);
+		int con = contactoDao.getclienteIdCliente(id);
 		return con;
 	}
 
@@ -46,7 +46,7 @@ public class ContactoServiceImp implements ContactoService{
 
 	@Override
 	public Contacto findByidcontacto(int id) {
-		Contacto contacto = contactoDao.findByidcontacto(id);
+		Contacto contacto = contactoDao.findByidContacto(id);
 		return contacto;
 	}
 

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+
+<title th:text="#{IndexTitle}">Employees System</title>
+
+<th:block th:include="fragments/header :: head"></th:block> 
+</head>
+<body>
+	<div class="container">
+		<th:block th:include="fragments/menu :: menu"></th:block>
+		<div>
+			<img src="/imgs/Horadada.jpg" class="rounded mx-auto d-block" />
+		</div>
+
+		<th:block th:include="fragments/footer :: footer"></th:block>
+	</div>
+</body>
+</html>

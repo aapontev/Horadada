@@ -8,6 +8,6 @@ import com.projecto.Horadada.Entity.Vehiculo;
 @Repository("vehiculodao")
 public interface VehiculoDao extends PagingAndSortingRepository<Vehiculo, Serializable> {
 	
-	public abstract Vehiculo findByidvehiculo(int id);
+	public abstract Vehiculo findByidVehiculo(int id);
 
 }

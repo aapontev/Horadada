@@ -8,6 +8,6 @@ import com.projecto.Horadada.Entity.Despacho;
 @Repository("despachodao")
 public interface DespachoDao extends PagingAndSortingRepository<Despacho, Serializable>{
 
-	public abstract Despacho findByiddespacho(int id);
+	public abstract Despacho findByidDespacho(int id);
 
 }

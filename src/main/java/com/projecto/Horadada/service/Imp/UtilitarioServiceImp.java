@@ -1,24 +1,22 @@
 package com.projecto.Horadada.service.Imp;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import com.projecto.Horadada.Dao.DireccionDao;
+import com.projecto.Horadada.Dao.PersonaDao;
 import com.projecto.Horadada.Dao.ServicioDao;
 import com.projecto.Horadada.Dao.TablaMaestraDao;
 import com.projecto.Horadada.Dao.TelefonoDao;
 import com.projecto.Horadada.Dao.UbicacionDao;
 import com.projecto.Horadada.Dao.VehiculoDao;
 import com.projecto.Horadada.Entity.Direccion;
-import com.projecto.Horadada.Entity.Persona;
-import com.projecto.Horadada.Entity.Tablamaestra;
-import com.projecto.Horadada.Entity.Telefono;
-import com.projecto.Horadada.Entity.Tiposervicio;
+import com.projecto.Horadada.Entity.TablaMaestra;
+import com.projecto.Horadada.Entity.TelefonoMonitoreo;
+import com.projecto.Horadada.Entity.TipoServicio;
 import com.projecto.Horadada.Entity.Ubicacion;
 import com.projecto.Horadada.Entity.Vehiculo;
 import com.projecto.Horadada.service.UtilitarioService;
@@ -49,9 +47,13 @@ public class UtilitarioServiceImp implements UtilitarioService {
 	@Autowired
 	@Qualifier("vehiculodao")
 	private VehiculoDao vehiculodao;
+
+	@Autowired
+	@Qualifier("personaDao")
+	private PersonaDao personaDao;
 	
 	@Override
-	public Page<Tiposervicio> findAllServ(Pageable pageable) {
+	public Page<TipoServicio> findAllServ(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return serviciodao.findAll(pageable);
 	}	
@@ -77,43 +79,43 @@ public class UtilitarioServiceImp implements UtilitarioService {
 	}	
 	
 	@Override
-	public List<Tablamaestra> findByIdtablamaestra(String idTabla) {
-		List<Tablamaestra> tabId = tablaMaestraDao.findByidtablamaestra(idTabla);
+	public List<TablaMaestra> findByIdtablaMaestra(String idTabla) {
+		List<TablaMaestra> tabId = tablaMaestraDao.findByidTablaMaestra(idTabla);
 		return tabId;
 	}
 
 	@Override
 	public List<String> gettablamaestra() {
-		List<String> des= tablaMaestraDao.gettablamaestra();
+		List<String> des= tablaMaestraDao.gettablaMaestra();
 		return des;
 	}
 	
 	@Override
-	public List<Telefono> findByAll() {
-		List<Telefono> telefono = (List<Telefono>) telefonodao.findAll();
+	public List<TelefonoMonitoreo> findByAll() {
+		List<TelefonoMonitoreo> telefono = (List<TelefonoMonitoreo>) telefonodao.findAll();
 		return telefono;
 	}
 
 	@Override
-	public Telefono save(Telefono telefono) {
-		Telefono telef = telefonodao.save(telefono);
+	public TelefonoMonitoreo save(TelefonoMonitoreo telefono) {
+		TelefonoMonitoreo telef = telefonodao.save(telefono);
 		return telef;
 	}
 
 	@Override
-	public Page<Telefono> findAllTel(Pageable pageable) {
+	public Page<TelefonoMonitoreo> findAllTel(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return telefonodao.findAll(pageable);
 	}
 
 	@Override
-	public Tiposervicio findByIdservicio(int id) {
+	public TipoServicio findByIdservicio(int id) {
 		// TODO Auto-generated method stub
-		return serviciodao.findByIdservicio(id);
+		return serviciodao.findByIdServicio(id);
 	}
 
 	@Override
-	public Tiposervicio save(Tiposervicio servicio) {
+	public TipoServicio save(TipoServicio servicio) {
 		// TODO Auto-generated method stub
 		return serviciodao.save(servicio);
 	}
@@ -133,7 +135,7 @@ public class UtilitarioServiceImp implements UtilitarioService {
 	@Override
 	public Direccion findByIddireccion(int id) {
 		// TODO Auto-generated method stub
-		return direcciondao.findByIddireccion(id);
+		return direcciondao.findByIdDireccion(id);
 	}
 
 	@Override
@@ -150,9 +152,9 @@ public class UtilitarioServiceImp implements UtilitarioService {
 	}
 
 	@Override
-	public List<Tiposervicio> findByNombre(String term) {
+	public List<TipoServicio> findByNombre(String term) {
 		// TODO Auto-generated method stub
-		return serviciodao.findByNombreservicioLikeIgnoreCase("%"+term+"%");
+		return serviciodao.findByNombreServicioLikeIgnoreCase("%"+term+"%");
 	}
 
 	@Override
@@ -170,7 +172,7 @@ public class UtilitarioServiceImp implements UtilitarioService {
 	@Override
 	public Vehiculo findByidvehiculo(int id) {
 		// TODO Auto-generated method stub
-		return vehiculodao.findByidvehiculo(id);
+		return vehiculodao.findByidVehiculo(id);
 	}
 
 	@Override
@@ -186,21 +188,37 @@ public class UtilitarioServiceImp implements UtilitarioService {
 		return vehiculodao.save(vehiculo);
 	}
 
-	@Override
-	public List<Telefono> findBypersona(Persona id) {
+	/*@Override
+	public List<Telefono> findBypersona(Te) {
 		// TODO Auto-generated method stub
-		return null;//telefonodao.findBypersona(id);
-	}
+		int idPer = id.getIdpersona();
+		List<Telefono> tel = new Telefono();
+		return telefonodao.fin;
+	}*/
 
 	@Override
-	public Telefono findByimei(String imei) {
+	public TelefonoMonitoreo findByimei(String imei) {
 		// TODO Auto-generated method stub
 		return telefonodao.findByimei(imei);
 	}
 
 	@Override
-	public Telefono findBynumerotelefono(String numero) {
+	public TelefonoMonitoreo findBynumerotelefono(String numero) {
 		// TODO Auto-generated method stub
-		return telefonodao.findBynumerotelefono(numero);
+		return telefonodao.findBynumeroTelefono(numero);
 	}
+
+
+	@Override
+	public TablaMaestra findByidTablaMaestraAndClave1(String idTabla, String clave1) {
+		// TODO Auto-generated method stub
+		return tablaMaestraDao.findByidTablaMaestraAndClave1(idTabla, clave1);
+	}
+
+/*	@Override
+	public List<Telefono> findTelefonoByidPersona(int id) {
+		//int idPer = id.getIdpersona();
+		//List<Telefono> tel = (List<Telefono>) new Telefono();
+		return telefonodao.findTelefonoByidPersona(id);
+	}*/
 }

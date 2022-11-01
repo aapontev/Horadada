@@ -2,85 +2,73 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-<title></title>
+<title>Transportes Horadada</title>
 </head>
 <body>
 	<div th:fragment="menu">
+			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 
-<<<<<<< master
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">Navbar</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarsExampleDefault"
+					aria-controls="navbarsExampleDefault" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active"><h2>
+								<a class="nav-link" href="/principal">HORADADA <span
+									class="sr-only">(current)</span>
+								</a>
+							</h2></li>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link" href="#">Home
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> Dropdown </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Action</a> <a
-								class="dropdown-item" href="#">Another action</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div></li>
-					<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
-					</li>
-				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search"
-						placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				</form>
-=======
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="navbar-collapse">
-					<ul class="main-nav nav navbar-nav navbar-right">
-						<li><a href="/" th:href="@{/consulta}">Consultar</a></li>
-						<li class="has-dropdown"><a href="#">Documentacion</a>
-							<ul class="dropdown">
-								<li><a href="#" th:href="@{/solicitud}">Solicitud</a></li>
-								<li><a href="#" th:href="@{/cotizacion}">Cotización</a></li>
-								<li><a href="#" th:href="@{/ordencompra}">Orden De
-										Compra</a></li>
-								<li><a href="#" th:href="@{/despacho}">Despacho</a></li>
-								<li><a href="#" th:href="@{/factura}">Factura</a></li>
-								<li><a href="#" th:href="@{/documentacion/valorizacion}">Valorizacion</a></li>
-							</ul></li>
-						<li><a href="/" th:href="@{/monitoreo/}">Monitoreo<span></span></a></li>
-						<li class="has-dropdown"><a href="#">Mantenimiento</a>
-							<ul class="dropdown">
-								<li><a href="#" th:href="@{/cliente}">Cliente</a></li>
-								<li><a href="#" th:href="@{/contacto}">Contacto</a></li>
-								<li><a href="#" th:href="@{/trabajador}">Trabajador</a></li>
-								<li><a href="#" th:href="@{/transportista}">Transportista</a></li>
-								<li><a href="#" th:href="@{/persona}">Persona</a></li>
-							</ul></li>
-						<li class="has-dropdown"><a href="#">Utilitarios</a>
-							<ul class="dropdown">
-								<li><a href="#" th:href="@{/direccion}">Direccion</a></li>
-								<li><a href="#" th:href="@{/servicios}">Servicios</a></li>
-								<li><a href="#" th:href="@{/tablamaestra}">Tablamaestra</a></li>
-								<li><a href="#" th:href="@{/telefono}">Telefono</a></li>
-								<li><a href="#" th:href="@{/vehiculo}">Vehiculo</a></li>
-							</ul></li>
-						<li><a href="/" th:href="@{/reporte}">Reportes</a></li>
-						<li class="pull-right">Bienvenido: <a href="#"
-							th:href="@{/login?logout}">Cerrar Sesion </a></li>
+
+						<li class="nav-item active"><a class="nav-link"
+							href="/consulta">Consultar</a></li>
+
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="dropdown01"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentacion</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown01">
+								<a class="dropdown-item" href="/solicitud">Solicitud</a> <a
+									class="dropdown-item" href="/cotizacion">Cotización</a> <a
+									class="dropdown-item" href="/ordencompra">Orden De Compra</a> <a
+									class="dropdown-item" href="/despacho">Despacho</a> <a
+									class="dropdown-item" href="/factura">Factura</a> <a
+									class="dropdown-item" href="/documentacion/valorizacion">Valorizacion</a>
+							</div></li>
+						<li class="nav-item active"><a class="nav-link"
+							href="/monitoreo">Monitoreo</a></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="dropdown01"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mantenimiento</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown01">
+								<a class="dropdown-item" href="/cliente">Cliente</a> <a
+									class="dropdown-item" href="/contacto">Contacto</a> <a
+									class="dropdown-item" href="/trabajador">Trabajador</a> <a
+									class="dropdown-item" href="/transportista">Transportista</a> <a
+									class="dropdown-item" href="/persona">Persona</a>
+							</div></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="dropdown01"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utilitarios</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown01">
+								<a class="dropdown-item" href="/direccion">Direccion</a> <a
+									class="dropdown-item" href="/servicios">Servicios</a> <a
+									class="dropdown-item" href="/tablamaestra">Tablamaestra</a> <a
+									class="dropdown-item" href="/telefono">Telefono</a> <a
+									class="dropdown-item" href="/vehiculo">Vehiculo</a>
+							</div></li>
+						<li class="nav-item active"><a class="nav-link"
+							href="/reporte">Reportes</a></li>
+
 					</ul>
+					<form class="form-inline my-2 my-lg-0">
+						<h4 class="pull-right rojo">Bienvenido:</h4>
+						<a href="/login?logout">Cerrar Sesion </a>
+					</form>
 				</div>
->>>>>>> d925a33 oiu
-			</div>
-		</nav>
+			</nav>
 	</div>
 </body>
 </html>

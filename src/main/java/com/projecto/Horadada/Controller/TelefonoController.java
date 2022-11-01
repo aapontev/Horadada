@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projecto.Horadada.Entity.Persona;
-import com.projecto.Horadada.Entity.Telefono;
+import com.projecto.Horadada.Entity.TelefonoMonitoreo;
 import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.UtilitarioService;
 
@@ -28,8 +28,8 @@ public class TelefonoController {
 	public String listaTelefono(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
 
 		Pageable pageRequest = PageRequest.of(page, 5);
-		Page<Telefono> telefono = utilitarioservice.findAllTel(pageRequest);
-		PageRender<Telefono> pagerender = new PageRender<Telefono>("/telefono", telefono);
+		Page<TelefonoMonitoreo> telefono = utilitarioservice.findAllTel(pageRequest);
+		PageRender<TelefonoMonitoreo> pagerender = new PageRender<TelefonoMonitoreo>("/telefono", telefono);
 		model.addAttribute("telefono", telefono);
 		model.addAttribute("page", pagerender);
 		return "utilitarios/telefono";

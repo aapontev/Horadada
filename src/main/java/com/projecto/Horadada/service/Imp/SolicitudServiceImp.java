@@ -35,12 +35,12 @@ public class SolicitudServiceImp implements SolicitudService{
 	}
 	@Override
 	public Solicitud findByidsolicitud(int idsolicitud) {
-		Solicitud solic = solicitudDao.findByidsolicitud(idsolicitud);
+		Solicitud solic = solicitudDao.findByidSolicitud(idsolicitud);
 		return solic;
 	}
 	@Override
 	public List<Solicitud> getidsolicitud() {
-		List<Solicitud> iddes = solicitudDao.getidsolicitud();
+		List<Solicitud> iddes = solicitudDao.getidSolicitud();
 		return iddes;
 	}
 	@Override

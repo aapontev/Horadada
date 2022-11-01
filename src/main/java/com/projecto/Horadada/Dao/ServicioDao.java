@@ -6,12 +6,12 @@ import java.util.List;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.projecto.Horadada.Entity.Tiposervicio;
+import com.projecto.Horadada.Entity.TipoServicio;
 
 @Repository("serviciodao")
-public interface ServicioDao extends PagingAndSortingRepository<Tiposervicio, Serializable> {
+public interface ServicioDao extends PagingAndSortingRepository<TipoServicio, Serializable> {
 
-	public abstract Tiposervicio findByIdservicio(int id);
+	public abstract TipoServicio findByIdServicio(int id);
 
-	public abstract List<Tiposervicio> findByNombreservicioLikeIgnoreCase(String string);
+	public abstract List<TipoServicio> findByNombreServicioLikeIgnoreCase(String string);
 }

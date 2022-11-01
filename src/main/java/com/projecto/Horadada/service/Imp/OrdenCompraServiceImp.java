@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.projecto.Horadada.Dao.OrdenCompraDao;
-import com.projecto.Horadada.Entity.Ordencompra;
+import com.projecto.Horadada.Entity.OrdenCompra;
 import com.projecto.Horadada.service.OrdenCompraService;
 
 @Service("ordencompraservice")
@@ -19,20 +19,20 @@ public class OrdenCompraServiceImp implements OrdenCompraService{
 	private OrdenCompraDao ordencompradao;
 
 	@Override
-	public List<Ordencompra> findAll() {
-		List<Ordencompra> ordencompra = (List<Ordencompra>) ordencompradao.findAll();
+	public List<OrdenCompra> findAll() {
+		List<OrdenCompra> ordencompra = (List<OrdenCompra>) ordencompradao.findAll();
 		return ordencompra;
 	}
 
 	@Override
-	public Ordencompra findbyid(int id) {
-		Ordencompra ordencompra = ordencompradao.findByIdordencompra(id);
+	public OrdenCompra findbyid(int id) {
+		OrdenCompra ordencompra = ordencompradao.findByIdOrdenCompra(id);
 		return ordencompra;
 	}
 
 	@Override
-	public Ordencompra save(Ordencompra ordencompra) {
-		Ordencompra orcom = ordencompradao.save(ordencompra);
+	public OrdenCompra save(OrdenCompra ordencompra) {
+		OrdenCompra orcom = ordencompradao.save(ordencompra);
 		return orcom;
 	}
 
@@ -43,13 +43,13 @@ public class OrdenCompraServiceImp implements OrdenCompraService{
 	}
 
 	@Override
-	public List<Ordencompra> findByestadoordencompra(int i) {
-		List<Ordencompra> ordencompra = ordencompradao.findByestadoordencompra(i);
+	public List<OrdenCompra> findByestadoordencompra(int i) {
+		List<OrdenCompra> ordencompra = ordencompradao.findByestadoOrdenCompra(i);
 		return ordencompra;
 	}
 
 	@Override
-	public Page<Ordencompra> findAll(Pageable pageable) {
+	public Page<OrdenCompra> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return ordencompradao.findAll(pageable);
 	}
