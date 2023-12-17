@@ -1,82 +1,86 @@
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Modernize Free</title>
+        <th:block th:include="fragments/header.html"></th:block>
+    </head>
 
-<title th:text="#{IndexTitle}">Employees System</title>
+    <body>
+        <!--  Body Wrapper -->
+        <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+             data-sidebar-position="fixed" data-header-position="fixed">
+            <!-- Sidebar Start -->
+            <div th:include="fragments/menu.html"></div>
+            <!--  Sidebar End -->
+            <!--  Main wrapper -->
+            <div class="body-wrapper">
+                <!--  Header Start -->
+                <div th:include="fragments/cabecera.html"></div>
+                <!--  Header End -->
+                <div class="container-fluid">
+                    <form action="#" th:action="@{/solicitud/addsolicitud}"
+                          th:object="${solicitud}" method="post">
+                        <input type="hidden" th:field="*{idSolicitud}" />
+                        <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1> FORMULARIO DE SOLICITUD </h1>
+                    </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-9 col-sm-11 col-xs-12">
+                                        SERVICIO : <input type="text" class="form-control"
+                                                          th:field="*{requerimiento}" id="buscar_servicio" />
+                                    </div>
+                                    <div class="col-lg-4 col-md-5 col-sm-7 col-xs-10">
+                                        CLIENTE :<select th:field="*{cliente.idCliente}"
+                                                         class="form-control custom-select col-sm-6 "
+                                                         id="inputGroupSelect03">
+                                            <option th:each="cli : ${cliente}" th:value="${cli.idCliente}"
+                                                    th:text="${cli.razonSocial}"></option>
+                                        </select> 
+                                    </div>
+                                    <div th:if="${res==0}">
+                                        <div class="col-lg-6 col-md-7 col-sm-9 col-xs-12">
+                                            ESTADO : <input type="text" class="form-control"
+                                                            th:field="*{estado}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-3 col-sm-5 col-xs-8">
+                                        FECHA RECEPCION :
+                                        <div class="control-group form-horizontal ">
+                                            <div class="controls" style="position: relative">
+                                                <input type="text" class="form-control" id="fecharec"
+                                                       th:field="*{fechaRecepcion}" onclick="updatePrice()"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            Accept
+                        </button>
+                    </form>
 
-<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
-</head>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $(function () {
+                                $('#fecharec').datetimepicker({
+                                    format: 'DD/MM/YYYY'
+                                }).on('change', function () {
+                                    $('.datepicker').hide();
+                                });
+                            });
+                        });
+                    </script>
+                    <div th:include="fragments/footer.html"></div>
+                </div>
+            </div>
+        </div>
+    </body>
 
-<body>
-	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
-	<div class="container">
-		<h1>FORMULARIO SOLICITUD</h1>
-		<form action="#" th:action="@{/solicitud/addsolicitud}"
-			th:object="${solicitud}" method="post">
-			<input type="hidden" th:field="*{idsolicitud}" />
-			<div class="panel panel-default">
-				<div class="panel-heading text-center">
-					<b>FORMULARIO DE SOLICITUD</b>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-lg-8 col-md-9 col-sm-11 col-xs-12">
-							SERVICIO : <input type="text" class="form-control"
-								th:field="*{requerimiento}" id="buscar_servicio" />
-						</div>
-						<div class="col-lg-4 col-md-5 col-sm-7 col-xs-10">
-							CLIENTE :<select th:field="*{cliente.idcliente}"
-								class="form-control custom-select col-sm-6 "
-								id="inputGroupSelect03">
-								<option th:each="cli : ${cliente}" th:value="${cli.idcliente}"
-									th:text="${cli.razonsocial}"></option>
-							</select> 
-						</div>
-						<div th:if="${res==0}">
-							<div class="col-lg-6 col-md-7 col-sm-9 col-xs-12">
-								ESTADO : <input disabled type="text" class="form-control"
-									th:field="*{estado}" />
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-3 col-sm-5 col-xs-8">
-							FECHA RECEPCION :
-							<div class="control-group form-horizontal ">
-								<div class="controls" style="position: relative">
-									<input type="text" class="form-control" id="fecharec"
-										th:field="*{fecharecepcion}" onclick="updatePrice()"/>
-								</div>
-							</div>
-						</div>
-						<br />
-					</div>
-				</div>
-			</div>
-			<button class="btn btn-lg btn-primary btn-block" type="submit">
-				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-				Accept
-			</button>
-			<br />
-		</form>
-	</div>
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$(function() {
-				$('#fecharec').datetimepicker({
-					format : 'DD/MM/YYYY'
-				}).on('change', function() {
-					$('.datepicker').hide();
-				});
-			});
-		});
-	</script>
-
-	<div class="footer">
-		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
-	</div>
-
-	<script th:replace="crearEditar/js/javascript :: servicio"></script>
-
-</body>
 </html>

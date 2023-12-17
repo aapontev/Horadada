@@ -1,61 +1,77 @@
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Modernize Free</title>
+        <th:block th:include="fragments/header.html"></th:block>
+    </head>
 
+    <body>
+        <!--  Body Wrapper -->
+        <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+             data-sidebar-position="fixed" data-header-position="fixed">
+            <!-- Sidebar Start -->
+            <div th:include="fragments/menu.html"></div>
+            <!--  Sidebar End -->
+            <!--  Main wrapper -->
+            <div class="body-wrapper">
+                <!--  Header Start -->
+                <div th:include="fragments/cabecera.html"></div>
+                <!--  Header End -->
+                <div class="container-fluid">
+                    <h1>LISTA TRABAJADORES</h1>
+                    <div class="table-responsive">
+                        <div th:if="${resu == 0}">
+                            <form action="#" th:action="@{/trabajador/addtrabajador}"
+                                  th:object="${persona}" method="post">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center">
+                                        <b>NUEVO TRABAJADOR</b>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
+                                                Seleccione Persona : <select th:field="*{idpersona}"
+                                                                             class="form-control">
+                                                    <option th:each="per : ${person}" th:value="${per.idpersona}"
+                                                            th:text="${per.idpersona}+'. '+${per.nombrecompleto}">
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-<title th:text="#{IndexTitle}">Employees System</title>
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    ACEPTAR
+                                </button>
+                            </form>
+                        </div>
 
-<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
-</head>
-<body>
+                        <div th:if="${resu == 1}">
+                            <h1>NO EXISTEN PERSONAS DISPONIBLE PARA REGISTRAR, POR FAVOR
+                                PRIMERO INGRESE UN PERSONA</h1>
+                            <div class="container" align="center">
+                                <a href="#" th:href="@{/persona/personaform?idpersona=0}">
+                                    <button class="btn btn-lg btn-primary btn-block" >
+                                        <span class="glyphicon glyphicon-user">Crear Persona</span>
+                                    </button>
+                                </a> 
+                                <a href="#" th:href="@{/trabajador}">
+                                    <button class="btn btn-lg btn-primary btn-block" >
+                                        <span class="glyphicon glyphicon-log-in">
+                                            Atras</span>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div th:include="fragments/footer.html"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 
-	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
-	<div class="container">
-		<div th:if="${resu == 0}">
-			<form action="#" th:action="@{/trabajador/addtrabajador}"
-				th:object="${persona}" method="post">
-				<div class="panel panel-default">
-					<div class="panel-heading text-center">
-						<b>NUEVO TRABAJADOR</b>
-					</div>
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
-								Seleccione Persona : <select th:field="*{idpersona}"
-									class="form-control">
-									<option th:each="per : ${person}" th:value="${per.idpersona}"
-										th:text="${per.idpersona}+'. '+${per.nombrecompleto}">
-									</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<button class="btn btn-lg btn-primary btn-block" type="submit">
-					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					ACEPTAR
-				</button>
-			</form>
-		</div>
-
-		<div th:if="${resu == 1}">
-			<h1>NO EXISTEN PERSONAS DISPONIBLE PARA REGISTRAR, POR FAVOR
-				PRIMERO INGRESE UN PERSONA</h1>
-			<div class="containner" align="center">
-			<a href="#" th:href="@{/persona/personaform?idpersona=0}"><button> <span class="glyphicon glyphicon-user">Crear	Persona</span></button>
-			</a> 
-			<a href="#" th:href="@{/trabajador}"> <button> <span class="glyphicon glyphicon-log-in">
-					Atras</span></button>
-			</a>
-			</div>
-		</div>
-		<br>
-	</div>
-
-	<div class="footer">
-		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
-	</div>
-</body>
 </html>

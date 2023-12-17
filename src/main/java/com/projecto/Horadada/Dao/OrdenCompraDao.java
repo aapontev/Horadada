@@ -2,14 +2,14 @@ package com.projecto.Horadada.Dao;
 
 import java.io.Serializable;
 import java.util.List;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-import com.projecto.Horadada.Entity.OrdenCompra;
+import com.projecto.Horadada.Entity.OrdenCompraEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository("ordencompra")
-public interface OrdenCompraDao extends PagingAndSortingRepository<OrdenCompra, Serializable>{
+public interface OrdenCompraDao extends JpaRepository<OrdenCompraEntity, Serializable> {
 
-	public abstract OrdenCompra findByIdOrdenCompra(int id);
+    public abstract OrdenCompraEntity findByIdOrdenCompra(int id);
 
-	public abstract List<OrdenCompra> findByestadoOrdenCompra(Integer i);
+    public abstract List<OrdenCompraEntity> findByEstadoOrdenCompra(Integer i);
 }

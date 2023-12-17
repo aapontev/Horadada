@@ -1,20 +1,31 @@
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Modernize Free</title>
+        <th:block th:include="fragments/header.html"></th:block>
+    </head>
 
+    <body>
+        <!--  Body Wrapper -->
+        <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+             data-sidebar-position="fixed" data-header-position="fixed">
+            <!-- Sidebar Start -->
+            <div th:include="fragments/menu.html"></div>
+            <!--  Sidebar End -->
+            <!--  Main wrapper -->
+            <div class="body-wrapper">
+                <!--  Header Start -->
+                <div th:include="fragments/cabecera.html"></div>
+                <!--  Header End -->
+                <div class="container-fluid">
+                    <h1>valorizaciones</h1>
+                
+            <div th:include="fragments/footer.html"></div>
+                </div>
+            </div>
+        </div>
+    </body>
 
-<title th:text="#{IndexTitle}">Employees System</title>
-
-<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
-</head>
-<body>
-
-	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
-	<div class="container">
-	</div>
-	<div class="footer">
-		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
-	</div>
-</body>
 </html>

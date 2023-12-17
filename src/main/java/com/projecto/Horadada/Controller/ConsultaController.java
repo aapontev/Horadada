@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.projecto.Horadada.Entity.TablaMaestra;
+import com.projecto.Horadada.Entity.TablaMaestraEntity;
 import com.projecto.Horadada.Util.Constantes;
 import com.projecto.Horadada.service.UtilitarioService;
 
@@ -21,7 +21,7 @@ public class ConsultaController {
 	
 	@GetMapping("")
 	public String consulta(Model model) {
-		List<TablaMaestra> documentos = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_DOCUMENTOS);
+		List<TablaMaestraEntity> documentos = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_DOCUMENTOS);
 		model.addAttribute("documentos", documentos);
 		return "consulta/consultar";
 	}

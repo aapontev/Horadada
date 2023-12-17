@@ -1,119 +1,180 @@
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Modernize Free</title>
+        <th:block th:include="fragments/header.html"></th:block>
+    </head>
 
-<title th:text="#{IndexTitle}">Employees System</title>
-<th:block th:include="fragments/header :: head"></th:block>
-</head>
+    <body onload="mensaje()">
+        <!--  Body Wrapper -->
+        <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+             data-sidebar-position="fixed" data-header-position="fixed">
+            <!-- Sidebar Start -->
+            <div th:include="fragments/menu.html"></div>
+            <!--  Sidebar End -->
+            <!--  Main wrapper -->
+            <div class="body-wrapper">
+                <!--  Header Start -->
+                <div th:include="fragments/cabecera.html"></div>
+                <!--  Header End -->
+                <div class="container-fluid">
+                    <form action="#" th:action="@{/persona/addpersona}"
+                          th:object="${persona}" method="post">
+                        <input type="hidden" th:field="*{idPersona}" />
+                        <input type="hidden" th:field="*{idTelefono}" />
+                        <div class="panel panel-default">
+                            <div class="text-center">
+                                <strong>FORMULARIO PERSONA</strong>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                        Tipo Persona : <select th:field="*{tipoPersona}"
+                                                               class="custom-select col-sm-6 form-control" id="tipPersona">
+                                            <option th:each="tipper : ${tipopersona}"
+                                                    th:value="${tipper.clave1}"
+                                                    th:text="${tipper.clave1}+'. '+${tipper.valor1}"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-8 col-md-9 col-sm-10 col-xs-12">
+                                        Apellidos y Nombres : <input type="text" class="form-control"
+                                                                     id="nombres" th:field="*{nombreCompleto}" /> <br />
+                                    </div>
 
-<body>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                        Tipo documento : <select th:field="*{codTipoDocumento}"
+                                                                 class="custom-select col-sm-6 form-control"
+                                                                 id="inputGroupSelect03">
+                                            <option th:each="tipdoc : ${tipodoc}"
+                                                    th:value="${tipdoc.clave1}"
+                                                    th:text="${tipdoc.clave1}+'. '+${tipdoc.valor1}"></option>
+                                        </select> 
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                        Numero documento : <input type="text" class="form-control"
+                                                                  th:field="*{numeroDocumento}" /> <br />
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                        Direccion : <input type="text" class="form-control"
+                                                           th:field="*{direccion}" /> <br />
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                        fecha nacimiento :
+                                        <div class="control-group form-horizontal ">
+                                            <div class="controls" style="position: relative">
+                                                <input type="date" class="form-control" th:field="*{fechaNacimiento}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <strong>CONTACTARLO</strong>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                        número Telefono : <input type="text" class="form-control"
+                                                                 th:field="*{numeroTelefono}" /> <br />
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                        Tipo telefono : <select
+                                            class="custom-select col-sm-6 form-control" th:field="*{tipoTelefono}">
+                                            <option th:each="tiptel : ${tipotelefono}"
+                                                    th:value="${tiptel.clave1}"
+                                                    th:text="${tiptel.clave1}+'. '+${tiptel.valor1}"></option>
+                                        </select> 
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                        operador telefono :<select
+                                            class="custom-select col-sm-6 form-control" th:field="*{operador}">
+                                            <option th:each="ope : ${operador}" th:value="${ope.clave1}"
+                                                    th:text="${ope.clave1}+'. '+${ope.valor1}"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                        Correo electronico : <input type="email" class="form-control"
+                                                                    th:field="*{correoElectronico}" /> <br />
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="1" class="panel-body">
+                                <div class="text-center">
+                                    <strong>TRANSPORTISTA</strong>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                        Categoria Licencia: <select th:field="*{catLicencia}"
+                                                                    class="custom-select col-sm-6 form-control">
+                                            <option th:each="lic : ${licencia}" th:value="${lic.valor1}"
+                                                    th:text="${lic.valor1}"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
+                                        Nro Licencia: <input type="text" class="form-control"
+                                                              th:field="*{nroLicencia}" />
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                        Situacion: <select th:field="*{idSituacionTransportista}"
+                                                            class="custom-select col-sm-6 form-control">
+                                            <option th:each="sit : ${estado}" th:value="${sit.clave1}"
+                                                    th:text="${sit.clave1}+'. '+${sit.valor1}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
-	<div class="container">
-		<th:block th:include="fragments/menu :: menu"></th:block>
-		<br />
-		<form action="#" th:action="@{/persona/addpersona}"
-			th:object="${persona}" method="post">
-			<input type="hidden" th:field="*{idPersona}" />
-			<div class="panel panel-default">
-				<div class="text-center">
-					<b>FORMULARIO PERSONA</b>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-lg-2">
-							Tipo Persona : <br> <select th:field="*{tipoPersona}"
-								class="custom-select col-sm-12 form-control">
-								<option th:each="tipper : ${tipopersona}"
-									th:value="${tipper.clave1}"
-									th:text="${tipper.clave1}+'. '+${tipper.valor1}"></option>
-							</select>
-						</div>
-						<div class="col-lg-8 col-md-9 col-sm-10 col-xs-12">
-							Apellidos y Nombres : <input type="text" class="form-control"
-								id="nombres" th:field="*{nombreCompleto}" /> <br />
-						</div>
+                            <div id="2" class="panel-body">
+                                <div class="text-center">
+                                    <strong>CONTACTO</strong>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
+                                        Codigo Cliente: <br /> <select th:field="*{idCliente}"
+                                                                        class="form-control">
+                                            <option th:each="cli : ${cliente}" th:value="${cli.idCliente}"
+                                                    th:text="${cli.idCliente}+'. '+${cli.razonSocial}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							Tipo documento : <br> <select th:field="*{codTipoDocumento}"
-								class="custom-select col-sm-6 form-control"
-								id="inputGroupSelect03">
-								<option th:each="tipdoc : ${tipodoc}"
-									th:value="${tipdoc.clave1}"
-									th:text="${tipdoc.clave1}+'. '+${tipdoc.valor1}"></option>
-							</select> <br /> <br />
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							Numero documento : <input type="text" class="form-control"
-								th:field="*{numeroDocumento}" /> <br />
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							DIRECCION : <input type="text" class="form-control"
-								th:field="*{direccion}" /> <br />
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							fecha nacimiento :
-							<div class="control-group form-horizontal ">
-								<div class="controls" style="position: relative">
-									<input type="text" class="form-control"
-										th:field="*{fechaNacimiento}" id="fechanac" />
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="text-center">
-					<b>CONTACTARLO</b>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							número Telefono : <input type="text" class="form-control"
-								name="numerotelefono" /> <br />
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							Tipo telefono : <br> <select
-								class="custom-select col-sm-6 form-control" name="tipotelefono">
-								<option th:each="tiptel : ${tipotelefono}"
-									th:value="${tiptel.clave1}"
-									th:text="${tiptel.clave1}+'. '+${tiptel.valor1}"></option>
-							</select> <br /> <br />
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							operador telefono : <br> <select
-								class="custom-select col-sm-6 form-control" name="operador">
-								<option th:each="ope : ${operador}" th:value="${ope.clave1}"
-									th:text="${ope.clave1}+'. '+${ope.valor1}"></option>
-							</select> <br /> <br />
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							Correo electronico : <input type="email" class="form-control"
-								th:field="*{correoElectronico}" /> <br />
-						</div>
-					</div>
-				</div>
-			</div>
-			<button class="btn btn-lg btn-primary btn-block" type="submit">
-				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-				ACEPTAR
-			</button>
-			<br>
-		</form>
+                            <div class="panel-body">
+                                <div class="center">
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        ACEPTAR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
 
-		<th:block th:include="fragments/footer :: footer"></th:block>
-	</div>
+                    <div th:include="fragments/footer.html"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $("#tipPersona").on("change", function () {
+                $("#1").hide();
+                $("#2").hide();
+                $("#3").hide();
 
-	<script type="text/javascript">
-	$(document).ready(function() {
-			$(function() {
-				$('#fechanac').datetimepicker({
-					format : 'YYYY/MM/DD'
-				}).on('change', function() {
-					$('.datepicker').hide();
-				});
-			});
-		});
-		$('#nombres').replace(/\b[a-z]/g,c=>c.toUpperCase());
-	</script>
-</body>
+                $("#" + this.value).show();
+            });
+            function mensaje() {
+                var select = document.getElementById('tipPersona');
+                $("#1").hide();
+                $("#2").hide();
+                $("#3").hide();
+
+                $("#" + select.value).show();
+                console.log(select.value);
+            }
+
+        </script>
+    </body>
+
 </html>

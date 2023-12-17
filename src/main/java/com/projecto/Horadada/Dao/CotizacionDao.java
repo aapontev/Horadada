@@ -3,12 +3,12 @@ package com.projecto.Horadada.Dao;
 import java.io.Serializable;
 import java.util.List;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-import com.projecto.Horadada.Entity.Cotizacion;
+import com.projecto.Horadada.Entity.CotizacionEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 @Repository("Cotizaciondao")
-public interface CotizacionDao extends PagingAndSortingRepository<Cotizacion, Serializable> {
+public interface CotizacionDao extends JpaRepository<CotizacionEntity, Serializable> {
 
-	public abstract Cotizacion findByidCotizacion(int id);
-	public abstract List<Cotizacion> findByaprobado(Integer estado);
+	public abstract CotizacionEntity findByidCotizacion(int id);
+	public abstract List<CotizacionEntity> findByaprobado(Integer estado);
 }

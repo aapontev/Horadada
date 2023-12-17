@@ -1,12 +1,12 @@
 package com.projecto.Horadada.Dao;
 
 import java.io.Serializable;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import com.projecto.Horadada.Entity.CotizacionDetalle;
+import com.projecto.Horadada.Entity.CotizacionDetalleEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository("cotizaciondetalledao")
-public interface CotizacionDetalleDao extends CrudRepository<CotizacionDetalle, Serializable> {
+public interface CotizacionDetalleDao extends JpaRepository<CotizacionDetalleEntity, Serializable> {
 
-	public abstract CotizacionDetalle findByItem (Integer item);
+	public abstract CotizacionDetalleEntity findByItem (Integer item);
 }

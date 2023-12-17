@@ -1,31 +1,91 @@
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Sistema de planificcion y control de Carga pesada</title>
+        <th:block th:include="fragments/header.html"></th:block>
+    </head>
+    <body>
+        <!--sidebar-->
+        <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
+            <div class="sidebar-brand d-none d-md-flex">
+                <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
+                    <use xlink:href="assets/brand/coreui.svg#full"></use>
+                </svg>
+                <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
+                    <use xlink:href="assets/brand/coreui.svg#full"></use>
+                </svg>
+            </div>
+            <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
+                <div th:include="fragments/menu.html"></div>
+            </ul>
+            <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
+        </div>
+        <!--contenido-->
+        <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+            <div th:include="fragments/cabecera.html"></div>
+            <div class="body flex-grow-1 px-3">
 
+                <div class="container">
+                    <label>SELECCIONE EL TIPO DE DOCUMENTO QUE DESEA GENERAR</label>
 
-<title th:text="#{IndexTitle}">Employees System</title>
+                    <div class="row mt-4 col-md-10">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Tipo doc.:</label> 
+                                <select
+                                    class="custom-select col-sm-6 form-control" id="tipoDoc">
+                                    <option th:each="tipdoc : ${documentos}" th:value="${tipdoc.valor1}"
+                                            th:text="${tipdoc.clave1}+'. '+${tipdoc.valor1}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>año :</label>                                 
+                                <select
+                                    class="custom-select col-sm-6 form-control" id="anioDoc">
+                                    <option th:each="rang : ${aniosArr}" th:value="${rang}"
+                                            th:text="${rang}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Mes :</label>                                 
+                                <select
+                                    class="custom-select col-sm-6 form-control" id="mesDoc">
+                                    <option th:each="mes : ${meses}" th:value="${mes}"
+                                            th:text="${mes}"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
-<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
-</head>
-<body>
+                    <div class="row mt-4">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label >Ingresa nro. de documento:</label>
+                                <input type="text" class="form-control" id="nroDoc">
+                            </div>
+                        </div>
+                    </div>
 
-	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
-	<div class="container">
+                    <div class="row mt-3" id="buscar">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary" id="miBoton">Consultar Archivo</button>
+                            <label id="arcNE" style="display: none">el archivo no existe, revise los parametros de busqueda</label>
+                        </div>
+                    </div>
 
-		<h1>SELECCIONE EL TIPO DE DOCUMENTO QUE DESEA GENERAR</h1>
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-			Tipo documento : <br> <select
-				class="custom-select col-sm-6 form-control" id="inputGroupSelect03">
-				<option th:each="tipdoc : ${documentos}" th:value="${tipdoc.clave1}"
-					th:text="${tipdoc.clave1}+'. '+${tipdoc.valor1}"></option>
-			</select> <br /> <br /> <input class="button" type="submit" value="CONSULTAR"> <br />
-			<br />
-		</div>
-	</div>
+                    <div class="row mt-3" id="descargar" style="display: none">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-success" id="enlace">Descargar</button>                            
+                            <button type="button" class="btn btn-info" id="nuBusq">Nueva Busqueda</button>
+                        </div>
+                    </div>
 
-	<div class="footer">
-		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
-	</div>
-</body>
+                </div>  </div>
+            <div th:include="fragments/footer.html"></div>
+        </div>
+    </body>
 </html>

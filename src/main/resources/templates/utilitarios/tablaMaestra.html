@@ -1,144 +1,105 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
-<title th:text="#{IndexTitle}">Employees System</title>
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Sistema de planificcion y control de Carga pesada</title>
+        <th:block th:include="fragments/header"></th:block>
+    </head>
+    <body>
+        <!--sidebar-->
+        <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
+            <div class="sidebar-brand d-none d-md-flex">
+                <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
+                    <use xlink:href="assets/brand/coreui.svg#full"></use>
+                </svg>
+                <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
+                    <use xlink:href="assets/brand/coreui.svg#full"></use>
+                </svg>
+            </div>
+            <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
+                <div th:include="fragments/menu.html"></div>
+            </ul>
+            <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
+        </div>
+        <!--contenido-->
+        <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+            <div th:include="fragments/cabecera.html"></div>
+            <div class="body flex-grow-1 px-3">
 
-<th:block th:include="fragments/header :: head"></th:block>
-</head>
-<body>
+            <div class="container">
+                <div th:if="${resu == 0}">
 
-	<div class="container">
-		<th:block th:include="fragments/menu :: menu"></th:block>
+                    <div class="row mt-xl-2 col-xl-10">
+                        <div class="form-group ">
+                            <a class="btn btn-primary" href="#" onclick="this.href = '/tablamaestra/form?idTabla=' + document.getElementById('idTabla').value + '&clave1= 0'">Nueva Tabla</a>
+                        </div>
+                    </div>
+                    <div class="row mt-xl-2 col-xl-10">
+                        <div class="form-group">
+                            <label >Selecciones la tabla que desea buscar:</label>
+                            <select class="custom-select mr-" id="idTabla">
+                                <option th:each="tm : ${tablas}" th:value="${tm.clave1}"
+                                        th:text="${tm.valor1}" ></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-xl-2 col-xl-10">
+                        <div class="form-group">
+                            <a href="#" class="btn btn-success"
+                               onclick="this.href = '/tablamaestra?tipotabla=' + document.getElementById('idTabla').value">
+                                BUSCAR
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-		<div th:if="${resu == 0}">
-			<div class="form-row">
-				<div class="form-group ">
-					<button type="button" class="btn btn-primary" data-toggle="modal"
-						data-target="#exampleModal">Nueva Tabla</button>
-				</div>
-				<div class="form-group col-md-4">
-					<select class="custom-select mr-sm-2" id="idTabla">
-						<option th:each="tm : ${tablas}" th:value="${tm.clave1}"
-							th:text="${tm.valor1}"></option>
-					</select>
-				</div>
-			</div>
-			<div>
-				<a href="#"
-					onclick="this.href='/tablamaestra?tipotabla='+document.getElementById('idTabla').value">
-					<button type="button" class="btn btn-primary">
-						<span class="glyphicon glyphicon-search" aria-hidden="true">
-							BUSCAR</span>
-					</button>
-				</a>
-			</div>
-		</div>
-
-		<div class="container">
-			<div th:if="${resu == 1}">
-				<div class="panel panel-default">
-					<div class="panel-heading"></div>
-					<div class="" align="center">
-						<h1>
-							<label th:text="${titulo} " class="text-center"></label>
-						</h1>
-					</div>
-					<div align="right">
-						<h1>
-							<a href="#" onclick="this.href='/tablamaestra?tipotabla=0'">regresar</a>
-						</h1>
-					</div>
-					<form action="#" th:action="@{/tablamaestra/form}">
-						<table class="table table-hover table-striped">
-							<thead>
-								<tr>
-									<th>CLAVE 1</th>
-									<th>VALOR 1</th>
-									<th>FECHA DE CREACIÓN</th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="tab : ${tablas}">
-									<td th:name="idTabla" th:text="${tab.idTablaMaestra}" ></td>
-									<td th:name="clave1" th:text="${tab.clave1}"></td>
-									<td th:text="${tab.valor1}"></td>
-									<td th:text="${tab.fechaCreacion}"></td>
-									<td><a>
-											<button type="button" class="btn btn-success"
-												data-toggle="modal" data-target="#exampleModal">
-												<span class="glyphicon glyphicon-pencil" id="open"
-													aria-hidden="true"></span>
-											</button>
-									</a> <!-- <a href="#">
-											<button type="button" class="btn btn-danger">
-												<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-											</button>
-									</a> --></td>
-								</tr>
-							</tbody>
-						</table>
-					</form>
-				</div>
-			</div>
-		</div>
-
-		<!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form>
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="inputEmail4">Clave 1</label> <input type="text"
-										class="form-control" id="clave1" placeholder="Clave 1"></input>
-								</div>
-								<div class="form-group col-md-6">
-									<label for="inputPassword4">Valor 1</label> <input type="text"
-										class="form-control" id="valor1" placeholder="Valor 1"></input>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="inputEmail4">Clave 2</label> <input type="text"
-										class="form-control" id="clave2" placeholder="Clave 2"></input>
-								</div>
-								<div class="form-group col-md-6">
-									<label for="inputPassword4">Valor 2</label> <input type="text"
-										class="form-control" id="valor2" placeholder="Valor 2"></input>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="inputEmail4">Clave 3</label> <input type="text"
-										class="form-control" id="clave3" placeholder="Clave 3"></input>
-								</div>
-								<div class="form-group col-md-6">
-									<label for="inputPassword4">Valor 3</label> <input type="text"
-										class="form-control" id="valor3" placeholder="Valor 3"></input>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Cancelar</button>
-						<button type="button" class="btn btn-primary">Guardar
-							Cambios</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		 <th:block th:include="fragments/footer :: footer"></th:block> 
-	</div>
-</body>
+                <div th:if="${resu == 1}">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"></div>
+                        <div class="" align="center">
+                            <h1>
+                                <label th:text="${titulo} " class="text-center"></label>
+                            </h1>
+                        </div>
+                        <div align="right">
+                            <h1>
+                                <a href="#" onclick="this.href = '/tablamaestra?tipotabla=0'">regresar</a>
+                            </h1>
+                        </div>
+                        <form action="#" th:action="@{/tablamaestra/form}">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>CLAVE 1</th>
+                                        <th>VALOR 1</th>
+                                        <th>FECHA DE CREACIÓN</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="tab : ${tablas}">
+                                        <td th:name="clave1" th:text="${tab.clave1}"></td>
+                                        <td th:text="${tab.valor1}"></td>
+                                        <td th:text="${tab.fechaCreacion}"></td>
+                                        <td><a>
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="modal" data-target="#exampleModal">
+                                                    <span class="glyphicon glyphicon-pencil" id="open"
+                                                          aria-hidden="true"></span>
+                                                </button>
+                                            </a> <!-- <a href="#">
+                                                            <button type="button" class="btn btn-danger">
+                                                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                                            </button>
+                                            </a> --></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+</div>
+            <div th:include="fragments/footer.html"></div>
+        </div>
+    </body>
 </html>

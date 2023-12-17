@@ -1,13 +1,13 @@
 package com.projecto.Horadada.Dao;
 
 import java.io.Serializable;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-import com.projecto.Horadada.Entity.Vehiculo;
+import com.projecto.Horadada.Entity.VehiculoEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository("vehiculodao")
-public interface VehiculoDao extends PagingAndSortingRepository<Vehiculo, Serializable> {
-	
-	public abstract Vehiculo findByidVehiculo(int id);
+public interface VehiculoDao extends JpaRepository<VehiculoEntity, Serializable> {
+
+    public abstract VehiculoEntity findByidVehiculo(int id);
 
 }

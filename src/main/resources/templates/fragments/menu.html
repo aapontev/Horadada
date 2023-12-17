@@ -1,74 +1,212 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
-<title>Transportes Horadada</title>
-</head>
-<body>
-	<div th:fragment="menu">
-			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarsExampleDefault"
-					aria-controls="navbarsExampleDefault" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active"><h2>
-								<a class="nav-link" href="/principal">HORADADA <span
-									class="sr-only">(current)</span>
-								</a>
-							</h2></li>
-
-
-						<li class="nav-item active"><a class="nav-link"
-							href="/consulta">Consultar</a></li>
-
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="dropdown01"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentacion</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown01">
-								<a class="dropdown-item" href="/solicitud">Solicitud</a> <a
-									class="dropdown-item" href="/cotizacion">Cotización</a> <a
-									class="dropdown-item" href="/ordencompra">Orden De Compra</a> <a
-									class="dropdown-item" href="/despacho">Despacho</a> <a
-									class="dropdown-item" href="/factura">Factura</a> <a
-									class="dropdown-item" href="/documentacion/valorizacion">Valorizacion</a>
-							</div></li>
-						<li class="nav-item active"><a class="nav-link"
-							href="/monitoreo">Monitoreo</a></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="dropdown01"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mantenimiento</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown01">
-								<a class="dropdown-item" href="/cliente">Cliente</a> <a
-									class="dropdown-item" href="/contacto">Contacto</a> <a
-									class="dropdown-item" href="/trabajador">Trabajador</a> <a
-									class="dropdown-item" href="/transportista">Transportista</a> <a
-									class="dropdown-item" href="/persona">Persona</a>
-							</div></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="dropdown01"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utilitarios</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown01">
-								<a class="dropdown-item" href="/direccion">Direccion</a> <a
-									class="dropdown-item" href="/servicios">Servicios</a> <a
-									class="dropdown-item" href="/tablamaestra">Tablamaestra</a> <a
-									class="dropdown-item" href="/telefono">Telefono</a> <a
-									class="dropdown-item" href="/vehiculo">Vehiculo</a>
-							</div></li>
-						<li class="nav-item active"><a class="nav-link"
-							href="/reporte">Reportes</a></li>
-
-					</ul>
-					<form class="form-inline my-2 my-lg-0">
-						<h4 class="pull-right rojo">Bienvenido:</h4>
-						<a href="/login?logout">Cerrar Sesion </a>
-					</form>
-				</div>
-			</nav>
-	</div>
-</body>
-</html>
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+            <a href="/principal" class="text-nowrap logo-img">
+                <img src="/imgs/dark-logo.svg" width="180" alt="" />
+            </a>
+            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                <i class="ti ti-x fs-8"></i>
+            </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+            <ul id="sidebarnav">
+                <div>
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">Home</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/consulta" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-layout-dashboard"></i>
+                            </span>
+                            <span class="hide-menu">Consulta</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/monitoreo" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-layout-dashboard"></i>
+                            </span>
+                            <span class="hide-menu">Monitoreo</span>
+                        </a>
+                    </li>
+                </div>
+                <div>
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">DOCUMENTACION</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/solicitud" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-article"></i>
+                            </span>
+                            <span class="hide-menu">Solicitud</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/cotizacion" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-alert-circle"></i>
+                            </span>
+                            <span class="hide-menu">Cotización</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/ordencompra" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-cards"></i>
+                            </span>
+                            <span class="hide-menu">Orden De Compra</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/despacho" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-file-description"></i>
+                            </span>
+                            <span class="hide-menu">Despacho</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/factura" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-typography"></i>
+                            </span>
+                            <span class="hide-menu">Factura</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/valorizacion" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-typography"></i>
+                            </span>
+                            <span class="hide-menu">Valorizacion</span>
+                        </a>
+                    </li>
+                </div>
+                <div>
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">Mantenimiento</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/cliente" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-mood-happy"></i>
+                            </span>
+                            <span class="hide-menu">Cliente</span>
+                        </a>
+                    </li>
+                    <!--<li class="sidebar-item">
+                        <a class="sidebar-link" href="/contacto" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-aperture"></i>
+                            </span>
+                            <span class="hide-menu">Contacto</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/trabajador" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-mood-happy"></i>
+                            </span>
+                            <span class="hide-menu">Trabajador</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/transportista" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-aperture"></i>
+                            </span>
+                            <span class="hide-menu">Transportista</span>
+                        </a>
+                    </li>-->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/persona" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-mood-happy"></i>
+                            </span>
+                            <span class="hide-menu">Persona</span>
+                        </a>
+                    </li>
+                </div>
+                <div>
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">Utilitarios</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/direccion" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-mood-happy"></i>
+                            </span>
+                            <span class="hide-menu">Direccion</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/servicios" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-aperture"></i>
+                            </span>
+                            <span class="hide-menu">Servicios</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/tablamaestra" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-mood-happy"></i>
+                            </span>
+                            <span class="hide-menu">Tablamaestra</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/telefono" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-aperture"></i>
+                            </span>
+                            <span class="hide-menu">Telefono</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/vehiculo" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-mood-happy"></i>
+                            </span>
+                            <span class="hide-menu">Vehiculo</span>
+                        </a>
+                    </li>
+                </div>
+                <!-- comment -->
+                <div> 
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">AUTH</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-login"></i>
+                            </span>
+                            <span class="hide-menu">Login</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-user-plus"></i>
+                            </span>
+                            <span class="hide-menu">Register</span>
+                        </a>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>

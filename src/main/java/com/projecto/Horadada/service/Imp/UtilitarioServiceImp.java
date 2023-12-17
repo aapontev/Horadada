@@ -7,218 +7,191 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.projecto.Horadada.Dao.DireccionDao;
-import com.projecto.Horadada.Dao.PersonaDao;
 import com.projecto.Horadada.Dao.ServicioDao;
 import com.projecto.Horadada.Dao.TablaMaestraDao;
 import com.projecto.Horadada.Dao.TelefonoDao;
 import com.projecto.Horadada.Dao.UbicacionDao;
 import com.projecto.Horadada.Dao.VehiculoDao;
-import com.projecto.Horadada.Entity.Direccion;
-import com.projecto.Horadada.Entity.TablaMaestra;
-import com.projecto.Horadada.Entity.TelefonoMonitoreo;
-import com.projecto.Horadada.Entity.TipoServicio;
-import com.projecto.Horadada.Entity.Ubicacion;
-import com.projecto.Horadada.Entity.Vehiculo;
+import com.projecto.Horadada.Entity.DireccionEntity;
+import com.projecto.Horadada.Entity.PersonaEntity;
+import com.projecto.Horadada.Entity.TablaMaestraEntity;
+import com.projecto.Horadada.Entity.TelefonoMonitoreoEntity;
+import com.projecto.Horadada.Entity.TipoServicioEntity;
+import com.projecto.Horadada.Entity.UbicacionEntity;
+import com.projecto.Horadada.Entity.VehiculoEntity;
 import com.projecto.Horadada.service.UtilitarioService;
 
 @Service("utilitarioservice")
 public class UtilitarioServiceImp implements UtilitarioService {
 
-	@Autowired
-	@Qualifier("serviciodao")
-	private ServicioDao serviciodao;
-	
-	@Autowired
-	@Qualifier("ubicaciondao")
-	UbicacionDao ubicaciondao;
-	
-	@Autowired
-	@Qualifier("tablaMaestraDao")
-	private TablaMaestraDao tablaMaestraDao;
-	
-	@Autowired
-	@Qualifier("telefonodao")
-	private TelefonoDao telefonodao;
-	
-	@Autowired
-	@Qualifier("direcciondao")
-	private DireccionDao direcciondao;
+    @Autowired
+    @Qualifier("serviciodao")
+    private ServicioDao serviciodao;
 
-	@Autowired
-	@Qualifier("vehiculodao")
-	private VehiculoDao vehiculodao;
+    @Autowired
+    @Qualifier("ubicaciondao")
+    UbicacionDao ubicaciondao;
 
-	@Autowired
-	@Qualifier("personaDao")
-	private PersonaDao personaDao;
-	
-	@Override
-	public Page<TipoServicio> findAllServ(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return serviciodao.findAll(pageable);
-	}	
-	
-	@Override
-	public Ubicacion getUbicacion(int iddespacho,int idtransportista) {
-		Ubicacion ubicacion = ubicaciondao.getUbicacion(iddespacho,idtransportista);
-		return ubicacion;
-	}
+    @Autowired
+    @Qualifier("tablaMaestraDao")
+    private TablaMaestraDao tablaMaestraDao;
 
+    @Autowired
+    @Qualifier("telefonodao")
+    private TelefonoDao telefonodao;
 
-	@Override
-	public Ubicacion getUbicacionOne() {
-		Ubicacion ubicacion= ubicaciondao.getUbicacionOne();
-		return ubicacion;
-	}
+    @Autowired
+    @Qualifier("direcciondao")
+    private DireccionDao direcciondao;
 
+    @Autowired
+    @Qualifier("vehiculodao")
+    private VehiculoDao vehiculodao;
 
-	@Override
-	public Ubicacion save(Ubicacion ubi) {
-		return ubicaciondao.save(ubi);
-		
-	}	
-	
-	@Override
-	public List<TablaMaestra> findByIdtablaMaestra(String idTabla) {
-		List<TablaMaestra> tabId = tablaMaestraDao.findByidTablaMaestra(idTabla);
-		return tabId;
-	}
+    @Override
+    public Page<TipoServicioEntity> findAllServ(Pageable pageable) {
+        return serviciodao.findAll(pageable);
+    }
 
-	@Override
-	public List<String> gettablamaestra() {
-		List<String> des= tablaMaestraDao.gettablaMaestra();
-		return des;
-	}
-	
-	@Override
-	public List<TelefonoMonitoreo> findByAll() {
-		List<TelefonoMonitoreo> telefono = (List<TelefonoMonitoreo>) telefonodao.findAll();
-		return telefono;
-	}
+    @Override
+    public UbicacionEntity getUbicacion(int iddespacho, int idtransportista) {
+        UbicacionEntity ubicacion = ubicaciondao.getUbicacion(iddespacho, idtransportista);
+        return ubicacion;
+    }
 
-	@Override
-	public TelefonoMonitoreo save(TelefonoMonitoreo telefono) {
-		TelefonoMonitoreo telef = telefonodao.save(telefono);
-		return telef;
-	}
+    @Override
+    public UbicacionEntity getUbicacionOne() {
+        UbicacionEntity ubicacion = ubicaciondao.getUbicacionOne();
+        return ubicacion;
+    }
 
-	@Override
-	public Page<TelefonoMonitoreo> findAllTel(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return telefonodao.findAll(pageable);
-	}
+    @Override
+    public UbicacionEntity save(UbicacionEntity ubi) {
+        return ubicaciondao.save(ubi);
+    }
 
-	@Override
-	public TipoServicio findByIdservicio(int id) {
-		// TODO Auto-generated method stub
-		return serviciodao.findByIdServicio(id);
-	}
+    @Override
+    public List<TablaMaestraEntity> findByIdtablaMaestra(String idTabla) {
+        List<TablaMaestraEntity> tabId = tablaMaestraDao.findByidTablaMaestra(idTabla);
+        return tabId;
+    }
 
-	@Override
-	public TipoServicio save(TipoServicio servicio) {
-		// TODO Auto-generated method stub
-		return serviciodao.save(servicio);
-	}
+    @Override
+    public List<String> gettablamaestra() {
+        List<String> des = tablaMaestraDao.gettablaMaestra();
+        return des;
+    }
 
-	@Override
-	public void deleteServ(int id) {
-		// TODO Auto-generated method stub
-		serviciodao.deleteById(id);
-	}
+    @Override
+    public TablaMaestraEntity findByidTablaMaestraAndClave1(String idTabla, String clave1) {
+        return tablaMaestraDao.findByidTablaMaestraAndClave1(idTabla, clave1);
+    }
 
-	@Override
-	public Page<Direccion> findAllDir(Pageable pageRequest) {
-		// TODO Auto-generated method stub
-		return direcciondao.findAll(pageRequest);
-	}
+    @Override
+    public TipoServicioEntity findByIdservicio(int id) {
+        return serviciodao.findByIdServicio(id);
+    }
 
-	@Override
-	public Direccion findByIddireccion(int id) {
-		// TODO Auto-generated method stub
-		return direcciondao.findByIdDireccion(id);
-	}
+    @Override
+    public TipoServicioEntity save(TipoServicioEntity servicio) {
+        return serviciodao.save(servicio);
+    }
 
-	@Override
-	public void deleteDire(int id) {
-		// TODO Auto-generated method stub
-		direcciondao.deleteById(id);
-		
-	}
+    @Override
+    public void deleteServ(int id) {
+        serviciodao.deleteById(id);
+    }
 
-	@Override
-	public Direccion save(Direccion direccion) {
-		// TODO Auto-generated method stub
-		return direcciondao.save(direccion);
-	}
+    @Override
+    public Page<DireccionEntity> findAllDir(Pageable pageRequest) {
+        return direcciondao.findAll(pageRequest);
+    }
 
-	@Override
-	public List<TipoServicio> findByNombre(String term) {
-		// TODO Auto-generated method stub
-		return serviciodao.findByNombreServicioLikeIgnoreCase("%"+term+"%");
-	}
+    @Override
+    public DireccionEntity findByIddireccion(int id) {
+        return direcciondao.findByIdDireccion(id);
+    }
 
-	@Override
-	public List<Direccion> findAll() {
-		// TODO Auto-generated method stub
-		return (List<Direccion>) direcciondao.findAll();
-	}
+    @Override
+    public void deleteDire(int id) {
+        direcciondao.deleteById(id);
 
-	@Override
-	public Page<Vehiculo> findAll(Pageable pageRequest) {
-		// TODO Auto-generated method stub
-		return vehiculodao.findAll(pageRequest);
-	}
+    }
 
-	@Override
-	public Vehiculo findByidvehiculo(int id) {
-		// TODO Auto-generated method stub
-		return vehiculodao.findByidVehiculo(id);
-	}
+    @Override
+    public DireccionEntity save(DireccionEntity direccion) {
+        return direcciondao.save(direccion);
+    }
 
-	@Override
-	public void deleteVeh(int id) {
-		// TODO Auto-generated method stub
-		vehiculodao.deleteById(id);
-		
-	}
+    @Override
+    public List<TipoServicioEntity> findByNombre(String term) {
+        return serviciodao.findByNombreServicioLikeIgnoreCase("%" + term + "%");
+    }
 
-	@Override
-	public Vehiculo save(Vehiculo vehiculo) {
-		// TODO Auto-generated method stub
-		return vehiculodao.save(vehiculo);
-	}
+    @Override
+    public List<DireccionEntity> findAll() {
+        return (List<DireccionEntity>) direcciondao.findAll();
+    }
 
-	/*@Override
-	public List<Telefono> findBypersona(Te) {
-		// TODO Auto-generated method stub
-		int idPer = id.getIdpersona();
-		List<Telefono> tel = new Telefono();
-		return telefonodao.fin;
-	}*/
+    @Override
+    public Page<VehiculoEntity> findAll(Pageable pageRequest) {
+        return vehiculodao.findAll(pageRequest);
+    }
 
-	@Override
-	public TelefonoMonitoreo findByimei(String imei) {
-		// TODO Auto-generated method stub
-		return telefonodao.findByimei(imei);
-	}
+    @Override
+    public VehiculoEntity findByidvehiculo(int id) {
+        return vehiculodao.findByidVehiculo(id);
+    }
 
-	@Override
-	public TelefonoMonitoreo findBynumerotelefono(String numero) {
-		// TODO Auto-generated method stub
-		return telefonodao.findBynumeroTelefono(numero);
-	}
+    @Override
+    public void deleteVeh(int id) {
+        vehiculodao.deleteById(id);
 
+    }
 
-	@Override
-	public TablaMaestra findByidTablaMaestraAndClave1(String idTabla, String clave1) {
-		// TODO Auto-generated method stub
-		return tablaMaestraDao.findByidTablaMaestraAndClave1(idTabla, clave1);
-	}
+    @Override
+    public VehiculoEntity save(VehiculoEntity vehiculo) {
+        return vehiculodao.save(vehiculo);
+    }
 
-/*	@Override
-	public List<Telefono> findTelefonoByidPersona(int id) {
-		//int idPer = id.getIdpersona();
-		//List<Telefono> tel = (List<Telefono>) new Telefono();
-		return telefonodao.findTelefonoByidPersona(id);
-	}*/
+    @Override
+    public TelefonoMonitoreoEntity findByimei(String imei) {
+        return telefonodao.findByimei(imei);
+    }
+
+    @Override
+    public TelefonoMonitoreoEntity findBynumerotelefono(String numero) {
+        return telefonodao.findBynumeroTelefono(numero);
+    }
+
+    @Override
+    public void deleteTel(int id) {
+        telefonodao.deleteById(id);
+    }
+        @Override
+    public List<TelefonoMonitoreoEntity> findByAll() {
+        List<TelefonoMonitoreoEntity> telefono = (List<TelefonoMonitoreoEntity>) telefonodao.findAll();
+        return telefono;
+    }
+
+    @Override
+    public TelefonoMonitoreoEntity save(TelefonoMonitoreoEntity telefono) {
+        TelefonoMonitoreoEntity telef = telefonodao.save(telefono);
+        return telef;
+    }
+
+    @Override
+    public Page<TelefonoMonitoreoEntity> findAllTel(Pageable pageable) {
+        return telefonodao.findAll(pageable);
+    }
+
+    @Override
+    public TelefonoMonitoreoEntity findById(int id) {
+        return telefonodao.findById(id).get();
+    }
+
+    @Override
+    public TelefonoMonitoreoEntity findByPersona(PersonaEntity persona) {
+        return telefonodao.findBypersona(persona);
+    }
 }

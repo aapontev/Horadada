@@ -1,13 +1,13 @@
 package com.projecto.Horadada.Dao;
 
 import java.io.Serializable;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-import com.projecto.Horadada.Entity.Direccion;
+import com.projecto.Horadada.Entity.DireccionEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository("direcciondao")
-public interface DireccionDao extends PagingAndSortingRepository<Direccion, Serializable> {
+public interface DireccionDao extends JpaRepository<DireccionEntity, Serializable> {
 
-	public abstract Direccion findByIdDireccion(int id);
+	public abstract DireccionEntity findByIdDireccion(int id);
 
 }

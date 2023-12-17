@@ -4,14 +4,19 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import com.projecto.Horadada.Entity.Transportista;
+import com.projecto.Horadada.Entity.TransportistaEntity;
 
 public interface TransportistaService {
-	
-	public abstract List<Transportista> findByAll();
-	public abstract Transportista findByidtransportista(int id);
-	public abstract Transportista save(Transportista transportista);
-	public abstract void delete(int id);
-	public Page<Transportista> findAll(Pageable pageable);
-	public abstract Transportista findByidsituaciontransportista(int i);
-	}
+
+    public abstract List<TransportistaEntity> findByAll();
+
+    public abstract TransportistaEntity findByidtransportista(int id);
+
+    public abstract TransportistaEntity save(TransportistaEntity transportista);
+
+    public abstract void delete(int id);
+
+    public Page<TransportistaEntity> findAll(Pageable pageable);
+
+    public abstract TransportistaEntity findByidsituaciontransportista(int i);
+}

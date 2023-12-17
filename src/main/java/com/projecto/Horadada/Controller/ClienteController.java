@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import com.projecto.Horadada.Entity.Cliente;
+import com.projecto.Horadada.Entity.ClienteEntity;
 import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.ClienteService;
 import com.projecto.Horadada.service.ContactoService;
@@ -34,8 +34,8 @@ public class ClienteController {
 	public String Cliente(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
 
 		Pageable pageRequest = PageRequest.of(page, 5);
-		Page<Cliente> clientes = clienteService.findAll(pageRequest);
-		PageRender<Cliente> pagerender = new PageRender<Cliente>("/cliente",clientes);
+		Page<ClienteEntity> clientes = clienteService.findAll(pageRequest);
+		PageRender<ClienteEntity> pagerender = new PageRender<ClienteEntity>("/cliente",clientes);
 		model.addAttribute("cli", clientes);
 		model.addAttribute("page", pagerender);
 		return "mantenimiento/cliente";
@@ -43,16 +43,16 @@ public class ClienteController {
 
 	@GetMapping("/clienteform")
 	public String redirectClienteForm(@RequestParam(name = "id", required = false) int id, Model model) {
-		Cliente cliente = new Cliente();
+		ClienteEntity cliente = new ClienteEntity();
 		if (id != 0) {
-			cliente = clienteService.findByidcliente(id);
+			cliente = clienteService.findByidCliente(id);
 		}
 		model.addAttribute("cliente", cliente);
 		return "crearEditar/cliente";
 	}
 
 	@PostMapping("/addcliente")
-	public String addCliente(@ModelAttribute(name = "cliente") Cliente cliente, Model model) {
+	public String addCliente(@ModelAttribute(name = "cliente") ClienteEntity cliente, Model model) {
 		if (null != clienteService.save(cliente)) {
 			// Cliente client= clienteService.save(cliente);
 			model.addAttribute("result", 1);
@@ -65,7 +65,7 @@ public class ClienteController {
 	@GetMapping("/borrarcliente")
 	public ModelAndView borrarCliente(@RequestParam(name = "id", required = true) int id, Model model) {
 		ModelAndView mav = new ModelAndView("mantenimiento/cliente");
-		mav.addObject("cliid", clienteService.findByidcliente(id));
+		mav.addObject("cliid", clienteService.findByidCliente(id));
 		int cont = clienteService.delete(id);
 
 		mav.addObject("result", cont);

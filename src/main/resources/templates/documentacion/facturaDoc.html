@@ -1,89 +1,86 @@
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Modernize Free</title>
+        <th:block th:include="fragments/header.html"></th:block>
+    </head>
 
+    <body>
+        <!--  Body Wrapper -->
+        <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+             data-sidebar-position="fixed" data-header-position="fixed">
+            <!-- Sidebar Start -->
+            <div th:include="fragments/menu.html"></div>
+            <!--  Sidebar End -->
+            <!--  Main wrapper -->
+            <div class="body-wrapper">
+                <!--  Header Start -->
+                <div th:include="fragments/cabecera.html"></div>
+                <!--  Header End -->
+                <div class="container-fluid">
+                    <form method="post">
 
-<title th:text="#{IndexTitle}">Employees System</title>
+                        <div class="form-group row">
+                            <h2 class="col-sm-2 col-form-label">Cliente :</h2>
+                            <div class="col-sm-6">
+                                <input name="cliente" class="form-control" disabled='disabled' />
+                            </div>
+                        </div>
 
-<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
-</head>
-<body>
+                        <div class="form-group row">
+                            <h2 class="col-sm-2 col-form-label">Descripcion :</h2>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" />
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
 
-	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
-	<div class="container py-4">
-		<div class="card bg-light">
-			<div class="card-header"></div>
-			<div class="card-body">
-				<h4 class="card-title">
-					<a class="btn btn-light btn-xs"></a>
-				</h4>
+                        <div class="form-group row">
+                            <h2 class="col-sm-2 col-form-label">Observacion :</h2>
+                            <div class="col-sm-6">
+                                <textarea class="form-control"></textarea>
+                            </div>
+                        </div>
 
-				<form method="post">
+                        <div class="form-group row">
+                            <h2 class="col-sm-2 col-form-label">Producto :</h2>
+                            <div class="col-sm-6">
+                                <input type="text" name="buscar_producto" id="buscar_producto"
+                                       class="form-control" />
+                            </div>
+                        </div>
 
-					<div class="form-group row">
-						<label for="cliente" class="col-sm-2 col-form-label"></label>
-						<div class="col-sm-6">
-							<input name="cliente" class="form-control" disabled='disabled' />
-						</div>
-					</div>
+                        <th:block th:include="factura/plantilla-items.html"></th:block>
+                        <table id="cargarItemProductos"
+                               class="table table-sm table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>Total</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <h5>
+                            Total <span class="badge badge-secondary" id="gran_total">0</span>
+                        </h5>
 
-					<div class="form-group row">
-						<label for="descripcion" class="col-sm-2 col-form-label"></label>
-						<div class="col-sm-6">
-							<input type="text" class="form-control" />
-							<div class="invalid-feedback"></div>
-						</div>
-					</div>
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <input type="submit" class="btn btn-secondary" />
+                            </div>
+                        </div>
+                    </form>
+                    <div th:include="fragments/footer.html"></div>
+                </div>
+            </div>
+        </div>
+    </body>
 
-					<div class="form-group row">
-						<label for="observacion" class="col-sm-2 col-form-label"></label>
-						<div class="col-sm-6">
-							<textarea class="form-control"></textarea>
-						</div>
-					</div>
-
-					<div class="form-group row">
-						<label for="buscar_producto" class="col-sm-2 col-form-label"></label>
-						<div class="col-sm-6">
-							<input type="text" name="buscar_producto" id="buscar_producto"
-								class="form-control" />
-						</div>
-					</div>
-
-					<table th:replace="factura/plantilla-items :: itemsFactura"></table>
-
-					<table id="cargarItemProductos"
-						class="table table-sm table-striped table-hover">
-						<thead>
-							<tr>
-								<th>Nombre</th>
-								<th>Precio</th>
-								<th>Cantidad</th>
-								<th>Total</th>
-								<th>Eliminar</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
-					<h5>
-						Total <span class="badge badge-secondary" id="gran_total">0</span>
-					</h5>
-
-					<div class="form-group row">
-						<div class="col-sm-6">
-							<input type="submit" class="btn btn-secondary" />
-						</div>
-					</div>
-				</form>
-
-
-			</div>
-		</div>
-	</div>
-	<div class="footer">
-		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
-	</div>
-</body>
 </html>

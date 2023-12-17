@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.projecto.Horadada.Entity.TipoServicio;
+import com.projecto.Horadada.Entity.TipoServicioEntity;
 import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.UtilitarioService;
 
@@ -31,8 +31,8 @@ public class ServicioController {
 	@GetMapping("")
 	public String servicios(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
 		Pageable pageRequest = PageRequest.of(page, 5);
-		Page<TipoServicio> servicio = utilitarioservice.findAllServ(pageRequest);
-		PageRender<TipoServicio> pagerender = new PageRender<TipoServicio>("/servicios", servicio);
+		Page<TipoServicioEntity> servicio = utilitarioservice.findAllServ(pageRequest);
+		PageRender<TipoServicioEntity> pagerender = new PageRender<TipoServicioEntity>("/servicios", servicio);
 		model.addAttribute("servicio", servicio);
 		model.addAttribute("page", pagerender);
 		return "utilitarios/servicio";
@@ -40,7 +40,7 @@ public class ServicioController {
 
 	@GetMapping("/servicioform")
 	public String servicioForm(@RequestParam("id") int id, Model model) {
-		TipoServicio servicio = new TipoServicio();
+		TipoServicioEntity servicio = new TipoServicioEntity();
 		if (id != 0) {
 			servicio = utilitarioservice.findByIdservicio(id);
 		}
@@ -55,12 +55,12 @@ public class ServicioController {
 	}
 	
 	@GetMapping(value = "/cargar-servicio/{term}", produces = { "application/json" })
-	public @ResponseBody List<TipoServicio> cargarServicio(@PathVariable String term) {
+	public @ResponseBody List<TipoServicioEntity> cargarServicio(@PathVariable String term) {
 		return utilitarioservice.findByNombre(term);
 	}
 	
 	@PostMapping("/addservicio")
-	public String addServicio(@ModelAttribute("servicio") TipoServicio servicio, Model model) {
+	public String addServicio(@ModelAttribute("servicio") TipoServicioEntity servicio, Model model) {
 		if (null != utilitarioservice.save(servicio)) {
 			model.addAttribute("result", 1);
 		} else {

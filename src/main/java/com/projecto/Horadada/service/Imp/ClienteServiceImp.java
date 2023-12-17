@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.projecto.Horadada.Dao.ClienteDao;
-import com.projecto.Horadada.Entity.Cliente;
+import com.projecto.Horadada.Entity.ClienteEntity;
 import com.projecto.Horadada.service.ClienteService;
 
 @Service("clienteServiceImp")
@@ -21,14 +21,13 @@ public class ClienteServiceImp implements ClienteService{
 	private ClienteDao clienteDao;
 
 	@Override
-	public List<Cliente> findByAll() {
-		List<Cliente> cli = (List<Cliente>) clienteDao.findAll();
-		return cli;
+	public List<ClienteEntity> findByAll() {
+		return (List<ClienteEntity>) clienteDao.findAll();
 	}
 
 	@Override
-	public Cliente save(Cliente cliente) {
-		Cliente clie = null;
+	public ClienteEntity save(ClienteEntity cliente) {
+		ClienteEntity clie = null;
 		try {
 			clie = clienteDao.save(cliente);
 		} catch (Exception e) {
@@ -38,9 +37,8 @@ public class ClienteServiceImp implements ClienteService{
 	}
 
 	@Override
-	public Cliente findByidcliente(int idcliente) {
-		Cliente cliente = clienteDao.findByidcliente(idcliente);
-		return cliente;
+	public ClienteEntity findByidCliente(int idcliente) {
+		return clienteDao.findByidCliente(idcliente);
 	}
 
 	@Override
@@ -58,13 +56,12 @@ public class ClienteServiceImp implements ClienteService{
 
 	@Override
 	@Transactional(readOnly = true)
-	public Page<Cliente> findAll(Pageable pageable) {
+	public Page<ClienteEntity> findAll(Pageable pageable) {
 		return clienteDao.findAll(pageable);
 	}
 
 	@Override
-	public Cliente findOne(Long clienteId) {
-		// TODO Auto-generated method stub
+	public ClienteEntity findOne(Long clienteId) {
 		return clienteDao.findById(clienteId).orElse(null);
 	}
 

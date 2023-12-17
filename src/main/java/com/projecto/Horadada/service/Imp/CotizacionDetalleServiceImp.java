@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import com.projecto.Horadada.Dao.CotizacionDetalleDao;
-import com.projecto.Horadada.Entity.CotizacionDetalle;
+import com.projecto.Horadada.Entity.CotizacionDetalleEntity;
 import com.projecto.Horadada.service.CotizacionDetalleService;
 
 @Service("cotizaciondetalleservice")
@@ -15,14 +15,14 @@ public class CotizacionDetalleServiceImp implements CotizacionDetalleService{
 	CotizacionDetalleDao cotizaciondetalledao;
 
 	@Override
-	public CotizacionDetalle findByItem(int item) {
-		CotizacionDetalle cotDetalle = cotizaciondetalledao.findByItem(item);
+	public CotizacionDetalleEntity findByItem(int item) {
+		CotizacionDetalleEntity cotDetalle = cotizaciondetalledao.findByItem(item);
 		return cotDetalle;
 	}
 
 	@Override
-	public CotizacionDetalle save(CotizacionDetalle cotizaciondetalle) {
-		CotizacionDetalle cotdetalle = cotizaciondetalledao.save(cotizaciondetalle);
+	public CotizacionDetalleEntity save(CotizacionDetalleEntity cotizaciondetalle) {
+		CotizacionDetalleEntity cotdetalle = cotizaciondetalledao.save(cotizaciondetalle);
 		return cotdetalle;
 	}
 

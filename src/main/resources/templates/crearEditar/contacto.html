@@ -1,54 +1,61 @@
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Modernize Free</title>
+        <th:block th:include="fragments/header.html"></th:block>
+    </head>
 
+    <body>
+        <!--  Body Wrapper -->
+        <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+             data-sidebar-position="fixed" data-header-position="fixed">
+            <!-- Sidebar Start -->
+            <div th:include="fragments/menu.html"></div>
+            <!--  Sidebar End -->
+            <!--  Main wrapper -->
+            <div class="body-wrapper">
+                <!--  Header Start -->
+                <div th:include="fragments/cabecera.html"></div>
+                <!--  Header End -->
+                <div class="container-fluid">
+                    <form action="#" th:action="@{/contacto/addcontacto}"
+                          th:object="${contacto}" method="post">
+                        <input type="hidden" th:field="*{idContacto}" />
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                <strong>FORMULARIO CONTACTO</strong>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
+                                        CODIGO CLIENTE : <br /> <select th:field="*{cliente.idCliente}"
+                                                                        class="form-control">
+                                            <option th:each="cli : ${cliente}" th:value="${cli.idCliente}"
+                                                    th:text="${cli.idCliente}+'. '+${cli.razonSocial}"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
+                                        CODIGO PERSONA : <br /> <select th:field="*{persona.idPersona}"
+                                                                        class="form-control" id="inputGroupSelect03">
+                                            <option th:each="per : ${persona}" th:value="${per.idPersona}"
+                                                    th:text="${per.idPersona}+'. '+${per.nombreCompleto}">
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            ACEPTAR
+                        </button>
+                    </form> 
+                    <div th:include="fragments/footer.html"></div>
+                </div>
+            </div>
+        </div>
+    </body>
 
-<title th:text="#{IndexTitle}">Employees System</title>
-
-<!--/*/ <th:block th:include="fragments/header :: head"></th:block> /*/-->
-</head>
-<body>
-
-	<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
-	<div class="container">
-		<form action="#" th:action="@{/contacto/addcontacto}"
-			th:object="${contacto}" method="post">
-			<input type="hidden" th:field="*{idcontacto}" />
-			<div class="panel panel-default">
-				<div class="panel-heading text-center">
-					<b>FORMULARIO CONTACTO</b>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
-							CODIGO CLIENTE : <br /> <select th:field="*{cliente.idcliente}"
-								class="form-control">
-								<option th:each="cli : ${cliente}" th:value="${cli.idcliente}"
-									th:text="${cli.idcliente}+'. '+${cli.razonsocial}"></option>
-							</select>
-						</div>
-						<div class="col-lg-4 col-md-5 col-sm-7 col-xs-12">
-							CODIGO PERSONA : <br /> <select th:field="*{persona.idpersona}"
-								class="form-control" id="inputGroupSelect03">
-								<option th:each="per : ${persona}" th:value="${per.idpersona}"
-									th:text="${per.idpersona}+'. '+${per.nombrecompleto}">
-								</option>
-							</select>
-						</div>
-					</div>
-				</div>
-			</div>
-			<button class="btn btn-lg btn-primary btn-block" type="submit">
-				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-				ACEPTAR
-			</button>
-			<br>
-		</form>
-	</div>
-
-	<div class="footer">
-		<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
-	</div>
-</body>
 </html>

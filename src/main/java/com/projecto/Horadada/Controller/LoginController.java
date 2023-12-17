@@ -3,18 +3,19 @@ package com.projecto.Horadada.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.projecto.Horadada.Model.Usuarios;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Controller
 public class LoginController {
+    
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 	@GetMapping("/")
 	public String redirctLogin() {
-		return "redirect:/login";
+		return "redirect:/index";
 	}
 
 	@GetMapping("/login")
@@ -26,16 +27,7 @@ public class LoginController {
 		return "index";
 	}
 
-	@PostMapping("/loginCheck")
-	public String loginCheck(@ModelAttribute(name = "credencialUsuario") Usuarios usuario) {
-		if (usuario.getUsuario().equals("usu") && usuario.getPassword().equals("con")) {
-			
-			return "redirect:/principal";
-		}
-		return "redirect:/login?error";
-	}
-
-	@GetMapping("/principal")
+	@GetMapping("/index")
 	public String index() {
 		return "principal";
 	}

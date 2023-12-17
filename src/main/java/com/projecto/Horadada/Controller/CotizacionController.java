@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.projecto.Horadada.Entity.Cotizacion;
-import com.projecto.Horadada.Entity.CotizacionDetalle;
-import com.projecto.Horadada.Entity.Solicitud;
-import com.projecto.Horadada.Entity.TablaMaestra;
+import com.projecto.Horadada.Entity.CotizacionEntity;
+import com.projecto.Horadada.Entity.CotizacionDetalleEntity;
+import com.projecto.Horadada.Entity.SolicitudEntity;
+import com.projecto.Horadada.Entity.TablaMaestraEntity;
 import com.projecto.Horadada.Util.Constantes;
 import com.projecto.Horadada.Util.PageRender;
 import com.projecto.Horadada.service.CotizacionDetalleService;
@@ -30,130 +30,124 @@ import com.projecto.Horadada.service.UtilitarioService;
 @RequestMapping("/cotizacion")
 public class CotizacionController {
 
-	@Autowired
-	@Qualifier("cotizacionserviceimp")
-	private CotizacionService cotizacionservice;
+    @Autowired
+    @Qualifier("cotizacionserviceimp")
+    private CotizacionService cotizacionservice;
 
-	@Autowired
-	@Qualifier("cotizaciondetalleservice")
-	private CotizacionDetalleService cotizaciondetalleservice;
+    @Autowired
+    @Qualifier("cotizaciondetalleservice")
+    private CotizacionDetalleService cotizaciondetalleservice;
 
-	@Autowired
-	@Qualifier("utilitarioservice")
-	private UtilitarioService utilitarioservice;
+    @Autowired
+    @Qualifier("utilitarioservice")
+    private UtilitarioService utilitarioservice;
 
-	@Autowired
-	@Qualifier("solicitudServiceimp")
-	private SolicitudService solicitudService;
+    @Autowired
+    @Qualifier("solicitudServiceimp")
+    private SolicitudService solicitudService;
 
-	@GetMapping("")
-	public String redirectCotizacion(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
-		Pageable pageRequest = PageRequest.of(page, 5);
-		Page<Cotizacion> cotizacion = cotizacionservice.findAll(pageRequest);
-		PageRender<Cotizacion> pagerender = new PageRender<Cotizacion>("/cotizacion", cotizacion);
-		model.addAttribute("cotiza", cotizacion);
-		model.addAttribute("page", pagerender);
-		return "documentacion/cotizacionDoc";
-	}
+    @GetMapping("")
+    public String redirectCotizacion(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
+        Pageable pageRequest = PageRequest.of(page, 5);
+        Page<CotizacionEntity> cotizacion = cotizacionservice.findAll(pageRequest);
+        PageRender<CotizacionEntity> pagerender = new PageRender<CotizacionEntity>("/cotizacion", cotizacion);
+        model.addAttribute("cotiza", cotizacion);
+        model.addAttribute("page", pagerender);
+        return "documentacion/cotizacionDoc";
+    }
 
-	@GetMapping("/cotizacionform")
-	public String redirectCotizacionForm(@RequestParam(name = "id", required = false) int id, Model model) {
-		String impuesto;
-		List<TablaMaestra> moneda = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_MONEDA);
-		List<Solicitud> idsoli = solicitudService.getidsolicitud();
-		List<TablaMaestra> medida = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_UNIDAD_MEDIDA);
-		List<TablaMaestra> igv = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_VALOR_IGV);
-		impuesto = igv.get(0).getValor1();
-		Cotizacion cotizacion = new Cotizacion();
-		int resu = 0;
-		if (id != 0) {
-			cotizacion = cotizacionservice.findbyid(id);
-			resu = 1;
-		}
-		model.addAttribute("resu", resu);
-		model.addAttribute("solici", idsoli);
-		model.addAttribute("moneda", moneda);
-		model.addAttribute("medida", medida);
-		model.addAttribute("igv", impuesto);
-		model.addAttribute("cotizacion", cotizacion);
-		return "crearEditar/cotizacion";
-	}
+    @GetMapping("/cotizacionform")
+    public String redirectCotizacionForm(@RequestParam(name = "id", required = false) int id, Model model) {
+        String impuesto;
+        List<TablaMaestraEntity> moneda = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_MONEDA);
+        List<SolicitudEntity> idsoli = solicitudService.getidsolicitud();
+        List<TablaMaestraEntity> medida = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_UNIDAD_MEDIDA);
+        List<TablaMaestraEntity> igv = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_VALOR_IGV);
+        impuesto = igv.get(0).getValor1();
+        CotizacionEntity cotizacion = new CotizacionEntity();
+        int resu = 0;
+        if (id != 0) {
+            cotizacion = cotizacionservice.findbyid(id);
+            resu = 1;
+        }
+        model.addAttribute("resu", resu);
+        model.addAttribute("solici", idsoli);
+        model.addAttribute("moneda", moneda);
+        model.addAttribute("medida", medida);
+        model.addAttribute("igv", impuesto);
+        model.addAttribute("cotizacion", cotizacion);
+        return "crearEditar/cotizacion";
+    }
 
-	@PostMapping("/addcotizacion")
-	public String Guardar( Cotizacion cotizacion, Model model, BindingResult result,
-			@RequestParam(name = "recurso[]", required = false) String[] recurso,
-			@RequestParam(name = "ccostos[]", required = false) String[] ccostos,
-			@RequestParam(name = "cantidad[]", required = false) String[] cantidad,
-			@RequestParam(name = "totaldetalle[]", required = false) String[] totaldetalle,
-			@RequestParam(name = "idunidadmedida[]", required = false) String[] idunidadmedida) {
+    @PostMapping("/addcotizacion")
+    public String Guardar(CotizacionEntity cotizacion, Model model, BindingResult result,
+            @RequestParam(name = "recurso[]", required = false) String[] recurso,
+            @RequestParam(name = "ccostos[]", required = false) String[] ccostos,
+            @RequestParam(name = "cantidad[]", required = false) String[] cantidad,
+            @RequestParam(name = "totaldetalle[]", required = false) String[] totaldetalle,
+            @RequestParam(name = "idunidadmedida[]", required = false) String[] idunidadmedida) {
 
-		if (result.hasErrors()) {
-			model.addAttribute("titulo", "Crear Factura");
-			return "crearEditar/cotizacion";
-		}
-		if (recurso == null || recurso.length == 0) {
-			model.addAttribute("titulo", "Crear Factura");
-			model.addAttribute("error", "Error: La factura NO puede no tener líneas!");
-			return "crearEditar/cotizacion";
-		}
-		List<CotizacionDetalle> cot = new ArrayList<CotizacionDetalle>();
-		for (int i = 0; i < recurso.length; i++) {
-			CotizacionDetalle linea = new CotizacionDetalle();
-			linea.setItem(i + 1);
-			linea.setCcostos(ccostos[i]);
-			linea.setCantidad(Double.parseDouble(cantidad[i]));
-			linea.setCodRecurso(recurso[i]);
-			linea.setDescripcion(cotizacion.getObservaciones());
-			linea.setDescuento(0.00);
-			linea.setPrecioUnitario(0.00);
-			linea.setTotalDetalle(Double.parseDouble(totaldetalle[i]));
-			linea.setIdUnidadMedida(Integer.parseInt(idunidadmedida[i]));
-			cot.add(linea);
-		}
-		cotizacion.setCotizacionDetalles(cot);
-		cotizacionservice.save(cotizacion);
-		return "redirect:/cotizacion";
-	}
+        if (result.hasErrors()) {
+            model.addAttribute("titulo", "Crear Factura");
+            return "crearEditar/cotizacion";
+        }
+        if (recurso == null || recurso.length == 0) {
+            model.addAttribute("titulo", "Crear Factura");
+            model.addAttribute("error", "Error: La factura NO puede no tener líneas!");
+            return "crearEditar/cotizacion";
+        }
+        List<CotizacionDetalleEntity> cot = new ArrayList<CotizacionDetalleEntity>();
+        for (int i = 0; i < recurso.length; i++) {
+            CotizacionDetalleEntity linea = new CotizacionDetalleEntity();
+            linea.setItem(i + 1);
+            linea.setCcostos(ccostos[i]);
+            linea.setCantidad(Double.parseDouble(cantidad[i]));
+            linea.setCodRecurso(recurso[i]);
+            linea.setDescripcion(cotizacion.getObservaciones());
+            linea.setDescuento(0.00);
+            linea.setPrecioUnitario(0.00);
+            linea.setTotalDetalle(Double.parseDouble(totaldetalle[i]));
+            linea.setIdUnidadMedida(Integer.parseInt(idunidadmedida[i]));
+            cot.add(linea);
+        }
+        cotizacion.setCotizacionDetalles(cot);
+        cotizacionservice.save(cotizacion);
+        return "redirect:/cotizacion";
+    }
 
-	@GetMapping("/borrarcotizacion")
-	public String borrarCotizacion(@RequestParam(name = "id", required = true) int id, Model model) {
-		cotizacionservice.delete(id);
-		return "redirect:/cotizacion";
-	}
+    @GetMapping("/borrarcotizacion")
+    public String borrarCotizacion(@RequestParam(name = "id", required = true) int id, Model model) {
+        cotizacionservice.delete(id);
+        return "redirect:/cotizacion";
+    }
 
-	@GetMapping("/cotizaciondetalleform")
-	public String redirectCotizacionDetalleform(@RequestParam(name = "id", required = false) int id,
-			@RequestParam(name = "item", required = false) int item, Model model) {
+    @GetMapping("/cotizaciondetalleform")
+    public String redirectCotizacionDetalleform(@RequestParam(name = "id", required = false) int id,
+            @RequestParam(name = "item", required = false) int item, Model model) {
 
-		List<TablaMaestra> medida = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_UNIDAD_MEDIDA);
-		CotizacionDetalle cotizaciondetalle = new CotizacionDetalle();
-		Cotizacion cotizacion = cotizacionservice.findbyid(id);
+        List<TablaMaestraEntity> medida = utilitarioservice.findByIdtablaMaestra(Constantes.TABLA_UNIDAD_MEDIDA);
+        CotizacionDetalleEntity cotizaciondetalle = new CotizacionDetalleEntity();
+        CotizacionEntity cotizacion = cotizacionservice.findbyid(id);
 
-		if (item != 0) {
-			cotizaciondetalle = cotizaciondetalleservice.findByItem(item);
-		}
-		model.addAttribute("medida", medida);
-		model.addAttribute("cotizacion", cotizacion.getIdCotizacion());
-		model.addAttribute("cotizadeta", cotizaciondetalle);
-		return "crearEditar/cotizacionDetalle";
-	}
+        if (item != 0) {
+            cotizaciondetalle = cotizaciondetalleservice.findByItem(item);
+        }
+        model.addAttribute("medida", medida);
+        model.addAttribute("cotizacion", cotizacion.getIdCotizacion());
+        model.addAttribute("cotizadeta", cotizaciondetalle);
+        return "crearEditar/cotizacionDetalle";
+    }
 
-	@PostMapping("/addcotizaciondetalle")
-	public String addCotizacionDetalle(@ModelAttribute(name = "cotizaciondetalle") CotizacionDetalle cotidetalle,
-			Model model) {
+    @PostMapping("/addcotizaciondetalle")
+    public String addCotizacionDetalle(@ModelAttribute(name = "cotizaciondetalle") CotizacionDetalleEntity cotidetalle,
+            Model model) {
 
-		if (null != cotizaciondetalleservice.save(cotidetalle)) {
-			model.addAttribute("result", 1);
-		} else {
-			model.addAttribute("result", 0);
-		}
-		return "redirect:/cotizacion";
-	}
+        if (null != cotizaciondetalleservice.save(cotidetalle)) {
+            model.addAttribute("result", 1);
+        } else {
+            model.addAttribute("result", 0);
+        }
+        return "redirect:/cotizacion";
+    }
 
-	/*
-	 * @GetMapping(value = "/cargar-cotizacion/{term}", produces = {
-	 * "application/json" }) public @ResponseBody Cotizacion
-	 * cargarCotizacion(@PathVariable String term) { Cotizacion cot =
-	 * cotizacionservice.findbyid(Integer.parseInt(term)); return cot; }
-	 */
 }

@@ -1,16 +1,17 @@
 package com.projecto.Horadada.Dao;
 
+import com.projecto.Horadada.Entity.PersonaEntity;
 import java.io.Serializable;
-
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-import com.projecto.Horadada.Entity.TelefonoMonitoreo;
+import com.projecto.Horadada.Entity.TelefonoMonitoreoEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository("telefonodao")
-public interface TelefonoDao extends PagingAndSortingRepository<TelefonoMonitoreo, Serializable> {
+public interface TelefonoDao extends JpaRepository<TelefonoMonitoreoEntity, Serializable> {
 
-/*
-	public abstract List<Telefono> findTelefonoByidPersona(int id);*/
-	public abstract TelefonoMonitoreo findByimei(String imei);
-	public abstract TelefonoMonitoreo findBynumeroTelefono(String numero);
+    public abstract TelefonoMonitoreoEntity findByimei(String imei);
+
+    public abstract TelefonoMonitoreoEntity findBynumeroTelefono(String numero);
+    
+    public abstract TelefonoMonitoreoEntity findBypersona(PersonaEntity persona);
 }

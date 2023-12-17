@@ -19,6 +19,9 @@ public final class Constantes {
 	//URL Jason
 	public static final String RUTA_AUTOS_MARCA = "https://fipeapi.appspot.com/api/1/carros/marcas.json";
 	public static final String RUTA_AUTOS_MARCA_MODELO = "https://fipeapi.appspot.com/api/1/carros/veiculos/";
+        
+        //variables
+        public static final String[] MESES = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","julio","Agosto","Setimbre","Octubre","Noviembre","Diciembre"};
 	
 	
 }
